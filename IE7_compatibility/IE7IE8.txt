@@ -1,0 +1,381 @@
+###################################################
+#
+# 本页记录IE7，IE8与其他浏览器的JS，CSS的差异
+# 16-08-29 20:34:01 @wuji
+#
+##################################################
+
+##################################################
+//   别人总结的IE7，IE8的差异
+
+选择器相关API
+*.querySelector
+*.querySelectorAll
+*.getElementsByClassName
+
+• 事件相关API
+*.addEventListener
+*.removeEventListener
+*.dispatchEvent
+document.createEvent
+init[|Mouse|UI]Event
+input
+window.onhashchange
+
+• DOM特性相关API
+window.getComputedStyle
+
+• ES5 JSON扩展
+JSON.parse
+JSON.stringify
+
+• ES5 Object扩展
+Object.create
+Object.keys
+
+• Date对象
+Date.now
+
+• ES5 Function扩展
+Function.bind
+
+• ES5 String扩展
+String.trim
+
+• ES5 数组方法扩展
+Array.isArray
+Array.forEach
+Array.map
+Array.filter
+Array.some
+Array.every
+Array.indexOf
+Array.lastIndexOf
+Array.reduce
+Array.reduceRight
+##################################################
+
+序号            |       描述                                                                    
+----------------------------------------------------------------------------------------------------------------------
+1、document     |  // 创建元素 document.createElement()
+                |  // 在IE中，可以以另一种方式使用createElement():
+                |  // 即：为这个方法传入完整的元素标签，也可以包括属性。
+                |       var div = document.createElement("<div id='myNewDiv' class='box' ></div>");
+                |    // 这种方式有助于避开在IE7-中动态创建元素的某些问题。如：
+                |        1、不能设置动态创建的<iframe>元素的name特性。
+                |        2、不能通过表单的reset()方法重设动态创建的<input>元素
+                |        3、动态创建的type特性值为"reset"的<button>元素重设不了表单。
+                |        4、动态创建的一批name相同的单选按钮彼此毫无关系.
+                |        上述所有问题都可以通过在createElement()中指定完整的HTML标签来解决.
+                |        if(client.browser.ie && client.browser.ie <=7){                  >
+                |            // 创建一个带name特性的iframe元素
+                |            var iframe = document.createElement("<iframe name='myframe' ></iframe>")
+
+                |            // 创建input元素，使其可以被reset
+                |            var input = document.createElement("<input type='checkbox'>")
+
+                |            // 创建button元素
+                |            var button = document.createElement("<button type='reset'></button>")
+
+                |            // 创建单选按钮
+                |            。。。
+                |        }
+                |   #解决方案：
+                |       通过在createElement()中指定完整的HTML标签
+
+1、document     |  // 查找元素
+                |  // 1、getElementById()：区分大小写      
+                |  // 但是, 在IE8-中不区分大小写
+                |  // 而且, 如果有哪个表单元素的name特性等于指定的ID，
+                |  // 且该元素在文档中位于带有给定ID的元素前面，
+                |  // 那么IE会返回哪个表单元素
+                |   #解决方案：
+                |       避免表单元素的name = 某个元素的id
+
+                |        2、getElementsByTagName("div")
+                |        返回一个HTMLCollection对象，支持使用索引和名称访问其中的元素
+
+                |        3、document.getElementsByName()
+                |        返回一个HTMLCollection对象
+            
+                |        4、特殊的HTMLCollection集合
+                |        document.images
+                |        document.forms
+                |        document.links   // 保护文档中所有带href特性的a元素
+
+2、 DOM         |  // 特性不区分大小写: getAttribute()                                          
+  (attribute)   |  在处理style或onclick这样的事件处理特性时，
+                |  返回的值与属性的值相同。
+                |  即：getAttribute("style")返回一个对象，
+                |   getAttribute("onclick")返回一个函数。
+                |  IE8修复了这个BUG，
+                |  由于存在这些差异，开发人员一般不使用getAttribute()访问HTML的特性(属性).
+                |   #解决方案：
+                |       使用对象属性访问style和onlick, 其余的特性任然使用
+
+2、 DOM         |  // setAttribute()                                                            
+  (attribute)   |  在IE7及以前版本中，setAttribute()存在一些异常行为。
+                |  通过这个方法设置class，style和某些事件处理程序时，没有任何效果，
+                |  在IE8修复了这些问题。
+                |  故：我们推荐通过属性来设置特性.
+                |   #解决方案：
+                |       使用对象属性访问style和onlick
+
+2、 DOM         |  // removeAttribute()                                                         
+  (attribute)   |  IE6及以前版本不支持removeAttribute()
+                |   #解决方案：
+                |       dom.style.height = null;
+
+2、attributes   |  // 属性遍历                                                          
+                |  // 想要遍历元素的特性，attributes属性可以派上用场。
+                |  // 在需要将DOM结构序列化为XML或HTML字符串时，多数都会涉及到元素特性。
+                |  function outputAttributes(element){
+                |             var pairs = new Array(),
+                |               attrName,
+                |                 attrValue,
+                |                 i,
+                |                len;
+                |            for(i=0, len=element.attributes.length; i<len; i++){                                > 
+                |                attrName = element.attributes[i].nodeName;
+                |                attrValue = element.attributes[i].nodeValue;
+                |                pairs.push(attrName + "=\"" + attrValue + "\"");
+                |            }
+                |            return pairs.join(" ");
+                |        }
+                |  // IE7及更早的版本会返回HTML元素中所有可能的特性，包括没有指定的特性。       
+                |        即：返回100多个特性的情况很常见
+                |        处理：
+                |            每个特性节点都有一个名为specified的属性，
+                |            这个属性的值如果为true,则意味着显式地添加了该特性。
+                |            如果为false，则表示为设置过该特性的属性。
+                |        if(element.attributes[i].specified){
+                |            pairs.push(attrName + "=\"" + attrValue + "\"");
+                |        }
+                |   #解决方案：
+                |       使用特性的specified属性
+
+3、 DOM         |  // 访问子节点 childNodes
+  (childNodes)  |        <ul id="myList">
+                |            <li>1</li>
+                |            <li>2</li>
+                |            <li>3</li>
+                |        </ul>
+                |        // 如果IE来解析这些代码，那么<ul>元素会有3个子节点
+                |         其他浏览器中，<ul>会有7个元素，包括3个<li>元素和4个文本节点
+                |   #解决方案：
+                |        element.getElementsByTagName("li")所有浏览器都支持
+                |        element.firstElementChild ? element.firstElementChild : element.firstChild
+
+4、 DOM         |   // 16-08-29 20:34:18                                                        
+                |   IE7, IE8不支持getElementsByClassName()
+                |   #解决方案：
+                |       ieBetter.js
+
+4、 DOM         |  // 选择符API
+                |     在IE8+才支持querySelector, querySelectorAll
+                |   #解决方案：
+                |       ieBetter.js
+
+
+5、             |  // IE7,IE8的DOM 与 标准DOM的差异
+                |  // 在IE8-中，元素节点并不继承自Object
+                |  // 即 div instanceof Object  == false
+                |   1、cloneNode()
+                |      // 标准DOM：
+                |       cloneNode() 不会复制节点的javascript属性(在js中的属性)，
+                |       只会复制节点特性(在html中出现的特性),其他一切都不会复制。
+                |      // IE
+                |       在IE中存在BUG，它会复制事件处理程序.
+                |   #解决方案：
+                |      在复制前先移除事件处理程序。
+
+                |   2、 Document类型 和 HTMLDocument类型
+                |       在除IE外的浏览器中，可以访问Document类型的构造函数和原型
+                |       在除IE7-外的浏览器中，可以访问HTMLDocument类型的构造函数和原型
+                |   #解决方案：
+                |      使用document
+
+                |   3、文档节点document(HTMLDocument类型的一个实例)
+                |       document.documentElement
+                |       document.body
+                |      title
+                |        URL             // 完整地址
+                |       domain          // 域名
+                |       referrer        // 来源页面
+                |       HTMLDocument特有的方法：
+                |       getElementsByName()
+                |       getElementById()
+
+                |   4、tagName:标签名
+                |      在HTML中，标签名始终大写，tagName = nodeName = 'DIV'
+                |      在XML中，标签名与实际一致
+                |   #解决方案：
+                |      使用tagName.toLowerCase() == "div"
+
+                |   5、HTMLElement 类型 继承自 Element类型, 并添加了一些属性
+                |      // 所有HTML元素都由HTMLElement类型的子类型表示
+                |            Element类型 -----> HTMLElement类型-------> 各种子类型
+                |    其他       yes                 yes                  yes
+                |     IE8       yes                  no                  yes
+                |     IE7        no                  no                   no
+
+                |   6、构造函数与原型
+                |      1、构造函数
+                |      function Person(){               
+                |           prototype   ---------------->  prototype 
+                |           this.name = "wuji";
+                |      }
+
+                |      2、原型
+                |          prototype{
+                |          constructor ---------------->   Person
+                |           this.age = 20;
+                |      }  
+
+                |      "name" in Person     , yes
+                |      "age" in Person     , no
+
+                |      3、实例
+                |          person = new Person()
+                |          person.[[Prototype]]  ---------->  prototype
+                |          delelte person.name;
+
+                |      4、hasOwnProperty()：检测属性存在于实例中，还是存在于原型中
+                |       // IE8- 不支持
+                |       // 在IE8-中，Element元素并非继承自Object
+                |       // Object具有hasOwnProperty()方法, 但Element不具有
+                |          4.1 for - in 
+                |           屏蔽了原型中不可枚举属性的实例属性也会在for-in中返回.
+                |           (根据规定，所有开发人员定义的属性都是可以枚举的)
+                |           // 在除IE8-外的浏览器中, 返回实例和原型中所有可枚举的属性。
+                |           // 在IE8-中, 仅仅返回实例中的可枚举属性。
+                |           // 在IE8-中,存在一个bug, 即屏蔽不可枚举属性的实例属性不会出现在for-in中
+                |       #解决方案：
+                |           ieBetter.js
+
+                |         4.2 单独使用
+                |             "name" in person   不论在原型还是在实例中
+                |             // 包括可枚举和不可枚举的
+                |             // 如：prototype, constructor
+                |             浏览器无差别
+
+5、DOM          |   IE8-不支持 
+  (classList)   |
+                |   #解决方案：
+                |       
+
+10、JSON        |  // JSON 
+                |     IE7的JSON.stringify()不可用
+                |   #解决方案：
+                |       ieBetter.js
+
+12、ARRAY       |   // 数组
+                |       #解决方案：
+                |           ieBetter.js
+
+13、CSS         |   // 伪对象 和 大部分伪类
+                |   IE7, IE8不支持伪对象 和 大部分伪类
+                |   伪类            IE7                 IE8
+                |--------------------------------------
+                |   E:link          yes                 yes
+                |   E:visited       yes                 yes
+                |   E:hover         yes                 yes
+                |   E:active        yes(只支持a)        yes
+                |   E:first-child   yes                 yes
+
+                |   伪对象          IE7                 IE8
+                |--------------------------------------
+                |   E:first-letter  yes                 yes
+                |   E:first-line    yes                 yes
+                |   E:before        no                  no
+                |   E:after         no                  no
+
+                |   使用伪对象清除浮动时，往往失效：直接设定高度
+                |       #解决方案：
+                |           在元素块最后加入一个清除浮动的div.clearfloat
+
+14、XHR         |   // XHR 对象
+                |   IE7- 不支持 XHR对象的timeout(超时设定),ontimeout事件
+                |   IE7- 不支持 XHR对象的load(在接收到完整响应数据时触发)
+                |       (用以代替readystatuschange事件)
+                |       #解决方案：
+                |           使用readystatechange事件，readystate == 4 代替。
+                |           当readystate == 4时，如果status >= 300 && status !=304,
+                |           即发生ontimeout事件。
+
+15、FormDate    |   // FormDate 对象
+                |   IE8- 不支持FormDate对象
+                |       #解决方案：
+                |           使用xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded")
+                |           即：发送表单
+
+16、Object
+                |          // IE8- 不支持
+                |  Object.keys():      返回可枚举属性的字符串数组
+                |  Object.getOwnPropertyNames(): 返回所有的属性
+                |       #解决方案：
+                |           ieBetter.js
+
+17、外部CSS
+                |   IE8-：element.currentStyle
+                |   其它：window.getComputedStyle(elem, attr)
+                |   attr: 一个伪元素字符串，如：:after, 也可以是null
+                |       #解决方案：
+                |           ieBetter.js
+
+18、DOM2级事件  | // IE8-(opera) 使用attachEvent(),      detachEvent()          添加和删除事件处理程序
+                | // IE9+        使用addEventListener(), removeEventListener()  添加和删除事件处理程序
+                |  对象属性             IE9+                    IE8-
+                |---------------------------------------------------
+                |  获取目标对象         e.target                e.srcElement
+                |  阻止默认行为         e.preventDefault()      e.returnValue
+                |  阻止进一步传播       e.stopPropagation()  e.cancelBubble()
+                |  事件类型             e.type                  e.type
+                |
+                |   作用域：IE，DOM0级，this = 所属元素
+                |           IE，DOM2级，this = window
+                |
+                |  #解决方案：
+                |    EventUtil 对象
+
+19、模拟事件    | // IE8-(opera) 使用fireEvent(evnet)       模拟事件
+                | // IE9+        使用dispatchEvent(event)
+                |  #解决方案：
+                |    无
+
+// 16-09-26 15:32:13 
+    在IE8中，margin: auto; 与 margin: 0 auto;效果不一样
+
+// 16-09-30 14:32:19 
+    在IE中，颜色值 #fff, 可能读不出来。必须：#ffffff 。
+    IE9- 不支持图像渐变
+        ：可以使用滤镜代替渐变
+
+// 16-09-30 14:53:50 
+    IE8- 不支持多组背景图像，
+    IE9  不支持 background-size, background-clip, background-origin 合并到background中
+
+// 16-09-30 15:11:06 
+    IE8- 不支持 border-radius
+    故，使用border-radius制作圆形，不可用。
+
+// 16-09-30 15:17:57 
+    legend居中方式
+    IE8- ： margin: auto;
+    其他：text-align: center;
+
+    IE8-中，fieldset 和 legend 的位置与其他浏览器有差异
+
+// 16-10-10 14:22:07 
+    IE8- 不支持 rgba()
+
+// 16-10-10 15:06:24 
+    IE 中两端对齐
+    text-align: justify;
+    text-last-align: justify;
+    #只能作用于：块元素和table元素
+
+// 16-10-11 17:34:06 
+    IE8- 的select 有许多怪异行为：
+    1、其box-sizing: border-box; (尽管IE8-不支持box-sizing)
+    2、其padding-bottom 会影响同一行的文本的位置。

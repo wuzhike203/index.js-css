@@ -1,0 +1,402 @@
+@font-face {
+	font-family: 'iconfont';
+    /* IE9*/
+    src: url('iconfont/iconfont.eot');
+    /* IE6-IE8 */
+    src: url('iconfont/iconfont.eot?#iefix') format('embedded-opentype'), 
+    /* chrome、firefox */
+    url('iconfont/iconfont.woff') format('woff'), 
+    /* chrome、firefox、opera、Safari, Android, iOS 4.2+*/
+    url('iconfont/iconfont.ttf') format('truetype'),
+    /* iOS 4.1- */
+    url('iconfont.svg#iconfont') format('svg'); 
+}                
+.iconfont{
+    font-family:"iconfont" !important;
+    font-size:1em;font-style:normal;
+    -webkit-font-smoothing: antialiased;
+    -webkit-text-stroke-width: 0.2px;
+    -moz-osx-font-smoothing: grayscale;
+}
+*{
+	font-family:"微软雅黑",arial;
+}
+ul{
+	list-style:none;
+	padding-left:0px;
+	margin:0px;
+}
+body{
+	margin:0;
+	font-size:14px;
+	position:relative;
+}
+/*-----------导航开始------------*/
+nav{
+	height:60px;
+	background:#aecff7;
+	position:relative;
+	width:100%;
+}
+nav .prompt{
+	display:none;
+}
+nav>a{
+	display:inline-block;
+	margin-left:15%;
+	background:#e7af98;
+	color:white!important;
+	font:600 20px/1em arial;
+}
+nav div{
+	float:right;
+	text-align:right;
+	margin-right:10%;
+	font-size:1em;
+}
+nav a{
+	color:black;
+	line-height:60px;
+	padding:0 15px;
+	text-decoration:none;
+	vertical-align:top;
+	font-family:arial;
+}
+nav div a{
+	font-size:0.9em;
+}
+nav h4{
+	display:inline-block;
+	color:#828686;
+	line-height:20px;
+	margin-top:20px;
+}
+/*-----------导航结束------------*/
+
+/*-----------主题内容开始------------*/
+#content{
+	width:90%;
+	margin:auto;
+}
+.clear_both{
+	clear:both;
+}
+/*authication*/
+.auth_img{
+	cursor:pointer;
+}
+.cursor{
+    cursor:pointer;
+}
+a{
+	text-decoration:none;
+	color:gray;
+}
+a:hover{
+	color:red;
+}
+input[type='radio'],input[type='checkbox']{
+	width:1em!important;
+	padding:0px;
+	height:1em!important;
+	line-height:1em!important;
+}
+input,button,.btn,select{
+	padding:0.1em 1em;
+	font:400 1em/2em "微软雅黑",arial;
+	margin:0.5em auto;
+	box-sizing:border-box;
+	display:inline-block;
+    height:2.5em;
+}
+select{
+	//padding:1em;
+}
+input,button,.btn{
+	border:1px solid gray;
+}
+button,.btn{
+	cursor:pointer;
+	border-radius:5px;
+}
+button:hover,.btn:hover{
+	color:#ff3333;
+}
+input:not([type="button"]):focus,select:focus{
+	box-shadow:0 0 2px #f2b39d;
+}
+.left{
+	margin-right:20%;
+}
+p{
+	font:500 1.4em/3em "微软雅黑",arial;
+	padding:0 10px;
+	margin:0 auto;
+}
+img{
+	width:100%;
+}
+.colorgray{
+	color:gray;
+}
+.title{
+	font-size:1.2em;
+	font-weight:500;
+}
+.eye{
+	cursor:pointer;
+	padding:0 1em;
+    border:none;
+}
+.red{
+	color:red;
+	font-size:1.2em;
+}
+li{
+	padding:5px 0;
+}
+.hidden{
+	display:none;
+}
+.half{
+	width:40%;
+}
+.small{
+	font-size:1.0em;
+}
+.hide{
+	display:none !important;
+}
+/*----弹窗开始-------*/
+.pop{
+	position:absolute;
+	width:100%;
+	height:100%;
+	background:rgba(100,100,100,0.7);
+	top:0px;
+	left:0px;
+	display:none;
+	z-index:1000;
+}
+.pop>div, .pop>form{
+	width:40%;
+	min-height:30%;
+	border-radius:5px;
+	background:#f2f2f2;
+	position:relative;
+	top:20%;
+	margin:auto;
+	padding:20px 15px;
+}
+.pop td:first-child{
+    text-align:right;
+    padding-right:2em;
+}
+/*----弹窗结束-------*/
+
+/*----位置开始-------*/
+.left,#left{
+	float:left;
+	margin-right:10px;
+}
+.right,#right{
+	float:right;
+	word-wrap:break-word;
+}
+.marginleft{
+	margin-left:30px;
+}
+.margintop{
+	margin-top:30px;
+}
+.bordertop{
+	border-top:1px solid #cacaca;
+	margin-top:20px;
+	padding-top:10px;
+}
+.textleft{
+	text-align:left;
+}
+/*----位置结束-------*/
+
+/*----图片切割开始-------*/
+#split_img{
+	text-align:center;
+	position:absolute;
+    z-index:200;
+	width:100%;
+	height:100%;
+	top:0px;
+	left:0px;
+	background:rgba(100,100,100,0.4);
+	display:none;
+}
+#split_img>div{
+	width:60%;
+	border-radius:5px;
+	position:relative;
+	margin:5% auto;
+	background:#ececec;
+	padding:10px 0;
+}
+#split_img .img_container{
+    /* 图像容器 */
+	width:90%;
+	margin:auto;
+	position:relative;
+	overflow:hidden;
+}
+#split_img img{
+    /* 图像 */
+	width:100%;
+}
+#split_img .win{
+    /* 窗口：主要遮罩效果 */
+    background-color:transparent;
+    position:absolute;
+    box-sizing:border-box;
+    width:100%;
+    height:100%;
+    border-color:rgba(100,100,100,0.6);
+    border-style:solid;
+    border-top-width:0px;
+    border-right-width:0px;
+    border-bottom-width:0px;
+    border-left-width:0px;
+    top:0;
+    left:0;
+}
+#split_img .in_win{
+    /* 内窗口：主要提供鼠标样式 */
+	cursor:move;
+	width:100%;
+	height:100%;	
+    position:relative;
+}
+#split_img p{
+    /* 文本说明 */
+	text-align:left;
+	line-height:1.2em;
+	font-size:1em;
+	padding-top:20px;
+}
+#split_img button{
+    /* 提交和取消按钮 */
+	width:100px;
+	margin:20px 10px 0px;
+}
+#split_img .dashed_side,#split_img .side{
+    /* 提供虚线和鼠标样式 */
+    position:absolute;
+    width:100%;
+    height:100%;
+}
+/*#split_img .n_side,#split_img .e_side,#split_img .s_side,#split_img .w_side{*/
+#split_img .side div{
+    /* 四个边：定义初始宽高 */
+	position:absolute;
+    width:10px;
+    height:10px;
+}
+#split_img div.n_side{
+    /* 北边 */
+	width:100%;
+	margin-top:-5px;
+	top:0px;
+	left:0px;
+	cursor:n-resize;
+}
+#split_img div.e_side{
+    /* 东边 */
+	height:100%;
+	margin-left:-5px;
+	top:0px;
+	left:100%;
+	cursor:e-resize;
+}
+#split_img div.s_side{
+    /* 南边 */
+	width:100%;
+	margin-top:-5px;
+	top:100%;
+	left:0px;
+	cursor:s-resize;
+}
+#split_img div.w_side{
+    /* 西边 */
+	height:100%;
+	margin-left:-5px;
+	top:0px;
+	left:0px;
+	cursor:w-resize;
+}
+/*----图片切割结束-------*/
+
+/*----label-------*/
+label{
+	cursor:pointer;
+}
+/*----开关开始-------*/
+.on-off{
+	display:inline-block;
+	width:70px;
+	font:300 13px/25px "microsoftYaHei",arail;
+	background:#9d9d9d;
+    padding:3px;
+	border-radius:5px;
+	position:relative;
+	text-align:center;
+	cursor:pointer;
+}
+.on_off::after{
+    content:"";
+    display:block;
+    clear:both;
+}
+.on-off span{
+	width:35px;
+	height:25px;
+	background:9d9d9d;
+    float:left;
+	border-radius:5px;
+}
+.on-off span:last-child{
+	position:absolute;
+	background:#e8e8e8;
+    margin:3px;
+	left:0px;
+    top:0px;
+}
+/*----开关结束-------*/
+/*-----------主题内容结束------------*/
+
+
+
+/*-----------bottom开始------------*/
+#bottom{
+	height:5%;
+	width:100%;
+	background:#fafafa;
+	text-align:center;
+	font:0.8em/2em arial;
+	padding:20px 0;
+	clear:both;
+	background-origin:padding-box;
+	position:relative;
+	bottom:0px;
+}
+/*-----------bottom结束------------*/
+/*------table--------*/
+table{
+    width:100%;
+}
+tbody tr:nth-child(2n){
+	background:#fafafa;
+}
+thead tr{
+	background:#c0f0c0;
+}
+thead th{
+    font-weight:500;
+    color:#aaa;
+}
