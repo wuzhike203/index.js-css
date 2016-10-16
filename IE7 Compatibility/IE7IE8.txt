@@ -642,6 +642,9 @@ Array.reduceRight
     text-align: justify;
     text-last-align: justify;
     #只能作用于：块元素和table元素
+    #不包括内联块元素
+    #文字之间必须要有空格，即：按照空格来分组。
+    // 在IE8- 中, float: right, 并不能使元素display: block;
 
 // 16-10-11 17:34:06 
     IE8- 的select 有许多怪异行为：
