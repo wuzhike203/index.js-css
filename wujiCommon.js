@@ -1,59 +1,53 @@
 /*
- * 身份信息，资金明细js
- * 16-09-30 @ Bob.wu
+ * classList
+ * IE8- not support
  * */
-
-
-    /*
-     * classList
-     * IE8- not support
-     * */
-    var oClassList = {
-        re: function(cName){
-            // 正则类
-            return new RegExp("\s*" + cName + "\s*");
-        },
-        add: function(cName){
-            // 增加类
-            if(! oClassList.contains.call(this, cName) ){
-                this.className += (" " + cName);
-            }
-        },
-        remove: function(cName){
-            // 删除类
-            this.className = this.className.replace(oClassList.re(cName), " ");
-        },
-        contains: function(cName){
-            // 判断类
-            return (this.className.search(oClassList.re(cName)) != -1) ? true : false;
-        },
-        toggle: function(cName){
-            // 切换类
-            if(oClassList.contains.call(this, cName)){
-                oClassList.remove.call(this, cName);
-            }else{
-                oClassList.add.call(this, cName);
-            }
+var oClassList = {
+    re: function(cName){
+        // 正则类
+        return new RegExp("\s*" + cName + "\s*");
+    },
+    add: function(cName){
+        // 增加类
+        if(! oClassList.contains.call(this, cName) ){
+            this.className += (" " + cName);
+        }
+    },
+    remove: function(cName){
+        // 删除类
+        this.className = this.className.replace(oClassList.re(cName), " ");
+    },
+    contains: function(cName){
+        // 判断类
+        return (this.className.search(oClassList.re(cName)) != -1) ? true : false;
+    },
+    toggle: function(cName){
+        // 切换类
+        if(oClassList.contains.call(this, cName)){
+            oClassList.remove.call(this, cName);
+        }else{
+            oClassList.add.call(this, cName);
         }
     }
-	
+}
 
-    /*
-     *  window
-     *  classList
-     * */ 
-    window.classList = {};
-    for(var i in oClassList){
-        window.classList[i] = function(i){
-            return function(elem, cName){
-                if(elem.classList){
-                    return elem.classList[i](cName);
-                }else{
-                    return oClassList[i].call(elem, cName);
-                }
-            };
-        }(i);
-    }
+
+/*
+ *  window
+ *  classList
+ * */ 
+window.classList = {};
+for(var i in oClassList){
+    window.classList[i] = function(i){
+        return function(elem, cName){
+            if(elem.classList){
+                return elem.classList[i](cName);
+            }else{
+                return oClassList[i].call(elem, cName);
+            }
+        };
+    }(i);
+}
 
 /*
  * event
@@ -124,3 +118,40 @@ function getElementsByClassName(elem, cName){
     }
 }
 
+function popCenter() {
+	/* 
+     * 所有弹窗位置上下左右居中 
+     * 使用.hide 来隐藏，
+     * 弹窗使用.pop_win
+     * */
+
+	// 浏览器可视区域高度
+	var clientHeight = document.documentElement.clientHeight;
+
+	$(".pop_win>div").each(function(){
+		var hide_flag = false,
+			hide_flag2 = false;
+		// hide_flag : 元素是否隐藏
+		// hide_flag2 : 窗口是否隐藏
+
+		if($(this).is(".hide")){
+			/*  如果元素原本是隐藏的 */
+			hide_flag = true;
+			$(this).removeClass("hide");
+		}
+		if($(this).parent().is(".hide")){
+			/*  如果窗口原本是隐藏的 */
+			hide_flag2 = true;
+			$(this).parent().removeClass("hide");
+		}
+
+		this.style.marginTop = (clientHeight - this.offsetHeight)/2 + "px";
+
+		if(hide_flag){
+			$(this).addClass("hide");
+		}
+		if(hide_flag2){
+			$(this).parent().addClass("hide");
+		}
+	});
+}

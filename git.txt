@@ -1,0 +1,22 @@
+git 命令组
+
+序号    用途            explain
+---------------------------------------------
+1       remote          远程
+2       stash           保存工作区状态的堆
+3       branch          分支
+
+
+// 与远程仓库同步数据的步骤：
+1、git fetch origin(远程主机名)   分支名?
+2、git merge  分支名(远程：origin/分支名)
+3、解决冲突
+4、git push origin master
+
+
+// 分支分布图
+local   --master
+        --dev
+
+origin          -->远程仓库在本地的名称
+        --master 
