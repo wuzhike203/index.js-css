@@ -1780,41 +1780,8 @@ X-UA-compatible 标头不区分大小写；不过，它必须显示在网页中�
     35              IE8             1               太长
     35              python          1               2617
 
-// 16-09-27 21:58:28 
-    今天写一个静态网页，body:{margin:auto;}
-    body就是不居中。
-    // 原因：
-        前面写了body, p{margin: 0;}
-
-// 16-09-27 22:00:44 
-    两个(ul>li*8), 怎么都对不齐，
-    而且是越到后面，歪的越狠。
-    // 原因：
-        一个里面的li:{float: left;}
-        另一个里面的li:{display: inline-block;}
-
 // 16-09-27 ps4
     http://www.xitongzhijia.net/soft/9843.html
-
-// 16-09-28 00:03:08 
-    button 与 a作为按钮的区别
-    button: 文字自动对中(上下和左右)
-            自动添加border
-    a: 文字不自动对中
-
-// 16-09-28 
-    body{
-        font: 500 14px/1.5em "microsoft yahei";
-    }
-
-    body div{
-        font-weight: 500;
-    }
-    // 子元素并不能继承body的font的其他特性：
-    原因：子元素重写font的某一个特性,导致body中font失效
-
-// 16-09-29 15:57:53 
-    IE8 absolute问题
 
 // 16-10-03 17:21:30 
 // html 的命名空间及css的使用
@@ -1834,15 +1801,6 @@ X-UA-compatible 标头不区分大小写；不过，它必须显示在网页中�
             <v:div>
             </v:div>
 
-// 16-10-11 00:01:02 
-    当元素处于隐藏时，scroll, offset, client 的值为0
-
-// 16-10-11 15:06:38 
-    IE8- 不支持rgba()
-
 // 16-10-11 
     webpack
 
-// 16-10-16 09:40:19 
-    text-align:     作用于外，外框中 文本 的对齐方式
-    vertical-align: 作用于内，内联元素 在 外框中的垂直对齐方式。
