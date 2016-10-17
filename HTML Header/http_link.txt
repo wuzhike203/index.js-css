@@ -1,0 +1,18 @@
+*******************************************
+*
+*   link标签的常见功能
+*   开始时间：16-08-06 21:55:16 
+*
+*******************************************
+
+
+//1、stylesheet(外部样式表)
+
+
+//2、shortcut icon (网站图标)
+    <link rel="shortcut icon" type="image/x-icon" href="xxx.ico"></link>
+
+
+//3、dns-prefetch (dns预解析)
+    <link rel="dns-prefetch"  href="//www.baidu.com"></link>
+

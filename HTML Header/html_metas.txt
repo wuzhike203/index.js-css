@@ -1,0 +1,29 @@
+*******************************************
+*
+*   网页中<meta name=" ",content=""/> 用法总结
+*   开始时间：16-08-06 21:55:16 
+*
+*******************************************
+
+//1、 Keywords  
+    #关键词
+    <meta name="Keywords" content=""/>
+
+//2、Description
+    #描述  ：主要用户搜索引擎中的说明
+    <meta name="Description" content=""/>
+
+//3、Copyright
+    #版权信息
+    <meta name="Copyright" content=""/>
+
+//4、author
+    #作者
+    <meta name="author" content=""/>
+
+//5、robots(机器人向导)
+    #告诉机器人那些页面需要索引，哪些页面不需要索引。
+    content的参数有：all,none,onindex,follow,nofollow
+    <meta name="robots" content="all">
+    
+    

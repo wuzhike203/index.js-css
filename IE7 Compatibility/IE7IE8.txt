@@ -366,6 +366,274 @@ Array.reduceRight
 
     IE8-中，fieldset 和 legend 的位置与其他浏览器有差异
 
+// 16-10-03 12:23:44 
+    一、IE8- 不支持canvas:
+        1、IE8- 使用VML 矢量标记语言 代替canvas画图
+        2、使用 excanvas.js 使IE8- 支持 canvas
+
+        3、在IE9+
+            3.1 使用canvas 绘制位图
+            3.2 使用svg 绘制 矢量图
+
+    二、在IE中，颜色值 #fff, 可能读不出来。必须：#ffffff 。
+
+    三、IE9- 不支持图像渐变:
+        可以使用滤镜代替渐变
+          filter: 
+          progid:DXImageTransform.Microsoft.gradient(
+                GradientType = 0, 
+                startColorstr=#ff852c, 
+                endColorstr=#ffffff);  
+          )
+
+    四、IE8- 不支持 border-radius：
+        故，使用border-radius制作圆形，不可用。
+
+// IE9- 的滤镜filter
+    // 官方网站：https://msdn.microsoft.com/en-us/library/ms532853(v=vs.85).aspx
+    // samples  http://samples.msdn.microsoft.com/workshop/samples/author/filter/Shadow.htm
+
+    1、在ie中 filter 分为:
+            静态滤镜(Visual Filters)
+            过渡转场(Transitions Reference)，
+
+            前者是的效果可以设置元素的不透明度、渐变、模糊、对比度、明度等这些，
+            后者注重的ie的动画效果。
+    2、使用前缀：
+        filter: progid:DXImageTransform.Microsoft.
+
+    3、滤镜种类(滤镜即：函数)
+        3.1 AlphaImageLoader
+            这个属性是主要是针对png透明图片进行不透明度的处理，
+            为什么要这么说呢，因为IE6的png透明图片其实是不透明的，显示会灰色背景。
+
+            语法：
+            filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(
+                    enabled='true' , 
+                    sizingMethod='' , 
+                    src='mini.jpg'
+            )
+            属性	        特性	        描述
+            -----------------------------------------------------------------------------------
+            enabled	        Enabled	        可选值,Boolean布尔值，
+                                            默认值为ture，启用过滤器；
+                                                    false,为不启用过滤器。
+                                            所有的filter都有该属性值，下面不一一多说。
+            sizingMethod	sizingMethod	可选值,
+                                            设置或检索的方式来显示一个图像在对象边界显示方式。
+                                            有三个值：
+                                            crop: 裁剪图像以适应对象的尺寸；
+                                            image: 默认值，扩大或减少对象的边界,以适应图像的尺寸；
+                                            scale: 伸展或收缩图像填充对象的边界；
+            src	            src	            必须值，引入图片。
+        3.2 Gradient，渐变滤镜。
+            语法：
+            filter:progid:DXImageTransform.Microsoft.Gradient(
+                    enabled='ture',
+                    GradientType='1',
+                    StartColorStr='#000000',
+                    EndColorStr='#FF3300'
+            )
+            属性	        特性	        描述
+            -----------------------------------------------------------------------------------
+            enabled	        Enabled	        可选值,Boolean布尔值，
+                                            默认值为ture，启用过滤器；
+                                                    false,为不启用过滤器。
+                                            所有的filter都有该属性值，下面不一一多说。
+            StartColorStr	StartColor	    设置或者检索开始不透明度的梯度值，
+                                            整数型Integer，指定一个整数型值，
+                                            值的变化从0 (transparent[透明]) to 4294967295 ([白色不透明]).
+                            StartColorStr	设置或者检索开始的颜色值，string类型字符串，
+                                            值从#FF000000 到 #FFFFFFFF，默认值为：#FF000000，
+                                            比如一个值为：#AARRGGBB ，
+                                            那么AA代表透明度alpha，
+                                            RR表示红色16进制值，
+                                            GG表示绿色16进制值，
+                                            BB表示黑色16进制值。
+                            EndColor	    设置或者检索结束不透明度的梯度值，同上。
+                            EndColorStr	    设置或者检索结束的颜色值，同上
+                            GradientType	设置渐变的方向。有两个值，
+                                            1代表水平方向，
+                                            0代表垂直方向渐变。
+
+    4、filter静态滤镜
+        4.1 Alpha，调整对象内容的不透明度。
+            语法：
+            filter:progid:DXImageTransform.Microsoft.Alpha(
+                    Opacity=100,
+                    FinishOpacity=0,
+                    Style=1,
+                    StartX=0, 
+                    FinishX=100,
+                    StartY=0,
+                    FinishY=100
+            )
+            属性            说明
+            ---------------------------------------------------------------------------
+            Style，         设置或者调整不透明度的风格。
+                            0代表默认值，
+                            1代表线性不透明，
+                            2代表径向渐变，
+                            3代表矩形渐变
+            Opacity，       设置或调整不透明度值。
+                            0~100值，其中0默认值表示全透明，100为全不透明
+            FinishOpacity， 设置或调整最后不透明度值。
+                            0~100值，其中0默认值表示全透明，100为全不透明
+            StartX，        设置或调整水平不透明最开始位置，
+                            默认值为0，即从对象最左边开始。
+            FinishX，       设置或调整水平不透明度结束位置，默认值为0
+            StartY，        设置或调整垂直方向不透明度开始位置，默认值为0
+            FinishY，       设置或调整垂直不透明度结束位置，默认值为0
+
+        4.2 BasicImage，调整对象的内容的颜色处理、图像旋转或不透明度。
+
+        filter:progid:DXImageTransform.Microsoft.BasicImage()
+        /*完整写法*/
+        filter:progid:DXImageTransform.Microsoft.BasicImage(Grayscale='x', Xray='x', Mirror='x', Invert='x', Opcity='x', Rotation='x')
+
+        GrayScale ，设置或调整对象的灰度值。
+        Invert ，设置或调整对象的反相。
+        Opacity ，设置或调整对象的不透明度。
+        Mask ，设置或调整对象的的RGB是否为MashColor值，0默认值，显示正常RGB值，1表示改变内容为MashColor（不常用）
+        Mirror ，设置或调整对象镜像。0正常显示，1内容对象将翻过来。
+        Rotation ，设置或调整对象旋转，0正常显示，1代表旋转90°，2代表旋转180°，3代表旋转270°
+        XRay ，设置或调整对象的X射线，布尔值，0正常显示，1代表X射线，有点像我们去医院拍X光一样的效果。
+        不妨用你的手中的IE6~8来预览一下官方demo→BasicImage Filter
+
+        4.3 Blur，设置对象的模糊值。
+
+        filter:progid:DXImageTransform.Microsoft.Blur()
+        /*完整写法*/
+        filter:progid:DXImageTransform.Microsoft.Blur(PixelRadius='x', MakeShadow='x', ShadowOpacity='x')
+
+        PixelRadius，设置对象的模糊半径，1~100数值。
+        MakeShadow，设置对象是否投影，布尔值，true和false
+        ShadowOpacity，设置对象投影不透明度，0.0~1.0，假如MakeShadow为false那么该值无效。
+
+        不妨用你的手中的IE6~8来预览一下官方demo→Blur Filter
+
+        4.4 Chroma ，设置对象的色彩透明度
+
+        filter:progid:DXImageTransform.Microsoft.Chroma()
+        /*完整写法*/
+        filter:progid:DXImageTransform.Microsoft.Chroma(Color='x')
+        Color，设置颜色值。
+
+        不妨用你的手中的IE6~8来预览一下官方demo→Chroma Filter
+
+        4.5 Compositor ，设置新对象内容的合成颜色，
+            这个翻译有点拗口，大概的意思就是：
+                2个对象，要显示哪个或者隐藏哪个，或者显示他们对比之后的新对象。
+
+        filter:progid:DXImageTransform.Microsoft.Compositor()
+        /*完整写法*/
+        filter:progid:DXImageTransform.Microsoft.Compositor(function='')
+        其中function值有18个值，很多很多。也不一一说了，有兴趣的的前往这里看demo→Compositor Filter
+
+        4.6 DropShadow **，设置对象的投影效果。
+
+        filter:progid:DXImageTransform.Microsoft.DropShadow()
+        /*完整写法*/
+        filter:progid:DXImageTransform.Microsoft.DropShadow(OffX='x', OffY='x', Color='x', Positive='x')
+
+        OffX，设置投影的X位移，单位数值，默认值为5
+        OffY，设置投影的Y位移，单位数值，默认值为5
+        Color，设置投影的颜色值
+        Positive，设置投影的透明或者非透明。
+        之前有写过一篇关于css3的shadow文章，有时间的也可以点点。。。
+
+        不妨用你的手中的IE6~8来预览一下官方demo→Blur Filter
+
+        4.7 Emboss **，设置对象的浮雕效果。
+
+        filter:progid:DXImageTransform.Microsoft.Emboss()
+        /*完整写法*/
+        filter:progid:DXImageTransform.Microsoft.Emboss(Bias='')
+        一般来说Bias属性不需要设置，可以忽略，官方demo→Emboss Filter
+
+        4.8 Engrave **，设置对象的雕刻效果。
+
+        filter:progid:DXImageTransform.Microsoft.Engrave()
+        /*完整写法*/
+        filter:progid:DXImageTransform.Microsoft.Engrave(Bias='')
+        一般来说Bias属性不需要设置，可以忽略，官方demo→Engrave Filter
+
+        4.9 Glow **，设置对象的光晕效果。
+
+        filter:progid:DXImageTransform.Microsoft.Glow()
+        /*完整写法*/
+        filter:progid:DXImageTransform.Microsoft.Glow(color='', Strength='')
+
+        color，设置光晕颜色。
+        Strength，设置光晕的宽度，数值单位
+        官方demo→Glow Filter
+
+        4.10 Light **，设置对象的亮度
+
+        filter:progid:DXImageTransform.Microsoft.Light()
+
+        addAmbient，加入对象环境光
+        addCone ，加入锥形光源
+        addPoint 加入点光源
+        changeColor ，改变亮度颜色
+        changeStrength，改变亮度长度
+        clear，清除亮度
+        moveLight，移动光源焦点。
+
+        官方demo→Light Filter
+
+        4.11 ICMFilter **，设置对象颜色内容改变，使其显示像打印设备的颜色。
+
+        官方无demo，IE9时，这个滤镜仅仅应用于屏幕内容显示效果上，当内容是打印时，将不应用。
+
+        4.12 MaskFilter **，设置对象内容透明或者非透明颜色。
+
+        filter:progid:DXImageTransform.Microsoft.MaskFilter()
+        /*完整写法*/
+        filter:progid:DXImageTransform.Microsoft.MaskFilter(Color='')
+
+        4.13 Matrix，调整大小、旋转或翻转使用矩阵的内容对象转换。
+
+        filter:progid:DXImageTransform.Microsoft.Matrix()
+        可以设置各种角度的旋转，官方demo→Matrix Filter
+
+        4.14 MotionBlur，设置对象模糊，测试完demo之后感觉有点像线性模糊，
+            就是月光投射下来不均匀的模糊效果。
+
+        filter:progid:DXImageTransform.Microsoft.MotionBlur()
+        /*完整写法*/
+        filter:progid:DXImageTransform.Microsoft.MotionBlur(Direction='',Strength='',Add='')
+
+        Direction，设置对象模糊方向，从0°~315°照射下来。
+        Strength ，设置对象模糊范围，单位数值，初始值为5
+        Add，设置图像模糊是否覆盖在原图上，布尔值，true表示覆盖，false表示不覆盖
+
+        官方demo→MotionBlur Filter
+
+        4.15 Wave，设置对象为波浪纹滤镜效果
+
+        filter:progid:DXImageTransform.Microsoft.Wave()
+        /*完整写法*/
+        filter:progid:DXImageTransform.Microsoft.Wave(Add='', LightStrength='', Phase='', Strength='',  Freq='')
+
+        Add，设置滤镜是否覆盖在原图上，布尔值，true表示覆盖，false表示不覆盖
+        LightStrength，亮度强度，0~100数值，数值越大滤镜效果越明显
+        Phase，相对偏移值，0~100数值
+        Strength，设置波浪强度，默认值为5，数值越大，波浪效果越明显。
+        Frep，设置波浪频率，默认值为3，数值越大，波浪效果越明显。
+
+        官方demo→Wave Filter
+
+        4.16 Shadow，设置对象阴影效果。
+
+        filter:progid:DXImageTransform.Microsoft.Shadow()
+        /*完整写法*/
+        filter:progid:DXImageTransform.Microsoft.Shadow(color='', Direction='', Strength='')
+
+        Color，设置阴影颜色。
+        Direction，设置阴影的方向，角度也是从0°~315°取值（跟PS的投影效果非常的相似。）
+        Strength，设置投影强度，数值越大越模糊。
+
 // 16-10-10 14:22:07 
     IE8- 不支持 rgba()
 
@@ -374,6 +642,9 @@ Array.reduceRight
     text-align: justify;
     text-last-align: justify;
     #只能作用于：块元素和table元素
+    #不包括内联块元素
+    #文字之间必须要有空格，即：按照空格来分组。
+    // 在IE8- 中, float: right, 并不能使元素display: block;
 
 // 16-10-11 17:34:06 
     IE8- 的select 有许多怪异行为：
