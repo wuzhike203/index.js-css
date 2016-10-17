@@ -155,3 +155,11 @@ function popCenter() {
 		}
 	});
 }
+
+// 在jquery
+$(function(){
+    popCenter();    
+    $(window).resize(function(){
+        popCenter();
+    });
+});

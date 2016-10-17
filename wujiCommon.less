@@ -6,20 +6,7 @@
 @color2: #dddddd;
 @color3: #f6f6f6;
 
-.color1{
-    color: @color1;
-    font-family: "微软雅黑";
-}
-.nonDecoration{
-    text-decoration: none;
-}
-.decoration{
-    text-decoration: underline;
-}
-.border{
-    border: 1px solid #FF852C;
-}
-.closeWinIco{
+.wjCloseIco{
     /* 关闭 窗口按钮 */
    display: inline-block;
    height: 10px;
@@ -30,38 +17,28 @@ hr{
     border:none;
     border-bottom: 1px solid #DDDDDD;
 }
-.dash{
-    border-style: dashed;
-}
-.font16{
-    font-size: 16px;
-}
-.clear{
+.wjClear{
     clear:both;
 }
-.right{
+.wjRight{
     float: right;
 }
-.left{
+.wjLeft{
     float: left;
 }
-.hide{
+.wjHide{
     display: none;
 }
 input, textarea{
     line-height: 2em;
     padding-left: 5px;
 }
-.justify{
+.wjJustify{
     text-align: justify;
     text-align-last: justify;
     display:  block;
-    float:  left;
 }
-.noPadding{
-    padding: 0px !important;
-}
-.downico{
+.wjDownIco{
     /* 下载图标 */
     display: inline-block;
     width: 12px;
@@ -70,16 +47,13 @@ input, textarea{
     background-size: cover;
     margin-right: 7px;
 }
-.emphasize_ico{
+.wjEmphasizeIco{
     display: inline-block;
     width: 13px;
     height: 13px;
     background-image:  url(../images/emphasize_ico.png);
     background-size: cover;
     background-repeat:  no-repeat;
-}
-textarea{
-    resize: none;
 }
 .bg_rgba(@rgba_color: rgba(0,0,0,0.3)){
     /* IE8- 不支持 rgba 
@@ -88,7 +62,7 @@ textarea{
     background-color: @rgba_color;
     filter: progid:DXImageTransform.Microsoft.gradient(GradientType="1", StartColorStr=argb(@rgba_color),EndColorStr=argb(@rgba_color));
 }
-.pop_win{
+.wjPopWin{
     /* 弹窗  */
    position: fixed;
    top: 0px;
@@ -106,15 +80,18 @@ textarea{
         border-radius: 5px;
         background-color: white;
         box-shadow: 0px 2px 4px 0px rgba(204, 204, 204, 0.5);
-        .con{
+        .wjCon{
         /* 所有弹窗，最大高度：580px
          * 如果分为三层：header, con, footer
          * 则中间层的最大高度：460px
          *  */
             max-height: 460px;
             margin:auto;
+            margin-right: 11px;
+            padding-right: 19px;
+            padding-left:  30px;
         }
-        .header{
+        .wjHeader{
         height: 50px;
         line-height: 50px;
         background-color: #F6F6F6;
@@ -122,7 +99,7 @@ textarea{
         color: #333333;
         padding: 0 20px;
         }
-        .footer{
+        .wjFooter{
         padding-top: 10px;
         padding-bottom: 24px;
         text-align: center;
@@ -130,33 +107,48 @@ textarea{
                 margin-right: 20px;
             }
         }
-        .con{
-            padding-right: 19px;
-            padding-left:  30px;
-            margin-right: 11px;
-        }
     }
 }
-button, .btn{
-padding: 0.4em 1em;
-box-sizing:  border-box;
-border-radius: 16px;
-border: 1px solid @color1;
-color: @color1;
-background-color: transparent;
-font-family: "微软雅黑";
-cursor: pointer;
-min-width: 100px;
+button, .wjBtn{
+    padding: 0.4em 1em;
+    box-sizing:  border-box;
+    border-radius: 16px;
+    border: 1px solid @color1;
+    color: @color1;
+    background-color: transparent;
+    font-family: "微软雅黑";
+    cursor: pointer;
+    min-width: 100px;
 }
-.btn{
+.wjBtn{
     border-radius: 2px;
 }
-button.cur{
+button.wjCur{
     background: @color1;
     color: white;
 }
-.noClickBtn{
+/* 不可点击按钮 */
+.wjNoClickBtn{
     border-color:  #DDDDDD;
     background-color:  #DDDDDD;
     color:  white;
 }
+
+/* 进度条 */
+.wjProgressBar {   
+    display: inline-block;
+    background-color: red;   
+    border-radius: 5px;   
+
+    width: 80%;   
+    height: 5px;   
+    > span {   
+      background-color: green;   
+      border-radius: 5px;   
+      width: 80%;
+      height: 100%;
+      
+      display: inline-block;   
+    }  
+}   
+     
