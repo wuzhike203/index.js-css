@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>demo</title>
+    <style type="text/css">
+#test{
+    display: inline-block;
+    position:relative;
+    width: 200px;
+    height:200px;
+    border:1px dashed red;
+}
+    </style>
+</head>
+<body>
+   <div id="test"></div>
+    <script src="index.js" type="text/javascript"></script>
+    <script type="text/javascript">
+    var tar = document.getElementById("test");
+    setTimeout(function(){
+        animation(tar, "top", 200, 1000);
+    }, 0);
+    </script>
+</body>
+</html>

@@ -14,7 +14,6 @@ function addOnload(fun){
     }
 }
 
-addOnload(set_height);
 
 //保存底部信息栏位于浏览器底部
 function set_height(){
@@ -352,20 +351,27 @@ function read_html(obj,json){
 	}
 }
 
-function animation(elem,attr,new_attr_value,time){
-    /* 动画 */
-    var n=parseInt(time/40),i=1;
-    var attr_name = "offset"+attr[0].toUpperCase()+attr.slice(1).toLowerCase();
-    var old_attr_value = elem[attr_name];
-    var del_attr = (new_attr_value-old_attr_value)/n;
-    elem.style[attr] = old_attr_value+del_attr+"px";
+function animation(elem, attrName, newAttrValue, time){
+    /* 动画 
+     * elem: 相关的元素
+     * attrName: 属性名称
+     * newAttrValue: 新的属性值
+     * time: 动画时间
+     * */
 
-    var attr_timeout = setTimeout(change(),40);
+    // 40ms变化一次，根据人眼暂留时间决定。
+    // n : 变化的次数
+    var n=parseInt(time/40),i=1;
+    // 获取当前属性值
+    var oldAttrValue = parseFloat(getStyle(elem, attrName));
+    var DValue = (parseFloat(newAttrValue) - oldAttrValue)/n;
+
+    var attr_timeout = setTimeout(change,40);
     function change(){
         i++;
-        elem.style[attr] = old_attr_value+i*del_attr+"px";
+        elem.style[attrName] = oldAttrValue + i*DValue+"px";
         if(--n>1){
-            attr_timeout = setTimeout(change(),40);
+            attr_timeout = setTimeout(change,40);
         }else{
             clearTimeout(attr_timeout);
         }

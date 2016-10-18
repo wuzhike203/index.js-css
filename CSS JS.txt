@@ -136,3 +136,84 @@
     // 原因：
         一个里面的li:{float: left;}
         另一个里面的li:{display: inline-block;}
+
+// 16-10-18 10:46:54 
+    当有box-shadow时，元素内的子元素的bottom:0px 时，子元素与底部的阴影对齐
+
+// 16-10-18 11:08:16 
+    float ：元素之间无间距
+    inline-block: 元素之间有间距(目前还不知道什么原因造成的)
+
+// 16-10-18 11:49:50 
+    flexslider2  轮播插件
+    //1、----------- JS  -------------------
+    (function() {
+     
+      // store the slider in a local variable
+      var $window = $(window),
+          flexslider;
+     
+      // tiny helper function to add breakpoints
+      function getGridSize() {
+        return (window.innerWidth < 600) ? 2 :
+               (window.innerWidth < 900) ? 3 : 4;
+      }
+     
+      $(function() {
+        SyntaxHighlighter.all();
+      });
+     
+      $window.load(function() {
+        $('.flexslider').flexslider({
+          animation: "slide",
+          animationLoop: false,
+          itemWidth: 210,
+          itemMargin: 5,
+          minItems: getGridSize(), // use function to pull in initial value
+          maxItems: getGridSize() // use function to pull in initial value
+        });
+      });
+     
+      // check grid size on resize event
+      $window.resize(function() {
+        var gridSize = getGridSize();
+     
+        flexslider.vars.minItems = gridSize;
+        flexslider.vars.maxItems = gridSize;
+      });
+    }());
+
+    //2、-------------- HTML  -----------------
+    <div class="flexslider">
+      <ul class="slides">
+        <li>
+          <img src="slide1.jpg" />
+        </li>
+        <li>
+          <img src="slide2.jpg" />
+        </li>
+        <li>
+          <img src="slide3.jpg" />
+        </li>
+        <li>
+          <img src="slide4.jpg" />
+        </li>
+        <!-- items mirrored twice, total of 12 -->
+      </ul>
+    </div>
+
+// 16-10-18 13:28:00 
+    即使元素的透明度为0，任然可以被点击。
+    但display:none, 和 visible:hidden 却不行。
+
+// 16-10-18 15:20:33 
+    图片压缩：https://tinypng.com/
+
+// 16-10-18 15:28:53 
+    setTimeout(function, time)
+    // function : 指向一个函数的指针
+    对于匿名函数： function(){}
+    对于 function name(){
+    
+        }
+        : name
