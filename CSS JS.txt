@@ -78,6 +78,8 @@
     #css的编写以类为主，尽量不用元素标签和ID， 
     #来避免css样式的交叉作用
 
+    // 应考虑到如果内容元素的宽度或高度超出容器对象时，如何处理。
+
     3、一组对象，具有很多共同的部分，也有部分差异
         应仿照 类和继承的写法
 
@@ -137,70 +139,9 @@
         一个里面的li:{float: left;}
         另一个里面的li:{display: inline-block;}
 
-// 16-10-18 10:46:54 
-    当有box-shadow时，元素内的子元素的bottom:0px 时，子元素与底部的阴影对齐
-
 // 16-10-18 11:08:16 
     float ：元素之间无间距
     inline-block: 元素之间有间距(目前还不知道什么原因造成的)
-
-// 16-10-18 11:49:50 
-    flexslider2  轮播插件
-    //1、----------- JS  -------------------
-    (function() {
-     
-      // store the slider in a local variable
-      var $window = $(window),
-          flexslider;
-     
-      // tiny helper function to add breakpoints
-      function getGridSize() {
-        return (window.innerWidth < 600) ? 2 :
-               (window.innerWidth < 900) ? 3 : 4;
-      }
-     
-      $(function() {
-        SyntaxHighlighter.all();
-      });
-     
-      $window.load(function() {
-        $('.flexslider').flexslider({
-          animation: "slide",
-          animationLoop: false,
-          itemWidth: 210,
-          itemMargin: 5,
-          minItems: getGridSize(), // use function to pull in initial value
-          maxItems: getGridSize() // use function to pull in initial value
-        });
-      });
-     
-      // check grid size on resize event
-      $window.resize(function() {
-        var gridSize = getGridSize();
-     
-        flexslider.vars.minItems = gridSize;
-        flexslider.vars.maxItems = gridSize;
-      });
-    }());
-
-    //2、-------------- HTML  -----------------
-    <div class="flexslider">
-      <ul class="slides">
-        <li>
-          <img src="slide1.jpg" />
-        </li>
-        <li>
-          <img src="slide2.jpg" />
-        </li>
-        <li>
-          <img src="slide3.jpg" />
-        </li>
-        <li>
-          <img src="slide4.jpg" />
-        </li>
-        <!-- items mirrored twice, total of 12 -->
-      </ul>
-    </div>
 
 // 16-10-18 13:28:00 
     即使元素的透明度为0，任然可以被点击。
@@ -217,3 +158,34 @@
     
         }
         : name
+
+// 16-10-19 11:44:54 
+    当position: absolute; left: 0px; 时，
+    // 元素与父元素的边界border对齐，不是与父元素的内容对齐.
+    #从这点讲，定义父元素组形状时，尽量用width, 少用padding。
+
+    当父元素 overflow: hidden ; 时，
+    子元素不超过父元素的border, 而不是内容。
+
+// 16-10-20 15:52:28 
+    table th 的作用
+    1、td的宽度由对应的th标签的宽度决定。
+    2、 <tr>
+            <th></th>
+            <th></th>
+            <th></th>
+        </tr>
+        <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        假如：a: 确定了第一个th的宽度为100px,
+              b: table的总宽度为：500px
+              则：剩下两列的宽度为：(500-100)/2
+    3、一个table 最好只 允许一行 th 。
+        // 如果出现多行th。则第一行的th对宽度起作用。
+    4、对某行的tr作用样式，可能在这行中每个td或th上都显示相同的重复样式。
+        例如：对tr应用背景图案，则在每一个td上都出现相同的图案。
+
+
