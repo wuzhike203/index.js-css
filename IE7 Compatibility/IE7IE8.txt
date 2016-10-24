@@ -343,42 +343,6 @@ Array.reduceRight
                 |  #解决方案：
                 |    无
 
-// 16-09-26 15:32:13 
-    在IE8中，margin: auto; 与 margin: 0 auto;效果不一样
-
-// 16-09-30 14:53:50 
-    IE8- 不支持多组背景图像，
-    IE9  不支持 background-size, background-clip, background-origin 合并到background中
-
-// 16-09-30 15:17:57 
-    legend居中方式
-    IE8- ： margin: auto;
-    其他：text-align: center;
-
-    IE8-中，fieldset 和 legend 的位置与其他浏览器有差异
-
-// 16-10-03 12:23:44 
-    一、IE8- 不支持canvas:
-        1、IE8- 使用VML 矢量标记语言 代替canvas画图
-        2、使用 excanvas.js 使IE8- 支持 canvas
-
-        3、在IE9+
-            3.1 使用canvas 绘制位图
-            3.2 使用svg 绘制 矢量图
-
-    二、在IE中，颜色值 #fff, 可能读不出来。必须：#ffffff 。
-
-    三、IE9- 不支持图像渐变:
-        可以使用滤镜代替渐变
-          filter: 
-          progid:DXImageTransform.Microsoft.gradient(
-                GradientType = 0, 
-                startColorstr=#ff852c, 
-                endColorstr=#ffffff);  
-          )
-
-    四、IE8- 不支持 border-radius：
-        故，使用border-radius制作圆形，不可用。
 
 // IE9- 的滤镜filter
     // 官方网站：https://msdn.microsoft.com/en-us/library/ms532853(v=vs.85).aspx
@@ -625,6 +589,42 @@ Array.reduceRight
         Direction，设置阴影的方向，角度也是从0°~315°取值（跟PS的投影效果非常的相似。）
         Strength，设置投影强度，数值越大越模糊。
 
+// 16-09-26 15:32:13 
+    在IE8中，margin: auto; 与 margin: 0 auto;效果不一样
+
+// 16-09-30 14:53:50 
+    IE8- 不支持多组背景图像，
+    IE9  不支持 background-size, background-clip, background-origin 合并到background中
+
+// 16-09-30 15:17:57 
+    legend居中方式
+    IE8- ： margin: auto;
+    其他：text-align: center;
+
+    IE8-中，fieldset 和 legend 的位置与其他浏览器有差异
+
+// 16-10-03 12:23:44 
+    一、IE8- 不支持canvas:
+        1、IE8- 使用VML 矢量标记语言 代替canvas画图
+        2、使用 excanvas.js 使IE8- 支持 canvas
+
+        3、在IE9+
+            3.1 使用canvas 绘制位图
+            3.2 使用svg 绘制 矢量图
+
+    二、在IE中，颜色值 #fff, 可能读不出来。必须：#ffffff 。
+
+    三、IE9- 不支持图像渐变:
+        可以使用滤镜代替渐变
+          filter: 
+          progid:DXImageTransform.Microsoft.gradient(
+                GradientType = 0, 
+                startColorstr=#ff852c, 
+                endColorstr=#ffffff);  
+          )
+
+    四、IE8- 不支持 border-radius：
+        故，使用border-radius制作圆形，不可用。
 // 16-10-10 14:22:07 
     IE8- 不支持 rgba()
 
