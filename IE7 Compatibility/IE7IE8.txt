@@ -346,18 +346,9 @@ Array.reduceRight
 // 16-09-26 15:32:13 
     在IE8中，margin: auto; 与 margin: 0 auto;效果不一样
 
-// 16-09-30 14:32:19 
-    在IE中，颜色值 #fff, 可能读不出来。必须：#ffffff 。
-    IE9- 不支持图像渐变
-        ：可以使用滤镜代替渐变
-
 // 16-09-30 14:53:50 
     IE8- 不支持多组背景图像，
     IE9  不支持 background-size, background-clip, background-origin 合并到background中
-
-// 16-09-30 15:11:06 
-    IE8- 不支持 border-radius
-    故，使用border-radius制作圆形，不可用。
 
 // 16-09-30 15:17:57 
     legend居中方式
