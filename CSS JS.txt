@@ -227,3 +227,30 @@
     margin 上下合并
     只有普通文档流中垂直相邻的块元素才会发生marign垂直方向的合并。
     #inline-block, float, absolute均会失效。
+
+// 16-10-28 16:17:20 
+    //chrome滚动条样式：
+    // chrome滚动条是以伪对象的方式使用
+    .test::-webkit-scrollbar{
+        // 基础
+        background-color: transparent;
+        width: 5px;
+    }
+    .test::-webkit-scrollbar-track{
+        // 轨道
+        background-color:#eee;
+        border-radius: 5px;
+    }
+    .test::-webkit-scrollbar-thumb{
+        // 滑块
+        background-color:#00aff0;
+        border-radius: 5px;
+    }
+    .test::-webkit-scrollbar-thumb:hover {
+        // 鼠标移动到滑块时
+        background-color:#9c3;
+    }
+    .test::-webkit-scrollbar-thumb:active {
+        // 鼠标拖动滑块时
+        background-color:red;
+    }

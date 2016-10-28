@@ -213,6 +213,10 @@ freetype-devel libjpeg-devel libpng-devel    安装PIL之前，要先安装这�
 <strong>
     //定义重要的文本
 
+-- 引用 --
+<q>这是一个短的引用：</q> //短的引用        cite:定义应用来源
+<blockquote>                    //长的段落应用
+
 3、-- -- -- -- --  类word样式的视觉元素 -- -- -- -- -- --
 // <big>,<small> 标签可以嵌套，从而连续地把文字放大或缩小。
 <small>缩小</small>
@@ -224,21 +228,7 @@ freetype-devel libjpeg-devel libpng-devel    安装PIL之前，要先安装这�
 <del>删除</del>
 <ins>插入</ins>
 <mark>记号</mark>
-
-4、-- -- -- -- -- 为了计算机可读 -- -- -- -- -- -- 
-<abbr title="etcetera">etc.</abbr>
-
-<time>
-    //该元素能够以机器可读的方式对日期和时间进行编码，
-    //这样，举例说，用户代理能够把生日提醒或排定的事件添加到用户日程表中，
-    //搜索引擎也能够生成更智能的搜索结果。
-    例如：
-        我在 <time datetime="2010-02-14" pubdate="pubdate">情人节</time> 有个约会。
-    //pubdate属性指示:
-        <time>元素中的日期/时间是文档(或最近的前辈<article>元素)的发布日期。
-
-
--- -- -- -- -- ruby,rt,rp -- -- -- -- -- --
+- -- -- ruby,rt,rp  -- -- --
 <ruby> 元素：由一个或多个字符（需要一个解释/发音）,
 	     一个提供信息的 rt 元素组成，
 	     还包括可选的 rp 元素，定义当浏览器不支持 "ruby" 元素时显示的内容。
@@ -254,9 +244,20 @@ freetype-devel libjpeg-devel libpng-devel    安装PIL之前，要先安装这�
 漢 <rt>han</rt>         //注释在字符上边
 </ruby>
 
--- -- -- -- -- 引用 -- -- -- -- -- --
-<q>这是一个短的引用：</q> //短的引用        cite:定义应用来源
-<blockquote>                    //长的段落应用
+4、-- -- -- -- -- 为了计算机可读 -- -- -- -- -- -- 
+<abbr title="etcetera">etc.</abbr>
+
+<time>
+    //该元素能够以机器可读的方式对日期和时间进行编码，
+    //这样，举例说，用户代理能够把生日提醒或排定的事件添加到用户日程表中，
+    //搜索引擎也能够生成更智能的搜索结果。
+    例如：
+        我在 <time datetime="2010-02-14" pubdate="pubdate">情人节</time> 有个约会。
+    //pubdate属性指示:
+        <time>元素中的日期/时间是文档(或最近的前辈<article>元素)的发布日期。
+
+
+
 
 
 --------------  optgroup ----------------
@@ -1750,3 +1751,22 @@ X-UA-compatible 标头不区分大小写；不过，它必须显示在网页中�
 // 16-10-11 
     webpack
 
+//16-10-28 10:35:50 
+    //chrome浏览器 扩展与插件的区别    
+    扩展（Extension）:
+        指的是通过调用 Chrome 提供的 Chrome API 来扩展浏览器功能的一种组件，
+        工作在浏览器层面，使用 HTML + Javascript 语言开发[*]。
+        比如著名的 Adblock plus。
+    插件（Plug-in）:
+        指的是通过调用 Webkit 内核 NPAPI 来扩展内核功能的一种组件，
+        工作在内核层面，理论上可以用任何一种生成本地二进制程序的语言开发，
+        比如 C/C++、Delphi 等。
+        比如Flash player 插件，就属于这种类型。
+        一般在网页中用 <object> 或者 <embed> 标签声明的部分，就要靠插件来渲染。
+
+    至于哪种功能多的问题，这个不能比较，各有侧重。
+    如果你想实现一个自动统计你上过的网站以及各自时间的功能，就要用扩展技术；
+    如果你要实现一个让你的浏览器可以渲染 AutoCAD 文件的功能，就要用插件技术。
+
+    插件管理页：chrome://plugins/
+    扩展管理页：chrome://extensions/
