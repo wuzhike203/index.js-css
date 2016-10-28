@@ -96,7 +96,7 @@
 
         #此元素必须设置max-height,否则不起作用。
 
-    4、要作用的元素的padding-right的适宜宽度为 30px。
+    4、滚动条的位置在块的border处，故需要右边的margin-right: 10px。
         // 此为建议
 
 // 16-10-11 00:01:02 
@@ -206,3 +206,24 @@
     +color: red;        /* IE7- */
     #1、\9\0的顺序：不可更换
     #2、*color:red; 必须放在最后，否则IE7无法识别。
+
+//16-10-24 14:58:22 
+    360 极速模式 不支持 writing-mode: tb-lr 和 tb-rl :
+
+// 16-10-24 15:13:46 
+    media query
+    screen and (max-device-aspect-ratio: 10/12);
+
+// 16-10-27 09:01:02 
+    #!!p标签中不能放置div标签
+
+// 16-10-27 09:44:38 
+    1、checkbox, radio 没有change 事件。
+        //通过点击事件，检查其值
+    2、change事件对应文本域(text, textarea)和select
+    3、select事件对应文本域(text, textarea)
+
+//16-10-27 14:41:06 
+    margin 上下合并
+    只有普通文档流中垂直相邻的块元素才会发生marign垂直方向的合并。
+    #inline-block, float, absolute均会失效。
