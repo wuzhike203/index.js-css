@@ -30,7 +30,7 @@
 <meta charset="UTF-8" />
 <meta name="renderer" content="webkit" />
 <meta http-equiv="X-UA-Compatible" content="IE=EDGE, chrome=1">  
-<meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+<meta name="viewport" content="width=device-width, target-densitydpi=hight-dpi, height=device-height, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" />
 <meta name="apple-mobile-web-app-capable" content="yes" />
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
 <meta name="msapplication-tap-highlight" content="no" />
@@ -81,3 +81,28 @@ background: green;
 @media screen and (orientation:landscape){对应样式}
 
 iPhone5s 504*320
+
+
+// 移动端
+    <meta name="viewport" 
+            content="width=device-width,             // 视图窗口的宽度
+                    initial-scale=1.0,
+                    minimum-scale=1.0,
+                    maximum-scale=1.0,
+                    user-scalable=no" 
+    />
+    // 已不支持：target-densitydpi   视图窗口的分辨率 不同于  物理分辨率
+
+// 16-10-31 15:00:09 
+    手机屏幕分辨率相差甚大。
+    iphone5: 320*568
+    mate8: 1080*1920
+    故 @media 分开：
+    1、针对iphone系列：(min-resolution:130dpi) and (max-device-width:500px)
+            最大屏幕宽度尺寸：500/130 = 3.9(英寸)
+    2、针对mate8系列：(min-resolution: 270dpi) and (max-device-width: 1080px)
+            最大屏幕宽度尺寸：1080/270 = 4(英寸)
+
+    // 即：当屏幕宽度尺寸超过4英寸时，就不再加载移动样式
+
+
