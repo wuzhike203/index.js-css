@@ -1770,3 +1770,8 @@ X-UA-compatible 标头不区分大小写；不过，它必须显示在网页中�
 
     插件管理页：chrome://plugins/
     扩展管理页：chrome://extensions/
+
+// 16-11-02 22:06:40 
+    // document.cookie
+    所有浏览器使用document.cookie 获取，设置，更新，删除(设置cookie超时)cookie.
+    #chrome下，必须通过服务器访问的网页才能如此设置。
