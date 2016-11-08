@@ -268,3 +268,23 @@
         这个单位与em有什么区别呢？
             区别在于使用rem为元素设定字体大小时，仍然是相对大小，
             但相对的只是HTML根元素。
+
+// 16-11-04 08:47:38 
+    只有fixefox 支持 text-decoration的复合写法:
+    text-decoration: text-decoration-line || text-decoration-style || text-decoration-color
+    例如：text-decoration: line-through solid red;
+    //其他浏览器仅仅支持：
+        text-decoration: text-decoration-line;
+        例如：text-decoration: line-through;
+
+// 16-11-04 09:32:37 
+    // background-clip
+    chrome 支持:
+        -webkit-background-clip: text;
+        backgrund-clip: border-box;
+        //即：对于text，必须带上-webkit-
+              对于其他属性，必须不带-webkit-
+    fixefox 支持：
+        -webkit-background-clip:text 
+        background-clip:text
+        background-clip: border-box;

@@ -1770,3 +1770,17 @@ X-UA-compatible 标头不区分大小写；不过，它必须显示在网页中�
 
     插件管理页：chrome://plugins/
     扩展管理页：chrome://extensions/
+
+//16-11-08 15:40:45 
+    document.getElementsByTagName("iframe")[0]
+    与
+    frames[0] 的区别
+    1、前者是dom元素，后者是window对象
+    2、前者可以绑定onload事件, 后者无法。
+        #很奇怪：最外层是在window绑定的，内层都是在iframe-dom元素上绑定的。
+
+// 16-11-08 17:30:18 
+    flex 布局
+    渐变
+    transform
+    transition 
