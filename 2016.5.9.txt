@@ -1784,3 +1784,10 @@ X-UA-compatible 标头不区分大小写；不过，它必须显示在网页中�
     渐变
     transform
     transition 
+
+// 16-11-09 14:01:04 
+    常用模拟事件函数：
+    1、click()
+    2、focus()
+    3、blur()
+    4、

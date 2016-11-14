@@ -288,3 +288,25 @@
         -webkit-background-clip:text 
         background-clip:text
         background-clip: border-box;
+
+// 16-11-10 10:28:21 
+    // transfrom
+    所谓变换，就是把对象上 
+            每个点的坐标值 
+        按照一定的规则 
+            变为另一个坐标值
+        的过程。
+    transform: matrix(a, b, c, d, e, f)
+    例如：对于对象上某一点(x, y), 其新坐标为(x1, y1):
+        a   c   e       x       ax+cy+e         x1
+        b   d   f   *   y   =   bx+dy+f <==>    y1 
+        0   0   1       1       0 +0 +1         1
+    特例：
+    1、当a=1, b=0, c=0, d=1时
+        x1 = x+e,
+        y1 = y+f,
+        相当于translate(e,f)
+    2、当a=2, b=0, c=0, d=2, e=0, f=0时
+        x1 = 2x,
+        y1 = 2y,
+        相当于scale(2)
