@@ -1791,3 +1791,14 @@ X-UA-compatible 标头不区分大小写；不过，它必须显示在网页中�
     2、focus()
     3、blur()
     4、
+
+// 16-11-22 10:18:20 
+    图片压缩：https://tinypng.com/
+
+// 16-11-23 09:28:25 
+    <label for="test">
+        <input type="radio" id="test" value="1">
+    </label>
+    当点击label时，点击事件发生了2次。
+    1、如果type = "hidden", 则点击事件只发生一次;
+    2、如果for != id, 则点击事件也只发生一次;
