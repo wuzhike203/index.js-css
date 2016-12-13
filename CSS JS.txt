@@ -388,3 +388,7 @@
             lastParen       最近一次的捕获组
             leftContext     input字符串中lastMatch之前的文本
             rightContext    input字符串中lastMatch之后的文本
+
+// 16-12-12 16:00:10  右键选择
+	webkit-user-select: none;
+    #极大地降低浏览器性能
