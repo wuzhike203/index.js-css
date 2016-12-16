@@ -97,9 +97,6 @@
     4、滚动条的位置在块的border处，故需要右边的margin-right: 10px。
         // 此为建议
 
-// 16-10-11 00:01:02 
-    当元素处于隐藏时，scroll, offset, client 的值为0
-
 // 16-10-16 09:40:19 
     text-align:     作用于外，外框中 文本 的对齐方式
     vertical-align: 作用于内，内联元素 在 外框中的垂直对齐方式。
@@ -112,23 +109,6 @@
     button: 文字自动对中(上下和左右)
             自动添加border
     a: 文字不自动对中
-
-// 16-09-28 
-    body{
-        font: 500 14px/1.5em "microsoft yahei";
-    }
-
-    body div{
-        font-weight: 500;
-    }
-    // 子元素并不能继承body的font的其他特性：
-    原因：子元素重写font的某一个特性,导致body中font失效
-
-// 16-09-27 21:58:28 
-    今天写一个静态网页，body:{margin:auto;}
-    body就是不居中。
-    // 原因：
-        前面写了body, p{margin: 0;}
 
 // 16-09-27 22:00:44 
     两个(ul>li*8), 怎么都对不齐，
@@ -200,7 +180,7 @@
     IE css hack:
 
     color:white;        /* 所有的 */
-    color: green\9\0;  /* IE9+ */
+    color: green\9\0;   /* IE9+ */
     +color: red;        /* IE7- */
     #1、\9\0的顺序：不可更换
     #2、*color:red; 必须放在最后，否则IE7无法识别。
@@ -321,42 +301,6 @@
     以鼠标左键首次按下时,所在的元素的cursor为准,
     如果：保持鼠标按下不放，移动鼠标时，cursor不再变化
 
-// 16-12-01 14:36:01 
-    jquery 获取dom位置，javascript 获取dom位置
-    1、jquery：
-        1.1 offset()
-        // 相对于viewport的位置
-        // 只读
-        1.2 position()
-        // 相对于父元素的位置
-        // 只读
-        1.3 scrollTop()
-        // 元素内部参数
-        // 当此元素有滚动条时，可见区域离滚动条最上端的距离
-    2、js
-        /* offset: 与边框的有关的属性 */
-        2.1 offsetTop
-            // 元素离offsetParent的内边框的距离
-        2.2 scrollTop
-            // 跟 jquery scrollTop() 相同
-            // 在最外层：通过document.body 或 documentElement 的scrollTop获取
-            // scroll 事件，目前只能在window上触发。即：
-            window.onscroll = function(){
-                var wTop = document.body.scrollTop ?
-                            document.body.scrollTop :
-
-            };
-            #特别注意：事件是连续触发的。但由于计算需要时间等原因，2次触发事件有间隔。
-            #解决方案：
-                if( val < 0){
-                
-                }else if( val > 0 && val <100){                                              >
-                
-                }else{
-                
-                }
-                #在区域之外设置两端的极值
-
 // 16-12-05 11:19:17 拖动事件
     按一般的理解：鼠标移动才叫拖动，
     但有时，即使人没有移动鼠标，由于震动等原因，浏览器会自动判断鼠标在移动了。
@@ -389,6 +333,77 @@
             leftContext     input字符串中lastMatch之前的文本
             rightContext    input字符串中lastMatch之后的文本
 
-// 16-12-12 16:00:10  右键选择
-	webkit-user-select: none;
-    #极大地降低浏览器性能
+// 16-12-12 16:00:10
+	1、右键选择
+        -webkit-user-select: none;
+        #极大地降低chrome浏览器性能
+        -moz-user-select: none;
+        #对firefox影响不大
+    2、记录版本之间的变化 往往比 记录变化的结果 更有效!
+    3、网页显示流程：
+        3.1 把html解析为dom树
+        3.2 把css解析为cssom
+        3.3 把 dom树和cssom 合成 渲染树
+        3.4 生成布局(layout), 即: 将渲染树进行平面合成。(flow)
+        3.5 绘制(painter)
+        // 前面3步往往很快，一般卡在第四步。
+        // "生成布局"(flow)和"绘制"(paint)这两步，合称为"渲染"(render)
+        // 重排 必然 重绘；
+        导致重排(reflow)的操作(即：导致布局发生变化的操作)
+        a. 修改dom
+        b. 改变元素的位置。
+        // 仅仅导致重绘的操作(即：不影响布局)
+        a. 改变元素的颜色
+
+        总结：提高网页的性能，就是要减少重排(reflow)和重绘(repainter)的频率和成本
+            // 尤其是重排(重排比重绘花费的时间要多很多)
+        一、降低频率
+            1、尽可能的把多个操作集中处理，然后一次执行，避免多次渲染(render)
+                例如：
+                    div.style.color = 'blue';
+                    div.style.marginTop = '30px';
+                    // 上面代码中，div元素有两个样式变动，但是浏览器只会触发一次重排和重绘。
+
+                    div.style.color = 'blue';
+                    var margin = parseInt(div.style.marginTop);
+                    div.style.marginTop = (margin + 10) + 'px';
+                    // 上面代码对div元素设置背景色以后，
+                    // 第二行要求浏览器给出该元素的位置，所以浏览器不得不立即重排。
+
+            // 一般来说，样式的写操作之后，
+            // 如果有下面这些属性的读操作，都会引发浏览器立即重新渲染。
+                offsetTop/offsetLeft/offsetWidth/offsetHeight
+                scrollTop/scrollLeft/scrollWidth/scrollHeight
+                clientTop/clientLeft/clientWidth/clientHeight
+                getComputedStyle()
+
+            // 所以，从性能角度考虑，尽量不要把读操作和写操作，放在一个语句里面。
+                // bad
+                div.style.left = div.offsetLeft + 10 + "px";
+                div.style.top = div.offsetTop + 10 + "px";
+
+                // good
+                var left = div.offsetLeft;
+                var top  = div.offsetTop;
+                div.style.left = left + 10 + "px";
+                div.style.top = top + 10 + "px";
+
+            #一般的规则是：
+                // 样式表越简单，重排和重绘就越快。
+                // 重排和重绘的DOM元素层级越高，成本就越高。
+                // table元素的重排和重绘成本，要高于div元素
+
+            #提高性能的技巧
+                1、不要一条条地改变样式，
+                    而要通过改变class，或者csstext属性，
+                    一次性地改变样式
+                2、尽量操作离线DOM, 克隆DOM, 隐藏DOM等，
+                    然后再用这些DOM替换原始节点 或 显示等。
+        二、降低成本
+            1、 重排和重绘的DOM元素层级越高，成本就越高。
+                table元素的重排和重绘成本，要高于div元素
+            2、 innerHTML的成本 要稍低于 原始dom操作
+                (注意：在dom数比较大的时候成本同样很高)
+            3、在某个element元素的内容发生变化时，
+                如果只有少量的dom发生操作，
+                #操作单个dom的成本要远低于内容替换(innerHTML)

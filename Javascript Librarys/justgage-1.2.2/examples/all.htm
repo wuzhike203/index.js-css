@@ -1,0 +1,198 @@
+<!doctype html>
+
+<html>
+  <head>
+    <title>All-demo</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <style>
+      body {
+        text-align: center;
+      }
+
+      #g1 {
+        width:400px; height:320px;
+        display: inline-block;
+        margin: 1em;
+      }
+
+      #g2, #g3, #g4 {
+        width:100px; height:80px;
+        display: inline-block;
+        margin: 1em;
+      }
+
+      p {
+        display: block;
+        width: 450px;
+        margin: 2em auto;
+        text-align: left;
+      }
+    </style>
+
+
+  </head>
+  <body>
+    <div id="g1"></div>
+    <div id="gg1" class="gauge" data-value="1200" data-min="0" data-max="1000000" data-gaugeWidthScale="0.6"></div>
+    <p>html5: data-attribute auto to config</p>
+    <h1>1、auto-adjust</h1>
+    <p>
+      JustGage auto-adjusts to the size of containing element. And to the screen zoom level. And screen density. Nice. This means you’ll get clean, sharp and nice looking gauge at all times. Try zooming the page to see the results.
+    </p>
+    <h1>2、counter</h1>
+    <p></p>
+    <h1></h1>
+    <p></p>
+
+    <script src="../raphael-2.1.4.min.js"></script>
+    <script src="../justgage.js"></script>
+    <script>
+    var g1;
+    var dflt = {
+      min: 0,
+      max: 200,
+      donut: true,
+      gaugeWidthScale: 0.6,
+      counter: true,
+      hideInnerShadow: true
+    }
+
+
+      window.onload = function(){
+        var g1 = new JustGage({
+            // node
+            parentNode: gNode1,
+            width: 150,
+            height: 150,
+
+            // default
+            defaults: dflt
+
+            id: "g1",                             
+            min: 0,                               
+            max: 100,
+
+            /* value */
+            value: getRandomInt(0, 100),          
+            // 1024 K
+            humanFriendly: true,
+            // value render
+            textRenderer: customValue,
+            // decimal
+            decimals: 1,
+            // format number
+            formatNumber: true,
+            // color
+            valueFontColor: "blue",
+            // family
+            valueFontFamily: "Georgia"
+            // symbol
+            symbol: '%',
+            // label
+            label: "pounds"                      
+
+            // pointer
+            pointer: true,
+            pointerOptions: {
+              toplength: 8,
+              bottomlength: -20,
+              bottomwidth: 6,
+              color: '#8e8e93',
+
+              // stroke
+              stroke: '#ffffff',
+              stroke_width: 3,
+              stroke_linecap: 'round'
+            },
+
+            // circle
+            donut: true,
+
+            counter: true,
+
+            /* gauge */ 
+            // width
+            gaugeWidthScale: 0.6,
+            //  shadow
+            hideInnerShadow: true,               // innershadow
+            shadowOpacity: 1,
+            shadowSize: 5,
+            shadowVerticalOffset: 10,
+            // color
+            gaugeColor: "#fff",
+
+            /*  level  */ 
+            // hide labels
+            hideMinMax: true,                   
+            // colors
+            levelColors: [
+              "#00fff6",
+              "#ff00fc",
+              "#1200ff"
+            ],
+            // secotr
+          customSectors: [{
+            color : "#00ff00",
+            lo : 0,
+            hi : 50
+          },{
+            color : "#ff0000",
+            lo : 50,
+            hi : 100
+          }],
+
+            // title
+            title: "Big Fella",
+            titleFontColor: "red",
+            titleFontFamily: "Georgia",
+            titlePosition: "below",
+
+
+            // animate type
+            startAnimationTime: 2000,
+            startAnimationType: ">",            // linear
+            refreshAnimationTime: 1000,
+            refreshAnimationType: "bounce",
+
+            // reverse
+            reverse: true
+
+        });
+
+        // refresh
+        setInterval(function() {
+          //g1.refresh(getRandomInt(50, 100));
+            g1.refresh(g1.originalValue, 200);
+            g1.txtTitle.attr({
+                "text": "Whoops, max jumped to 200."
+            });
+        }, 2500);
+
+
+        // update
+      gg1.update({
+        value: getRandomInt(0, 100),
+        customSectors: [{
+          color : "#00ff00",
+          lo : 0,
+          hi : 25
+        },{
+          color : "#ff0000",
+          lo : 25,
+          hi : 100
+        }]
+      });
+
+        function customValue(val) {
+            if (val < 50) {
+                return 'low';
+            } else if (val > 50) {
+                return 'high';
+            } else if (val === 50) {
+                return 'ideal';
+            }
+        }
+  };
+    </script>
+  </body>
+</html>

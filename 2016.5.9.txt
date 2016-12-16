@@ -840,17 +840,6 @@ strftime("%d/%m/%y %H:%M:%S")<cr>
 //16-07-30 
 json中只能包含双引号"",不能包含单引号''
 
-
-//style.left 和 offsetLeft 的不同
- 1、style.left 返回的是字符串，如28px，offsetLeft返回的是数值28，如果需要对取得的值进行计算，
-    还用offsetLeft比较方便。
-
-2、style.left是读写的，offsetLeft是只读的，所以要改变div的位置，只能修改style.left。
-
-3、 style.left的值需要事先定义，否则取到的值为空。而且必须要定义在html里，我做过试验，如果定义在
-    css里，style.left的值仍然 为空，这就是我刚开始碰到的问题，总是取不到style.left的值。
-    offsetLeft则仍然能够取到，无需事先定义div的位置。
-
 //16-08-03 09:14:51 
 #javascript时间
 //时间有几种展现形式：毫秒数 、格式化的时间、
@@ -877,73 +866,6 @@ json中只能包含双引号"",不能包含单引号''
                     |9、getMilliseconds() / setMilliseconds()                // 毫秒                                  |  
                     |10、getTimezoneOffset()                                 // 获取时区偏移的分钟数                  |
                     |-------------------------------------------------------------------------------------------------|
-
-//浏览位置，大小
-//16-08-09 09:27:49 
-// 容器对象
-1、屏幕对象：screen
-    属性            描述                            备注
-    ----------------------------------------------------------------
-    width           屏幕像素素宽
-    height          屏幕像素高度
-    availWidth      屏幕像素素宽 - 系统部件宽度(如：侧边栏)
-    availHeight     屏幕像素高度 - 系统部件宽度(如：任务栏)
-
-2、浏览器对象：window
-    属性            描述                            备注
-    ----------------------------------------------------------------
-    // 位置属性
-    screenLeft      浏览器离屏幕左边距离            除ff之外的浏览器支持
-    screenTop       浏览器离屏幕上边距离            除ff之外的浏览器支持
-    screenX         浏览器离屏幕左边距离            ff支持
-    screenY         浏览器离屏幕上边距离            ff支持
-    // 大小属性
-    innerWidth                                      IE8- 不支持
-    innerHeight                                     IE8- 不支持
-    outerWidth                                      IE8- 不支持
-    outerHeight                                     IE8- 不支持
-
-3、viewport对象：offset, scroll
-
-// 使用对象
-1、html对象: document.documentElement
-    属性            描述                            备注
-    ----------------------------------------------------------------
-    clientWidth   
-    clientHeight
-    offsetWidth
-    offsetHeight
-
-    // 在IE6标准模式以上的浏览器中
-    // document.documentElement.client 保存对浏览器对象占用的数据
-    // 在IE6混杂模式下
-    // document.body.client 保存着对浏览器对象占用的数据
-
-2、body对象: document.body
-    属性            描述                            备注
-    ----------------------------------------------------------------
-    clientWidth   
-    clientHeight
-    offsetWidth
-    offsetHeight
-
-3、element对象
-
-// client对象
-任何对象(包括容器对象和使用对象)，减去侧边栏，滚动条之后的部分(viewport)
-
-// scroll对象
-    对象完全展开的部分(viewport)
-
-//16-08-01 13:24:55 
-对象的坐标：offsetLeft 和 offsetRight
-事件对象的鼠标坐标：
-    1、到屏幕的位置：screenX 和 screenY
-    2、到浏览器可见区域的位置：clientX 和 clientY 
-        // 实际上时documentElement.client
-    3、到点击元素的位置：offsetX 和 offsetY
-        // 点击元素的offset
-
 
 //函数是否可以数组作为对象
     一般地，在函数的参数中，不要显示地写数组,如：function myFunc(arg1,[l1,l2])
@@ -1790,7 +1712,6 @@ X-UA-compatible 标头不区分大小写；不过，它必须显示在网页中�
     1、click()
     2、focus()
     3、blur()
-    4、
 
 // 16-11-22 10:18:20 
     图片压缩：https://tinypng.com/
@@ -1802,3 +1723,103 @@ X-UA-compatible 标头不区分大小写；不过，它必须显示在网页中�
     当点击label时，点击事件发生了2次。
     1、如果type = "hidden", 则点击事件只发生一次;
     2、如果for != id, 则点击事件也只发生一次;
+
+// 16-12-14 08:57:20 语料对齐
+    1、版本变化时，记录变化 比 记录变化的结果 更有效！
+        (git 也是遵循这一规律的)
+
+// 总结
+    1、如果是事件对象:e, 我们需要其位置信息
+        1.1 e.screenX: 到屏幕距离
+        1.2 e.clientX: 到浏览器距离
+        1.3 e.offsetX: 到点击元素的距离
+        1.4 e.pageX  : 到viewport的距离
+            // IE8- 不支持页面坐标。
+            // 不过使用客户端坐标和滚动信息可以计算：
+            pageX = e.clientX + 
+                    (document.body.offsetLeft 
+                    || document.documentElement.offsetLeft);
+
+            pageY = e.clientY + 
+                    (document.body.offsetTop 
+                    || document.documentElement.offsetTop);
+
+    2、普通的element对象(包括html和body对象)：我们需要其位置和大小信息
+        // 位置信息
+        1、jquery获取dom位置，
+            属性            描述                            备注
+            ----------------------------------------------------------------
+            offset()        相对于viewport的位置
+            position()      相对于父元素的位置
+            scrollTop()     元素内部参数:
+                            当此元素有滚动条时，可见区域离滚动条最上端的距离
+        2、javascript 获取dom位置
+            属性            描述                            备注
+            ----------------------------------------------------------------
+            offsetTop       元素离offsetParent的内边框的距离
+            scrollTop       跟 jquery scrollTop() 相同
+                // 在最外层：通过document.body 或 documentElement 的scrollTop获取
+                // scroll 事件，目前只能在window上触发。即：
+                window.onscroll = function(){
+                    var wTop = document.body.scrollTop ?
+                                document.body.scrollTop 
+                                : document.documentElement.scrollTop;
+                };
+                #特别注意：事件是连续触发的。但由于计算需要时间等原因，2次触发事件有间隔。
+                #解决方案：
+                    if( val < 0){
+
+                    }else if( val > 0 && val <100){                                              > 
+
+                    }else{
+                    
+                    }
+                    #在区域之外设置两端的极值
+
+        // 大小信息
+        属性            描述                            备注
+        ----------------------------------------------------------------
+        scrollWidth     是对象的实际内容的宽，不包边线宽度，
+                        会随对象中内容的多少改变（内容多了可能会改变对象的实际宽度）。 
+        clientWidth     是对象可见的宽度，不包滚动条,border等边线
+        offsetWidth     是对象的可见宽度，包滚动条,border等边线
+
+    3、屏幕对象：screen
+        属性            描述                            备注
+        ----------------------------------------------------------------
+        width           屏幕像素素宽
+        height          屏幕像素高度
+        availWidth      屏幕像素素宽 - 系统部件宽度(如：侧边栏)
+        availHeight     屏幕像素高度 - 系统部件宽度(如：任务栏)
+
+    4、浏览器对象：window
+        属性            描述                            备注
+        ----------------------------------------------------------------
+        // 位置属性
+        screenLeft      浏览器离屏幕左边距离            除ff之外的浏览器支持
+        screenTop       浏览器离屏幕上边距离            除ff之外的浏览器支持
+        screenX         浏览器离屏幕左边距离            ff支持
+        screenY         浏览器离屏幕上边距离            ff支持
+        // 大小属性
+        innerWidth                                      IE8- 不支持
+        innerHeight                                     IE8- 不支持
+        outerWidth                                      IE8- 不支持
+        outerHeight                                     IE8- 不支持
+
+        // 在IE6标准模式以上的浏览器中
+        // document.documentElement.client 保存对浏览器对象占用的数据
+        // 在IE6混杂模式下
+        // document.body.client 保存着对浏览器对象占用的数据
+
+//style.left 和 offsetLeft 的不同
+    1、style.left 返回的是字符串，如28px，offsetLeft返回的是数值28，如果需要对取得的值进行计算，
+        还用offsetLeft比较方便。
+
+    2、style.left是读写的，offsetLeft是只读的，所以要改变div的位置，只能修改style.left。
+
+    3、 style.left的值需要事先定义，否则取到的值为空。而且必须要定义在html里，我做过试验，如果定义在
+        css里，style.left的值仍然 为空，这就是我刚开始碰到的问题，总是取不到style.left的值。
+        offsetLeft则仍然能够取到，无需事先定义div的位置。
+
+// 16-10-11 00:01:02 
+    当元素处于隐藏时，scroll, offset, client 的值为0
