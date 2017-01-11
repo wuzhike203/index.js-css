@@ -410,3 +410,11 @@
     让元素的高度与浏览器高度一致
     html, body{height: 100%;}
     div{min-height: 100%; height:auto;}
+
+// 16-12-28 14:51:23 
+    1、如果border: 5px solid; 未设置颜色，则：
+        其border颜色由其color颜色决定
+    2、列表前面的图像颜色由 li的color 决定,
+                 图像大小由 li的font-size决定。
+    3、text-decoration的颜色在除firefox之外的浏览器中由color决定
+

@@ -17,8 +17,8 @@
 
 
 //----------思想差异：-------------
-1、PC端，一般用像素980px定宽；
-    移动端，一般用百分比。
+1、 PC  端，一般用像素980px定宽；
+    移动端，一般用百分比,em,rem。
 
 2、移动端按钮要适中，不能太小: 适合手指点击。
 
@@ -39,9 +39,8 @@
 
 
 
-/@media (device-height:568px) and (-webkit-min-device-pixel-ratio:2){/* 兼容iphone5 */}
-@media only screen and (max-device-width :480px){ }
-@media only screen and (min-device-width :481px){ }
+/* 兼容iphone5 */
+/@media (device-height:568px) and (-webkit-min-device-pixel-ratio:2){ }
 
 /*6*/
 @media (min-device-width : 375px) and (max-device-width : 667px) and (-webkit-min-device-pixel-ratio : 2){ }
@@ -105,4 +104,116 @@ iPhone5s 504*320
 
     // 即：当屏幕宽度尺寸超过4英寸时，就不再加载移动样式
 
+// 16-12-28 09:22:56 
+    移动端滚动条不可见
 
+// media query适应响应式布局总结：
+    // 假定UI的psd是以640px宽度为基础, @s:每个区域中的比例系数
+    // 以下区域不分横竖屏，
+    // 竖屏：and (orientation:portrait)
+    // 横屏：and (orientation:landscape)
+    @media screen and (min-device-width: 1100px){
+        // pc端
+        // @s: 1.8
+    }
+
+    @media screen 
+        and (max-device-width: 1100px)
+        and (max-width: 340px)
+    {
+        // <=340px
+        // 适合iphone4,5,少部分安卓手机
+        // 以320px为主
+        // i4尺寸：3.5，i5尺寸：4
+        // @s: (640/320)*3.5/4 = 1.75,
+        // @s: 2
+    }
+
+    @media screen 
+        and (max-device-width: 1100px)
+        and (min-width: 341px)
+        and (max-width: 390px)
+    {
+        // 341px ~ 390px
+        // 适合ipone6, 大部分安卓手机 
+        // 以360px(安卓), 375px(iphone6)为主
+        // i6尺寸：4.7， 目前大部分安卓手机:5~5.5
+        // @s: (640/375)*4.7/4 = 2.0,  @s: (640/360)*(5~5.5)/4 = 2.22~2.44,
+        // 考虑到屏幕尺寸大，元素尺寸适当大一些，故：
+        // @s: 1.92,   @s: 2.1
+    }
+
+    @media screen 
+        and (max-device-width: 1100px)
+        and (min-width: 391px)
+        and (max-width: 450px)
+    {
+        // 391px ~ 450px
+        // 适合少部分安卓手机:Nexus5X, Nexus6P, iphone6P
+        // 尺寸                 5.2     5.7         5.5
+        // 以414px为主
+        // @s: (640/414)*(5~5.5)/4 = 1.93~2.13
+        // 考虑到屏幕尺寸大，元素尺寸适当大一些，故：
+        // @s: 2
+
+    }
+
+    @media screen 
+        and (max-device-width: 1100px)
+        and (min-width: 451px)
+        and (max-width: 510px)
+    {
+        // 451px ~ 510px
+        // 目前还么发现手机处于这一区域
+        // 
+
+    }
+
+    @media screen 
+        and (max-device-width: 1100px)
+        and (min-width: 511px)
+        and (max-width: 600px)
+    {
+        // 511px ~ 600px
+        // 少部分安卓手机
+        // 以540px为主
+        // @s: 1.20
+
+    }
+
+    @media screen 
+        and (max-device-width: 1100px)
+        and (min-width: 601px)
+        and (max-width: 660px)
+    {
+        // 601px ~ 660px
+        // 少部分安卓手机
+        // 以600px/640px为主
+        // 这个区域的手机尺寸比较大，以6~7为主
+        // @s: 1*(6~7)/4 = 1.5~1.75
+
+    }
+
+    @media screen 
+        and (max-device-width: 1100px)
+        and (min-width: 661px)
+        and (max-width: 900px)
+    {
+        // 661px ~ 900px
+        // 很少部分安卓手机
+        // 以800px为主
+
+    }
+
+    @media screen 
+        and (max-device-width: 1100px)
+        and (min-width: 901px)
+        and (max-width: 1100px)
+    {
+        // >901px
+        // 很少部分安卓手机
+        // 以1080px为主
+        // 这个区域的手机尺寸比较大，以6~7为主
+        // @s: (640/1080)*(6~7)/4 = 0.89~1.03
+
+    }

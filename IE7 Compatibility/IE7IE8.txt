@@ -343,6 +343,9 @@ Array.reduceRight
                 |  #解决方案：
                 |    无
 
+#
+#------------------------CSS差异--------------------------------
+#
 
 // IE9- 的滤镜filter
     // 官方网站：https://msdn.microsoft.com/en-us/library/ms532853(v=vs.85).aspx
@@ -621,55 +624,46 @@ Array.reduceRight
 
         
 
-// 16-09-26 15:32:13 
-    在IE8中，margin: auto; 与 margin: 0 auto;效果不一样
+-----------------------------------------------------------------
+序号                        说明
+---------------------------------------------------------------
+1、margin           在IE8中，margin: auto; 与 margin: 0 auto;效果不一样
+---------------------------------------------------------------
+2、background       IE8- 不支持多组背景图像，
+---------------------------------------------------------------
+3、ie9-background   IE9  不支持 
+                    background-size, 
+                    background-clip,
+                    background-origin 合并到background中
+---------------------------------------------------------------
+4、legend           legend居中方式
+                    IE8- ： margin: auto;
+                    其他：text-align: center;
+            //IE8-中，fieldset 和 legend 的位置与其他浏览器有差异
+---------------------------------------------------------------
+5、paint            IE8- 不支持canvas:
+                    1、IE8- 使用VML 矢量标记语言 代替canvas画图
+                    2、使用 excanvas.js 使IE8- 支持 canvas
 
-// 16-09-30 14:53:50 
-    IE8- 不支持多组背景图像，
-    IE9  不支持 background-size, background-clip, background-origin 合并到background中
-
-// 16-09-30 15:17:57 
-    legend居中方式
-    IE8- ： margin: auto;
-    其他：text-align: center;
-
-    IE8-中，fieldset 和 legend 的位置与其他浏览器有差异
-
-// 16-10-03 12:23:44 
-    一、IE8- 不支持canvas:
-        1、IE8- 使用VML 矢量标记语言 代替canvas画图
-        2、使用 excanvas.js 使IE8- 支持 canvas
-
-        3、在IE9+
-            3.1 使用canvas 绘制位图
-            3.2 使用svg 绘制 矢量图
-
-    二、在IE中，颜色值 #fff, 可能读不出来。必须：#ffffff 。
-
-    三、IE9- 不支持图像渐变:
-        可以使用滤镜代替渐变
-          filter: 
-          progid:DXImageTransform.Microsoft.gradient(
-                GradientType = 0, 
-                startColorstr=#ff852c, 
-                endColorstr=#ffffff);  
-          )
-
-    四、IE8- 不支持 border-radius：
-        故，使用border-radius制作圆形，不可用。
-// 16-10-10 14:22:07 
-    IE8- 不支持 rgba()
-
-// 16-10-10 15:06:24 
-    IE 中两端对齐
-    text-align: justify;
-    text-last-align: justify;
-    #只能作用于：块元素和table元素
-    #不包括内联块元素
-    #文字之间必须要有空格，即：按照空格来分组。
-    // 在IE8- 中, float: right, 并不能使元素display: block;
-
-// 16-10-11 17:34:06 
-    IE8- 的select 有许多怪异行为：
-    1、其box-sizing: border-box; (尽管IE8-不支持box-sizing)
-    2、其padding-bottom 会影响同一行的文本的位置。
+                    在IE9+
+                    1 使用canvas 绘制位图
+                    2 使用svg 绘制 矢量图
+---------------------------------------------------------------
+6、border-radius    IE8- 不支持 border-radius：
+                    故，使用border-radius制作圆形，不可用。
+---------------------------------------------------------------
+7、rgba             IE8- 不支持 rgba()
+---------------------------------------------------------------
+8、justify          IE 中两端对齐
+                    text-align: justify;
+                    text-last-align: justify;
+                    #只能作用于：块元素和table元素
+                    #不包括内联块元素
+                    #文字之间必须要有空格，即：按照空格来分组。
+---------------------------------------------------------------
+9、float           在IE8- 中, float: right, 并不能使元素display: block;
+---------------------------------------------------------------
+10、select          IE8-的 select 有许多怪异行为：
+                    1、其box-sizing: border-box; (尽管IE8-不支持box-sizing)
+                    2、其padding-bottom 会影响同一行的文本的位置。
+---------------------------------------------------------------
