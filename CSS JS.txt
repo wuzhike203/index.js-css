@@ -96,6 +96,9 @@
 
     4、滚动条的位置在块的border处，故需要右边的margin-right: 10px。
         // 此为建议
+    // animate 插件
+
+    // 日期插件
 
 // 16-10-16 09:40:19 
     text-align:     作用于外，外框中 文本 的对齐方式
@@ -417,4 +420,9 @@
     2、列表前面的图像颜色由 li的color 决定,
                  图像大小由 li的font-size决定。
     3、text-decoration的颜色在除firefox之外的浏览器中由color决定
+
+// 页面排版：
+    1、外围元素提供内容区域的底色
+    2、.main{max-width: 1000px; width: 100%;margin: 0 10px;}
+        提供内容区域
 

@@ -7,9 +7,87 @@
 
 //-----------差异-------------------
 1、鼠标、键盘交互被触摸、手势代替
+    1. 当手指触摸屏幕时, 发生 touchstart 事件
+    2. 如果手指移动，则发生 touchmove 事件
+    3. 当手机离开屏幕时, 则发生 touchend 事件
+    4. 如果在此期间手指没有移动过, 且此期间小于某个数值, 则发生 click 事件。
+        即：如果手指在期间移动过 或 此期间大于某个数值(即使没有移动)，则不会发生 click 事件。
+    5. scroll 事件是独立的，pc端与移动端都一样。
 
-2、不支持hover事件
+2、html, body{height: 100%} 的作用
+    2.1 每个网页都有个viewport 宽度
+        html 继承 viewport, body 继承 html ......
+        // 设定body的总高度，当在移动端时, 软键盘不会遮挡住输入框。
+    2.2 一般地，
+        当表单处于焦点时,软键盘出现：浏览器高度由于软键盘的出现而发生resize事件，减少。
+        当失去焦点时, 软键盘消失: 与上相反。
 
+3、点击 <a href="#target">点击</a> 的作用
+    等同于： location.href = "#target";
+    // 实现在页面内不同位置跳转
+        
+4、不支持hover事件
+
+5、移动端底部input 样式布局问题及解决方案(例如ios第三方输入法遮挡输入框)
+    // http://www.thinksaas.cn/topics/0/606/606825.html
+    问题1： H5web移动端输入框, 键盘唤起后fixed定位好的元素跟随页面滚动了起来… 
+            fixed属性失效了！满屏任性横飞
+    解决思路:
+            不让页面整体滚动(body高度等于或小于浏览器高度), 绝对布局滚动内容, 局部滚动.
+    // ------  HTML
+        <body> 
+            <!-- 可以滚动的区域 -->
+            <main className='scrollWrapper'>
+                <!-- 内容在这里... -->
+            </main>
+            
+            <!-- fixed定位在底部的输入框 -->
+            <footer>
+               <div className='inputBox' contenteditable='true' placeholder='请输入评论'></div>
+            </footer>
+        </body>
+
+    // ----- CSS
+        .scrollWrapper {
+            position: absolute;/* 绝对定位，进行内部滚动 */
+            left: 0;
+            right: 0;
+            top: 0;
+            bottom: 0;
+            overflow-y: atuo;/* 或者scroll */
+            -webkit-overflow-scrolling: touch;/* 解决ios滑动不流畅问题 */
+        }
+        footer {
+            position: fixed;
+        }
+
+    问题2： 有第三方输入法的ios机还会出现键盘弹出延迟，
+            导致普通布局 输入框(input/textarea等) 位置靠下的被键盘挡住
+    解决思路:
+        键盘完全弹出时, 判断键盘是否在可视区域(即屏幕除去键盘占用的区域)
+        通过js来调整输入框的位置;
+        键盘完全收起后, 调整键盘到页面底部;
+
+6、我们使用 H5 做移动 App，或者进行移动网站开发时。
+    如果文本输入框在整个页面的下方，当我们点击输入框要输入文字时，
+    系统弹出的虚拟键盘就会将输入框给挡住。
+    // http://www.680.com/Soft/1609/chengxu-43733.html
+
+    解决办法：
+        我们可以借助元素的 scrollIntoViewIfNeeded（） 方法。
+        这个方法执行后如果当前元素在视口中不可见，则会滚动浏览器窗口或容器元素，最终让它可见。
+        如果当前元素在视口中已经是可见的，这个方法什么也不做。
+    
+    示例：
+        这里使用了 jQuery 绑定了所有输入框（textinput、textarea）的点击事件，
+        这样当输入框被点击后就调用它的 scrollIntoViewIfNeeded（） 方法，保证输入框可见。
+        （延迟400毫秒出现时有些 Android 手机键盘出现的比较慢）
+    $('input[type="text"],textarea').on('click', function(){
+    　　var target = this;
+    　　setTimeout(function(){
+            target.scrollIntoViewIfNeeded()；
+    　　},400)；
+　　})；
 
 
 

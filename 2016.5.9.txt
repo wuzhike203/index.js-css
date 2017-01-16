@@ -77,9 +77,63 @@
             push(), shift(), unshift()
         3.5 重排列方法
             reverse()
+            sort(): // 可接受一个比较函数作为参数
+            function compare(arg1, arg2){
+                // 升序排列
+                return arg1 - arg2;
+            }
+        3.6 操作方法
+            // 产生新数组
+            concat()
+            slice()
+            // 改变原数组
+            splice(startIndex, delNum, addItem)
+        3.7 迭代方法
+            every()
+            some()
+            filter()
+            map()
+        3.8 减少方法
+            reduce(pre, cur, index, arr)
     4 RegExp
     5 Date
     6 Math
+        6.1  常量
+            Math.PI
+            Math.E
+            Math.LN10          // 10的自然对数
+            Math.LN2           // 2的自然对数
+            Math.LOG10E        // 以10为底，E的对数
+            Math.LOG2E         // 以2为底，E的对数
+            Math.SQRT2         // 2的平方根
+            Math.SQRT1_2       // ½的平方根
+
+        6.2  舍入方法
+            Math.ceil()
+            Math.floor()
+            Math.round()
+
+        6.3  选择方法
+            Math.max()
+            Math.min()
+            Math.random()
+            
+        6.4  数学方法
+            Math.abs()
+            Math.sqrt()
+            //三角函数
+            Math.sin()
+            Math.cos()
+            Math.tan()
+            Math.asin()
+            Math.acos()
+            Math.atan()
+            //幂函数
+            Math.pow(n1,n2)     //
+            Math.exp(n)
+            //对数函数
+            Math.log(n)           //
+
 
 
 
@@ -103,45 +157,6 @@
         除了常用的字符，其他的字符字面量：
         \xnn,    nn为2个16进制数字,如：\xf1;
         \unnnn,  nnnn为4个16进制数字,如：\uff00;中文区间为：\u4e00~\u9fcf;
-
-//2016.5.10
-1：Math对象
-    1.1  常量
-        Math.PI
-        Math.E
-        Math.LN10          //10的自然对数
-        Math.LN2           //2的自然对数
-        Math.LOG10E         //以10为底，E的对数
-        Math.LOG2E         //以2为底，E的对数
-        Math.SQRT2         //2的平方根
-        Math.SQRT1_2       //1/2的平方根
-
-    1.2  舍入方法
-        Math.ceil()
-        Math.floor()
-        Math.round()
-
-    1.3  选择方法
-        Math.max()
-        Math.min()
-        Math.random()
-        
-    1.4  数学方法
-        Math.abs()
-        Math.sqrt()
-        //三角函数
-        Math.sin()
-        Math.cos()
-        Math.tan()
-        Math.asin()
-        Math.acos()
-        Math.atan()
-        //幂函数
-        Math.pow(n1,n2)     //
-        Math.exp(n)
-        //对数函数
-        Math.log(n)           //
-
 
 
 //2016.06.02
@@ -1970,3 +1985,39 @@ X-UA-compatible 标头不区分大小写；不过，它必须显示在网页中�
         :diffpu(t)
         :diffg(et)
     
+Math
+    // 常量
+    Math.PI
+    Math.E
+    Math.LN10
+    Math.LN2
+    Math.LOG2E
+    Math.LOG10E
+    Math.SQRT2
+    Math.SQRT1_2
+
+    // 舍入方法
+    Math.ceil()
+    Math.floor()
+    Math.round()
+
+    // 选择方法
+    Math.max()
+    Math.min()
+    Math.random()
+
+    // 数学方法
+    Math.abs()
+    Math.sqrt()
+    // 三角函数
+    Math.sin()
+    Math.cos()
+    Math.tan()
+    Math.asin()
+    Math.acos()
+    Math.atan()
+    // 幂函数
+    Math.pow(n1, n2)
+    Math.exp(n)
+    // 对数函数
+    Math.log(n)
