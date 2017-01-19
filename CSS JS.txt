@@ -426,3 +426,27 @@
     2、.main{max-width: 1000px; width: 100%;margin: 0 10px;}
         提供内容区域
 
+// 17-01-18 09:48:28 
+    一个块元素，
+    1、使用overflow: hidden, 起遮罩效果时，
+        内部元素在其 content和padding上都可见
+    2、不管背景图片或颜色的源点:background-origin: 
+        背景在右下角的padding, border都可见。
+    3、当内部元素使用 position: absolute; bottom: 0;与父元素对齐时。
+        以父元素的border为界
+
+// 17-01-18 10:58:30 
+    根据psd排版时，要注意：
+    1、字体的letter-spacing,
+        psd上的字体大小很容易确认，但字体间隙的不同也影响布局
+    2、在psd上量的是总宽度或高度 = 网页上width + padding + border
+
+// 17-01-19 15:42:52 
+    当元素为fixed 或 absolute 时，
+    如果left: 0;right: 0; 相当于width: 100%;
+
+// 17-01-19 17:22:09 
+    类型        margin-left         margin-right
+    -----------------------------------------------
+    宽度确定    改变位置            不起作用
+    宽度未定    改变长度            改变长度
