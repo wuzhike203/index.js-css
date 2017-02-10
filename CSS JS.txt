@@ -115,21 +115,143 @@
     3   thumbnail
     ------------------------------------------------------
 
-            
+    // html5        
+    ------------------------------------------------------
+    // 一、段落语义
+    ------------------------------------------------------
+    1   <article>
+    2   <section>
+    3   <aside>
+    4   <footer>
+    5   <header>
+    6   <nav>
+    7   <main>
+    ------------------------------------------------------
     ------------------------------------------------------
 
 
+// 排版心得
+    序号    说明
+    ------------------------------------------------------
+    1       元素的位置最好与形状分离
+    2       元素relative与absolute各有好处:
+            relative: 宽度自动充满整个空间, 而不用考虑父元
+            素的padding, margin
+
+
+// 工具类
+    序号    名称            说明 
+    ------------------------------------------------------
+    1       YSlow           网站性能评分工具
+    2       https://zygotebody.com/     谷歌人体浏览器
+    3       https://tinypng.com/        图片压缩：
+    
+
+// 插件类
+    序号    名称            说明 
+    ------------------------------------------------------
+    //0     zepto.js        与jquery类似，但以移动端为主的js库
+    ------------------------------------------------------
+    1       滚动条插件   
+            // 使用说明
+            1、 jquery.mCustomScrollbar.css
+            2、 jquery.mCustomScrollbar.min.js
+                jquery.mousewheel.min.js 
+            3、	对要作用的元素
+                3.1 设置max-height/height,
+                3.2 使用函数：
+                    mCustomScrollbar({theme: "minimal"});
+                如：
+                    $("elem").mCustomScrollbar({theme: "minimal"});	
+            4、滚动条的位置在块的border处，故需要右边的
+                margin-right: 10px。
+    ------------------------------------------------------
+    2       动画插件：
+            // 使用说明
+            1、animate.min.css
+    ------------------------------------------------------
+    3       日期插件：My97DatePicker
+            // 使用说明
+    ------------------------------------------------------
+    4       省市区插件：
+            // 使用说明
+            1、city.min.js
+            2、jquery.cityselect.js
+    ------------------------------------------------------
+    5       图表插件：
+            // highchart 
+    ------------------------------------------------------
+    6       表盘插件：
+            // panel 
+    ------------------------------------------------------
+    7       cookie插件
+            // 使用说明
+            1、jquery.cookie.min.js
+    ------------------------------------------------------
+    8       复制到剪切板插件       
+            // Clip: 需要adobe Flash
+            1、jquery.zclip.js
+    ------------------------------------------------------
+    9       当窗口滚动到某元素时触发
+            // Waypoints is the easiest way to trigger 
+            // a function when you scroll to an element. 
+            1、jquery.waypoints.min.js
+            <!-- 
+              var waypoint = new Waypoint({
+                  element: document.getElementById('waypoint'),
+                  handler: function(direction) {
+                      console.log('Scrolled to waypoint!')
+                  }
+              })
+            -->
+    ------------------------------------------------------
+    10      jQuery UI插件
+            // jquery.ui.widget.js
+    ------------------------------------------------------
+    11      打印机效果插件
+            // jQuery.typewriter.js
+    ------------------------------------------------------
+    12      上传文件插件
+            // jQuery.iframe-Transport.js
+            // jquery.fileupload.js
+    ------------------------------------------------------
+    13      商品从点击出以抛物线的动画相似加入购物车
+            // jquery.fly.min.js
+    ------------------------------------------------------
+    14      轮播滑动插件
+            // jquery.flexslider-min.js
+    ------------------------------------------------------
+    15      数字动画插件
+            // jquery.countup.min.js
+    ------------------------------------------------------
+    16      cookie插件
+            // jquery.cookie.min.js
+    ------------------------------------------------------
+
+
+
+
+
 // 16-09-26 
-    杜绝使用<meta http-equiv="X-UA-Compatible" content="IE=7" /> 兼容 ie8;
-    15. 避免兼容性属性的使用, 比如text-shadow || css3的相关属性;
-    16. 减少使用影响性能的属性, 比如position:absolute || float ;
+    // 前端规范
+    // html
+        1、body ： 一般只设最小宽度：1050px;
+        2、背景 ： 一般为rgba(0, 0, 0, 0.3), 即：黑色的30%;
+        3、弹窗高度：一般最大为580px; 再大就下拉条
+    // css
+        杜绝使用<meta http-equiv="X-UA-Compatible" content="IE=7" /> 兼容 ie8;
+    // js
+        jQuery变量要求首字符为'_',
+        另, 要求变量集中声明, 避免全局变量.
+    // 按钮审美
+        一个标准的按钮:
+            line-height: 1.6em;
+            padding-left: 0.85em;
+            padding-right: 0.85em;
 
-// js
-    Example Source Code jQuery变量要求首字符为'_', 其他与原生JavaScript 规则相同, 如: _iTaoLun;
-    另, 要求变量集中声明, 避免全局变量.
+            border-radius: 0.8em;
 
-// img
-    图片规范
+    // img 图片规范
     　　1. 所有页面元素类图片均放入img文件夹, 测试用图片放于img/demoimg文件夹;
     　　2. 图片格式仅限于gif || png || jpg;
     　　3. 命名全部用小写英文字母 || 数字 || _ 的组合，其中不得包含汉字 || 空格 || 特殊字符；
@@ -140,51 +262,35 @@
     　　6. 运用css sprite技术集中小的背景图或图标, 减小页面http请求,
            但注意, 请务必在对应的sprite psd源图中划参考线, 并保存至img目录 下.
 
-// 开发及测试工具约定
-　　测试工具: 前期开发仅测试FireFox  & IE7 & IE8 ,
-    后期优化时加入Opera & Chrome & Safari;
-　　建议测试顺序: FireFox-->IE8-->IE7 -->Opera-->Chrome-->Safari, 
-        建议安装firebug及IE Tab Plus插件.
-    4:IE6访问页面时判断提供升级链接
-    <!--[if lte IE 6]>
-    <div id="ie6-warning">您正在使用 Internet Explorer 6，在本页面的显示效果可能有差异。建议您升级到 <a href="http://www.microsoft.com/china/windows/internet-explorer/" target="_blank">Internet Explorer 8</a> 或以下浏览器： <a href="http://www.mozillaonline.com/">Firefox</a> / <a href="http://www.google.com/chrome/?hl=zh-CN">Chrome</a> / <a href="http://www.apple.com.cn/safari/">Safari</a> / <a href="http://www.operachina.com/">Opera</a>
-    </div>
-    <script type="text/javascript">
-    function position_fixed(el, eltop, elleft){
-    // check if this is IE6
-    if(!window.XMLHttpRequest)
-    window.onscroll = function(){
-    el.style.top = (document.documentElement.scrollTop + eltop)+"px";
-    el.style.left = (document.documentElement.scrollLeft + elleft)+"px";
-    }
-    else el.style.position = "fixed";
-    }
-    position_fixed(document.getElementById("ie6-warning"),0, 0);
-    </script>
-    <![endif]-->
+    // 开发及测试工具约定
+    　　1、测试顺序: FireFox-->IE8-->IE7 -->Opera-->Chrome-->Safari, 
+        2、IE6访问页面时判断提供升级链接
+            <!--[if lte IE 6]>
+            <div id="ie6-warning">您正在使用 Internet Explorer 6，在本页面的显示效果可能有差异。建议您升级到 <a href="http://www.microsoft.com/china/windows/internet-explorer/" target="_blank">Internet Explorer 8</a> 或以下浏览器： <a href="http://www.mozillaonline.com/">Firefox</a> / <a href="http://www.google.com/chrome/?hl=zh-CN">Chrome</a> / <a href="http://www.apple.com.cn/safari/">Safari</a> / <a href="http://www.operachina.com/">Opera</a>
+            </div>
+            <script type="text/javascript">
+            function position_fixed(el, eltop, elleft){
+            // check if this is IE6
+            if(!window.XMLHttpRequest)
+            window.onscroll = function(){
+            el.style.top = (document.documentElement.scrollTop + eltop)+"px";
+            el.style.left = (document.documentElement.scrollLeft + elleft)+"px";
+            }
+            else el.style.position = "fixed";
+            }
+            position_fixed(document.getElementById("ie6-warning"),0, 0);
+            </script>
+            <![endif]-->
 
 // 16-10-09 08:37:34 
-    css 样式规则
-    1、先定位置：
-        1.1 水平居中有2中方式
-            a、块 ： margin: auto
-            b、inline 和 inline-block : 父元素text-align: center;
+    1 水平居中有2中方式
+        a、块 ： margin: auto
+        b、inline 和 inline-block : 父元素text-align: center;
 
-    2、再定宽度和高度
-        2、1 定义内部元素的区域优先
-
-
-    3、垂直居中有两种方式：
-        3、1 inline: vertical-align: middle;
-        3、2 line-height = height :
-                                比较适合一致对齐
-        3、3 padding: 上下一致:  [[div1]  [div2]                 [div3]  ]
-                                比较适合两端分别对齐的时候
-
-// 16-10-10 15:02:53 
-    1、body ： 一般只设最小宽度：1050px;
-    2、背景 ： 一般为rgba(0, 0, 0, 0.3), 即：黑色的30%;
-    3、弹窗高度：一般最大为580px; 再大就下拉条
+    2、垂直居中有两种方式：
+        2.1 inline: vertical-align: middle;
+        2.2 line-height = height 
+        2.3 padding: 上下一致
 
 // 16-10-10 17:06:31 
     css 模块化：
@@ -201,29 +307,6 @@
 
     3、一组对象，具有很多共同的部分，也有部分差异
         应仿照 类和继承的写法
-
-// 16-10-11 
-    // 滚动条插件   使用方法和注意事项
-    1、 jquery.mCustomScrollbar.css
-    2、 jquery.mCustomScrollbar.min.js
-        jquery.mousewheel.min.js 
-    3、	对要作用的元素
-        3.1 设置max-height,
-        3.2 使用函数：mCustomScrollbar({theme: "minimal"});
-        如：
-            $("elem").mCustomScrollbar({theme: "minimal"});	
-
-        #此元素必须设置max-height,否则不起作用。
-
-    4、滚动条的位置在块的border处，故需要右边的margin-right: 10px。
-        // 此为建议
-    // animate 插件
-
-    // 日期插件
-
-    // city 插件
-    // highchart 表格插件
-    // panel 插件
 
 // 16-10-16 09:40:19 
     text-align:     作用于外，外框中 文本 的对齐方式
@@ -254,7 +337,6 @@
     但display:none, 和 visible:hidden 却不行。
 
 // 16-10-18 15:20:33 
-    图片压缩：https://tinypng.com/
 
 // 16-10-18 15:28:53 
     setTimeout(function, time)
@@ -549,11 +631,6 @@
                  图像大小由 li的font-size决定。
     3、text-decoration的颜色在除firefox之外的浏览器中由color决定
 
-// 页面排版：
-    1、外围元素提供内容区域的底色
-    2、.main{max-width: 1000px; width: 100%;margin: 0 10px;}
-        提供内容区域
-
 // 17-01-18 09:48:28 
     一个块元素，
     1、使用overflow: hidden, 起遮罩效果时，
@@ -563,69 +640,20 @@
     3、当内部元素使用 position: absolute; bottom: 0;与父元素对齐时。
         以父元素的border为界
 
-// 17-01-18 10:58:30 
-    根据psd排版时，要注意：
-    1、字体的letter-spacing,
-        psd上的字体大小很容易确认，但字体间隙的不同也影响布局
-    2、在psd上量的是总宽度或高度 = 网页上width + padding + border
-
-// 17-01-19 15:42:52 
+// 17-01-19 17:22:09 
     当元素为fixed 或 absolute 时，
     如果left: 0;right: 0; 相当于width: 100%;
 
-// 17-01-19 17:22:09 
     类型        margin-left         margin-right
     -----------------------------------------------
     宽度确定    改变位置            不起作用
     宽度未定    改变长度            改变长度
 
 // 17-01-25 10:30:03 
-    // 文字间隙： 假设文字高度为：14px
-    // 垂直间隙: 包含2个部分：
-    1、从普通字母(比如：a、e等)到字体最上边：
-        = 文字高度的一半 - 1
-        即：= 14/2 - 1
-            = 6
-    2、由于line-height=2em，产生的间隙
-        = (2*14 - 14)/2
-        = 7
-    3、默认的line-height: 1.33em
-
-    故：从文字上方一点到字母a的距离：
-        1、此点到句子的距离h
-        2、14/2 - 1 + ⅓*14*½ = 14 * ⅔ - 1
-
-        //也等于：line-height/2 - 1
-                4/3*14/2 - 1
-
-        -----------------
-        | line-height   |
-        -----------------
-                ↓
-        -----------------
-        |   1/2 - 1     |
-        -----------------
-                ↓
-        -----------------
-        |       a       |
-        -----------------
-                ↓
-        -----------------
-        | line-height   |
-        -----------------
-
-    // 1 从文字上面到字母a的上边缘：line-height/2 - 1
-    // 2 从文字下面到字母a的上边缘：line-height/2 + 1
-
-    // 水平间隙(这是由于word-spacing 和 letter-spacing产生的)
-    // 一般为2px
-
-        
-// 17-01-25 11:06:53 
-    一个标准的按钮
-    line-height: 1.6em;
-    padding-left: 0.85em;
-    padding-right: 0.85em;
-
-    border-radius: 0.8em;
+    1、如何从psd中确定行高: 
+        a   两列相同部位的间距
+    2、假设font-size: 14px; line-hegiht: 1.33;
+        则：
+        a   小写字母a 距行最上端：(行高/2) = (14*1.33*0.5) = 9
+        b   汉字      距行最上端: (行高 - 字体高)/2 = (14*0.33*0.5) = 2
 
