@@ -549,7 +549,7 @@ Array.reduceRight
 
         4.13 Matrix，调整大小、旋转或翻转使用矩阵的内容对象转换。
 
-        filter:progid:DXImageTransform.Microsoft.Matrix()
+        filter:progid:DXImageTransform.Microsoft.Matrix(m11=a, m21=b, m12=c, m22=d)
         可以设置各种角度的旋转，官方demo→Matrix Filter
 
         4.14 MotionBlur，设置对象模糊，测试完demo之后感觉有点像线性模糊，
@@ -588,6 +588,38 @@ Array.reduceRight
         Color，设置阴影颜色。
         Direction，设置阴影的方向，角度也是从0°~315°取值（跟PS的投影效果非常的相似。）
         Strength，设置投影强度，数值越大越模糊。
+
+// 16-11-10 11:06:47 
+    // 目前IE8- 和 其他浏览器都支持的ps操作为：
+    1、透明度(opacity)
+        IE9+:   opacity:0.5;
+        IE8-:   filter:progid:DXImageTransform.Microsoft.Alpha(opacity=50)
+    2、投影(box-shadow)
+        IE9+:   box-shadow: 0px 0px 5px 2px red;
+        IE8-:   filter:progid:DXImageTransform.Microsoft.shadow(color='', direction='', strength='')
+                // 阴影(但效果与box-shadow 差异很大,故不建议使用)
+
+                filter:progid:DXImageTransform.Microsoft.DropShadow(OffX=20, OffY=20, Color=red, positive=10)
+                // 像投影一样的复制
+    3、渐变(gradient)
+        IE9+:   linear-gradient:
+                radial-gradient:
+        IE8-:   filter:progid:DXImageTransform.Microsoft.Gradient(
+                    GradientType=1,
+                    StartColorStr=#11000000,
+                    EndColorStr=#11FF3300
+                )
+                // 只能是经向渐变
+                // 只有水平(1) 和 垂直(2) 2个方向
+                // 无法设置颜色区间
+    4、矩阵变换
+        IE9+:   transform:matrix(a, b, c, d, e, f)
+        IE8-:   filter:progid:DXImageTransform.Microsoft.Matrix(m11=2, m21=0, m12=0, m22=2);
+                // 仅提供前面4个参数,且无法设置变换的起点(视乎在左上角)
+    综上所述：
+        在 透明度和背景色上可以使用IE8的滤镜
+
+        
 
 // 16-09-26 15:32:13 
     在IE8中，margin: auto; 与 margin: 0 auto;效果不一样

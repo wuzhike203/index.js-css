@@ -268,3 +268,45 @@
         这个单位与em有什么区别呢？
             区别在于使用rem为元素设定字体大小时，仍然是相对大小，
             但相对的只是HTML根元素。
+
+// 16-11-04 08:47:38 
+    只有fixefox 支持 text-decoration的复合写法:
+    text-decoration: text-decoration-line || text-decoration-style || text-decoration-color
+    例如：text-decoration: line-through solid red;
+    //其他浏览器仅仅支持：
+        text-decoration: text-decoration-line;
+        例如：text-decoration: line-through;
+
+// 16-11-04 09:32:37 
+    // background-clip
+    chrome 支持:
+        -webkit-background-clip: text;
+        backgrund-clip: border-box;
+        //即：对于text，必须带上-webkit-
+              对于其他属性，必须不带-webkit-
+    fixefox 支持：
+        -webkit-background-clip:text 
+        background-clip:text
+        background-clip: border-box;
+
+// 16-11-10 10:28:21 
+    // transfrom
+    所谓变换，就是把对象上 
+            每个点的坐标值 
+        按照一定的规则 
+            变为另一个坐标值
+        的过程。
+    transform: matrix(a, b, c, d, e, f)
+    例如：对于对象上某一点(x, y), 其新坐标为(x1, y1):
+        a   c   e       x       ax+cy+e         x1
+        b   d   f   *   y   =   bx+dy+f <==>    y1 
+        0   0   1       1       0 +0 +1         1
+    特例：
+    1、当a=1, b=0, c=0, d=1时
+        x1 = x+e,
+        y1 = y+f,
+        相当于translate(e,f)
+    2、当a=2, b=0, c=0, d=2, e=0, f=0时
+        x1 = 2x,
+        y1 = 2y,
+        相当于scale(2)
