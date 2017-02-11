@@ -1,14 +1,257 @@
+// 排版
+    //公共样式表：
+    ------------------------------------------------------
+    序号        种类
+    ------------------------------------------------------
+    1       p,h1~h6等排版
+    2       btn
+    3       arrow/caret
+    4       a,samp等字体继承           
+    5       在webkit下input等的outline
+    ------------------------------------------------------
+    
+    //功能
+    ------------------------------------------------------
+    1       #ff9900, #ccc 等各种颜色
+    2       table
+    3       callout             特别说明
+    4       example             例子
+    5       highlight           高亮(比如：代码片段)
+    6       docs                文档说明
+    7       section             章节
+    8       validation          校验
+    9       status              状态
+    ------------------------------------------------------
+
+    // 一、排版
+    ------------------------------------------------------
+    1       h1~h6               标题           
+    2       small               副标题
+    3       .lead               中心内容
+
+    4       p                   页面主体
+
+    5       内联文本元素
+            mark
+            ins
+            del
+
+            small
+            big
+            sub
+            sup
+            strong/b
+            em/i
+            ruby
+
+    6       纯语义元素
+            abbr
+            time
+            address
+
+    7       引用
+            blockquote              引用块
+            q                       引用内联
+            它们都有个cite属性：indicate引用的来源
+
+            另：cite标签：引用的来源
+                 .footer: 引用地址
+
+    ------------------------------------------------------
+
+    // 二、代码
+    ------------------------------------------------------
+    1       pre                     代码块
+    2       code                    代码 内联
+    3       var                     代码中的变量
+    4       kbd                     由键盘输入的字符
+    5       samp                    输出代码
+    ------------------------------------------------------
+
+    // 三、列表
+    ------------------------------------------------------
+    1       ul                      无序
+    2       ol                      有序
+    3       dl                      定义列表
+    ------------------------------------------------------
+
+    // 四、table
+    ------------------------------------------------------
+    1   table
+    2   table-default
+    3   table-striped
+    4   table-bordered
+    5   table-hover
+    6   table-condensed
+    ------------------------------------------------------
+
+    // 五、状态类
+    ------------------------------------------------------
+    0   default
+    1   active                      激活类
+    2   success
+    3   primary
+    4   info
+    5   warning
+    6   danger
+    7   disabled                    禁用类
+    8   muted                       减弱的
+    9   visible
+    10  hidden
+    ------------------------------------------------------
+
+    // 六、尺寸
+    ------------------------------------------------------
+    1   lg
+    2   md
+    3   sm
+    4   xs
+    ------------------------------------------------------
+
+    // 七、图片
+    ------------------------------------------------------
+    1   rounded
+    2   circle
+    3   thumbnail
+    ------------------------------------------------------
+
+    // html5        
+    ------------------------------------------------------
+    // 一、段落语义
+    ------------------------------------------------------
+    1   <article>
+    2   <section>
+    3   <aside>
+    4   <footer>
+    5   <header>
+    6   <nav>
+    7   <main>
+    ------------------------------------------------------
+    ------------------------------------------------------
+
+
+// 排版心得
+    序号    说明
+    ------------------------------------------------------
+    1       元素的位置最好与形状分离
+    2       元素relative与absolute各有好处:
+            relative: 宽度自动充满整个空间, 而不用考虑父元
+            素的padding, margin
+
+
+// 工具类
+    序号    名称            说明 
+    ------------------------------------------------------
+    1       YSlow           网站性能评分工具
+    2       https://zygotebody.com/     谷歌人体浏览器
+    3       https://tinypng.com/        图片压缩：
+    
+
+// 插件类
+    序号    名称            说明 
+    ------------------------------------------------------
+    //0     zepto.js        与jquery类似，但以移动端为主的js库
+    ------------------------------------------------------
+    1       滚动条插件   
+            // 使用说明
+            1、 jquery.mCustomScrollbar.css
+            2、 jquery.mCustomScrollbar.min.js
+                jquery.mousewheel.min.js 
+            3、	对要作用的元素
+                3.1 设置max-height/height,
+                3.2 使用函数：
+                    mCustomScrollbar({theme: "minimal"});
+                如：
+                    $("elem").mCustomScrollbar({theme: "minimal"});	
+            4、滚动条的位置在块的border处，故需要右边的
+                margin-right: 10px。
+    ------------------------------------------------------
+    2       动画插件：
+            // 使用说明
+            1、animate.min.css
+    ------------------------------------------------------
+    3       日期插件：My97DatePicker
+            // 使用说明
+    ------------------------------------------------------
+    4       省市区插件：
+            // 使用说明
+            1、city.min.js
+            2、jquery.cityselect.js
+    ------------------------------------------------------
+    5       图表插件：
+            // highchart 
+    ------------------------------------------------------
+    6       表盘插件：
+            // panel 
+    ------------------------------------------------------
+    7       cookie插件
+            // 使用说明
+            1、jquery.cookie.min.js
+    ------------------------------------------------------
+    8       复制到剪切板插件       
+            // Clip: 需要adobe Flash
+            1、jquery.zclip.js
+    ------------------------------------------------------
+    9       当窗口滚动到某元素时触发
+            // Waypoints is the easiest way to trigger 
+            // a function when you scroll to an element. 
+            1、jquery.waypoints.min.js
+            <!-- 
+              var waypoint = new Waypoint({
+                  element: document.getElementById('waypoint'),
+                  handler: function(direction) {
+                      console.log('Scrolled to waypoint!')
+                  }
+              })
+            -->
+    ------------------------------------------------------
+    10      jQuery UI插件
+            // jquery.ui.widget.js
+    ------------------------------------------------------
+    11      打印机效果插件
+            // jQuery.typewriter.js
+    ------------------------------------------------------
+    12      上传文件插件
+            // jQuery.iframe-Transport.js
+            // jquery.fileupload.js
+    ------------------------------------------------------
+    13      商品从点击出以抛物线的动画相似加入购物车
+            // jquery.fly.min.js
+    ------------------------------------------------------
+    14      轮播滑动插件
+            // jquery.flexslider-min.js
+    ------------------------------------------------------
+    15      数字动画插件
+            // jquery.countup.min.js
+    ------------------------------------------------------
+    16      cookie插件
+            // jquery.cookie.min.js
+    ------------------------------------------------------
+
+
+
+
+
 // 16-09-26 
-    杜绝使用<meta http-equiv="X-UA-Compatible" content="IE=7" /> 兼容 ie8;
-    15. 避免兼容性属性的使用, 比如text-shadow || css3的相关属性;
-    16. 减少使用影响性能的属性, 比如position:absolute || float ;
+    // 前端规范
+    // html
+        1、body ： 一般只设最小宽度：1050px;
+        2、背景 ： 一般为rgba(0, 0, 0, 0.3), 即：黑色的30%;
+        3、弹窗高度：一般最大为580px; 再大就下拉条
+    // css
+        杜绝使用<meta http-equiv="X-UA-Compatible" content="IE=7" /> 兼容 ie8;
+    // js
+        jQuery变量要求首字符为'_',
+        另, 要求变量集中声明, 避免全局变量.
+    // 按钮审美
+        一个标准的按钮:
+            line-height: 1.6em;
+            padding-left: 0.85em;
+            padding-right: 0.85em;
 
-// js
-    Example Source Code jQuery变量要求首字符为'_', 其他与原生JavaScript 规则相同, 如: _iTaoLun;
-    另, 要求变量集中声明, 避免全局变量.
+            border-radius: 0.8em;
 
-// img
-    图片规范
+    // img 图片规范
     　　1. 所有页面元素类图片均放入img文件夹, 测试用图片放于img/demoimg文件夹;
     　　2. 图片格式仅限于gif || png || jpg;
     　　3. 命名全部用小写英文字母 || 数字 || _ 的组合，其中不得包含汉字 || 空格 || 特殊字符；
@@ -19,51 +262,35 @@
     　　6. 运用css sprite技术集中小的背景图或图标, 减小页面http请求,
            但注意, 请务必在对应的sprite psd源图中划参考线, 并保存至img目录 下.
 
-// 开发及测试工具约定
-　　测试工具: 前期开发仅测试FireFox  & IE7 & IE8 ,
-    后期优化时加入Opera & Chrome & Safari;
-　　建议测试顺序: FireFox-->IE8-->IE7 -->Opera-->Chrome-->Safari, 
-        建议安装firebug及IE Tab Plus插件.
-    4:IE6访问页面时判断提供升级链接
-    <!--[if lte IE 6]>
-    <div id="ie6-warning">您正在使用 Internet Explorer 6，在本页面的显示效果可能有差异。建议您升级到 <a href="http://www.microsoft.com/china/windows/internet-explorer/" target="_blank">Internet Explorer 8</a> 或以下浏览器： <a href="http://www.mozillaonline.com/">Firefox</a> / <a href="http://www.google.com/chrome/?hl=zh-CN">Chrome</a> / <a href="http://www.apple.com.cn/safari/">Safari</a> / <a href="http://www.operachina.com/">Opera</a>
-    </div>
-    <script type="text/javascript">
-    function position_fixed(el, eltop, elleft){
-    // check if this is IE6
-    if(!window.XMLHttpRequest)
-    window.onscroll = function(){
-    el.style.top = (document.documentElement.scrollTop + eltop)+"px";
-    el.style.left = (document.documentElement.scrollLeft + elleft)+"px";
-    }
-    else el.style.position = "fixed";
-    }
-    position_fixed(document.getElementById("ie6-warning"),0, 0);
-    </script>
-    <![endif]-->
+    // 开发及测试工具约定
+    　　1、测试顺序: FireFox-->IE8-->IE7 -->Opera-->Chrome-->Safari, 
+        2、IE6访问页面时判断提供升级链接
+            <!--[if lte IE 6]>
+            <div id="ie6-warning">您正在使用 Internet Explorer 6，在本页面的显示效果可能有差异。建议您升级到 <a href="http://www.microsoft.com/china/windows/internet-explorer/" target="_blank">Internet Explorer 8</a> 或以下浏览器： <a href="http://www.mozillaonline.com/">Firefox</a> / <a href="http://www.google.com/chrome/?hl=zh-CN">Chrome</a> / <a href="http://www.apple.com.cn/safari/">Safari</a> / <a href="http://www.operachina.com/">Opera</a>
+            </div>
+            <script type="text/javascript">
+            function position_fixed(el, eltop, elleft){
+            // check if this is IE6
+            if(!window.XMLHttpRequest)
+            window.onscroll = function(){
+            el.style.top = (document.documentElement.scrollTop + eltop)+"px";
+            el.style.left = (document.documentElement.scrollLeft + elleft)+"px";
+            }
+            else el.style.position = "fixed";
+            }
+            position_fixed(document.getElementById("ie6-warning"),0, 0);
+            </script>
+            <![endif]-->
 
 // 16-10-09 08:37:34 
-    css 样式规则
-    1、先定位置：
-        1.1 水平居中有2中方式
-            a、块 ： margin: auto
-            b、inline 和 inline-block : 父元素text-align: center;
+    1 水平居中有2中方式
+        a、块 ： margin: auto
+        b、inline 和 inline-block : 父元素text-align: center;
 
-    2、再定宽度和高度
-        2、1 定义内部元素的区域优先
-
-
-    3、垂直居中有两种方式：
-        3、1 inline: vertical-align: middle;
-        3、2 line-height = height :
-                                比较适合一致对齐
-        3、3 padding: 上下一致:  [[div1]  [div2]                 [div3]  ]
-                                比较适合两端分别对齐的时候
-
-// 16-10-10 15:02:53 
-    1、body ： 一般只设最小宽度：1050px;
-    2、背景 ： 一般为rgba(0, 0, 0, 0.3), 即：黑色的30%;
-    3、弹窗高度：一般最大为580px; 再大就下拉条
+    2、垂直居中有两种方式：
+        2.1 inline: vertical-align: middle;
+        2.2 line-height = height 
+        2.3 padding: 上下一致
 
 // 16-10-10 17:06:31 
     css 模块化：
@@ -81,25 +308,6 @@
     3、一组对象，具有很多共同的部分，也有部分差异
         应仿照 类和继承的写法
 
-// 16-10-11 
-    // 滚动条插件   使用方法和注意事项
-    1、 jquery.mCustomScrollbar.css
-    2、 jquery.mCustomScrollbar.min.js
-        jquery.mousewheel.min.js 
-    3、	对要作用的元素
-        3.1 设置max-height,
-        3.2 使用函数：mCustomScrollbar({theme: "minimal"});
-        如：
-            $("elem").mCustomScrollbar({theme: "minimal"});	
-
-        #此元素必须设置max-height,否则不起作用。
-
-    4、滚动条的位置在块的border处，故需要右边的margin-right: 10px。
-        // 此为建议
-
-// 16-10-11 00:01:02 
-    当元素处于隐藏时，scroll, offset, client 的值为0
-
 // 16-10-16 09:40:19 
     text-align:     作用于外，外框中 文本 的对齐方式
     vertical-align: 作用于内，内联元素 在 外框中的垂直对齐方式。
@@ -112,23 +320,6 @@
     button: 文字自动对中(上下和左右)
             自动添加border
     a: 文字不自动对中
-
-// 16-09-28 
-    body{
-        font: 500 14px/1.5em "microsoft yahei";
-    }
-
-    body div{
-        font-weight: 500;
-    }
-    // 子元素并不能继承body的font的其他特性：
-    原因：子元素重写font的某一个特性,导致body中font失效
-
-// 16-09-27 21:58:28 
-    今天写一个静态网页，body:{margin:auto;}
-    body就是不居中。
-    // 原因：
-        前面写了body, p{margin: 0;}
 
 // 16-09-27 22:00:44 
     两个(ul>li*8), 怎么都对不齐，
@@ -146,7 +337,6 @@
     但display:none, 和 visible:hidden 却不行。
 
 // 16-10-18 15:20:33 
-    图片压缩：https://tinypng.com/
 
 // 16-10-18 15:28:53 
     setTimeout(function, time)
@@ -186,6 +376,9 @@
     4、对某行的tr作用样式，可能在这行中每个td或th上都显示相同的重复样式。
         例如：对tr应用背景图案，则在每一个td上都出现相同的图案。
 
+    // table的宽度
+    如果明确指定了宽度，则table-layout: auto 和 fixed没什么区别。
+
 // 16-10-20 17:01:34  
     Content Delivery Network
     内容分发网络CDN
@@ -200,7 +393,7 @@
     IE css hack:
 
     color:white;        /* 所有的 */
-    color: green\9\0;  /* IE9+ */
+    color: green\9\0;   /* IE9+ */
     +color: red;        /* IE7- */
     #1、\9\0的顺序：不可更换
     #2、*color:red; 必须放在最后，否则IE7无法识别。
@@ -257,8 +450,11 @@
     // px em rem
         任意浏览器的默认字体高都是16px。
         所有未经调整的浏览器都符合: 1em=16px。那么12px=0.75em,10px=0.625em。
-        为了简化font-size的换算，需要在css中的body选择器中声明Font-size=62.5%，这就使em值变为 16px*62.5%=10px, 
+        为了简化font-size的换算，需要在css中的body选择器中声明:
+            Font-size=62.5%，或者 font-size: 10px;
+            这就使em值变为 16px*62.5%=10px, 
         这样12px=1.2em, 10px=1em, 也就是说只需要将你的原来的px数值除以10，然后换上em作为单位就行了。
+    #chrome 中最小字体：12px(即使设置的字体低于此值，浏览器也会按照最小字体12px显示的)。
 
     //EM特点 
     1. em的值并不是固定的；
@@ -310,3 +506,154 @@
         x1 = 2x,
         y1 = 2y,
         相当于scale(2)
+
+// 16-11-25 11:42:28 什么情况下用table:
+    当需要自适应的时候
+    1、 不管有1,2 或 3项等时，要求均分整个空间。
+    2、 当有左右项时，一边的高度增加时，另一边也要增加时。
+
+// 16-12-05 11:19:17 拖动事件
+    按一般的理解：鼠标移动才叫拖动，
+    但有时，即使人没有移动鼠标，由于震动等原因，浏览器会自动判断鼠标在移动了。
+    解决方案：判断鼠标移动的位置。大于某一个小数值，才叫 “真移动”.
+
+// 16-12-05 11:29:11 正则表达式
+    1、当使用正则构造函数新建一个正则实例时，构造函数会先对字符串转义一次,如：
+    var reg = new RegExp("\d+");
+    字符串"\d+"被传入后，实际变成"d+",
+    即：reg = /d+/;
+    2、[.] == [\.], 即：及时在中括号里面，"\"也是转义的
+    3、     RegExp 构造函数 
+                    ↓
+                RegExp 实例 → 字符串
+        3.1 当一个regexp 实例作用于一个字符串时，如果带有g标志，
+            则下一次查找从上一次查找到的字符串的下一个位置开始,
+        // 如果找到字符串，返回带有index和input属性的数组。
+        // index: 找到的字符串在原字符串中的位置。
+        // input: 正则的字面量表示。
+        // 数组的第一项是与整个正则表达式匹配的字符串。
+        // 以后的每一个项是与铺货组匹配的字符串(如果有的话)
+        3.2 每一个regexp实例的行为反应到实例中的lastIndex: 下一次查找的起点
+        3.3 同时每一个regexp实例的行为都会反应到RegExp的静态属性中：
+        ---------------------------------------------------------------
+            长属性名        说明
+        ---------------------------------------------------------------
+            input           最近一次要匹配的字符串
+            lastMatch       最近一次的匹配项
+            lastParen       最近一次的捕获组
+            leftContext     input字符串中lastMatch之前的文本
+            rightContext    input字符串中lastMatch之后的文本
+
+// 16-12-12 16:00:10
+	1、右键选择
+        -webkit-user-select: none;
+        #极大地降低chrome浏览器性能
+        -moz-user-select: none;
+        #对firefox影响不大
+    2、记录版本之间的变化 往往比 记录变化的结果 更有效!
+    3、网页显示流程：
+        3.1 把html解析为dom树
+        3.2 把css解析为cssom
+        3.3 把 dom树和cssom 合成 渲染树
+        3.4 生成布局(layout), 即: 将渲染树进行平面合成。(flow)
+        3.5 绘制(painter)
+        // 前面3步往往很快，一般卡在第四步。
+        // "生成布局"(flow)和"绘制"(paint)这两步，合称为"渲染"(render)
+        // 重排 必然 重绘；
+        导致重排(reflow)的操作(即：导致布局发生变化的操作)
+        a. 修改dom
+        b. 改变元素的位置。
+        // 仅仅导致重绘的操作(即：不影响布局)
+        a. 改变元素的颜色
+
+        总结：提高网页的性能，就是要减少重排(reflow)和重绘(repainter)的频率和成本
+            // 尤其是重排(重排比重绘花费的时间要多很多)
+        一、降低频率
+            1、尽可能的把多个操作集中处理，然后一次执行，避免多次渲染(render)
+                例如：
+                    div.style.color = 'blue';
+                    div.style.marginTop = '30px';
+                    // 上面代码中，div元素有两个样式变动，但是浏览器只会触发一次重排和重绘。
+
+                    div.style.color = 'blue';
+                    var margin = parseInt(div.style.marginTop);
+                    div.style.marginTop = (margin + 10) + 'px';
+                    // 上面代码对div元素设置背景色以后，
+                    // 第二行要求浏览器给出该元素的位置，所以浏览器不得不立即重排。
+
+            // 一般来说，样式的写操作之后，
+            // 如果有下面这些属性的读操作，都会引发浏览器立即重新渲染。
+                offsetTop/offsetLeft/offsetWidth/offsetHeight
+                scrollTop/scrollLeft/scrollWidth/scrollHeight
+                clientTop/clientLeft/clientWidth/clientHeight
+                getComputedStyle()
+
+            // 所以，从性能角度考虑，尽量不要把读操作和写操作，放在一个语句里面。
+                // bad
+                div.style.left = div.offsetLeft + 10 + "px";
+                div.style.top = div.offsetTop + 10 + "px";
+
+                // good
+                var left = div.offsetLeft;
+                var top  = div.offsetTop;
+                div.style.left = left + 10 + "px";
+                div.style.top = top + 10 + "px";
+
+            #一般的规则是：
+                // 样式表越简单，重排和重绘就越快。
+                // 重排和重绘的DOM元素层级越高，成本就越高。
+                // table元素的重排和重绘成本，要高于div元素
+
+            #提高性能的技巧
+                1、不要一条条地改变样式，
+                    而要通过改变class，或者csstext属性，
+                    一次性地改变样式
+                2、尽量操作离线DOM, 克隆DOM, 隐藏DOM等，
+                    然后再用这些DOM替换原始节点 或 显示等。
+        二、降低成本
+            1、 重排和重绘的DOM元素层级越高，成本就越高。
+                table元素的重排和重绘成本，要高于div元素
+            2、 innerHTML的成本 要稍低于 原始dom操作
+                (注意：在dom数比较大的时候成本同样很高)
+            3、在某个element元素的内容发生变化时，
+                如果只有少量的dom发生操作，
+                #操作单个dom的成本要远低于内容替换(innerHTML)
+
+// 16-12-22 14:25:33 
+    让元素的高度与浏览器高度一致
+    html, body{height: 100%;}
+    div{min-height: 100%; height:auto;}
+
+// 16-12-28 14:51:23 
+    1、如果border: 5px solid; 未设置颜色，则：
+        其border颜色由其color颜色决定
+    2、列表前面的图像颜色由 li的color 决定,
+                 图像大小由 li的font-size决定。
+    3、text-decoration的颜色在除firefox之外的浏览器中由color决定
+
+// 17-01-18 09:48:28 
+    一个块元素，
+    1、使用overflow: hidden, 起遮罩效果时，
+        内部元素在其 content和padding上都可见
+    2、不管背景图片或颜色的源点:background-origin: 
+        背景在右下角的padding, border都可见。
+    3、当内部元素使用 position: absolute; bottom: 0;与父元素对齐时。
+        以父元素的border为界
+
+// 17-01-19 17:22:09 
+    当元素为fixed 或 absolute 时，
+    如果left: 0;right: 0; 相当于width: 100%;
+
+    类型        margin-left         margin-right
+    -----------------------------------------------
+    宽度确定    改变位置            不起作用
+    宽度未定    改变长度            改变长度
+
+// 17-01-25 10:30:03 
+    1、如何从psd中确定行高: 
+        a   两列相同部位的间距
+    2、假设font-size: 14px; line-hegiht: 1.33;
+        则：
+        a   小写字母a 距行最上端：(行高/2) = (14*1.33*0.5) = 9
+        b   汉字      距行最上端: (行高 - 字体高)/2 = (14*0.33*0.5) = 2
+
