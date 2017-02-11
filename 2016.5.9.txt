@@ -1,0 +1,2028 @@
+﻿// 16-12-26 11:42:52 
+    1、number
+        1.1 2/8/10/16 进制之间的转换
+        1.2 格式化
+        1.3 指数表示法：
+    2、string
+        2.1 字符方法
+            // 在某个位置上的字符或字符编码
+            charAt()
+            charCodeAt()
+        2.2 字符串操作方法
+            // concat: 合并
+            // 从字符串中获取子字符串
+            slice(), subStr, subString()
+            // 接受1~2个参数，
+            // 第一个参数表示开始位置
+            // 第二个参数表示结束位置：如果未提供，则表示到字符串结尾
+
+            // slice(), subString()的第二个参数：结束位置(不包括)
+            // subStr()的第二个参数：子字符串的长度
+
+            // 如果参数为负数
+            // slice(), 参数+字符串长度
+            // subString(), 参数变为0
+            // subStr(), 第一个参数+字符串长度，第二个参数变为0
+        2.3 字符串位置方法
+            indexOf(), lastIndexOf()
+            // 接受2个参数：要查找的字符串，查找的起点
+        2.4 trim()
+            // IE8- 不支持
+        2.5 字符串模式匹配方法
+            match()
+            // 返回一个类数组对象：
+            // index: 匹配项在原字符串中的索引
+            // 数组中的第一项为匹配项，之后的每一项为捕获组(如果有的话)
+            search()
+            // 字符串替换
+            replace()
+            // 接受2个参数
+            // 第一个参数可以为字符串或正则
+            // 如果为字符串，则只替换第一个匹配项
+            // 如果要替换所有的，则必须为正则，且指定g
+
+            // 第二个参数可以为字符串或函数
+            // 如果为字符串，则可以包含特殊语义的字符
+            // $$:  $
+            // $&:  匹配项(RegExp.lastMatch)
+            // $`:  匹配项前面的内容(RegExp.leftContext)
+            // $':  匹配项后面的内容(RegExp.rightContext)
+            // $n:  捕获组
+            // $nn: 捕获组
+
+            // 如果为函数，则接受至少3个参数：
+            // 第一个参数为匹配项: match
+            // 如果有捕获组，则参数为捕获组
+            // 倒数第二个：匹配项在原字符串中的索引: index
+            // 倒数第一个：原字符串: originalText
+
+            split()
+            // 接受一个分隔符，分割字符串
+        2.6 字符串大小写转换
+            toUpperCase, toLowerCase
+        2.7 fromCharCode()
+            // 接受任意数量的字符编码作为参数，转化为字符串
+    3 Array
+        3.1 检测数组
+            value instanceof Array
+            Array.isArray(value)
+        3.2 转换方法
+            toString()
+            array.join(",")
+        3.3 栈方法
+            last-in-first-out
+            push(), pop()
+        3.4 队列方法
+            first-in-first-out
+            push(), shift(), unshift()
+        3.5 重排列方法
+            reverse()
+            sort(): // 可接受一个比较函数作为参数
+            function compare(arg1, arg2){
+                // 升序排列
+                return arg1 - arg2;
+            }
+        3.6 操作方法
+            // 产生新数组
+            concat()
+            slice()
+            // 改变原数组
+            splice(startIndex, delNum, addItem)
+        3.7 迭代方法
+            every()
+            some()
+            filter()
+            map()
+        3.8 减少方法
+            reduce(pre, cur, index, arr)
+    4 RegExp
+    5 Date
+    6 Math
+        6.1  常量
+            Math.PI
+            Math.E
+            Math.LN10          // 10的自然对数
+            Math.LN2           // 2的自然对数
+            Math.LOG10E        // 以10为底，E的对数
+            Math.LOG2E         // 以2为底，E的对数
+            Math.SQRT2         // 2的平方根
+            Math.SQRT1_2       // ½的平方根
+
+        6.2  舍入方法
+            Math.ceil()
+            Math.floor()
+            Math.round()
+
+        6.3  选择方法
+            Math.max()
+            Math.min()
+            Math.random()
+            
+        6.4  数学方法
+            Math.abs()
+            Math.sqrt()
+            //三角函数
+            Math.sin()
+            Math.cos()
+            Math.tan()
+            Math.asin()
+            Math.acos()
+            Math.atan()
+            //幂函数
+            Math.pow(n1,n2)     //
+            Math.exp(n)
+            //对数函数
+            Math.log(n)           //
+
+
+
+
+//2016.5.9
+    1：javascript中数字表示的三种形式：
+        八进制：070     ,以数字0开头,只含0~7。如果包含其他的数字，则视为十进制
+        十进制：100；
+        十六进制：0xff  ,以数字0和字母x开头。
+        三则之间相互转化：toString(2|8|10|16)
+
+        指数表示：1.2e+3 == 1200
+        数字格式化方法：
+        1：toFixed(n)
+            固定小数位数
+        2：toPrecision(n)
+            固定总位数
+        3：toExponential(n)
+            指数表示形式,n为总位数
+
+    2:字符的表示方式：
+        除了常用的字符，其他的字符字面量：
+        \xnn,    nn为2个16进制数字,如：\xf1;
+        \unnnn,  nnnn为4个16进制数字,如：\uff00;中文区间为：\u4e00~\u9fcf;
+
+
+//2016.06.02
+1，重新认识数据库
+
+2，构建对象模型(对象由哪些因素确定?)
+
+3,看完python书
+
+4，强化基础数据类型和字符，序列，字典，集合等的使用
+
+5，遍历硬盘上的文件和文件夹
+
+6，C语言
+
+7，正则表达式
+
+8，css动画    
+	transform：转换（静态）
+	transition：转变(动态)
+	animation （真正的动画）
+
+//-------------20160526-----------------
+1、postgresql 基本数据类型、日期和时间、类型转换
+
+2、python     基本数据类型：序列，映射
+
+3、css动画    transform：转换（静态）
+	      transition：转变(动态)
+		animation （真正的动画）
+
+4、js动画    setInterval 和setTimeout
+
+
+5、psutil     python计算系统cpu,mem等的模块
+
+6、highcharts   纯js的web绘图插件
+
+7、canvas
+
+8、adobe reader
+
+//2016.6.10------------------------------------------------------------------
+select 的 line-height 不起作用
+
+
+安装psycopg是出错：Error: pg_config executable not found.
+	需要安装postgresql-devel插件
+　　	yum install postgresql-devel*
+
+
+
+使用 pip install psycopg2，特么报错，Error: pg_config executable not found。
+    网上搜索下，说需要安装 pg( //psql的API) 和 py(python的API) 的驱动：
+    Debian系:
+    apt-get install libpq-dev python-dev
+    RedHat系：
+    yum install libpqxx-devel python-devel
+    安装完成，再使用 pip install psycopg2，OK，一切顺利。
+
+//Peer authentication failed foruser "mypguser"
+//Ident authentication failed foruser "mypguser"
+//原因解释：postgresql 密码有两种认证方式：直接peer(trust)  和 md5(ident)确认
+//在/etc/postgresql/X.Y/main/pg_hba.conf 配置文件中
+//local
+local all all trust
+//IPV4
+host all all 127.0.0.1/32   trust
+//IPV6
+host all all ::1/128    ident
+
+
+linux发行版通常会把类库的头文件和相关的pkg-config分拆成一个单独的xxx-dev(el)包.
+
+以python为例, 以下情况你是需要python-dev的
+
+你需要自己安装一个源外的python类库, 而这个类库内含需要编译的调用python api的c/c++文件
+你自己写的一个程序编译需要链接libpythonXX.(a|so) (注:以上不含使用ctypes/ffi或者裸dlsym方式直接调用libpython.so)
+其他正常使用python或者通过安装源内的python类库的不需要python-dev.
+
+
+ubuntu环境下安装gevent步骤
+Gevent是一个基于greenlet的Python的并发框架，以赖于greenlet和libevent库，因此安装Gevent前，首先需要安装greenlet和libevent。
+（1）环境准备
+　　　1.1 sudo apt-get install build-essential
+　　　1.2 sudo apt-get install python-dev
+　　　1.3 sudo apt-get install python-setuptools
+ (2) 从http://code.google.com/p/gevent/downloads/list 下载原码包gevent-1.0b3.tar.gz
+ (3) 解压 tar -xvzf gevent-1.0b3.tar.gz 
+（4）安装greenlet，  easy_install greenlet
+（5）安装gevent， sudo python setup.py install
+安装完成后可以通过在python交互模式下 import gevent来判断安装是否成功，如果没有错误提示的话，基本可以认为gevent安装已经成功。
+
+
+安装编译pip之前要先安装ez_setup.py 或easy-install 或 setuptools  （都是一个意思：安装工具包）
+//pip 工作原理   1、从pypi网站下载内容，调用setuptools安装python程序模块
+// 1、 wget https://bootstrap.pypa.io/get-pip.py  
+//   2、 python get-pip.py 安装
+
+
+libsqlite3-dev/sqlite-devel     动态链接库文件C文件（安装编译之后，就成了： _sqlite3.so/windows _sqlite3.pyd ）
+libfreetype6-dev                                     _imagingft C module / windows _imaging.pyd 或者/_imaging.dll
+
+
+
+freetype-devel libjpeg-devel libpng-devel    安装PIL之前，要先安装这三个C
+
+
+//2016.6.16------------------------------------------------------------------------
+-- -- -- -- -- 段落语义 -- -- -- -- -- --
+<article>
+<section>
+<aside>         //标签定义 article 以外的内容。aside 的内容应该与 article 的内容相关。
+<footer>        //定义 section 或 page 的页脚
+<header>
+<nav>           //标签定义导航链接的部分             
+        //如果文档中有“前后”按钮，则应该把它放到 <nav> 元素中
+        例如：
+            <nav>
+              <a href="index.htm">w3school 在线教程</a>
+              <a href="html5_meter.htm">上一页</a>
+              <a href="html5_nest.htm">下一页</a>
+            </nav>
+
+2、-- -- -- -- -- 短语，语义元素 -- -- -- -- -- --
+//以下元素都是短语元素, 也是语义元素。
+//我们建议使用这些标签是为了某种语义，而不是仅仅为达到某种呈现效果
+<dfn>
+    //标签可标记那些对特殊术语或短语的定义。
+	//作为一种通用样式，尤其在技术文档中，当第一次新的术语时，应该将它们与普通文本分开，
+	//这样读者可以更好地理解文章当前的主题，而从那以后就不要再对这个术语进行任何标记了。
+<pre>     
+    //预格式式化文本，保留空格和换行
+<code>
+    //定义计算机代码文本
+<samp>
+    //定义样本文本(用前后空格来强调)
+	//表示一段用户应该对其没有什么其他解释的文本字符。
+    //要从正常的上下文抽取这些字符时，通常要用到这个标签。
+    例如：
+        字符序列<samp>ae</samp>可能会被转换为 &aelig; 连字字符。
+        字符序列 ae 可能会被转换为 æ 连字字符。
+
+<kbd>
+    //定义键盘文本,表示文本是从键盘上键入的
+    例如：
+	    键入 <kbd>quit</kbd> 来退出程序，或者键入 <kbd>menu</kbd> 来返回主菜单。
+<var>
+    //定义变量。一般与 <pre> 及 <code> 标签配合使用。
+<cite>		
+    //定义引用。可使用该标签对参考文献的引用进行定义，比如书籍或杂志的标题。
+<em>
+    //定义强调的文本
+<strong>
+    //定义重要的文本
+
+-- 引用 --
+<q>这是一个短的引用：</q> //短的引用        cite:定义应用来源
+<blockquote>                    //长的段落应用
+
+3、-- -- -- -- --  类word样式的视觉元素 -- -- -- -- -- --
+// <big>,<small> 标签可以嵌套，从而连续地把文字放大或缩小。
+<small>缩小</small>
+<big>放大</big>
+<sub>下标</sub>
+<sup>上标</sup>
+<b>加粗</b>
+<i>斜体</i> 
+<del>删除</del>
+<ins>插入</ins>
+<mark>记号</mark>
+- -- -- ruby,rt,rp  -- -- --
+<ruby> 元素：由一个或多个字符（需要一个解释/发音）,
+	     一个提供信息的 rt 元素组成，
+	     还包括可选的 rp 元素，定义当浏览器不支持 "ruby" 元素时显示的内容。
+
+<rp> 定义注释(不支持 ruby 元素的浏览器所显示的内容)
+<rt> 定义解释或发音
+
+<ruby>
+漢 <rt><rp>(</rp>han<rp>)</rp></rt>         //注释在字符旁边
+</ruby>
+
+<ruby>
+漢 <rt>han</rt>         //注释在字符上边
+</ruby>
+
+4、-- -- -- -- -- 为了计算机可读 -- -- -- -- -- -- 
+<abbr title="etcetera">etc.</abbr>
+
+<time>
+    //该元素能够以机器可读的方式对日期和时间进行编码，
+    //这样，举例说，用户代理能够把生日提醒或排定的事件添加到用户日程表中，
+    //搜索引擎也能够生成更智能的搜索结果。
+    例如：
+        我在 <time datetime="2010-02-14" pubdate="pubdate">情人节</time> 有个约会。
+    //pubdate属性指示:
+        <time>元素中的日期/时间是文档(或最近的前辈<article>元素)的发布日期。
+
+
+
+
+
+--------------  optgroup ----------------
+	<optgroup label="title">     
+
+
+-------------  进度条: progress, meter ----------------
+    //active
+	<progress value="0.2"></progress>                                               
+    //static
+	<meter min="0" max="20" value="17" low="5" high="15" optimum="10">15</meter>    
+
+-- -- -- -- -- detail,summary -- -- -- -- -- --
+//<summary> 标签包含 details 元素的标题
+//其应该是 details元素的第一个子元素
+<details>
+<summary>HTML 5</summary>
+This document teaches you everything you have to learn about HTML 5.
+</details>
+
+<col>
+<colgroup>
+
+
+-- -- -- -- -- 列表 -- -- -- -- -- --
+//三种列表
+//1.定义列表
+<dl>
+  <dt>Coffee</dt>
+  <dd>Black hot drink</dd>
+  <dt>Milk</dt>
+  <dd>White cold drink</dd>
+</dl>
+//2.有序列表
+<ol>
+   <li>Coffee</li>
+   <li>Tea</li>
+</ol>
+//3.无序列表
+<ul>
+    <li></li>
+</ul>
+
+-----------------------  图片，映射，图片分区  ------------------------------
+	<img/> <map> <area>                    
+		<img src="planets.jpg" border="0" usemap="#planetmap" alt="Planets" />
+
+		<map name="planetmap" id="planetmap">
+		  <area shape="circle" coords="180,139,14" href ="venus.html" alt="Venus" />
+		  <area shape="circle" coords="129,161,10" href ="mercur.html" alt="Mercury" />
+		  <area shape="rect" coords="0,0,110,260" href ="sun.html" alt="Sun" />
+		</map>
+
+	
+-- -- -- -- -- object,param -- -- -- -- -- --
+<object>                            //定义一个嵌入的对象,多媒体
+<param>                             //为对象定义参数
+			<object id="Slider1" width="100" height="50">
+			  <param name="BorderStyle" value="1" />
+			  <param name="MousePointer" value="0" />
+			  <param name="Enabled" value="1" />
+			  <param name="Min" value="0" />
+			  <param name="Max" value="10" />
+			</object>
+
+-- -- -- -- -- track -- -- -- -- -- --
+<track>     //标签为诸如 video 元素之类的媒介规定外部文本轨道。
+
+播放带有字幕的视频：
+
+<video width="320" height="240" controls="controls">
+  <source src="forrest_gump.mp4" type="video/mp4" />
+  <source src="forrest_gump.ogg" type="video/ogg" />
+  <track kind="subtitles" src="subs_chi.srt" srclang="zh" label="Chinese">
+  <track kind="subtitles" src="subs_eng.srt" srclang="en" label="English">
+</video>
+
+//------------------------------ 标准属性 -----------------------------------
+-- -- -- -- -- menu -- -- -- -- -- --
+contextmenu 是上下文菜单，即鼠标右击元素会出现一个菜单
+<menu> 元素属性：
+    type ：菜单类型属。
+        有三个值
+        1）context：上下文；
+        2）toolbar：工具栏；
+        3）list：列表
+    label ：菜单显示的名称。
+<menuitem>  属性：
+    label：菜单项显示的名称
+    icon：在菜单项左侧显示的图标
+    onclick：点击菜单项触发的事件
+
+<div style='display:inline' contextmenu="mymenu" accesskey="b">右击我试试</div>
+
+<menu type="context" id="mymenu" >
+  <menuitem label="菜单1" onclick="alert('这是菜单1');" icon="http://d.lanrentuku.com/down/gif/gif-0145.gif"></menuitem>
+  <menuitem label="菜单2" onclick="alert('这是菜单2');" icon="http://d.lanrentuku.com/down/gif/gif-0161.gif"></menuitem>
+  <menu label="菜单3">
+    <menuitem label="菜单3-1" icon="http://up.2cto.com/2012/0407/20120407090812492.gif" onclick="alert('这是菜单3-1');">
+    </menuitem>
+    <menu label="菜单3-2" > 
+       <menuitem label="菜单3-2-1" icon="http://up.2cto.com/2012/0407/20120407090813196.gif" onclick="alert('这是菜单3-2-1');">
+       </menuitem>
+    </menu>
+  </menu>
+</menu>
+
+//重新定义了 menu 元素，且使用用于排列表单控件
+<menu>
+	<li><input type="checkbox" />Red</li>
+	<li><input type="checkbox" />blue</li>
+</menu>
+
+-- -- -- -- -- accesskey -- -- -- -- -- --
+//定义访问元素的热键，用alt+(shift)+accesskey访问(不是选中，是点击)
+accesskey="b"   
+
+-- -- -- -- -- contenteditable -- -- -- -- -- --
+固定内容是否可编辑
+
+-- -- -- -- -- 创作者定义的属性 -- -- -- -- -- --
+data-yourvalue
+
+//----------------------------------------------------------------
+-- -- -- -- -- 新的input类型 -- -- -- -- -- --
+email
+url
+number
+range
+Date pickers (date, month, week, time, datetime, datetime-local)
+search
+color
+
+-- -- -- -- -- 新的表单元素 -- -- -- -- -- --
+datalist
+
+-- -- -- -- -- 新的表单属性 -- -- -- -- -- --
+//新的 form 属性：
+autocomplete
+novalidate
+
+//新的 input 属性：
+autocomplete
+autofocus
+form
+form overrides (formaction, formenctype, formmethod, formnovalidate, formtarget)
+height 和 width
+list
+min, max 和 step
+multiple
+pattern (regexp)
+placeholder
+required
+
+//--属性 ---------  元素
+list -------------  datalist
+usemap ------------------  map
+contextmenu -------------  menu   //部分浏览器并不支持(chrome,360极速)
+
+//-----------------------2016/6/21--------------------------------
+white-space: //换行                                          --决定换不换行
+		// 合并空格 normal/pre-line
+		// 保留空格 pre-wrap
+	     //不换行
+		// 合并空格 nowrap
+		// 保留空格 pre
+word-wrap:    //当  一个单词  超过指定容器的边界时是否断行
+	normal： 允许内容顶开或溢出指定的容器边界。
+	break-word： 内容将在边界内换行。如果需要，单词内部允许断行。
+wrod-break:  //字内换行行为
+word-spacing: //单词之间的间隔
+
+//overflow  -- 当对象的内容超过其指定高度及宽度时如何管理内容  --外框
+text-overflow:只在overflow为hidden和scroll时，才起作用。
+
+//----------------2016.6.22----------------------------------------
+-1、渐变
+	linear-gradient: <point> || <angle>,<color> <length|percentage>,<color> <length|percentage>
+    // 线性渐变只能以盒模型的四个顶点为起点，故：top|bottom left|right
+	radial-gradient: <point>,<length>{1,2},<clolr-stop>,<color-stop>
+	repeating-linear-gradient:
+	repeating-radial-gradient:
+
+0、background:
+	background-color:
+	background-image: url() / 渐变
+	background-position/background-size:                        / auto - cover - contain - percentage -length
+	background-origin: content-box / padding-box / border-box
+	background-clip:   content-box / padding-box / border-box / text
+	background-repeat: no-repeat / repeat / repeat-x / repeat-y
+	background-attachment: fixed / scroll
+
+1、text-decoration
+	text-decoration-line: underline / overline / line-through
+	text-decoration-style: solid / dotted / dashed / wavy / double
+	text-decoration-color:
+2、text-shadow:
+	none | <><,><,>
+	<>:<shadow>
+	<length><length><length><color>
+
+3、writing-mode:
+	vertical-lr
+	vertical-rl
+	horizontal-tb
+4、direction:
+	ltr
+	rtl
+   //配合unicode-bidi使用
+        bidi-override
+	normal
+
+5、list-style:
+	list-style-image：none / url()
+	list-style-position：outside / inside
+	list-style-type：
+
+6、table
+	caption-side: top / bottom / left /right
+	table-layout: auto / fixed
+	border-collapse: collapse / seperate
+	border-spacing : 
+	empty-cells :
+
+7、content:
+	attr()         //属性
+	counter()      //计数器                   counter-increament:命名计数器 ; counter-reset:重置计数器
+	url()
+
+8、用户界面(一个盒模型对象)
+	box-sizing: context-box / border-box       //盒模型方式
+	cursor:  
+	resize: none / both / horizontal / vertical     //允不允许缩放：所有设置了overflow,除了visible之外的元素
+	text-overflow：clip / ellipsis                  //对象内文本的溢出行为
+	outline: [outline-width] || [outline-style] || [outline-color]
+	outline-offset:          //轮廓偏移量
+
+9、transform(盒模型对象)
+	none / translate - scale - rotate - skew / 矩阵变换
+
+10、transition(某个属性):
+	transition-property：none / all / property
+	transition-duration: 2s
+	transition-timing-function: 
+		贝塞尔曲线   cubic-bezier(<number>, <number>, <number>, <number>)： 
+				//特定的贝塞尔曲线类型，4个数值需在[0, 1]区间内
+		linear       //线性过渡
+		ease         //平滑过渡   ease-in / ease-out
+	transition-delay:
+
+11、animation:
+	animation-name:           //有@keyframes定义
+	animation-duration:
+	animation-timing-function:
+	animation-delay:
+	animation-iteration-count:
+	animation-direction: normal / alternate(正常与反向交替)
+
+12、media
+	<media-query>
+	[ only|not ] <media-type> and (<media-feature>:value) and ...
+	//三个位置
+	1、<link href="" type="text/css" media="<media-query>">
+	2、css样式表中
+		@media <media-query>{
+			...
+		}
+	3、@import url() <media-query>
+
+13、calc()函数
+
+
+//2016/7/13
+权限问题导致Nginx 403 Forbidden错误的解决方法
+user  root;   //表示nginx以哪个用户启动。普通用户可能没有权限访问其他用户的资源
+
+location [~|~*|=] / {
+            root   /root/html;   //最后没有'/'线
+            index  index.html index.htm;
+        }
+location  / {
+            include uwsgi_params;        //加载uwsgi模块
+	    uwsgi_pass 127.0.0.1:9090;   //把获取的数据转发到127.0.0.1:9090
+        }
+
+//uwsgi 两种方式启动
+1、命令行 uwsgi --http :80 --wsgi-file /www/test.py
+2、ini 文件
+	uwsgi myini.ini
+	//uwsgi配置参数   ---具体参考uwsgi --help
+	socket ： 地址和端口号，   //表示从哪里接受数据，127.0.0.1:9090 表示只能从本地的9090端口接受数据
+							  //0.0.0.0:0     表示可以从任何网络的任何端口接受数据
+
+	processes ： 开启的进程数量
+
+	workers ： 开启的进程数量，等同于processes（官网的说法是spawn the specified number ofworkers / processes）
+
+	chdir ： 指定运行目录（chdir to specified directory before apps loading）  //python运行的根目录
+
+	wsgi-file ： 载入wsgi-file（load .wsgi file）                               //需要的wsgifunc()
+
+	stats ： 在指定的地址上，开启状态服务（enable the stats server on the specified address）
+
+	threads ： 运行线程。由于GIL的存在，我觉得这个真心没啥用。（run each worker in prethreaded mode with the specified number of threads）
+
+	master ： 允许主进程存在（enable master process）
+
+	daemonize ： //使进程在后台运行，并将日志打到指定的日志文件或者udp服务器（daemonize uWSGI）。实际上最常用的，还是把运行记录输出到一个本地文件上。
+
+	pidfile ： 指定pid文件的位置，记录主进程的pid号。
+
+	vacuum ： 当服务器退出的时候自动清理环境，删除unix socket文件和pid文件（try to remove all of the generated file/sockets）
+
+	disable-logging ： 不记录请求信息的日志。只记录错误以及uWSGI内部消息到日志中。如果不开启这项，那么你的日志中会大量出现这种记录：
+
+	[pid: 347|app: 0|req: 106/367] 117.116.122.172 () {52 vars in 961 bytes} [Thu Jul  7 19:20:56 2016] POST /post => generated 65 bytes in 6 msecs (HTTP/1.1 200) 2 headers in 88 bytes (1 switches on core 0)
+
+
+//2016/7/14
+vim 颜色配置方案中的颜色代表数字(彩色终端)：
+1：darkred
+2：darkgreen
+3：darkyellow
+4：darkblue
+5：darkcyan(深紫色)
+6：darkcyan(深蓝绿色)
+7：灰色
+>8：白色
+
+//参数层思想 （参数必须分层，要有优先级）
+	//如果用户没有提供任何参数，或部分参数，也要保证程序正常运行
+	//当有多套参数时，就需要排列，确定优先级。通常默认参数为最底层
+	
+nginx 配置文件中：
+	include /etc/nginx/sites-enabled/ *  提供了站点运行的默认参数。//如果加载，则后面的location不起作用
+
+//linux 下VIM安装
+//知识提要
+1、使用vim --version 
+	查看vim的大部分的安装信息
+2、vim的配置文件位置
+	//全局配置文件(所有用户都有效)
+	2.1先使用vim --version查看vim的主程序目录$vim;则配置文件为：$vim/vimrc
+	2.2其他颜色，脚本等文件在$vim/vim73/下
+	//用户自个的配置文件(对单个用户有效，优先级最高)
+	2.3在用户主目录/home/$user/下的: .vimrc
+	2.4/home/$user/下的.vim/目录下
+
+3、linux 安装方式 apt-get   和 源码安装
+使用apt-get/yum安装时，有时出现文件不全的现象
+
+4、颜色配置方案中(对GUI，彩色终端cterm,黑白终端term)//对不同的设备，要分别设置
+	//window中的vim应该使用GUI,linux下的应该使用cterm
+
+//2016/7/15
+html中字符集：&x3333;
+css中的字符集：\3333
+js 中的字符集：\u3333 或者 \x33
+
+//2016/7/16
+centos7下  postgrsql安装
+1、开始用命令：yum install postgresql  安装，结果服务无法启动
+//2、正确步骤
+	2.1 先把postgresql服务器的下载地址添加到系统包管理工具中：
+		a. rpm -Uvh http://yum.postgresql.org/9.4/redhat/rhel-7-x86_64/pgdg-centos94-9.4-1.noarch.rpm
+		b. rpm -i http://yum.postgresql.org/9.2/redhat/rhel-6-x86_64/pgdg-redhat92-9.2-7.noarch.rpm
+	2.2 安装2个包：postgresql92-server       postgresql92-contrib
+	2.3 初始化数据库
+		/usr/pgsql-9.4/bin/postgresql94-setup initdb
+	2.4启动服务并设置为开机启动
+		systemctl enable postgresql-9.4  
+		systemctl start postgresql-9.4  
+	2.5开放防火墙端口(centos7与6的很大不同就是加入防火墙) //系统防火墙也可能没开启
+		firewall-cmd --permanent --add-port=5432/tcp  
+		firewall-cmd --permanent --add-port=80/tcp  
+		firewall-cmd --reload
+	2.6 切换到 postgres用户 访问PostgreSQL
+	2.7 psql 名利
+	2.8 设置postgres用户密码
+		postgres=# \password postgres
+	2.9停止和启动postgresql服务
+		service postgresql-9.4 start  
+		service postgresql-9.4 stop 
+
+//3、源码安装（最保险）
+	1. 下载PostgreSQL 源码包
+
+	# wget http://ftp.postgresql.org/pub/source/v9.2.4/postgresql-9.2.4.tar.bz2
+
+	2. 解压源码包
+
+	# tar xjf postgresql-9.2.4.tar.bz2
+
+	3. 进入解压后的目录
+
+	# cd postgresql-9.2.4
+
+	4. 查看INSTALL 文件
+
+		//INSTALL 文件中Short Version 部分解释了如何安装PostgreSQL 的命令，
+		//Requirements 部分描述了安装PostgreSQL 所依赖的lib，比较长，
+		先configure 试一下，如果出现error，那么需要检查是否满足了Requirements 的要求。
+
+	5. 开始编译安装PostgreSQL 数据库。
+
+		[root@TS-DEV postgresql-9.2.4]# ./configure 
+
+		//configure 成功，无错误。
+
+	6. 执行gmake
+
+		[root@TS-DEV postgresql-9.2.4]# gmake
+
+		//gmake 成功，Ready to install.
+
+	7. 执行gmake install
+
+		[root@TS-DEV postgresql-9.2.4]# gmake install
+
+		//gmake install 成功，到这一步，PostgreSQL 源码编译安装完成，下面开始配置PostgreSQL.
+
+	8. 设置环境变量
+
+		8.1 # vi .bash_profile
+
+		8.2 把 PATH=$PATH:$HOME/bin 改成 PATH=$PATH:$HOME/bin:/usr/local/pgsql/bin
+
+		保存退出。
+
+		让环境变量生效：
+
+		8.3 # source .bash_profile 
+
+	9. 添加用户postgres
+
+		# adduser postgres
+
+		* 更改用户目录（可选操作）
+
+		# vi /etc/passwd
+
+		把 postgres:x:528:528::/home/postgres:/bin/bash
+
+		改成 postgres:x:528:528::/usr/local/pgsql:/bin/bash
+
+		将.bash_profile 移动到新的用户目录并修改权限
+
+		# cp /home/postgres/.bash_profile /usr/local/pgsql/
+
+		# chown postgres.postgres .bash_profile
+
+		删除用户目录：
+
+		[root@TS-DEV home]# rm -rf postgres/
+
+	10. 初始化数据库
+
+	10.1 新建数据目录
+
+		# mkdir /usr/local/pgsql/data
+
+	10.2 更改权限
+
+		# chown postgres /usr/local/pgsql/data
+
+	10.3 切换到postgres 用户
+
+		# su - postgres
+
+	10.4 init db
+
+		$ /usr/local/pgsql/bin/initdb -D /usr/local/pgsql/data/
+
+	//到这里数据的初始化就完成了。
+
+	11. 系统服务
+
+		11.1 回到root 用户
+
+			$ exit
+
+		11.2 复制安装目录下的linux文件到/etc/init.d/
+
+			进入postgresql 的安装目录（即刚刚使用tar命令解压的目录）
+
+			# cd postgresql-9.2.4
+
+			# cp contrib/start-scripts/linux /etc/init.d/postgresql
+
+		11.3 添加执行权限
+
+			# chmod +x /etc/init.d/postgresql
+
+		11.4 启动数据库
+
+		11.5 让数据库开机启动
+
+			# chkconfig --add postgresql 
+
+			# chkconfig postgresql on
+
+		11.6 创建数据库操作的历史记录文件
+
+	12. 测试使用
+
+		# su - postgres
+
+		$ createdb test
+
+		$ psql test
+
+//2016/7/18
+pip install PIL  # 提示找不到合适的版本 
+pip install pillow   就正常了
+
+//
+解决sqlite 删除记录后数据库文件大小不变
+  原因：sqlite采用的是变长纪录存储，当你从Sqlite删除数据后，未使用的磁盘空间被添加到一个内在的”空闲列表”中用于存储你下次插入的数据，
+  用于提 高效率，磁盘空间并没有丢失，但也不向操作系统返回磁盘空间，这就导致删除数据乃至清空整个数据库后，
+  数据文件大小还是没有任何变化，还是很大
+
+  #解决方法：两种
+
+	一，在数据删除后，手动执行VACUUM命令，执行方式很简单
+
+		sqlite> vacuum；
+
+		VACUUM命令会清空“空闲列表”，把数据库尺寸压缩到最小。但是要耗费一些时间。
+
+
+	二，在数据库文件建成中，将auto_vacuum设置成“1”。
+
+	注意：只有在数据库中未建任何表时才能改变auto-vacuum标记。试图在已有表的情况下修改不会导致报错。
+
+	cmd.CommandText = "PRAGMA auto_vacuum = 1;"
+
+	cmd.ExecuteNonQuery()
+
+	当开启auto-vacuum，当提交一个从数据库中删除除数据的事物时，数据库文件自动收缩。
+
+	数据库会在内部存储一些信息以便支持这一功能，这使得数据库文件比不开启该选项时稍微大一些。
+
+	我的表结构，不含任何数据是，数据库文件大小是25K左右，开了auto_vacuum之后是26K。
+
+	插入运行基础数据后，文件变成35K，开了auto_vacuum之后是36K。
+
+	第二个方法同样有缺点，只会从数据库文件中截断空闲列表中的页， 而不会回收数据库中的碎片，
+	也不会像VACUUM 命令那样重新整理数据库内容。
+	实际上，由于需要在数据库文件中移动页， auto-vacuum 会产生更多的碎片。
+	而且，在执行删除操作的时候，也有那个.db-journal文件产生
+
+//VIM 命令
+:  调用命令模式
+r    插入
+！调用cmd命令
+如：
+:r !python xxx.py      //把xxx.py的运行结果插入到vim的当前位置
+
+//VIM查找映射
+:verbose map xxx
+如：:verbose map <c-r>
+
+//VIM中 插入模式下调用函数和normal模式下不一样
+#normal模式下调用函数
+exe "nmap <F6> :call " . function-name
+//namp <F6> :call function()
+
+#insert
+imap <silent> <C-D><C-D> <C-R>=strftime("%e %b %Y")<CR> 
+    :表示 在当前位置插入格式化日期 #<C-R>=  插入
+imap <silent> <C-T><C-T> <C-R>=strftime("%l:%M %p")<CR>
+
+//插入日期
+strftime("%d/%m/%y %H:%M:%S")<cr>
+
+//16-07-26 09:08:16 
+使用vim 的 install 命令添加vim到右键菜单
+:! install
+
+//16-07-30 
+json中只能包含双引号"",不能包含单引号''
+
+//16-08-03 09:14:51 
+#javascript时间
+//时间有几种展现形式：毫秒数 、格式化的时间、
+//在python中，有3种形式：毫秒数、格式化时间，时间构件对象
+1、这些形式之间总是可以相互转换的
+2、python中，3种形式分别对应3个对象。在javascript中，只有一个对象。
+    *** 每种对象都有应一个构造函数。
+    *** 在javascript中，构造函数为new Date(s)  , 只接受毫秒数作为参数。故想创建一般形式的时间对象，需先把它转换为毫秒数。
+    *格式化日期      valueOf() 毫秒数
+        ↓                ↑
+        ↓                ↑
+      毫秒数  ---->   日期对象  ----> toString()/toLocalString()  格式化日期
+                         ↓
+                         ↓
+                    |—— —— —— 获取和设置日期中特定部分 ---------------------------------------------------------------|
+                    |1、getTime()/setTime()                                  //获取或设置日期毫秒数，改变了整个日期   |
+                    |2、getFullYear() / setFullYear()                        //年份                                   |
+                    |3、getMonth() / setMonth()                              // 月份 0~11                             |
+                    |4、getDate() / setDate()                                // 月中的第几天 1~31                     |  
+                    |5、getDay()                                             // 星期几                                |
+                    |6、getHours() / setHours()                              // 小时                                  |
+                    |7、getMinutes() / setMinutes()                          // 分钟                                  |
+                    |8、getSeconds() / setSeconds()                          // 秒                                    |  
+                    |9、getMilliseconds() / setMilliseconds()                // 毫秒                                  |  
+                    |10、getTimezoneOffset()                                 // 获取时区偏移的分钟数                  |
+                    |-------------------------------------------------------------------------------------------------|
+
+//函数是否可以数组作为对象
+    一般地，在函数的参数中，不要显示地写数组,如：function myFunc(arg1,[l1,l2])
+    这个在有的浏览器中会报错,如：chrome
+
+//编译py文件
+1.编译单个py文件
+
+(1)
+
+直接在命令行下执行 python -m py_compile file.py
+
+(2)
+
+   root@ubuntu:/var/# python
+
+  >>> import py_compile
+  >>> py_compile.compile(r'/home/test/test.py')
+  >>> py_compile.compile('webmail_sina.py') 
+2.批量生成pyc文件
+
+root@ubuntu:/var/# python
+>>> import compileall
+>>> compileall.compile_dir(r'/home/codemo/Desktop/python')
+
+//IE816-08-09 
+在IE8中，mac_gather登录有问题
+
+//16-08-10 
+表格中只有td,th可以接受边框，padding。(margin暂时无法通过验证)
+
+//提供文件下载的http头文件 16-08-11 
+response["Content-Type"]="application/octet-stream"
+response["Content-Disposition"]="attachment;filename={0}".format(file_name)
+
+
+//16-08-12 16:55:19 IE与其他浏览器中事件对象属性的差异
+1、获取事件对象方式
+    非IE：
+        div.onclick = function(event){      // 参数传入：
+            var e = event ;
+        };
+        div.addEventListener("click",function(event){     // 参数传入
+            var e = event ;
+        },false);
+    IE, DOM0级事件：
+        div.onclick = function(){
+            var e = window.event;           // 其作为window对象的一个属性传入
+        };
+    IE, DOM2级事件：
+        div.attachEvent("onclick",function(event){
+            var e = event;                  // 参数传入 , 此时 this == window
+        });
+
+    综合：
+        div.onclick = function(event){
+            var e = event || window.event;                  // 参数传入
+        };
+
+2、事件对象的属性差异
+//非IE：
+属性/方法           类别        读/写       说明
+------------------------------------------------------------------------------
+cancelable          Boolean     只读        表明是否可以取消事件的默认行为
+preventDefault()    Function    只读        取消事件的默认行为(cancelable=true,可用)
+bubbles             Boolean     只读        表明事件是否冒泡
+stopPropagation()   Function    只读        取消事件进一步传递(bubbles=true,可用)
+currentTarget       Element     只读        通常为this对象
+target              Element     只读        事件目标
+type                String      只读        被触发的事件类型
+
+//IE
+属性/方法           类别        读/写       说明
+------------------------------------------------------------------------------
+returnValue         Boolean     只读        取消/支持事件的默认行为
+cancelBubbles       Boolean     只读        支持/取消事件的冒泡
+srcElement          Element     只读        事件目标
+type                String      只读        被触发的事件类型
+
+
+//16-08-12 
+<div data-info="html5"></div>    html5自定义属性
+    获取这个属性有2中方式：
+    1、div_dom.dataset.info                     //IE之外的浏览器
+    2、div_dom.getAttribute("data-ino")         // 所有浏览器
+
+//16-08-12  IE与其他浏览器的差异 firstChild , childNodes
+1、IE(IE8之前)中
+    firstChild , lastChild ,nextSibling , previousSibling , childNodes 全都返回元素节点
+2、非IE(包括IE9+)中
+    以上返回包括文本节点的所有节点
+    firstElementChild , lastElementChild ,nextElementSibling , previousElementSibling 全都返回元素节点
+    childElementCount   返回元素节点的个数
+
+// 16-08-17 Python的getattr(),setattr(),delattr(),hasattr()
+// 它们是pythn自带的核心函数
+#获取        #设置/更新       #删除         #是否拥有
+1、getattr(obj,"attribute_name",value)
+2、setattr(obj,"attribute_name",value)
+3、delattr(obj,"attribute_name")
+4、hasattr(obj,"attribute_name")
+
+//16-08-19 python datetime模块时区转换
+    // datetime主要有两种对象：一种带时区:aware datetime，一种不带时区:naive datetime
+1、不带时区:navie <------->  带时区对象:aware   #replace()函数
+    datetime_obj.replace(tzinfo=tzinfo_obj)         
+    #返回另一个对象，并不是修改原对象               
+    // 利用replace()函数,带入一个时区对象tzinfo_obj  
+    // 如果tzinfo=None ,则变成不带时区的对象
+
+2、时区对象之间 转换时区                        #astimezone()函数
+    aware_datetime_obj.astimezone(tzinfo_obj)       
+    #返回另一个对象，并不是修改原对象
+    // 利用astimezone()函数，带入一个时区对象
+
+3、创建时区对象:tzinfo_obj:
+    """"
+    from datetime import tzinfo,timedelta
+    从datetime模块中导入tzinfo类，
+    但tzinfo是抽象类，不能直接实例化,一个完整的时区对象，应该实现下面定义的方法:utcoffset,tzname,dst
+    """"
+    class TZ(tzinfo):
+        def __init__(self,offset=0):
+            self._offset = offset
+        def utcoffset(self,dt):
+            return timedelta(hours=self._offset)
+        def tzname(self,dt):
+            return "UTC +%s" % self._offset
+        def dst(self,dt):
+            return timedelta(hours=self._offset)
+
+// 16-08-19 
+    在.vimrc中添加以下代码后，重启vim即可实现按TAB产生4个空格：
+    set ts=4  (注：ts是tabstop的缩写，设TAB宽4个空格)
+    set expandtab
+
+    对于已保存的文件，可以使用下面的方法进行空格和TAB的替换：
+    TAB替换为空格：
+    :set ts=4
+    :set expandtab
+    :%retab!
+
+    空格替换为TAB：
+    :set ts=4
+    :set noexpandtab
+    :%retab!
+
+// 16-08-22 14:06:53  javascript中函数更换执行环境
+  有2种方式：
+  1、显式地使用with
+  2、将某个对象的一个属性指向这个函数
+
+// 16-08-23 09:56:23 图片验证码
+    今天遇到图片验证码无法正常工作：
+    // 原因：
+        网页上的图片没有刷新，显示的任然是上次的图片，但后台服务器中的数据已经更新
+    // 解决方案：
+        在生产模板时，带入一个随机变量参数，加入到验证图片的地址后面(web.py框架)
+
+// 16-08-24 17:14:17 uwsgi 多进程问题
+    使用nginx+uwsgi部署wifidog时，碰到一个奇怪的问题：
+    1、在G.py文件中创建了一个验证图片对象
+    2、在网页中输入验证图片上的文字，一次可以验证正确，下一次又验证不正确，
+
+    // 现在搞明白了：在uwsgi的配置文件中workers=2, 这表示起2个进程轮流执行网页请求，
+    #现在看来，进程之间没有互通数据。即：每个进程都产生了一个验证图片对象
+    // 解决方案，
+    // 一、如果设置workers = 2,则可以提高web服务器响应，数据放入缓存（session/redis/memcache/数据库等）
+                #redis 和 #memcache 都是开源软件，用于高速存储的缓存
+    // 二、设置workers = 1
+
+//16-08-25 11:59:31 D3 
+    ########
+    D3 是最流行的可视化库之一，它被很多其他的表格插件所使用。
+    它允许绑定任意数据到DOM，然后将数据驱动转换应用到Document中。
+    你可以使用它用一个数组创建基本的HTML表格，或是利用它的流体过度和交互，用相似的数据创建惊人的SVG条形图
+
+// 16-08-25 12:02:51 FusionCharts
+    ########
+    FusionCharts是一个Flash的图表组件，它可以用来制作数据动画图表，其中动画效果用的是Adobe Flash 8 （原Macromedia Flash的）制作的flash ， 
+    FusionCharts可用于任何网页的脚本语言类似于HTML ， .NET，ASP ， JSP， PHP ， ColdFusion等，提供互动性和强大的图表。
+    使用XML作为其数据接口， FusionCharts充分利用流体美丽的Flash创建紧凑，互动性和视觉逮捕图表。
+
+// 16-08-25 14:00:29 js中的绝对和相对路径
+任何地方都有这两张说法。绝对路径暂不说。
+js中的相对路径是: "cloud_path" , 相当于：http://www.qxwlan.com/cloud_path，即自动加上本页面的协议，域名和端口
+    //location:location.protocal + location.host + location.pathname + location.search
+
+// 16-08-29 11:14:21 #web.py 与 django 的某些区别
+1、从地址解析参数
+    如：/location/(?P<name>\w+)?a=a&b=b
+    // 同是作为函数参数传入，且不考虑查询字符串：
+    web.py:
+        def GET(self,my_name):
+        // 参数没有命名
+    django:
+        def locaiton(request,name=""):
+        // 参数有命名
+
+2、从地址解析查询字符串
+    如：/location/(?P<name>\w+)?a=a&b=b
+    web.py:
+        uri = web.input()
+        a = uri.a
+        b = uri.b
+    django:
+        a = request.GET["a"]
+        b = request.GET["b"]
+
+// 16-08-29 17:29:59  django 地址参数详解
+1、参数可以是命名参数，也可以是未命名参数
+2、 location/(?P<arg>[/](d|c))?(\d+)?
+    // 上述地址中包括3个参数：
+        a. /d
+        b. d
+        c. \d+
+    在view中，需按顺序提供3个参数
+3、在template中，只可以且必须提高参数a和c , 
+
+// 16-08-30 16:44:03  javascript参数问题
+function(a, b, c){
+    a = a, b = b, c = c;
+    // 这种情况万万不可！！参数名称和变量名称不要一样
+}
+
+// 16-08-31 14:37:14 MIME类型分类
+// 详见 http://tool.oschina.net/commons
+主要分为以下几个大类：
+1、application      // 应用
+2、image            // 图片
+3、text             // 文本
+4、audio            // 音频
+5、video            // 视频
+
+// 常用的几种
+    MIME类型                    文件扩展名
+application/x-javascript	        js
+
+application/x-gzip	                gz
+application/x-compressed	        tgz
+application/x-tar	                tar
+
+application/msword	                doc
+application/pdf	                    pdf
+application/vnd.ms-powerpoint	    ppt
+application/vnd.ms-works	        wps
+application/x-png                   png
+
+application/octet-stream
+
+audio/mpeg	                        mp3
+audio/x-wav	                        wav
+
+image/*                             所有图片类型 //chrome浏览器打开时很慢
+image/gif	                        gif
+image/jpeg	                        jpeg
+image/jpeg	                        jpg
+image/svg+xml	                    svg
+image/tiff	                        tif
+image/tiff	                        tiff
+image/x-icon	                    ico
+image/png                           png
+
+text/css                            css
+text/html	                        htm/html
+text/plain	                        c/h/txt
+text/javascript                     js
+text/xml                            xml
+
+video/mpeg	                     mp2/mpa/mpe/mpeg/mpg/mgv2
+video/quicktime	                    mov/qt
+video/x-sgi-movie	                movie
+video/avi                           avi
+video/x-ms-wm                       wm
+video/x-ms-wmv                      wmv
+
+
+// 16-09-01 11:24:27 
+    在图片加载过程中，往往需要加上个随机数，可能还有域名和端口
+    但在存储时，这些都要去掉
+
+// 16-09-01 13:13:01 
+    python 正则表达式
+    1、re.match  和  re.search   // 都是匹配第一个及其分组
+        // 不同的是：macth只从字符串的第一个字符开始匹配，
+        // search是直到匹配到一个为止
+        返回对象的,group(0)= 整个表达式匹配，group(1) = 第一个分组匹配.....
+    2、re.findall               // 忽略分组，匹配字符串中的所有项
+        返回一个类数组对象
+    3、re.sub(p,string)         // 替换
+    4、re.split(p,string)       // 分割
+    5、re.compile(p)            // 设置pattern
+
+// 16-09-02 13:31:08  CSS预处理语言
+    less, sass, stylus
+
+1、值规则
+    // 变量(Variables)
+    定义变量
+
+2、属性(key)规则
+    // 嵌套（Nesting）
+    如：div ul li{
+        color: red;
+    }
+    div table{
+        color: green;
+    }
+    在css预处理中可以写成：
+    div{
+        ul{
+            li{
+                color: red;
+            }
+        }
+        table{
+            color: green;
+        }
+    }
+
+3、mixins(混合)
+    // 有一段样式经常被其他元素使用，
+    // 把它单独提出来
+    @maxins btn(arguments: 100px){
+        width: arguments;
+        border-radius: 5px;
+    }
+
+    // 在其他元素中引入：
+    div{
+        @include btn(200px);
+        color: blue;
+    }
+
+4、继承(inheritance)
+    // 如果某些样式已经被用在某个规则上
+    // 这时就不好用 mixins
+    // 继承 比较合适
+    a{
+        display: inline-block;
+    }
+
+    // 继承 a
+    div{
+        color: red;
+        @extend a;
+    }
+
+5、导入(important)
+    // 正常导入@import "file.css"  : 还是2个文件，还是会有2次http请求
+
+    // @import "file.{type}"
+    // 导入文件内容到主文件 : 一个文件
+
+6、颜色函数
+    // 颜色函数是CSS预处里器中内置的颜色函数功能，
+    // 这些功能可以对颜色值进行处理，例如颜色的变亮、变暗、渐变颜色等处理十分的方便。
+    例如：SASS
+        lighten($color, 10%); /* 返回的颜色在$color基础上变亮10% */
+        darken($color, 10%);  /* 返回的颜色在$color基础上变暗10% */
+        saturate($color, 10%);   /* 返回的颜色在$color基础上饱和度增加10% */
+        desaturate($color, 10%); /* 返回的颜色在$color基础上饱和度减少10% */
+        grayscale($color);  /* 返回$color的灰度色*/
+        complement($color); /* returns complement color of $color */
+        invert($color);     /* 返回$color的反相色 */
+        mix($color1, $color2, 50%); /* mix $color1 with $color2 with a weight of 50% */ 
+
+    // 获取参数，返回颜色值
+
+7、运算符（Operations）
+    // 我们都向往在CSS做一些运算，但是无法实现。
+    // 但是在CSS预处器中对样式做一些运算是一点问题都没有了，例如：
+        body {
+          margin: (14px/2);
+          top: 50px + 100px;
+          right: 100px - 50px;
+          left: 10 * 10;
+        }  
+
+// 16-09-03 11:19:49 
+    函数内部变量：this , arguments
+    函数的属性：prototype：函数的原型
+                length: 函数希望接受的命名参数的个数
+    函数的方法：
+            1、apply()
+            2、call()
+            3、toString()
+            4、valueOf()
+
+
+// 16-09-03 10:50:59 
+    avalon.js  前端框架
+
+// 16-09-05 
+前端面试：
+http://blog.csdn.net/bestyali_loveweb/article/details/51899230
+
+IE6、IE7、IE8的CSS、JS兼容
+http://blog.csdn.net/demon_/article/details/6301088
+
+// 16-09-05 X-UA-compatible的位置
+X-UA-compatible 标头不区分大小写；不过，它必须显示在网页中除 title 元素和其他 meta 元素以外的所有其他元素之前的标头
+即：<meta />
+    <title></title>
+    <meta http-equiv="X-UA-Compatible" content="IE=8" > 
+
+// 16-09-05 X-UA-compatible的有效性
+    只在IE8+浏览器支持
+
+// 16-09-05 16:13:17 
+    // 在不支持html5元素的浏览器中，
+    // 创建html5元素header,……footer的方法
+
+1、在<head></head>中加入：
+    <script type="text/javascript">
+    (function(){
+      var e="abbr,article,aside,audio,canvas,datalist,details,figure,footer,header,hgroup,mark,menu,meter,nav,output,progress,section,time,video".split(','),
+       i=e.length;
+       while(i--){
+        document.createElement(e[i]);
+       }
+    }());
+    </script>
+
+2、初始化新标签的CSS.因为HTML5在默认情况下表现为内联元素
+    article,aside,dialog,footer,header,section,footer,nav,figure,menu{
+        display:block
+    }
+
+    // 即可正常使用
+    
+// 16-09-08 12:37:36 
+    request.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+
+    非常重要，没有这句的话，server就无法正常读取postdata中的任何数据，
+    因为如果在 HTTP 流中传递空白和标点之类的字符，则它们在接收端可能会被错误地解释。
+    URL 编码将 postdata 中不允许使用的字符转换为等效字符实体；URL 解码会反转此编码过程。
+    例如，当嵌入到要在 URL 中传输的文本块中时，字符 < 和 > 分别被编码为 %3c 和 %3e。
+
+// 16-09-12 17:44:41 
+    区分英语词汇词义时，一定不要仅看“英汉”而望文生义。如这两个词，根据韦氏词典的解释，区别点一目了然：
+    detach
+    : to separate (something) from something larger
+    : to separate (yourself) from someone or something
+
+    dispatch
+    : to send (someone or something) quickly to a particular place for a particular purpose
+    : to defeat (a person or team) in a game, contest, etc.
+    : to kill (a person or animal) quickly
+
+    很显然，同为表达汉语的“派遣”之意时，detach强调的是“separate ...from”,即从一个整体中的“分离”感；
+    而dispatch则强调的是“去执行”感，不含有更不强调“脱离”意味。
+    defeat: 击败
+    contest: 竞赛
+
+// 16-09-13 09:38:12 
+    // 所有在window上触发的事件，都可以在body元素上指定。
+一、load 和 unload 事件
+    在页面加载外部资源(js, link, img, object等)时，在相应的元素上触发。
+    1、window 和 body
+        当外部资源都加载完之后，在(DOM2标准)body元素上触发。
+        但为了保持向后兼容，各个浏览器都支持在window上触发。
+        IE8- 仅仅支持在window上触发。
+    2、img
+        // 当为img元素设置src时，不管图像有没有添加到dom树中，图像即开始下载。
+        // 故：为图像设置的load事件最好在设置img.src之前定义。
+        var img = document.createElement("img");
+        img.onload = function(){
+            alert("loaded!");
+        };
+        document.body.appendChild(img);
+        img.src = "22.png";
+    3、script
+        除IE8-外的浏览器支持script的load事件。
+
+        // 与 img 不同的是：
+        // 必须指定script的src,且加入到文档树之后，script才开始下载。
+    4、link
+        仅仅IE,opera支持link的load事件。
+
+        // 与 img 不同的是：
+        // 必须指定link的href,且加入到文档树之后，link才开始下载。
+    5、object
+        所有浏览器都支持
+二、resize 事件
+    浏览器窗口 和 框架大小变化时，
+    所有浏览器都支持。
+    当浏览器窗口被调整到一个新高度和新宽度时，
+    // 何时触发resize事件
+    IE,chrome,safari,opera会在窗口变化1像素的时候触发，并且随着变化重复触发。
+    firefox 只会在停止调整窗口大小时，才会触发。
+    // 故：不要在事件处理中，加入大计算量代码。
+    // 因为这些代码有可能被频繁执行，导致浏览器反应变慢。
+    浏览器窗口最大化和最小化的过程中也会触发resize事件。
+
+三、scroll事件
+    在window上触发。但它实际表现的是页面元素的变化。
+    // 如何监控滚动量
+    // 在混杂模式下，可以通过body的scrollTop和scrollLeft监控,
+    // 在标准模式下，除safari外的浏览器都会通过html元素来监控,
+    // safari任然基于body跟踪滚动位置。
+    if( document.compatMode == "CSS1Compat"){
+        alert(document.documentElement.scrollTop);
+    }else{
+        alert(document.body.scrollTop);
+    }
+    // 与resize事件类型，scroll事件会在滚动期间重复触发。
+    // 所以有必要保持事件处理程序的代码简单。
+
+// 16-09-13 10:19:51 
+    焦点事件
+    // 会在某个元素或整个页面获得或失去焦点时触发。
+    // 利用这些事件，并与document.hasFocus(), document.activeElement配合，
+    // 可以知晓用户在页面上的行踪。
+    blur, focus: 不冒泡。
+    foucsin, focusout: 冒泡。
+    // IE 可以通过DOM0级事件，DOM2级事件添加
+    // chrome 只能通过DOM2级事件添加。
+
+// 鼠标与滚轮事件
+    触发顺序：
+    mousedown
+    mouseup
+    click
+    mousedown
+    mouseup
+    click
+    dblclick
+
+    IE8- 有一个BUG：
+    // 在双击事件中会跳过第二个mouseup和click事件，即：
+    mousedown
+    mouseup
+    click
+    mousedown
+    dblclick
+    // IE9修复了这个BUG。
+
+
+    1、客户区坐标位置：
+        事件对象的clientX 和 clientY 中。
+    2、页面坐标位置
+        事件对象的pageX 和 pageY 。
+        // IE8- 不支持页面坐标。
+        // 不过使用客户端坐标和滚动信息可以计算：
+        pageX = e.clientX + 
+                (document.body.offsetLeft 
+                || document.documentElement.offsetLeft);
+
+        pageY = e.clientY + 
+                (document.body.offsetTop 
+                || document.documentElement.offsetTop);
+    3、屏幕坐标位置
+        事件对象的screenX 和 screenY
+    4、修改键
+        // 虽然鼠标事件主要靠鼠标触发，但按下鼠标时，键盘上某些键的状态
+        // 会影响到所要采取的操作。
+        // 比如：shift, ctrl, alt, meta(window上的window键或mac上的cmd键)
+        shiftKey, ctrlKey, altKey, metaKey 
+        // 按下相应键时为true, 否则为false。
+
+        // IE8- 不支持 metaKey 属性。
+    5、相关元素
+        // 在发送mouseover 和 mouseout时，还会涉及更多的元素。
+        // 这两个事件都会涉及把鼠标指针从一个元素的边界之内移到另一个元素的边界之内。
+        // 对应mouseover，事件的主要目标是获得光标的元素，而相关元素则是失去光标的元素。
+        // 对于mouseout，反过来。
+        标准DOM，通过e.relatedTarget 指向相关元素。
+        IE8- 通过e.fromElement(mouseover) 和 e.toElement(mouseout) 提供支持。
+        getRelatedTarget = function(e){
+            if( e.relatedTarget ){
+               return e.relatedTarget; 
+            }else if(e.fromElement){
+                return e.fromElement;
+            }else if(e.toElement){
+                return e.toElement;
+            }else{
+                return null;
+            }
+        };
+    6、mousewheel: 滚轮事件
+        // 支持事件冒泡，最终到document(IE8-) 或 window上
+        e.wheelDelta 
+        // 当向前滚动时，为120的倍数。
+        // 当向后滚动时，为-120的倍数。
+
+// 触摸事件
+    1、不支持dblclick事件。双击浏览器，窗口会放大，而且没有办法改变这一行为。
+    2、轻击可单击元素会发生mousemove事件。
+        如果此操作会导致内容变化，将不会有其他事件发生。
+        如果屏幕没有因此变化，将依次发生mousedown, mouseup 和 click 事件。
+    3、mousemove事件也会触发mouseover 和 mouseout事件。// 需要验证
+    4、手指在滚动页面时，会发生scroll 和 mousewheel 事件。
+
+// 无障碍性问题
+    // 如果你的网站要确保残疾人士可以访问，那么在使用鼠标事件时，要格外小心：
+    // 可以通过键盘上回车来触发click事件。但其他鼠标事件无法通过键盘来触发。
+    // 因此我们不建议使用click之外的鼠标事件来展示功能。
+
+// 键盘与文本事件
+    keydown: 按下任意键时触发。
+    keypress: 按下字符键时触发。
+    keyup: 松开按键时触发。
+    // 与 鼠标事件类似，也有：
+        shiftKey, ctrlKey, altKey, metaKey 
+
+    当按下keydown 和 keyup时，
+    e.keyCode 保存按下键的键码
+
+    当按下keypress时，
+    IE8-：e.keyCode  保存按下字符的ASCII编码,
+    其他：e.keyCode = 0, e.charCode 保存按下字符的ASCII编码。
+    getCharCode = function(e){
+        if(typeof e.charCode == "number"){
+            return e.charCode;
+        }else{
+            return e.keyCode;
+        }
+    };
+    // 再使用String.fromCharCode()转化为字符。
+
+// HTML5事件
+1、contextmenu 事件
+    // 右键上下文菜单
+    所有浏览器都支持
+    使用preventDefault()阻止默认菜单显示
+
+2、beforeunload 事件
+    // 在卸载页面之前
+
+3、DOMCotentLoaded 事件
+    // 在DOM树加载完成后触发。(此时其他外部资源js,css,img等还未加载)
+    // IE9+ 支持
+
+    对应不支持的浏览器，IE8-：
+    setTimeout(function(){
+        ...
+    }, 0);
+
+// 移动端事件
+//一、 设备事件(移动)
+1、orientationchange 事件
+    在 window 上触发
+    // 苹果公司为移动safari添加了orientationchange事件，
+    // 以便确定用户横向，还是纵向看手机。
+    // 此时event对象不包含任何有价值的信息。
+    // 唯一有价值的信息通过window.orientation 保存。
+    状态            window.orientation
+    正常                  0
+    左旋转                90
+    右旋转                -90
+
+//二、 触摸事件(移动)
+    1、touchstart: 当手指触摸屏幕时触发；即使已经有一个手指放在屏幕上也会触发。
+        // 多点触摸
+    2、touchmove: 当手指在屏幕上滑动时，连续触发。
+        // 调用preventDefault()，可以阻止滑动。
+    3、touchend: 当手指从屏幕上移开时触发。
+    // 上面的事件都会冒泡，都可以取消，都是以兼容DOM的方式实现的。
+    当触摸屏幕上的元素时，发送的事件依次为：
+        touchstart
+        mouseover
+        mousemove(一次)
+        mousedown
+        mouseup
+        click
+        touchend
+    // 除了常见的DOM属性外，触摸事件还包括：
+    touches: 表示当前跟踪的touch对象数组
+        // 多点触摸，每个触摸点对应一个touch对象
+    changeTouched: 表示自上次触摸以来，发送了什么改变的touch对象数组。
+    每个touch对象具有以下属性：
+    clientX, clientY
+    pageX, pageY
+    screenX, screenY
+    target : 触摸的DOM节点目标
+
+//三、 手势事件
+    ios2.0 为safari 引入了手势事件：
+    // 当两个手指触摸屏幕时，就会产生手势。
+    // 手势通常会改变显示项的大小，或者旋转显示项。
+    gesturestart: 当一个手指已经按在屏幕上，而另一个手指又触摸屏幕时触发。
+    gesturechange: 当触摸屏幕的任何一个手指位置发生变化时，触发。
+    gestureend: 当任何一个手指从屏幕上移开时触发。
+    // 每个手势事件的event对象包含2个额外的属性： rotation 和 scale
+    rotation: 表示手指变化引起的旋转角度，顺时针为正；逆时针为负。
+    scale: 表示两个手指间距离变化的情况，
+            这个值从1开始，随距离增加而变大；随距离减小而变小
+
+// 16-09-13 17:23:34 
+    新版本的XMLHttpRequest对象，传送数据的时候，有一个progress事件，用来返回进度信息。
+
+    它分成上传和下载两种情况
+    １）下载的progress事件属于XMLHttpRequest对象
+    ２）上传的progress事件属于XMLHttpRequest.upload对象。
+
+    我们先定义progress事件的回调函数。
+    xhr.onprogress = updateProgress;
+    xhr.upload.onprogress = updateProgress;
+    然后，在回调函数里面，使用这个事件的一些属性。
+
+    function updateProgress(event) {
+        if(event.lengthComputable) {
+            var percentComplete = event.loaded / event.total;
+        }
+    }
+    上面的代码中，
+    event.total是需要传输的总字节，
+    event.loaded是已经传输的字节。
+    如果event.lengthComputable不为真，则event.total等于0。
+
+    与progress事件相关的，还有其他五个事件，可以分别指定回调函数： 
+    * load事件：传输成功完成。
+    * abort事件：传输被用户取消。
+    * error事件：传输中出现错误。
+    * loadstart事件：传输开始。
+    * loadEnd事件：传输结束，但是不知道成功还是失败。 
+
+// 16-09-13 18:02:54 
+    空事件处理程序：
+    1、当使用标准dom操作：removeChild()和replaceChild()时
+    2、当使用innerHTML替换内容时
+
+// 16-09-22 14:41:04 
+    Django 1.9以上版本已经不支持 from django.conf.url import pattern
+    造成DjangoUeditor 与 Django 1.9以上的版本不兼容。
+    解决方案：
+        pip install django==1.8
+
+    Django: 运行错误：
+        can't open database file:
+        // 原因
+        // 1、文件夹权限问题
+        // 2、中文路径
+
+    pip install pillow, 发生错误：
+        zlib, jpeglib 没有安装
+    解决方案：
+        下载window中编译好的pil, 放在Lib/site-packages/ 下
+
+// 16-09-22 16:30:40 
+    // 计算斐波那契函数耗时
+
+    // Fib 函数1
+    function fib(n){
+        /* 斐波那契数列 */
+        var result = 0;
+        if( n>2 ){
+            result = fib(n-1) + fib(n-2);
+        }else if(n>1){
+            result = 1;
+        }
+        return result;
+    }
+
+    // Fib 函数2
+    function fib(n){
+        /* 斐波那契数列 */
+        var result = 0;
+        if( n>2 ){
+            result = arguments.callee(n-1) 
+                    + arguments.callee(n-2);
+        }else if(n>1){
+            result = 1;
+        }
+        return result;
+    }
+
+    计算位数        浏览器          函数            耗时(ms)
+    ------------------------------------------------------
+    40              Chrome          1               723
+    40              Chrome          2               4513
+    40              Firefox         1               527
+    40              Firefox         2               太长
+
+    35              Chrome          1               82
+    35              Chrome          2               422
+    35              Firefox         1               60
+    35              Firefox         2               5059
+
+    35              IE8             1               太长
+    35              python          1               2617
+
+// 16-09-27 ps4
+    http://www.xitongzhijia.net/soft/9843.html
+
+// 16-10-03 17:21:30 
+// html 的命名空间及css的使用
+    1、在IE中，
+        1.1 <html xmlns:v="urn:schemas-microsoft-com:vml"> 
+            </html>
+            即：定义了一个命名空间 v。
+                // v         : 空间名称
+                // urn....   : 空间标示(相当于空间注释,没有别的用途。可以随便改)
+        1.2 为这个命名空间下的元素定义样式：
+            <style>
+                v\: cssSelector {
+                    /* css rule */
+                }
+            </style>
+        1.3 这个命名空间的元素
+            <v:div>
+            </v:div>
+
+// 16-10-11 
+    webpack
+
+//16-10-28 10:35:50 
+    //chrome浏览器 扩展与插件的区别    
+    扩展（Extension）:
+        指的是通过调用 Chrome 提供的 Chrome API 来扩展浏览器功能的一种组件，
+        工作在浏览器层面，使用 HTML + Javascript 语言开发[*]。
+        比如著名的 Adblock plus。
+    插件（Plug-in）:
+        指的是通过调用 Webkit 内核 NPAPI 来扩展内核功能的一种组件，
+        工作在内核层面，理论上可以用任何一种生成本地二进制程序的语言开发，
+        比如 C/C++、Delphi 等。
+        比如Flash player 插件，就属于这种类型。
+        一般在网页中用 <object> 或者 <embed> 标签声明的部分，就要靠插件来渲染。
+
+    至于哪种功能多的问题，这个不能比较，各有侧重。
+    如果你想实现一个自动统计你上过的网站以及各自时间的功能，就要用扩展技术；
+    如果你要实现一个让你的浏览器可以渲染 AutoCAD 文件的功能，就要用插件技术。
+
+    插件管理页：chrome://plugins/
+    扩展管理页：chrome://extensions/
+
+// 16-11-02 22:06:40 
+    // document.cookie
+    所有浏览器使用document.cookie 获取，设置，更新，删除(设置cookie超时)cookie.
+    #chrome下，必须通过服务器访问的网页才能如此设置。
+
+//16-11-08 15:40:45 
+    document.getElementsByTagName("iframe")[0]
+    与
+    frames[0] 的区别
+    1、前者是dom元素，后者是window对象
+    2、前者可以绑定onload事件, 后者无法。
+        #很奇怪：最外层是在window绑定的，内层都是在iframe-dom元素上绑定的。
+
+// 16-11-08 17:30:18 
+    flex 布局
+    渐变
+    transform
+    transition 
+
+// 16-11-09 14:01:04 
+    常用模拟事件函数：
+    1、click()
+    2、focus()
+    3、blur()
+
+// 16-11-22 10:18:20 
+    图片压缩：https://tinypng.com/
+
+// 16-11-23 09:28:25 
+    <label for="test">
+        <input type="radio" id="test" value="1">
+    </label>
+    当点击label时，点击事件发生了2次。
+    1、如果type = "hidden", 则点击事件只发生一次;
+    2、如果for != id, 则点击事件也只发生一次;
+
+// 总结
+    1、如果是事件对象:e, 我们需要鼠标位置信息
+        1.1 e.screenX: 到屏幕距离
+        1.2 e.clientX: 到浏览器距离
+        1.3 e.offsetX: 到点击元素的距离
+        1.4 e.pageX  : 到viewport的距离
+            // IE8- 不支持页面坐标。
+            // 不过使用客户端坐标和滚动信息可以计算：
+            pageX = e.clientX + 
+                    (document.body.offsetLeft 
+                    || document.documentElement.offsetLeft);
+
+            pageY = e.clientY + 
+                    (document.body.offsetTop 
+                    || document.documentElement.offsetTop);
+
+    2、普通的element对象(包括html和body对象)：我们需要其位置和大小信息
+        // 位置信息
+        1、jquery获取dom位置，
+            属性            描述                            备注
+            ----------------------------------------------------------------
+            offset()        相对于viewport的位置
+            position()      相对于父元素的位置
+            scrollTop()     元素内部参数:
+                            当此元素有滚动条时，可见区域离滚动条最上端的距离
+        2、javascript 获取dom位置
+            属性            描述                            备注
+            ----------------------------------------------------------------
+            offsetTop       元素离offsetParent的内边框的距离
+            scrollTop       跟 jquery scrollTop() 相同
+                // 在最外层：通过document.body 或 documentElement 的scrollTop获取
+                // scroll 事件，目前只能在window上触发。即：
+                window.onscroll = function(){
+                    var wTop = document.body.scrollTop ?
+                                document.body.scrollTop 
+                                : document.documentElement.scrollTop;
+                };
+                #特别注意：事件是连续触发的。但由于计算需要时间等原因，2次触发事件有间隔。
+                #解决方案：
+                    if( val < 0){
+
+                    }else if( val > 0 && val <100){                                              > 
+
+                    }else{
+                    
+                    }
+                    #在区域之外设置两端的极值
+
+        // 大小信息
+        属性            描述                            备注
+        ----------------------------------------------------------------
+        scrollWidth     是对象的实际内容的宽，不包边线宽度，
+                        会随对象中内容的多少改变（内容多了可能会改变对象的实际宽度）。 
+        clientWidth     是对象可见的宽度，不包滚动条,border等边线
+        offsetWidth     是对象的可见宽度，包滚动条,border等边线
+
+    3、屏幕对象：screen
+        属性            描述                            备注
+        ----------------------------------------------------------------
+        width           屏幕像素素宽
+        height          屏幕像素高度
+        availWidth      屏幕像素素宽 - 系统部件宽度(如：侧边栏)
+        availHeight     屏幕像素高度 - 系统部件宽度(如：任务栏)
+
+    4、浏览器对象：window
+        属性            描述                            备注
+        ----------------------------------------------------------------
+        // 位置属性
+        screenLeft      浏览器离屏幕左边距离            除ff之外的浏览器支持
+        screenTop       浏览器离屏幕上边距离            除ff之外的浏览器支持
+        screenX         浏览器离屏幕左边距离            ff支持
+        screenY         浏览器离屏幕上边距离            ff支持
+        // 大小属性
+        innerWidth                                      IE8- 不支持
+        innerHeight                                     IE8- 不支持
+        outerWidth                                      IE8- 不支持
+        outerHeight                                     IE8- 不支持
+
+        // 在IE6标准模式以上的浏览器中
+        // document.documentElement.client 保存对浏览器对象占用的数据
+        // 在IE6混杂模式下
+        // document.body.client 保存着对浏览器对象占用的数据
+
+//style.left 和 offsetLeft 的不同
+    1、style.left 返回的是字符串，如28px，offsetLeft返回的是数值28，如果需要对取得的值进行计算，
+        还用offsetLeft比较方便。
+
+    2、style.left是读写的，offsetLeft是只读的，所以要改变div的位置，只能修改style.left。
+
+    3、 style.left的值需要事先定义，否则取到的值为空。而且必须要定义在html里，我做过试验，如果定义在
+        css里，style.left的值仍然 为空，这就是我刚开始碰到的问题，总是取不到style.left的值。
+        offsetLeft则仍然能够取到，无需事先定义div的位置。
+
+// 16-10-11 00:01:02 
+    当元素处于隐藏时，scroll, offset, client 的值为0
+
+// 16-12-23 14:17:16 vim中插入特殊字符
+    1、知道字符编码
+        //查看帮助 :h  i_CTRL-V_digit
+        //使用 ga 查看光标处的字符编码 
+        1.1 非unicode编码的字符
+            <C-v>XXX        
+            // XXX: 3位的字符编码
+            如：<C-v>065: 相当于字母A
+        1.2 unicode编码的字符
+            <C-v>uXXXX
+            如：<C-v>u: 相当于 ¿
+
+    2、知道二合字母
+        //查看帮助:h  digraphs-default
+        <C-k>{char1}{char2}
+
+        // 几个常见的符号
+        char    {char1}{char2}
+        ----------------------------
+        ©       Co
+        ®       Rg
+        ±       +-
+        µ       My
+        ¶       PI
+        ¼       14
+        ÷       -:
+        ‰       %0
+
+        ⅲ       3r 
+        Ⅲ       3R
+        ㈠      1c
+        ㈨      9c
+
+        ←       <-
+        →       ->
+        ↑       -!
+        ↓       -v
+        ∠       -V
+        ↔       <>          <>
+        ↕       UD
+
+        ∆       DE
+        ∇       NB
+        ░       .S
+        ☆       *1
+        ★       *2
+
+// 16-12-28 11:40:49 
+    vim diff
+    ㈠ show different
+        1、gvim -d file1 file2
+        2、当已经用vim进入file1时
+            :vertical diffsplit file2
+
+    ㈡ 在差异间跳转
+        向下跳：]c
+        向上跳：[c
+
+    ㈢ 有时diff会卡住
+        使用:diffupdate 刷新
+
+    ㈣ merge 
+        :diffpu(t)
+        :diffg(et)
+    
+Math
+    // 常量
+    Math.PI
+    Math.E
+    Math.LN10
+    Math.LN2
+    Math.LOG2E
+    Math.LOG10E
+    Math.SQRT2
+    Math.SQRT1_2
+
+    // 舍入方法
+    Math.ceil()
+    Math.floor()
+    Math.round()
+
+    // 选择方法
+    Math.max()
+    Math.min()
+    Math.random()
+
+    // 数学方法
+    Math.abs()
+    Math.sqrt()
+    // 三角函数
+    Math.sin()
+    Math.cos()
+    Math.tan()
+    Math.asin()
+    Math.acos()
+    Math.atan()
+    // 幂函数
+    Math.pow(n1, n2)
+    Math.exp(n)
+    // 对数函数
+    Math.log(n)
