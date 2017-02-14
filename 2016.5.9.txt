@@ -372,16 +372,6 @@ location  / {
 	[pid: 347|app: 0|req: 106/367] 117.116.122.172 () {52 vars in 961 bytes} [Thu Jul  7 19:20:56 2016] POST /post => generated 65 bytes in 6 msecs (HTTP/1.1 200) 2 headers in 88 bytes (1 switches on core 0)
 
 
-//2016/7/14
-vim 颜色配置方案中的颜色代表数字(彩色终端)：
-1：darkred
-2：darkgreen
-3：darkyellow
-4：darkblue
-5：darkcyan(深紫色)
-6：darkcyan(深蓝绿色)
-7：灰色
->8：白色
 
 //参数层思想 （参数必须分层，要有优先级）
 	//如果用户没有提供任何参数，或部分参数，也要保证程序正常运行
@@ -389,24 +379,6 @@ vim 颜色配置方案中的颜色代表数字(彩色终端)：
 	
 nginx 配置文件中：
 	include /etc/nginx/sites-enabled/ *  提供了站点运行的默认参数。//如果加载，则后面的location不起作用
-
-//linux 下VIM安装
-//知识提要
-1、使用vim --version 
-	查看vim的大部分的安装信息
-2、vim的配置文件位置
-	//全局配置文件(所有用户都有效)
-	2.1先使用vim --version查看vim的主程序目录$vim;则配置文件为：$vim/vimrc
-	2.2其他颜色，脚本等文件在$vim/vim73/下
-	//用户自个的配置文件(对单个用户有效，优先级最高)
-	2.3在用户主目录/home/$user/下的: .vimrc
-	2.4/home/$user/下的.vim/目录下
-
-3、linux 安装方式 apt-get   和 源码安装
-使用apt-get/yum安装时，有时出现文件不全的现象
-
-4、颜色配置方案中(对GUI，彩色终端cterm,黑白终端term)//对不同的设备，要分别设置
-	//window中的vim应该使用GUI,linux下的应该使用cterm
 
 //2016/7/15
 html中字符集：&x3333;
@@ -605,34 +577,6 @@ pip install pillow   就正常了
 	实际上，由于需要在数据库文件中移动页， auto-vacuum 会产生更多的碎片。
 	而且，在执行删除操作的时候，也有那个.db-journal文件产生
 
-//VIM 命令
-:  调用命令模式
-r    插入
-！调用cmd命令
-如：
-:r !python xxx.py      //把xxx.py的运行结果插入到vim的当前位置
-
-//VIM查找映射
-:verbose map xxx
-如：:verbose map <c-r>
-
-//VIM中 插入模式下调用函数和normal模式下不一样
-#normal模式下调用函数
-exe "nmap <F6> :call " . function-name
-//namp <F6> :call function()
-
-#insert
-imap <silent> <C-D><C-D> <C-R>=strftime("%e %b %Y")<CR> 
-    :表示 在当前位置插入格式化日期 #<C-R>=  插入
-imap <silent> <C-T><C-T> <C-R>=strftime("%l:%M %p")<CR>
-
-//插入日期
-strftime("%d/%m/%y %H:%M:%S")<cr>
-
-//16-07-26 09:08:16 
-使用vim 的 install 命令添加vim到右键菜单
-:! install
-
 //16-07-30 
 json中只能包含双引号"",不能包含单引号''
 
@@ -792,22 +736,6 @@ type                String      只读        被触发的事件类型
             return "UTC +%s" % self._offset
         def dst(self,dt):
             return timedelta(hours=self._offset)
-
-// 16-08-19 
-    在.vimrc中添加以下代码后，重启vim即可实现按TAB产生4个空格：
-    set ts=4  (注：ts是tabstop的缩写，设TAB宽4个空格)
-    set expandtab
-
-    对于已保存的文件，可以使用下面的方法进行空格和TAB的替换：
-    TAB替换为空格：
-    :set ts=4
-    :set expandtab
-    :%retab!
-
-    空格替换为TAB：
-    :set ts=4
-    :set noexpandtab
-    :%retab!
 
 // 16-08-22 14:06:53  javascript中函数更换执行环境
   有2种方式：
@@ -1621,71 +1549,6 @@ X-UA-compatible 标头不区分大小写；不过，它必须显示在网页中�
 // 16-10-11 00:01:02 
     当元素处于隐藏时，scroll, offset, client 的值为0
 
-// 16-12-23 14:17:16 vim中插入特殊字符
-    1、知道字符编码
-        //查看帮助 :h  i_CTRL-V_digit
-        //使用 ga 查看光标处的字符编码 
-        1.1 非unicode编码的字符
-            <C-v>XXX        
-            // XXX: 3位的字符编码
-            如：<C-v>065: 相当于字母A
-        1.2 unicode编码的字符
-            <C-v>uXXXX
-            如：<C-v>u: 相当于 ¿
-
-    2、知道二合字母
-        //查看帮助:h  digraphs-default
-        <C-k>{char1}{char2}
-
-        // 几个常见的符号
-        char    {char1}{char2}
-        ----------------------------
-        ©       Co
-        ®       Rg
-        ±       +-
-        µ       My
-        ¶       PI
-        ¼       14
-        ÷       -:
-        ‰       %0
-
-        ⅲ       3r 
-        Ⅲ       3R
-        ㈠      1c
-        ㈨      9c
-
-        ←       <-
-        →       ->
-        ↑       -!
-        ↓       -v
-        ∠       -V
-        ↔       <>          <>
-        ↕       UD
-
-        ∆       DE
-        ∇       NB
-        ░       .S
-        ☆       *1
-        ★       *2
-
-// 16-12-28 11:40:49 
-    vim diff
-    ㈠ show different
-        1、gvim -d file1 file2
-        2、当已经用vim进入file1时
-            :vertical diffsplit file2
-
-    ㈡ 在差异间跳转
-        向下跳：]c
-        向上跳：[c
-
-    ㈢ 有时diff会卡住
-        使用:diffupdate 刷新
-
-    ㈣ merge 
-        :diffpu(t)
-        :diffg(et)
-    
 Math
     // 常量
     Math.PI
