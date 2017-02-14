@@ -42,12 +42,39 @@
             sup
             strong/b
             em/i
-            ruby
+            -----------------------------
+            <ruby> 元素：由一个或多个字符（需要一个解释/发音）,
+                         一个提供信息的 rt 元素组成，
+                         还包括可选的 rp 元素，定义当浏览器不支持 "ruby" 元素时显示的内容。
+
+            <rp> 定义注释(不支持 ruby 元素的浏览器所显示的内容)
+            <rt> 定义解释或发音
+
+            <ruby>
+            漢 <rt><rp>(</rp>han<rp>)</rp></rt>         //注释在字符旁边
+            </ruby>
+
+            <ruby>
+            漢 <rt>han</rt>         //注释在字符上边
+            </ruby>
+            -----------------------------
 
     6       纯语义元素
+            -----------------------------
             abbr
-            time
+            <abbr title="etcetera">etc.</abbr>
+            -----------------------------
+            <time>
+                //该元素能够以机器可读的方式对日期和时间进行编码，
+                //这样，举例说，用户代理能够把生日提醒或排定的事件添加到用户日程表中，
+                //搜索引擎也能够生成更智能的搜索结果。
+                例如：
+                    我在 <time datetime="2010-02-14" pubdate="pubdate">情人节</time> 有个约会。
+                //pubdate属性指示:
+                    <time>元素中的日期/时间是文档(或最近的前辈<article>元素)的发布日期。
+            -----------------------------
             address
+            -----------------------------
 
     7       引用
             blockquote              引用块
@@ -115,8 +142,7 @@
     3   thumbnail
     ------------------------------------------------------
 
-    // html5        
-    ------------------------------------------------------
+// html5        
     // 一、段落语义
     ------------------------------------------------------
     1   <article>
@@ -127,7 +153,292 @@
     6   <nav>
     7   <main>
     ------------------------------------------------------
+
+    // 二、进度条: progress, meter 
     ------------------------------------------------------
+    1   progress        
+        <progress value="0.2"></progress>                                               
+    2   meter           
+        <meter min="0" max="20" value="17" low="5" high="15" optimum="10">15</meter>    
+    ------------------------------------------------------
+
+    // 三、details, summary
+    ------------------------------------------------------
+    1   details     // 描述文档部分的细节(动态的指示)
+        <details open="show">
+            <summary>I am a title.</summary>
+            <p>我是隐藏的内容</p>
+        </details>
+    ------------------------------------------------------
+
+    // 四、menu, menuitem
+    ------------------------------------------------------
+    1   <menu type="context/toolbar/list" label=""> 
+            context：上下文；
+            toolbar：工具栏；
+            list：列表
+            label ：菜单显示的名称。
+    2   <menuitem label="" icon="" onclick="">
+            label：菜单项显示的名称
+            icon：在菜单项左侧显示的图标
+            onclick：点击菜单项触发的事件
+    示例1：
+    <div contextmenu="mymenu" >右击我试试</div>
+    <menu type="context" id="mymenu" >
+      <menuitem label="菜单1" onclick="alert('这是菜单1');" 
+            icon="http://d.lanrentuku.com/down/gif/gif-0145.gif"></menuitem>
+      <menuitem label="菜单2" onclick="alert('这是菜单2');" 
+            icon="http://d.lanrentuku.com/down/gif/gif-0161.gif"></menuitem>
+      <menu label="菜单3">
+        <menuitem label="菜单3-1" onclick="alert('这是菜单3-1');"
+            icon="http://up.2cto.com/2012/0407/20120407090812492.gif"></menuitem>
+        <menu label="菜单3-2" > 
+           <menuitem label="菜单3-2-1" onclick="alert('这是菜单3-2-1');"
+           icon="http://up.2cto.com/2012/0407/20120407090813196.gif"></menuitem>
+        </menu>
+      </menu>
+    </menu>
+    -----------------------------------------------------
+
+    示例2：
+    <menu>
+        <li><input type="checkbox" />Red</li>
+        <li><input type="checkbox" />blue</li>
+    </menu>
+    -----------------------------------------------------
+
+// 标准属性
+    ------------------------------------------------------
+    1   contextmenu 
+        // 上下文菜单，即鼠标右击元素会出现一个菜单
+        <div contextmenu="mymenu" >右击我试试</div>
+    ------------------------------------------------------
+    2   accesskey
+        //定义访问元素的热键，用alt+(shift)+accesskey访问(是点击, 不是选中)
+        <div accesskey="b" onclick="alert('我被点击了')">
+            使用 <kbd>alt</kbd> + <kbd>b</kbd> 
+        </div>
+    ------------------------------------------------------
+    3   contenteditable
+        // 元素内容是否可编辑
+        <p contenteditable="true">这是一个可以编辑的段落.</p>
+    ------------------------------------------------------
+    4   data-yourvalue
+        // 自定义属性
+    ------------------------------------------------------
+
+// Form
+    ------------------------------------------------------
+    // 一、新的表单元素
+    ------------------------------------------------------
+    1   datalist
+        <input id="myCar" list="cars" />
+        <datalist id="cars">
+          <option value="BMW">
+          <option value="Ford">
+          <option value="Volvo">
+        </datalist>
+
+    // 二、新的Form属性
+    ------------------------------------------------------
+    1   autocomplete
+    2   novalidate
+
+    // 三、新的input属性
+    ------------------------------------------------------
+    1   autocomplete
+    2   autofocus
+    3   form
+    4   form overrides (formaction, formenctype, formmethod, formnovalidate, formtarget)
+    5   height 和 width
+    6   list
+    7   min, max 和 step
+    8   multiple
+    9   pattern (regexp)
+    10  placeholder
+    11  required
+
+    // 四、新的input类型
+    ------------------------------------------------------
+    1   email
+    2   url
+    3   number
+    4   range
+    5   Date pickers (date, month, week, time, datetime, datetime-local)
+    6   search
+    7   color
+
+// 特殊
+    ------------------------------------------------------
+    // 一、图片，映射，图片分区
+    ------------------------------------------------------
+    1   map
+    2   area
+        示例：
+		<img src="planets.jpg" border="0" usemap="#planetmap" alt="Planets" />
+
+		<map name="planetmap" id="planetmap">
+		  <area shape="circle" coords="180,139,14" href ="venus.html" alt="Venus" />
+		  <area shape="circle" coords="129,161,10" href ="mercur.html" alt="Mercury" />
+		  <area shape="rect" coords="0,0,110,260" href ="sun.html" alt="Sun" />
+		</map>
+    ------------------------------------------------------
+
+    // 二、多媒体
+    ------------------------------------------------------
+    1   <object>
+        //定义一个嵌入的对象,多媒体
+    2   <param>
+        //为对象定义参数
+        -------------------------------------------------
+        <object id="Slider1" width="100" height="50">
+          <param name="BorderStyle" value="1" />
+          <param name="MousePointer" value="0" />
+          <param name="Enabled" value="1" />
+          <param name="Min" value="0" />
+          <param name="Max" value="10" />
+        </object>
+    3   <track> 
+        //标签为诸如 video 元素之类的媒介规定外部文本轨道。
+        示例,播放带有字幕的视频：
+        -------------------------------------------------
+        <video width="320" height="240" controls="controls">
+          <source src="forrest_gump.mp4" type="video/mp4" />
+          <source src="forrest_gump.ogg" type="video/ogg" />
+          <track kind="subtitles" src="subs_chi.srt" srclang="zh" label="Chinese">
+          <track kind="subtitles" src="subs_eng.srt" srclang="en" label="English">
+        </video>
+    ------------------------------------------------------
+
+    // 三、换行
+    ------------------------------------------------------
+    1   white-space: 
+        // 决定换不换行
+            换行 
+                合并空格 normal/pre-line
+                保留空格 pre-wrap
+            不换行
+                合并空格 nowrap
+                保留空格 pre
+    2   word-wrap:
+        //当一个单词超过指定容器的边界时是否断行
+        normal： 
+            允许内容顶开或溢出指定的容器边界。
+        break-word：
+            内容将在边界内换行。如果需要，单词内部允许断行。
+    3   wrod-break:
+        //字内换行行为
+    4   word-spacing: 
+        //单词之间的间隔
+    5   overflow  
+        // 当对象的内容超过其指定高度及宽度时如何管理内容
+    6   text-overflow
+        // 只在overflow为hidden和scroll时，才起作用。
+
+    // 四、渐变
+    ------------------------------------------------------
+    1   linear-gradient(<angle>, <color-stop>, <color-stop>)
+        // 1.1 确定角度: 即某一角度的射线与元素接触的第一个点为起点
+            <angle>:
+                left: 0deg;
+                top : 270deg;
+                left top: -45deg;
+    2   radial-gradient(position, shape, <color-stop>, <color-stop>)
+        // 2.1 确定中心点positon
+            (x, y)
+            x/y:    left    = 0,
+                    center  = 50%,
+                    right   = 100%,
+                    percentage,
+                    length,
+        // 2.2 确定形状或大小: <shape> <size> || <shape-size>
+            <shape>: 
+                circle/ellipse
+            <size>:
+                closest-side：      指定径向渐变的半径长度为从圆心到离圆心最近的边 
+                closest-corner：    指定径向渐变的半径长度为从圆心到离圆心最近的角 
+                farthest-side：     指定径向渐变的半径长度为从圆心到离圆心最远的边 
+                farthest-corner：   指定径向渐变的半径长度为从圆心到离圆心最远的角 
+                contain：           包含，指定径向渐变的半径长度为从圆心到离圆心最近的点。类同于closest-side 
+                cover：             覆盖，指定径向渐变的半径长度为从圆心到离圆心最远的点。类同于farthest-corner 
+            <shape-size>: [h-length, v-length]
+                length: <percentage>/<length>： 
+
+    // 五、背景
+    ------------------------------------------------------
+	1   background-color:
+	2   background-image: 
+            url() / 渐变
+	3   background-position:
+        // 背景图像填充的起点: 以元素左上角为坐标原点
+            // (x, y)
+            x:  left/center/right/percentage/length
+            y:  top/center/bottom/percentage/length
+    4   background-size:
+        // 背景图像的大小
+            auto/cover/contain/percentage/length
+	5   background-origin:
+        // 设定坐标原点
+            content-box/padding-box/border-box
+	6   background-clip:
+        //指定图像向外裁剪的区域
+            content-box/padding-box/border-box/text
+            ---------------------------------------
+            chrome 支持:
+                -webkit-background-clip: text;
+                backgrund-clip: border-box;
+                //即：对于text，必须带上-webkit-
+                      对于其他属性，必须不带-webkit-
+            fixefox 支持：
+                -webkit-background-clip:text 
+                background-clip:text
+                background-clip: border-box;
+            ---------------------------------------
+	7   background-repeat:
+        // 背景如何铺排填充
+            no-repeat/repeat/repeat-x/repeat-y
+	8   background-attachment: 
+        // 背景图像是随内容滚动还是固定
+            fixed： 背景图像相对于窗体固定。 
+            scroll： 背景图像相对于元素固定
+
+    // 六、字体装饰
+    ------------------------------------------------------
+    1、text-decoration:
+        // 只有firefox支持css3的复合属性
+        // 其他浏览器只支持text-decoration: underline/overline/line-through
+            text-decoration-line: underline / overline / line-through
+            text-decoration-style: solid / dotted / dashed / wavy / double
+            text-decoration-color:
+    2、text-shadow:
+        <x> <y> <blur-length> <color>
+        <x>:    在x方向上的偏移量
+        <y>:    在y方向上的偏移量
+        <blur-length>:  模糊度
+        <color>:        颜色
+
+    // 七、书写模式
+    ------------------------------------------------------
+    1、writing-mode:
+        horizontal-tb       // 正常
+        vertical-lr         // 垂直, 从左向右
+        vertical-rl         // 垂直, 从右向左
+    2、direction:
+       // 当unicode-bidi: bidi-override时, 才起作用
+        ltr
+        rtl
+
+    // 八、html/css/js中使用unicode字符
+    ------------------------------------------------------
+    1 html:
+        &# + 10进制的unicode编码 + ;
+        如：&#1001;
+    2 css
+        \ + 16进制的unicode编码
+        如：\4e00;
+    3 js
+        \u + 16进制的unicode编码
+        如：\u4e00;
 
 
 // 排版心得
