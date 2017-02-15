@@ -1,0 +1,71 @@
+
+MIME类型分类
+// http://tool.oschina.net/commons
+// http://www.w3school.com.cn/media/media_mimeref.asp
+==========================================================
+一  application      // 应用
+----------------------------------------------------------
+    // js
+    ------------------------------------------------------
+    1   application/x-javascript	        js
+
+    // 压缩
+    ------------------------------------------------------
+    2   application/x-gzip	                gz
+    3   application/x-compressed	        tgz
+    4   application/x-tar	                tar
+
+    // 文档
+    ------------------------------------------------------
+    5   application/msword	                doc
+    6   application/pdf	                    pdf
+    7   application/vnd.ms-powerpoint	    ppt
+    8   application/vnd.ms-works	        wps
+    9   application/x-png                   png
+
+    // 流媒体
+    ------------------------------------------------------
+    application/octet-stream
+    application/x-shockwave-flash           flash类型
+
+----------------------------------------------------------
+二  audio            // 音频
+----------------------------------------------------------
+    1   audio/mpeg	                        mp3
+    2   audio/x-wav	                        wav
+
+----------------------------------------------------------
+三  image            // 图片
+----------------------------------------------------------
+    1   image/*                             所有图片类型 //chrome浏览器打开时很慢
+    2   image/gif	                        gif
+    3   image/jpeg	                        jpeg
+    4   image/jpeg	                        jpg
+    5   image/svg+xml	                    svg
+    6   image/tiff	                        tif
+    7   image/tiff	                        tiff
+    8   image/x-icon	                    ico
+    9   image/png                           png
+----------------------------------------------------------
+
+----------------------------------------------------------
+四  text             // 文本
+----------------------------------------------------------
+    1   text/css                            css
+    2   text/html	                        htm/html
+    3   text/plain	                        c/h/txt
+    4   text/javascript                     js
+    5   text/xml                            xml
+----------------------------------------------------------
+
+
+----------------------------------------------------------
+五  video            // 视频
+----------------------------------------------------------
+    1   video/mpeg	                     mp2/mpa/mpe/mpeg/mpg/mgv2
+    2   video/quicktime	                    mov/qt
+    3   video/x-sgi-movie	                movie
+    4   video/avi                           avi
+    5   video/x-ms-wmv                      wmv
+----------------------------------------------------------
+
