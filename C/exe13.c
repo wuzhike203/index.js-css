@@ -8,7 +8,7 @@
 int main(int argc, const char *argv[])
 {
     char another_game = 'Y';
-    const unsigned int DELEY = 1;
+    const unsigned int DELEY = 3;
     bool correct = true;
     unsigned int tries = 0;
     unsigned int digits = 0;
@@ -31,7 +31,7 @@ int main(int argc, const char *argv[])
     printf("\nThe computer will remove them, and then prompt you "
             "to enter the same sequence."
             "\nWhen you do, you must put spaces between the digits.\n"
-            "\nGood Luck!\nPress Enter to play\n");
+            "\nGoiod Luck!\nPress Enter to play\n");
     scanf(" %c", &another_game);
 
     // Game loop - one outer loop iteration is a complete game
@@ -47,19 +47,23 @@ int main(int argc, const char *argv[])
             // a new attempt
             ++tries;
 
+            // clear keyboard stdin
+            fflush(stdin);
+
+            // 
             // Initialize the random sequence
             srand(time(&seed));
             // Output a random digit
             for(unsigned int i=1; i<=digits; ++i)
-                printf("%d ", rand()%10);
+                printf("%u ", rand()%10);
 
             /* Code to wait one second */
             wait_start = clock();
-            for( ; clock() - wait_start > DELEY*CLOCKS_PER_SEC; );
+            for( ; clock() - wait_start < DELEY*CLOCKS_PER_SEC; );
 
             /* Code to overwrite the digit sequence */
             printf("\r");
-            for(unsigned init i=0; i<digits; i++){
+            for(unsigned int i=0; i<digits; i++){
                 printf("  ");
             }
 
