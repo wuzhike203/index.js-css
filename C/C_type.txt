@@ -83,3 +83,11 @@ n %= m;
 
 
 
+#c11字符串处理
+=============================================================================
+序号    描述                标准函数            扩展函数    
+1       确定字符串长度      strlen(str)         strnlen_s(str, sizeof(str))
+2       复制字符串          strcpy(dst, sre)    strcpy_s(dst, sizeof(dst), sre)
+                                                strncpy_s(dst, sizeof(dst), sre, num)
+3       连接字符串          strcat(dst, sre)    strcat_s(dst, sizeof(dst), sur)
+                                                strncat_s(dst, sizeof(dst), sre, num)

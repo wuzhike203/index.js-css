@@ -1534,3 +1534,15 @@ Math
     Math.exp(n)
     // 对数函数
     Math.log(n)
+
+// 17-03-05 12:12:28 
+    linux发行版中的i386/i686/x86-64 的区别
+    1. i386 
+        适用于intel和AMD所有32位的cpu.以及via采用X86架构的32的cpu.
+        intel平台包括8086,80286,80386,80486,奔腾系列(1.2.3.4)、
+        赛扬系列,Pentium D系列以及centrino P-M,core duo 等.
+    2. X86_64 
+        适用于intel的Core 2 Duo, Centrino Core 2 Duo, and Xeon 
+        和AMD Athlon64/x2, Sempron64/x2, Duron64等采用X86架构的64位cpu.
+    3. I686 
+        只是i386的一个子集,支持的cpu从Pentium 2 (686)开始,之前的型号不支持.
