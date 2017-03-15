@@ -5,3 +5,5 @@
 3       Tampermonkey
 4       FireShot
 5       FVD Download
+6       YSlow
+7       有道词典chrome取词插件
