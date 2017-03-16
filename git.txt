@@ -73,3 +73,5 @@ origin          -->远程仓库在本地的名称
     git push origin dev
 4   删除远程分支
     git push --delete origin dev
+
+test oschina.net --- github.com
