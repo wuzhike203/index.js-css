@@ -20,3 +20,58 @@ local   --master
 
 origin          -->远程仓库在本地的名称
         --master 
+
+// 工作区 相关的命令
+=====================================================
+1   丢弃工作区修改              git checkout -- file
+2   把工作区内容添加到缓存区    git add/rm 
+3   查看版本库中的文件与工作区的差异
+                                git diff file
+
+// 缓存区 相关的命令
+=====================================================
+1   把缓存区提交到分支          git commit -m "tip msg"
+2   把缓存区回退到工作区        git reset HEAD file
+
+// 工作区和缓存区
+=====================================================
+1   git status  查看状态
+                        
+// 版本库 相关的命令
+=====================================================
+1   版本回退                    git reset --hard commit_id
+2   查看提交记录                git log
+3   查看提交id                  git reflog
+                        
+// 分支 相关的命令
+=====================================================
+1   创建分支(以当前分支为蓝本)  git branch dev
+2   切换到分支                  git checkout dev
+3   查看分支                    git branch
+4   合并指定分支到当前分支      git merge dev
+5   删除分支                    git branch -d dev
+6   删除一个没有被合并的分支    git branch -D dev
+7   重命名分支                  git branch -m dev develop
+
+// 储藏 stash
+=====================================================
+1   查看储藏列表                git stash list
+2   储藏当前工作区和缓存区      git stash
+3   把储藏的内容恢复,但不删除   git stash apply
+4   删除存储区的内容            git stash drop
+5   3和4                        git stash pop
+6   可以多次stash, 恢复时       git stash apply stash@{0}
+
+// 远程库 remote
+=====================================================
+1   关联本地仓库和远程库        
+    git remote add origin git@github.com:.../learngit.git
+2   解除关联
+    git remote remove origin
+
+3   创建远程分支(远程分支是本地分支push到服务器上的时候产生的)
+    git push origin dev
+4   删除远程分支
+    git push --delete origin dev
+
+test oschina.net --- github.com
