@@ -1203,11 +1203,73 @@
     5   nth-child类     
                         first-child
                         last-child
-                        first-of-type
-                        last-of-type
-
                         nth-child
                         nth-last-child
+
+                        first-of-type
+                        last-of-type
                         nth-of-type
                         nth-last-of-type
     ---------------------------------------------
+
+// 17-03-22 13:45:49 
+    常用的MIME(Multipurpose Internet Mail Extensions)多用途互联网邮件扩展
+----------------------------------------------------------------------
+名称            类型/子类型                     扩展名
+----------------------------------------------------------------------
+// application
+----------------------------------------------------------------------
+流媒体          application/octet-stream	    */bin/class/dms/exe/lha/lzh
+微软word文件    application/msword	            doc/dot
+微软exel文件    application/vnd.ms-excel	    xla/xlc/xlm/xlt/xlw/xl
+微软outlook     application/vnd.ms-outlook	    msg
+微软ppt         application/vnd.ms-powerpoint	pot/pps/ppt/pp
+                application/vnd.ms-project	    mpp
+                application/vnd.ms-works	    wcm/wdb/wks/wps/wd
+                application/winhlp	            hlp
+pdf             application/pdf	                pdf
+adobe           application/postscript	        ai/ps/eps
+压缩文件        application/x-compress	        z
+                application/x-compressed	    tgz
+                application/x-gtar	            gtar
+                application/x-gzip	            gz
+                application/x-tar	            tar
+                application/zip	                zip
+
+js              application/x-javascript	    js
+dll             application/x-msdownload	    dll
+flash           application/x-shockwave-flash	swf
+----------------------------------------------------------------------
+
+// audio
+----------------------------------------------------------------------
+                audio/mpeg	                    mp3
+                audio/x-wav	                    wav
+----------------------------------------------------------------------
+
+// image
+----------------------------------------------------------------------
+                image/bmp	                    bmp
+                image/gif	                    gif
+                image/jpeg	                    jpe/jpeg/jpg
+                image/svg+xml	                svg
+                image/x-icon	                ico
+----------------------------------------------------------------------
+
+            // text
+----------------------------------------------------------------------
+                text/css	                    css
+                text/html	                    htm/html/stm
+                text/plain	                    bas/c/h/txt
+                text/x-component	            htc
+                text/x-setext	                etx
+----------------------------------------------------------------------
+
+// video
+----------------------------------------------------------------------
+                video/mpeg	                    mp2/mpa/pme/mpeg/mpv2
+                video/quicktime	                mov/qt
+                video/x-msvideo	                avi
+                video/x-sgi-movie	            movie
+----------------------------------------------------------------------
+
