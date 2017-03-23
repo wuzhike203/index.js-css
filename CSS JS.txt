@@ -1273,3 +1273,10 @@ flash           application/x-shockwave-flash	swf
                 video/x-sgi-movie	            movie
 ----------------------------------------------------------------------
 
+// 17-03-21 22:37:12 
+    Golden guidelines for writing clean css
+    Four simple rules for writing clean css:
+    1   Avoid global and element selectors
+    2   Omit overly specific selectors
+    3   Use semantic class names
+    4   Don't tie CSS too closely to markup structure
