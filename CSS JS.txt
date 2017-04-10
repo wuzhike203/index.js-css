@@ -809,7 +809,8 @@
 
 // 16-10-09 08:37:34 
     1 水平居中有2中方式
-        a、块 ： margin: auto
+        a、块 ：position: static/relative:  margin: auto
+                          absolute:  top: 0; bottom: 0; left: 0; right: 0; margin: auto;
         b、inline 和 inline-block : 父元素text-align: center;
 
     2、垂直居中有两种方式：
