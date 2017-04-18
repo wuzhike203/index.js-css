@@ -78,6 +78,7 @@ order   word            explain
 8       synthesize      合成, 综合
         consortium      联合, 合伙
         composite       复合, 复合材料
+        compose         组合
         merge           合并
 -----------------------------------------------------
 9       encapsulation   封装, 包装
