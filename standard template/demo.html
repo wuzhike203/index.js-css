@@ -1,0 +1,788 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta content="webkit" name="renderer">
+    <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <title>Module html</title>
+    <link rel="stylesheet" href="demo.css">
+    <style>
+body{
+    width: 1100px;
+    margin: auto;
+}
+
+.hide{ display: none; }
+
+.item-title{
+    padding-bottom: 5px;
+    border-bottom: 1px solid #ccc;
+}
+        .item{
+            display: inline-block;
+            width: 70px;
+            height: 60px;
+            margin:5px;
+            padding:5px;
+            border: 1px dashed #ccc;
+            border-radius: 4px;
+            text-align: center;
+            vertical-align: middle;
+            line-height: 40px;
+            font-size: 40px;
+            transition: all ease 0.5s;
+            counter-increment: item_num;
+        }
+        .item:hover{
+            transform: scale(1.5);
+        }
+        .code{
+            display: block;
+            font-size: 12px;
+            color: #aaa;
+            line-height: 20px;
+        }
+        .top{
+            position: fixed;
+            top: 50%;
+            right: 20px;
+
+            display: inline-block;
+            width: 60px;
+            height: 50px;
+
+            line-height: 50px;
+            text-align: center;
+            text-decoration: none;
+
+            border-radius: 5px;
+            background-color: #ccc;
+        }
+        .top:hover{
+            background-color: orange;
+        }
+    </style>
+</head>
+<body>
+<a href="#top" class="top">top</a>
+<!-- input内容保留2位有效数字; afterpaste: 粘贴之后 -->
+<!-- 
+<input  onkeyup="this.value=this.value.replace(/(\D*)(\d*[.]?\d{0,2})(.*)/g,'$2')" 
+        onafterpaste="this.value=this.value.replace(/[^0-9]/g,'')" 
+        type="text"/> <br/>
+-->
+
+    <!-- 进度条 -->
+<!-- 
+    <div class="item">
+        <div class="progress-bar">  
+            <span class="inner"></span>  
+        </div>  
+    </div>
+-->
+
+<!-- ARROW  start -->
+<div class="region arrow-region">
+    <h3 class="item-title"> 箭头/ARROW </h3> 
+    <div class="item"> <span class="arrow arrow-down"></span></div>
+    <div class="item"><span class="arrow arrow-down"><span class="arrow arrow-down"></span></span></div>
+    <div class="item"> <span>&#x8b;</span> <a href="#8b" class="code">8b</a> </div>
+    <div class="item"> <span>&#x9b;</span> <a href="#9b" class="code">9b</a> </div>
+    <div class="item"> <span class="down-up"></span> </div> 
+    <div class="item"> <span class="close">&#xbb;</span> <a href="#bb" class="code">bb</a> </div>
+    
+<!-- --> <br/>
+
+    <div class="item"> <span>&#x2335;</span> <a href="#2335" class="code">2335</a> </div>
+    <div class="item"> <span>&#x232a;</span> <a href="#232a" class="code">232a</a> </div>
+    <div class="item"> <span>&#x2329;</span> <a href="#2329" class="code">2329</a> </div>
+    
+       <div class="item" id="27e8"><div class="">⟨</div><span class="code">27e8</span></div>
+       <div class="item" id="27e9"><div class="">⟩</div><span class="code">27e9</span></div><div class="item" id="27ea"><div class="">⟪</div><span class="code">27ea</span></div><div class="item" id="27eb"><div class="">⟫</div><span class="code">27eb</span></div>
+      
+      <br /> <br/>
+
+<div class="hide">
+        <div class="item" id="2190"><div class="">←</div><span class="code">2190</span></div><div class="item" id="2191"><div class="">↑</div><span class="code">2191</span></div>
+        <div class="item" id="2192"><div class="">→</div><span class="code">2192</span></div>
+        <div class="item" id="2193"><div class="">↓</div><span class="code">2193</span></div>
+        
+        <br />
+        
+        <div class="item" id="2194"><div class="">↔</div><span class="code">2194</span></div><div class="item" id="2195"><div class="">↕</div><span class="code">2195</span></div><div class="item" id="2196"><div class="">↖</div><span class="code">2196</span></div><div class="item" id="2197"><div class="">↗</div><span class="code">2197</span></div><div class="item" id="2198"><div class="">↘</div><span class="code">2198</span></div><div class="item" id="2199"><div class="">↙</div><span class="code">2199</span></div>
+      
+      <br />
+      
+        <div class="item" id="219e"><div class="">↞</div><span class="code">219e</span></div><div class="item" id="219f"><div class="">↟</div><span class="code">219f</span></div><div class="item" id="21a0"><div class="">↠</div><span class="code">21a0</span></div><div class="item" id="21a1"><div class="">↡</div><span class="code">21a1</span></div>
+      <br />
+      
+        <div class="item" id="21b0"><div class="">↰</div><span class="code">21b0</span></div><div class="item" id="21b1"><div class="">↱</div><span class="code">21b1</span></div><div class="item" id="21b2"><div class="">↲</div><span class="code">21b2</span></div><div class="item" id="21b3"><div class="">↳</div><span class="code">21b3</span></div><div class="item" id="21b4"><div class="">↴</div><span class="code">21b4</span></div><div class="item" id="21b5"><div class="">↵</div><span class="code">21b5</span></div><div class="item" id="21b6"><div class="">↶</div><span class="code">21b6</span></div><div class="item" id="21b7"><div class="">↷</div><span class="code">21b7</span></div><div class="item" id="21b8"><div class="">↸</div><span class="code">21b8</span></div><div class="item" id="21b9"><div class="">↹</div><span class="code">21b9</span></div><div class="item" id="21ba"><div class="">↺</div><span class="code">21ba</span></div>
+        
+        <div class="item" id="21bb"><div class="">↻</div><span class="code">21bb</span></div>
+        
+         <div class="item" id="21da"><div class="">⇚</div><span class="code">21da</span></div><div class="item" id="21db"><div class="">⇛</div><span class="code">21db</span></div><div class="item" id="21dc"><div class="">⇜</div><span class="code">21dc</span></div><div class="item" id="21dd"><div class="">⇝</div><span class="code">21dd</span></div><div class="item" id="21de"><div class="">⇞</div><span class="code">21de</span></div><div class="item" id="21df"><div class="">⇟</div><span class="code">21df</span></div>
+        
+        <br />
+        <div class="item" id="21ea"><div class="">⇪</div><span class="code">21ea</span></div><div class="item" id="21eb"><div class="">⇫</div><span class="code">21eb</span></div><div class="item" id="21ec"><div class="">⇬</div><span class="code">21ec</span></div><div class="item" id="21ed"><div class="">⇭</div><span class="code">21ed</span></div><div class="item" id="21ee"><div class="">⇮</div><span class="code">21ee</span></div><div class="item" id="21ef"><div class="">⇯</div><span class="code">21ef</span></div><div class="item" id="21f0"><div class="">⇰</div><span class="code">21f0</span></div><div class="item" id="21f1"><div class="">⇱</div><span class="code">21f1</span></div><div class="item" id="21f2"><div class="">⇲</div><span class="code">21f2</span></div><div class="item" id="21f3"><div class="">⇳</div><span class="code">21f3</span></div><div class="item" id="21f4"><div class="">⇴</div><span class="code">21f4</span></div><div class="item" id="21f5"><div class="">⇵</div><span class="code">21f5</span></div><div class="item" id="21f6"><div class="">⇶</div><span class="code">21f6</span></div><div class="item" id="21f7"><div class="">⇷</div><span class="code">21f7</span></div><div class="item" id="21f8"><div class="">⇸</div><span class="code">21f8</span></div><div class="item" id="21f9"><div class="">⇹</div><span class="code">21f9</span></div><div class="item" id="21fa"><div class="">⇺</div><span class="code">21fa</span></div><div class="item" id="21fb"><div class="">⇻</div><span class="code">21fb</span></div><div class="item" id="21fc"><div class="">⇼</div><span class="code">21fc</span></div><div class="item" id="21fd"><div class="">⇽</div><span class="code">21fd</span></div><div class="item" id="21fe"><div class="">⇾</div><span class="code">21fe</span></div><div class="item" id="21ff"><div class="">⇿</div><span class="code">21ff</span></div>
+
+<!-- --> <br/>
+
+        <div class="item" id="2794"><div class="">➔</div><span class="code">2794</span></div>
+        
+        
+        <div class="item" id="2798"><div class="">➘</div><span class="code">2798</span></div><div class="item" id="2799"><div class="">➙</div><span class="code">2799</span></div><div class="item" id="279a"><div class="">➚</div><span class="code">279a</span></div><div class="item" id="279b"><div class="">➛</div><span class="code">279b</span></div><div class="item" id="279c"><div class="">➜</div><span class="code">279c</span></div><div class="item" id="279d"><div class="">➝</div><span class="code">279d</span></div><div class="item" id="279e"><div class="">➞</div><span class="code">279e</span></div><div class="item" id="279f"><div class="">➟</div><span class="code">279f</span></div>
+        
+         
+        <div class="item" id="27a5"><div class="">➥</div><span class="code">27a5</span></div><div class="item" id="27a6"><div class="">➦</div><span class="code">27a6</span></div><div class="item" id="27a7"><div class="">➧</div><span class="code">27a7</span></div><div class="item" id="27a8"><div class="">➨</div><span class="code">27a8</span></div>
+        
+        <br />
+        
+        <div class="item" id="27a9"><div class="">➩</div><span class="code">27a9</span></div><div class="item" id="27aa"><div class="">➪</div><span class="code">27aa</span></div><div class="item" id="27ab"><div class="">➫</div><span class="code">27ab</span></div><div class="item" id="27ac"><div class="">➬</div><span class="code">27ac</span></div><div class="item" id="27ad"><div class="">➭</div><span class="code">27ad</span></div><div class="item" id="27ae"><div class="">➮</div><span class="code">27ae</span></div><div class="item" id="27af"><div class="">➯</div><span class="code">27af</span></div>
+        <div class="item" id="27b1"><div class="">➱</div><span class="code">27b1</span></div><div class="item" id="27b2"><div class="">➲</div><span class="code">27b2</span></div>
+        
+        <br />
+        
+        <div class="item" id="27b3"><div class="">➳</div><span class="code">27b3</span></div><div class="item" id="27b4"><div class="">➴</div><span class="code">27b4</span></div><div class="item" id="27b5"><div class="">➵</div><span class="code">27b5</span></div><div class="item" id="27b6"><div class="">➶</div><span class="code">27b6</span></div><div class="item" id="27b7"><div class="">➷</div><span class="code">27b7</span></div><div class="item" id="27b8"><div class="">➸</div><span class="code">27b8</span></div><div class="item" id="27b9"><div class="">➹</div><span class="code">27b9</span></div><div class="item" id="27ba"><div class="">➺</div><span class="code">27ba</span></div><div class="item" id="27bb"><div class="">➻</div><span class="code">27bb</span></div><div class="item" id="27bc"><div class="">➼</div><span class="code">27bc</span></div><div class="item" id="27bd"><div class="">➽</div><span class="code">27bd</span></div><div class="item" id="27be"><div class="">➾</div><span class="code">27be</span></div>
+        
+         <div class="item" id="27f0"><div class="">⟰</div><span class="code">27f0</span></div><div class="item" id="27f1"><div class="">⟱</div><span class="code">27f1</span></div><div class="item" id="27f2"><div class="">⟲</div><span class="code">27f2</span></div><div class="item" id="27f3"><div class="">⟳</div><span class="code">27f3</span></div><div class="item" id="27f4"><div class="">⟴</div><span class="code">27f4</span></div>
+        
+        <br />
+        
+        <div class="item" id="27f5"><div class="">⟵</div><span class="code">27f5</span></div><div class="item" id="27f6"><div class="">⟶</div><span class="code">27f6</span></div><div class="item" id="27f7"><div class="">⟷</div><span class="code">27f7</span></div><div class="item" id="27f8"><div class="">⟸</div><span class="code">27f8</span></div><div class="item" id="27f9"><div class="">⟹</div><span class="code">27f9</span></div><div class="item" id="27fa"><div class="">⟺</div><span class="code">27fa</span></div><div class="item" id="27fb"><div class="">⟻</div><span class="code">27fb</span></div><div class="item" id="27fc"><div class="">⟼</div><span class="code">27fc</span></div><div class="item" id="27fd"><div class="">⟽</div><span class="code">27fd</span></div><div class="item" id="27fe"><div class="">⟾</div><span class="code">27fe</span></div>
+        
+
+<br />
+<div class="item" id="27ff"><div class="">⟿</div><span class="code">27ff</span></div>
+
+        <div class="item" id="2900"><div class="">⤀</div><span class="code">2900</span></div><div class="item" id="2901"><div class="">⤁</div><span class="code">2901</span></div>
+        
+        <br />
+        
+        <div class="item" id="2902"><div class="">⤂</div><span class="code">2902</span></div><div class="item" id="2903"><div class="">⤃</div><span class="code">2903</span></div><div class="item" id="2904"><div class="">⤄</div><span class="code">2904</span></div><div class="item" id="2905"><div class="">⤅</div><span class="code">2905</span></div><div class="item" id="2906"><div class="">⤆</div><span class="code">2906</span></div><div class="item" id="2907"><div class="">⤇</div><span class="code">2907</span></div><div class="item" id="2908"><div class="">⤈</div><span class="code">2908</span></div><div class="item" id="2909"><div class="">⤉</div><span class="code">2909</span></div><div class="item" id="290a"><div class="">⤊</div><span class="code">290a</span></div><div class="item" id="290b"><div class="">⤋</div><span class="code">290b</span></div>
+        
+        <br />
+        
+        <div class="item" id="290c"><div class="">⤌</div><span class="code">290c</span></div><div class="item" id="290d"><div class="">⤍</div><span class="code">290d</span></div><div class="item" id="290e"><div class="">⤎</div><span class="code">290e</span></div><div class="item" id="290f"><div class="">⤏</div><span class="code">290f</span></div><div class="item" id="2910"><div class="">⤐</div><span class="code">2910</span></div><div class="item" id="2911"><div class="">⤑</div><span class="code">2911</span></div>
+        
+  
+        
+        <div class="item" id="2914"><div class="">⤔</div><span class="code">2914</span></div><div class="item" id="2915"><div class="">⤕</div><span class="code">2915</span></div><div class="item" id="2916"><div class="">⤖</div><span class="code">2916</span></div><div class="item" id="2917"><div class="">⤗</div><span class="code">2917</span></div><div class="item" id="2918"><div class="">⤘</div><span class="code">2918</span></div><div class="item" id="2919"><div class="">⤙</div><span class="code">2919</span></div><div class="item" id="291a"><div class="">⤚</div><span class="code">291a</span></div><div class="item" id="291b"><div class="">⤛</div><span class="code">291b</span></div><div class="item" id="291c"><div class="">⤜</div><span class="code">291c</span></div><div class="item" id="291d"><div class="">⤝</div><span class="code">291d</span></div><div class="item" id="291e"><div class="">⤞</div><span class="code">291e</span></div><div class="item" id="291f"><div class="">⤟</div><span class="code">291f</span></div><div class="item" id="2920"><div class="">⤠</div><span class="code">2920</span></div>
+        
+        <br />
+        
+        <div class="item" id="2921"><div class="">⤡</div><span class="code">2921</span></div><div class="item" id="2922"><div class="">⤢</div><span class="code">2922</span></div><div class="item" id="2923"><div class="">⤣</div><span class="code">2923</span></div><div class="item" id="2924"><div class="">⤤</div><span class="code">2924</span></div><div class="item" id="2925"><div class="">⤥</div><span class="code">2925</span></div><div class="item" id="2926"><div class="">⤦</div><span class="code">2926</span></div>
+        <br />
+        
+        <div class="item" id="2927"><div class="">⤧</div><span class="code">2927</span></div><div class="item" id="2928"><div class="">⤨</div><span class="code">2928</span></div><div class="item" id="2929"><div class="">⤩</div><span class="code">2929</span></div><div class="item" id="292a"><div class="">⤪</div><span class="code">292a</span></div><div class="item" id="292b"><div class="">⤫</div><span class="code">292b</span></div><div class="item" id="292c"><div class="">⤬</div><span class="code">292c</span></div><div class="item" id="292d"><div class="">⤭</div><span class="code">292d</span></div><div class="item" id="292e"><div class="">⤮</div><span class="code">292e</span></div><div class="item" id="292f"><div class="">⤯</div><span class="code">292f</span></div><div class="item" id="2930"><div class="">⤰</div><span class="code">2930</span></div><div class="item" id="2931"><div class="">⤱</div><span class="code">2931</span></div><div class="item" id="2932"><div class="">⤲</div><span class="code">2932</span></div>
+        
+        <br />
+        
+        <div class="item" id="2933"><div class="">⤳</div><span class="code">2933</span></div><div class="item" id="2934"><div class="">⤴</div><span class="code">2934</span></div><div class="item" id="2935"><div class="">⤵</div><span class="code">2935</span></div><div class="item" id="2936"><div class="">⤶</div><span class="code">2936</span></div><div class="item" id="2937"><div class="">⤷</div><span class="code">2937</span></div><div class="item" id="2938"><div class="">⤸</div><span class="code">2938</span></div><div class="item" id="2939"><div class="">⤹</div><span class="code">2939</span></div><div class="item" id="293a"><div class="">⤺</div><span class="code">293a</span></div><div class="item" id="293b"><div class="">⤻</div><span class="code">293b</span></div><div class="item" id="293c"><div class="">⤼</div><span class="code">293c</span></div><div class="item" id="293d"><div class="">⤽</div><span class="code">293d</span></div><div class="item" id="293e"><div class="">⤾</div><span class="code">293e</span></div><div class="item" id="293f"><div class="">⤿</div><span class="code">293f</span></div>
+        
+       <br />
+       
+        	<div class="item" id="294b"><div class="">⥋</div><span class="code">294b</span></div><div class="item" id="294c"><div class="">⥌</div><span class="code">294c</span></div><div class="item" id="294d"><div class="">⥍</div><span class="code">294d</span></div><div class="item" id="294e"><div class="">⥎</div><span class="code">294e</span></div><div class="item" id="294f"><div class="">⥏</div><span class="code">294f</span></div><div class="item" id="2950"><div class="">⥐</div><span class="code">2950</span></div><div class="item" id="2951"><div class="">⥑</div><span class="code">2951</span></div>
+        	
+        	<br />
+        	
+        	<div class="item" id="2952"><div class="">⥒</div><span class="code">2952</span></div><div class="item" id="2953"><div class="">⥓</div><span class="code">2953</span></div><div class="item" id="2954"><div class="">⥔</div><span class="code">2954</span></div><div class="item" id="2955"><div class="">⥕</div><span class="code">2955</span></div><div class="item" id="2956"><div class="">⥖</div><span class="code">2956</span></div><div class="item" id="2957"><div class="">⥗</div><span class="code">2957</span></div><div class="item" id="2958"><div class="">⥘</div><span class="code">2958</span></div><div class="item" id="2959"><div class="">⥙</div><span class="code">2959</span></div><div class="item" id="295a"><div class="">⥚</div><span class="code">295a</span></div><div class="item" id="295b"><div class="">⥛</div><span class="code">295b</span></div><div class="item" id="295c"><div class="">⥜</div><span class="code">295c</span></div><div class="item" id="295d"><div class="">⥝</div><span class="code">295d</span></div><div class="item" id="295e"><div class="">⥞</div><span class="code">295e</span></div><div class="item" id="295f"><div class="">⥟</div><span class="code">295f</span></div><div class="item" id="2960"><div class="">⥠</div><span class="code">2960</span></div><div class="item" id="2961"><div class="">⥡</div><span class="code">2961</span></div>
+        	
+        	<br />
+        	
+        	<div class="item" id="2962"><div class="">⥢</div><span class="code">2962</span></div><div class="item" id="2963"><div class="">⥣</div><span class="code">2963</span></div><div class="item" id="2964"><div class="">⥤</div><span class="code">2964</span></div><div class="item" id="2965"><div class="">⥥</div><span class="code">2965</span></div><div class="item" id="2966"><div class="">⥦</div><span class="code">2966</span></div><div class="item" id="2967"><div class="">⥧</div><span class="code">2967</span></div><div class="item" id="2968"><div class="">⥨</div><span class="code">2968</span></div><div class="item" id="2969"><div class="">⥩</div><span class="code">2969</span></div><div class="item" id="296a"><div class="">⥪</div><span class="code">296a</span></div><div class="item" id="296b"><div class="">⥫</div><span class="code">296b</span></div><div class="item" id="296c"><div class="">⥬</div><span class="code">296c</span></div><div class="item" id="296d"><div class="">⥭</div><span class="code">296d</span></div><div class="item" id="296e"><div class="">⥮</div><span class="code">296e</span></div><div class="item" id="296f"><div class="">⥯</div><span class="code">296f</span></div>
+        
+        </div>
+        <!-- hide end -->
+        
+        <br />
+        
+        <div class="item" id="21bc"><div class="">↼</div><span class="code">21bc</span></div><div class="item" id="21bd"><div class="">↽</div><span class="code">21bd</span></div><div class="item" id="21be"><div class="">↾</div><span class="code">21be</span></div><div class="item" id="21bf"><div class="">↿</div><span class="code">21bf</span></div><div class="item" id="21c0"><div class="">⇀</div><span class="code">21c0</span></div><div class="item" id="21c1"><div class="">⇁</div><span class="code">21c1</span></div><div class="item" id="21c2"><div class="">⇂</div><span class="code">21c2</span></div><div class="item" id="21c3"><div class="">⇃</div><span class="code">21c3</span></div>
+        <br />
+        
+        <div class="item" id="21c4"><div class="">⇄</div><span class="code">21c4</span></div><div class="item" id="21c5"><div class="">⇅</div><span class="code">21c5</span></div><div class="item" id="21c6"><div class="">⇆</div><span class="code">21c6</span></div><div class="item" id="21c7"><div class="">⇇</div><span class="code">21c7</span></div><div class="item" id="21c8"><div class="">⇈</div><span class="code">21c8</span></div><div class="item" id="21c9"><div class="">⇉</div><span class="code">21c9</span></div><div class="item" id="21ca"><div class="">⇊</div><span class="code">21ca</span></div>
+        <br />
+        <div class="item" id="21cb"><div class="">⇋</div><span class="code">21cb</span></div><div class="item" id="21cc"><div class="">⇌</div><span class="code">21cc</span></div>
+        
+        <br />
+        
+        <div class="item" id="21cd"><div class="">⇍</div><span class="code">21cd</span></div><div class="item" id="21ce"><div class="">⇎</div><span class="code">21ce</span></div><div class="item" id="21cf"><div class="">⇏</div><span class="code">21cf</span></div><div class="item" id="21d0"><div class="">⇐</div><span class="code">21d0</span></div><div class="item" id="21d1"><div class="">⇑</div><span class="code">21d1</span></div><div class="item" id="21d2"><div class="">⇒</div><span class="code">21d2</span></div><div class="item" id="21d3"><div class="">⇓</div><span class="code">21d3</span></div><div class="item" id="21d4"><div class="">⇔</div><span class="code">21d4</span></div><div class="item" id="21d5"><div class="">⇕</div><span class="code">21d5</span></div><div class="item" id="21d6"><div class="">⇖</div><span class="code">21d6</span></div><div class="item" id="21d7"><div class="">⇗</div><span class="code">21d7</span></div><div class="item" id="21d8"><div class="">⇘</div><span class="code">21d8</span></div><div class="item" id="21d9"><div class="">⇙</div><span class="code">21d9</span></div>
+        
+        <br />
+       
+        
+        
+        <div class="item" id="21e0"><div class="">⇠</div><span class="code">21e0</span></div><div class="item" id="21e1"><div class="">⇡</div><span class="code">21e1</span></div><div class="item" id="21e2"><div class="">⇢</div><span class="code">21e2</span></div><div class="item" id="21e3"><div class="">⇣</div><span class="code">21e3</span></div>
+        
+        <br />
+        <div class="item" id="21e4"><div class="">⇤</div><span class="code">21e4</span></div><div class="item" id="21e5"><div class="">⇥</div><span class="code">21e5</span></div>
+              <div class="item" id="2912"><div class="">⤒</div><span class="code">2912</span></div><div class="item" id="2913"><div class="">⤓</div><span class="code">2913</span></div>
+        
+        <br />
+        
+        <div class="item" id="21e6"><div class="">⇦</div><span class="code">21e6</span></div><div class="item" id="21e7"><div class="">⇧</div><span class="code">21e7</span></div><div class="item" id="21e8"><div class="">⇨</div><span class="code">21e8</span></div><div class="item" id="21e9"><div class="">⇩</div><span class="code">21e9</span></div>
+        
+        
+        
+        <br />
+        <div class="item" id="27a0"><div class="">➠</div><span class="code">27a0</span></div><div class="item" id="27a1"><div class="">➡</div><span class="code">27a1</span></div><div class="item" id="27a2"><div class="">➢</div><span class="code">27a2</span></div><div class="item" id="27a3"><div class="">➣</div><span class="code">27a3</span></div><div class="item" id="27a4"><div class="">➤</div><span class="code">27a4</span></div>
+        
+</div>
+<!-- ARROW end  -->
+
+<!-- X/对号  start -->
+<div class="region tick-cross">
+    <h3 class="item-title"> X/对号 </h3>
+
+        <div class="item">
+            <span class="close">&#x2573;</span>
+            <a href="#2573" class="code">2573</a>
+        </div>
+        <div class="item">
+            <span class="close">&#xd7;</span>
+            <a href="#d7" class="code">d7</a>
+        </div>
+        <div class="item">
+            <span class="close">&#x2df;</span>
+            <a href="#2df" class="code">2df</a>
+        </div>
+        <div class="item">
+            <span class="close">&#x2717;</span>
+            <a href="#2717" class="code">2717</a>
+        </div>
+        <div class="item">
+            <span class="close">&#x2718;</span>
+            <a href="#2718" class="code">2718</a>
+        </div>
+        <div class="item">
+            <span class="close">&#x2612;</span>
+            <a href="#2612" class="code">2612</a>
+        </div>
+<!-- --> <br/>
+        <div class="item">
+            <span class="close">&#x2713;</span>
+            <a href="#2713" class="code">2713</a>
+        </div>
+        <div class="item">
+            <span class="close">&#x2714;</span>
+            <a href="#2714" class="code">2714</a>
+        </div>
+        <div class="item">
+            <span class="close">&#x2610;</span>
+            <a href="#2610" class="code">2610</a>
+        </div>
+        <div class="item">
+            <span class="close">&#x2611;</span>
+            <a href="#2611" class="code">2611</a>
+        </div>
+</div>
+<!-- x/对号 end  -->
+
+
+
+
+<!-- SPECIAL GRAPHIC  start-->
+<div class="region special">
+    <h3 class="item-title">SPECIAL GRAPHIC</h3>
+    
+    
+
+    <!-- 换行 --> <br/>
+    <div class="item">
+        <span class="close">&#x85;</span>
+            <a href="#85" class="code">85</a>
+    </div>
+    <div class="item">
+        <span class="">&#x89;</span>
+            <a href="#89" class="code">89</a>
+    </div>
+    <div class="item">
+        <span class="">&#xa9;</span>
+            <a href="#a9" class="code">a9</a>
+    </div>
+    <div class="item">
+        <span class="">&#xae;</span>
+            <a href="#ae" class="code">ae</a>
+    </div>
+    <!-- 换行 --> <br/>
+   
+    
+     <div class="item" id="2600"><div class="">☀</div><span class="code">2600</span></div><div class="item" id="2601"><div class="">☁</div><span class="code">2601</span></div><div class="item" id="2602"><div class="">☂</div><span class="code">2602</span></div><div class="item" id="2603"><div class="">☃</div><span class="code">2603</span></div>
+        
+         <div class="item" id="2639"><div class="">☹</div><span class="code">2639</span></div><div class="item" id="263a"><div class="">☺</div><span class="code">263a</span></div><div class="item" id="263b"><div class="">☻</div><span class="code">263b</span></div><div class="item" id="263c"><div class="">☼</div><span class="code">263c</span></div><div class="item" id="263d"><div class="">☽</div><span class="code">263d</span></div><div class="item" id="263e"><div class="">☾</div><span class="code">263e</span></div>
+         
+        <br />
+        
+       
+        
+        <div class="item" id="2605"><div class="">★</div><span class="code">2605</span></div><div class="item" id="2606"><div class="">☆</div><span class="code">2606</span></div>
+        
+      
+        
+        <div class="item" id="260e"><div class="">☎</div><span class="code">260e</span></div><div class="item" id="260f"><div class="">☏</div><span class="code">260f</span></div>
+        
+        <div class="item" id="2614"><div class="">☔</div><span class="code">2614</span></div><div class="item" id="2615"><div class="">☕</div><span class="code">2615</span></div><div class="item" id="2616"><div class="">☖</div><span class="code">2616</span></div><div class="item" id="2617"><div class="">☗</div><span class="code">2617</span></div>
+        
+         
+        <div class="item" id="2706"><div class="">✆</div><span class="code">2706</span></div><div class="item" id="2707"><div class="">✇</div><span class="code">2707</span></div><div class="item" id="2708"><div class="">✈</div><span class="code">2708</span></div><div class="item" id="2709"><div class="">✉</div><span class="code">2709</span></div>
+        
+         <div class="item" id="2638"><div class="">☸</div><span class="code">2638</span></div>
+          <div class="item" id="2618"><div class="">☘</div><span class="code">2618</span></div><div class="item" id="2619"><div class="">☙</div><span class="code">2619</span></div>
+          
+            <div class="item" id="2620"><div class="">☠</div><span class="code">2620</span></div><div class="item" id="2621"><div class="">☡</div><span class="code">2621</span></div><div class="item" id="2622"><div class="">☢</div><span class="code">2622</span></div><div class="item" id="2623"><div class="">☣</div><span class="code">2623</span></div><div class="item" id="2624"><div class="">☤</div><span class="code">2624</span></div>
+        
+         <div class="item" id="262a"><div class="">☪</div><span class="code">262a</span></div><div class="item" id="262b"><div class="">☫</div><span class="code">262b</span></div><div class="item" id="262c"><div class="">☬</div><span class="code">262c</span></div><div class="item" id="262d"><div class="">☭</div><span class="code">262d</span></div><div class="item" id="262e"><div class="">☮</div><span class="code">262e</span></div><div class="item" id="262f"><div class="">☯</div><span class="code">262f</span></div>
+         
+         
+          <div class="item" id="2315"><div class="">⌕</div><span class="code">2315</span></div>
+        <div class="item" id="231a"><div class="">⌚</div><span class="code">231a</span></div>
+        <div class="item" id="231b"><div class="">⌛</div><span class="code">231b</span></div>
+        
+        <div class="item" id="2668"><div class="">♨</div><span class="code">2668</span></div>
+        
+         <div class="item"> <span class="">&#x6dd;</span> <a href="#6dd" class="code">6dd</a> </div>
+    <div class="item"> <span class="">&#x6de;</span> <a href="#6de" class="code">6de</a> </div>
+         
+         <br />
+         
+           <div class="item" id="2690"><div class="">⚐</div><span class="code">2690</span></div><div class="item" id="2691"><div class="">⚑</div><span class="code">2691</span></div><div class="item" id="2692"><div class="">⚒</div><span class="code">2692</span></div><div class="item" id="2693"><div class="">⚓</div><span class="code">2693</span></div><div class="item" id="2694"><div class="">⚔</div><span class="code">2694</span></div><div class="item" id="2695"><div class="">⚕</div><span class="code">2695</span></div><div class="item" id="2696"><div class="">⚖</div><span class="code">2696</span></div>
+        <div class="item" id="2698"><div class="">⚘</div><span class="code">2698</span></div><div class="item" id="2699"><div class="">⚙</div><span class="code">2699</span></div><div class="item" id="269a"><div class="">⚚</div><span class="code">269a</span></div><div class="item" id="269b"><div class="">⚛</div><span class="code">269b</span></div><div class="item" id="269c"><div class="">⚜</div><span class="code">269c</span></div><div class="item" id="269d"><div class="">⚝</div><span class="code">269d</span></div>
+        <div class="item" id="26a0"><div class="">⚠</div><span class="code">26a0</span></div><div class="item" id="26a1"><div class="">⚡</div><span class="code">26a1</span></div>
+        
+        <div class="item" id="2756"><div class="">❖</div><span class="code">2756</span></div>
+<div class="item" id="2764"><div class="">❤</div><span class="code">2764</span></div>
+
+<div class="item" id="2980"><div class="">⦀</div><span class="code">2980</span></div>
+         <div class="item" id="267f"><div class="">♿</div><span class="code">267f</span></div> 
+          <div class="item" id="2604"><div class="">☄</div><span class="code">2604</span></div>
+        
+        <br />
+        
+    <!-- 换行 --> <br/>
+
+        <div class="item" id="2669"><div class="">♩</div><span class="code">2669</span></div><div class="item" id="266a"><div class="">♪</div><span class="code">266a</span></div><div class="item" id="266b"><div class="">♫</div><span class="code">266b</span></div><div class="item" id="266c"><div class="">♬</div><span class="code">266c</span></div><div class="item" id="266d"><div class="">♭</div><span class="code">266d</span></div><div class="item" id="266e"><div class="">♮</div><span class="code">266e</span></div><div class="item" id="266f"><div class="">♯</div><span class="code">266f</span></div>
+        
+        <br/> 
+        
+          <br/>
+
+        <div class="item" id="2686"><div class="">⚆</div><span class="code">2686</span></div><div class="item" id="2687"><div class="">⚇</div><span class="code">2687</span></div><div class="item" id="2688"><div class="">⚈</div><span class="code">2688</span></div><div class="item" id="2689"><div class="">⚉</div><span class="code">2689</span></div>
+        
+        <br/> 
+
+        <div class="item" id="2701"><div class="">✁</div><span class="code">2701</span></div><div class="item" id="2702"><div class="">✂</div><span class="code">2702</span></div><div class="item" id="2703"><div class="">✃</div><span class="code">2703</span></div><div class="item" id="2704"><div class="">✄</div><span class="code">2704</span></div>
+        
+        
+        <br />
+       
+        
+<br />
+
+        <div class="item" id="270c"><div class="">✌</div><span class="code">270c</span></div><div class="item" id="270d"><div class="">✍</div><span class="code">270d</span></div><div class="item" id="270e"><div class="">✎</div><span class="code">270e</span></div><div class="item" id="270f"><div class="">✏</div><span class="code">270f</span></div><div class="item" id="2710"><div class="">✐</div><span class="code">2710</span></div><div class="item" id="2711"><div class="">✑</div><span class="code">2711</span></div><div class="item" id="2712"><div class="">✒</div><span class="code">2712</span></div>
+        
+        <br />
+
+
+
+
+          
+        <br />
+        
+        <br />
+        
+        <div class="item" id="261a"><div class="">☚</div><span class="code">261a</span></div><div class="item" id="261b"><div class="">☛</div><span class="code">261b</span></div><div class="item" id="261c"><div class="">☜</div><span class="code">261c</span></div><div class="item" id="261d"><div class="">☝</div><span class="code">261d</span></div><div class="item" id="261e"><div class="">☞</div><span class="code">261e</span></div><div class="item" id="261f"><div class="">☟</div><span class="code">261f</span></div>
+        
+        
+    
+        
+        
+       
+        
+        
+        <br />
+        
+      
+
+
+<br />
+
+<div class="item" id="274d"><div class="">❍</div><span class="code">274d</span></div>
+<div class="item" id="274f"><div class="">❏</div><span class="code">274f</span></div>
+<div class="item" id="2750"><div class="">❐</div><span class="code">2750</span></div>
+<div class="item" id="2751"><div class="">❑</div><span class="code">2751</span></div>
+<div class="item" id="2752"><div class="">❒</div><span class="code">2752</span></div>
+
+
+        <!-- --> <br/>
+        
+        <div class="item" id="2672"><div class="">♲</div><span class="code">2672</span></div><div class="item" id="2673"><div class="">♳</div><span class="code">2673</span></div><div class="item" id="2674"><div class="">♴</div><span class="code">2674</span></div><div class="item" id="2675"><div class="">♵</div><span class="code">2675</span></div><div class="item" id="2676"><div class="">♶</div><span class="code">2676</span></div><div class="item" id="2677"><div class="">♷</div><span class="code">2677</span></div><div class="item" id="2678"><div class="">♸</div><span class="code">2678</span></div><div class="item" id="2679"><div class="">♹</div><span class="code">2679</span></div><div class="item" id="267a"><div class="">♺</div><span class="code">267a</span></div><div class="item" id="267b"><div class="">♻</div><span class="code">267b</span></div><div class="item" id="267c"><div class="">♼</div><span class="code">267c</span></div><div class="item" id="267d"><div class="">♽</div><span class="code">267d</span></div><div class="item" id="267e"><div class="">♾</div><span class="code">267e</span></div>
+      
+
+      
+        
+        <br/> 
+        <div class="item" id="268a"><div class="">⚊</div><span class="code">268a</span></div><div class="item" id="268b"><div class="">⚋</div><span class="code">268b</span></div><div class="item" id="268c"><div class="">⚌</div><span class="code">268c</span></div><div class="item" id="268d"><div class="">⚍</div><span class="code">268d</span></div><div class="item" id="268e"><div class="">⚎</div><span class="code">268e</span></div><div class="item" id="268f"><div class="">⚏</div><span class="code">268f</span></div>
+        
+        <br/> 
+
+          <br />
+        
+        <div class="item" id="2630"><div class="">☰</div><span class="code">2630</span></div><div class="item" id="2631"><div class="">☱</div><span class="code">2631</span></div><div class="item" id="2632"><div class="">☲</div><span class="code">2632</span></div><div class="item" id="2633"><div class="">☳</div><span class="code">2633</span></div><div class="item" id="2634"><div class="">☴</div><span class="code">2634</span></div><div class="item" id="2635"><div class="">☵</div><span class="code">2635</span></div><div class="item" id="2636"><div class="">☶</div><span class="code">2636</span></div><div class="item" id="2637"><div class="">☷</div><span class="code">2637</span></div>
+        <br />
+
+        <div class="item" id="26a2"><div class="">⚢</div><span class="code">26a2</span></div><div class="item" id="26a3"><div class="">⚣</div><span class="code">26a3</span></div><div class="item" id="26a4"><div class="">⚤</div><span class="code">26a4</span></div><div class="item" id="26a5"><div class="">⚥</div><span class="code">26a5</span></div><div class="item" id="26a6"><div class="">⚦</div><span class="code">26a6</span></div><div class="item" id="26a7"><div class="">⚧</div><span class="code">26a7</span></div><div class="item" id="26a8"><div class="">⚨</div><span class="code">26a8</span></div><div class="item" id="26a9"><div class="">⚩</div><span class="code">26a9</span></div>
+        
+          <div class="item" id="263f"><div class="">☿</div><span class="code">263f</span></div><div class="item" id="2640"><div class="">♀</div><span class="code">2640</span></div><div class="item" id="2641"><div class="">♁</div><span class="code">2641</span></div><div class="item" id="2642"><div class="">♂</div><span class="code">2642</span></div>
+
+        
+         <br />
+         <div class="item" id="2607"><div class="">☇</div><span class="code">2607</span></div><div class="item" id="2608"><div class="">☈</div><span class="code">2608</span></div><div class="item" id="2609"><div class="">☉</div><span class="code">2609</span></div><div class="item" id="260a"><div class="">☊</div><span class="code">260a</span></div><div class="item" id="260b"><div class="">☋</div><span class="code">260b</span></div><div class="item" id="260c"><div class="">☌</div><span class="code">260c</span></div><div class="item" id="260d"><div class="">☍</div><span class="code">260d</span></div>
+         
+<br />
+        <div class="item" id="2180"><div class="">ↀ</div><span class="code">2180</span></div><div class="item" id="2181"><div class="">ↁ</div><span class="code">2181</span></div><div class="item" id="2182"><div class="">ↂ</div><span class="code">2182</span></div>
+
+    <div class="item" id="2314"><div class="">⌔</div><span class="code">2314</span></div>
+
+
+        
+        <div class="item" id="2670"><div class="">♰</div><span class="code">2670</span></div><div class="item" id="2671"><div class="">♱</div><span class="code">2671</span></div>
+        
+    <!-- 换行 --> <br/>
+    <div class="select ">
+        <a class="select-input" href="###">Please select </a>
+        <ul class="select-list">
+            <li class="select-li">1</li>
+            <li class="select-li">2</li>
+            <li class="select-li">3</li>
+            <li class="select-li">4</li>
+            <li class="select-li">5</li>
+        </ul>
+    </div>
+
+</div>
+<!-- SPECIAL GRAPHIC  end-->
+
+<!-- NUMBER  start-->
+<div class="region special">
+    <h3 class="item-title">Number</h3>
+
+        <div class="item" id="2153"><div class="">⅓</div><span class="code">2153</span></div><div class="item" id="2154"><div class="">⅔</div><span class="code">2154</span></div><div class="item" id="2155"><div class="">⅕</div><span class="code">2155</span></div><div class="item" id="2156"><div class="">⅖</div><span class="code">2156</span></div><div class="item" id="2157"><div class="">⅗</div><span class="code">2157</span></div><div class="item" id="2158"><div class="">⅘</div><span class="code">2158</span></div><div class="item" id="2159"><div class="">⅙</div><span class="code">2159</span></div><div class="item" id="215a"><div class="">⅚</div><span class="code">215a</span></div><div class="item" id="215b"><div class="">⅛</div><span class="code">215b</span></div><div class="item" id="215c"><div class="">⅜</div><span class="code">215c</span></div><div class="item" id="215d"><div class="">⅝</div><span class="code">215d</span></div><div class="item" id="215e"><div class="">⅞</div><span class="code">215e</span></div>
+
+        <!-- --> <br/>
+
+        <div class="item" id="2160"><div class="">Ⅰ</div><span class="code">2160</span></div><div class="item" id="2161"><div class="">Ⅱ</div><span class="code">2161</span></div><div class="item" id="2162"><div class="">Ⅲ</div><span class="code">2162</span></div><div class="item" id="2163"><div class="">Ⅳ</div><span class="code">2163</span></div><div class="item" id="2164"><div class="">Ⅴ</div><span class="code">2164</span></div><div class="item" id="2165"><div class="">Ⅵ</div><span class="code">2165</span></div><div class="item" id="2166"><div class="">Ⅶ</div><span class="code">2166</span></div><div class="item" id="2167"><div class="">Ⅷ</div><span class="code">2167</span></div><div class="item" id="2168"><div class="">Ⅸ</div><span class="code">2168</span></div><div class="item" id="2169"><div class="">Ⅹ</div><span class="code">2169</span></div><div class="item" id="216a"><div class="">Ⅺ</div><span class="code">216a</span></div><div class="item" id="216b"><div class="">Ⅻ</div><span class="code">216b</span></div>
+
+        <!-- --> <br/>
+
+        <div class="item" id="2170"><div class="">ⅰ</div><span class="code">2170</span></div><div class="item" id="2171"><div class="">ⅱ</div><span class="code">2171</span></div><div class="item" id="2172"><div class="">ⅲ</div><span class="code">2172</span></div><div class="item" id="2173"><div class="">ⅳ</div><span class="code">2173</span></div><div class="item" id="2174"><div class="">ⅴ</div><span class="code">2174</span></div><div class="item" id="2175"><div class="">ⅵ</div><span class="code">2175</span></div><div class="item" id="2176"><div class="">ⅶ</div><span class="code">2176</span></div><div class="item" id="2177"><div class="">ⅷ</div><span class="code">2177</span></div><div class="item" id="2178"><div class="">ⅸ</div><span class="code">2178</span></div><div class="item" id="2179"><div class="">ⅹ</div><span class="code">2179</span></div><div class="item" id="217a"><div class="">ⅺ</div><span class="code">217a</span></div><div class="item" id="217b"><div class="">ⅻ</div><span class="code">217b</span></div>
+        
+        <!-- --> <br/>
+
+
+        <div class="item" id="2776"><div class="">❶</div><span class="code">2776</span></div><div class="item" id="2777"><div class="">❷</div><span class="code">2777</span></div><div class="item" id="2778"><div class="">❸</div><span class="code">2778</span></div><div class="item" id="2779"><div class="">❹</div><span class="code">2779</span></div><div class="item" id="277a"><div class="">❺</div><span class="code">277a</span></div><div class="item" id="277b"><div class="">❻</div><span class="code">277b</span></div><div class="item" id="277c"><div class="">❼</div><span class="code">277c</span></div><div class="item" id="277d"><div class="">❽</div><span class="code">277d</span></div><div class="item" id="277e"><div class="">❾</div><span class="code">277e</span></div><div class="item" id="277f"><div class="">❿</div><span class="code">277f</span></div>
+
+        <!-- --> <br/>
+        
+        <div class="item" id="2780"><div class="">➀</div><span class="code">2780</span></div><div class="item" id="2781"><div class="">➁</div><span class="code">2781</span></div><div class="item" id="2782"><div class="">➂</div><span class="code">2782</span></div><div class="item" id="2783"><div class="">➃</div><span class="code">2783</span></div><div class="item" id="2784"><div class="">➄</div><span class="code">2784</span></div><div class="item" id="2785"><div class="">➅</div><span class="code">2785</span></div><div class="item" id="2786"><div class="">➆</div><span class="code">2786</span></div><div class="item" id="2787"><div class="">➇</div><span class="code">2787</span></div><div class="item" id="2788"><div class="">➈</div><span class="code">2788</span></div><div class="item" id="2789"><div class="">➉</div><span class="code">2789</span></div>
+        
+        <!-- --> <br/>
+
+        <div class="item" id="278a"><div class="">➊</div><span class="code">278a</span></div><div class="item" id="278b"><div class="">➋</div><span class="code">278b</span></div><div class="item" id="278c"><div class="">➌</div><span class="code">278c</span></div><div class="item" id="278d"><div class="">➍</div><span class="code">278d</span></div><div class="item" id="278e"><div class="">➎</div><span class="code">278e</span></div><div class="item" id="278f"><div class="">➏</div><span class="code">278f</span></div><div class="item" id="2790"><div class="">➐</div><span class="code">2790</span></div><div class="item" id="2791"><div class="">➑</div><span class="code">2791</span></div><div class="item" id="2792"><div class="">➒</div><span class="code">2792</span></div><div class="item" id="2793"><div class="">➓</div><span class="code">2793</span></div>
+
+</div>
+<!-- NUMBER  end-->
+
+
+<div class="region hide">
+    <h3 class="item-title">数学符号</h3>
+
+        <div class="item" id="2200"><div class="">∀</div><span class="code">2200</span></div><div class="item" id="2201"><div class="">∁</div><span class="code">2201</span></div><div class="item" id="2202"><div class="">∂</div><span class="code">2202</span></div><div class="item" id="2203"><div class="">∃</div><span class="code">2203</span></div><div class="item" id="2204"><div class="">∄</div><span class="code">2204</span></div><div class="item" id="2205"><div class="">∅</div><span class="code">2205</span></div><div class="item" id="2206"><div class="">∆</div><span class="code">2206</span></div><div class="item" id="2207"><div class="">∇</div><span class="code">2207</span></div><div class="item" id="2208"><div class="">∈</div><span class="code">2208</span></div><div class="item" id="2209"><div class="">∉</div><span class="code">2209</span></div><div class="item" id="220a"><div class="">∊</div><span class="code">220a</span></div><div class="item" id="220b"><div class="">∋</div><span class="code">220b</span></div><div class="item" id="220c"><div class="">∌</div><span class="code">220c</span></div><div class="item" id="220d"><div class="">∍</div><span class="code">220d</span></div><div class="item" id="220e"><div class="">∎</div><span class="code">220e</span></div><div class="item" id="220f"><div class="">∏</div><span class="code">220f</span></div><div class="item" id="2210"><div class="">∐</div><span class="code">2210</span></div><div class="item" id="2211"><div class="">∑</div><span class="code">2211</span></div><div class="item" id="2212"><div class="">−</div><span class="code">2212</span></div><div class="item" id="2213"><div class="">∓</div><span class="code">2213</span></div><div class="item" id="2214"><div class="">∔</div><span class="code">2214</span></div><div class="item" id="2215"><div class="">∕</div><span class="code">2215</span></div><div class="item" id="2216"><div class="">∖</div><span class="code">2216</span></div><div class="item" id="2217"><div class="">∗</div><span class="code">2217</span></div><div class="item" id="2218"><div class="">∘</div><span class="code">2218</span></div><div class="item" id="2219"><div class="">∙</div><span class="code">2219</span></div><div class="item" id="221a"><div class="">√</div><span class="code">221a</span></div><div class="item" id="221b"><div class="">∛</div><span class="code">221b</span></div><div class="item" id="221c"><div class="">∜</div><span class="code">221c</span></div><div class="item" id="221d"><div class="">∝</div><span class="code">221d</span></div><div class="item" id="221e"><div class="">∞</div><span class="code">221e</span></div><div class="item" id="221f"><div class="">∟</div><span class="code">221f</span></div><div class="item" id="2220"><div class="">∠</div><span class="code">2220</span></div><div class="item" id="2221"><div class="">∡</div><span class="code">2221</span></div><div class="item" id="2222"><div class="">∢</div><span class="code">2222</span></div><div class="item" id="2223"><div class="">∣</div><span class="code">2223</span></div><div class="item" id="2224"><div class="">∤</div><span class="code">2224</span></div><div class="item" id="2225"><div class="">∥</div><span class="code">2225</span></div><div class="item" id="2226"><div class="">∦</div><span class="code">2226</span></div><div class="item" id="2227"><div class="">∧</div><span class="code">2227</span></div><div class="item" id="2228"><div class="">∨</div><span class="code">2228</span></div><div class="item" id="2229"><div class="">∩</div><span class="code">2229</span></div><div class="item" id="222a"><div class="">∪</div><span class="code">222a</span></div><div class="item" id="222b"><div class="">∫</div><span class="code">222b</span></div><div class="item" id="222c"><div class="">∬</div><span class="code">222c</span></div><div class="item" id="222d"><div class="">∭</div><span class="code">222d</span></div><div class="item" id="222e"><div class="">∮</div><span class="code">222e</span></div><div class="item" id="222f"><div class="">∯</div><span class="code">222f</span></div><div class="item" id="2230"><div class="">∰</div><span class="code">2230</span></div><div class="item" id="2231"><div class="">∱</div><span class="code">2231</span></div><div class="item" id="2232"><div class="">∲</div><span class="code">2232</span></div><div class="item" id="2233"><div class="">∳</div><span class="code">2233</span></div><div class="item" id="2234"><div class="">∴</div><span class="code">2234</span></div><div class="item" id="2235"><div class="">∵</div><span class="code">2235</span></div><div class="item" id="2236"><div class="">∶</div><span class="code">2236</span></div><div class="item" id="2237"><div class="">∷</div><span class="code">2237</span></div><div class="item" id="2238"><div class="">∸</div><span class="code">2238</span></div><div class="item" id="2239"><div class="">∹</div><span class="code">2239</span></div><div class="item" id="223a"><div class="">∺</div><span class="code">223a</span></div><div class="item" id="223b"><div class="">∻</div><span class="code">223b</span></div><div class="item" id="223c"><div class="">∼</div><span class="code">223c</span></div><div class="item" id="223d"><div class="">∽</div><span class="code">223d</span></div><div class="item" id="223e"><div class="">∾</div><span class="code">223e</span></div><div class="item" id="223f"><div class="">∿</div><span class="code">223f</span></div><div class="item" id="2240"><div class="">≀</div><span class="code">2240</span></div><div class="item" id="2241"><div class="">≁</div><span class="code">2241</span></div><div class="item" id="2242"><div class="">≂</div><span class="code">2242</span></div><div class="item" id="2243"><div class="">≃</div><span class="code">2243</span></div><div class="item" id="2244"><div class="">≄</div><span class="code">2244</span></div><div class="item" id="2245"><div class="">≅</div><span class="code">2245</span></div><div class="item" id="2246"><div class="">≆</div><span class="code">2246</span></div><div class="item" id="2247"><div class="">≇</div><span class="code">2247</span></div><div class="item" id="2248"><div class="">≈</div><span class="code">2248</span></div><div class="item" id="2249"><div class="">≉</div><span class="code">2249</span></div><div class="item" id="224a"><div class="">≊</div><span class="code">224a</span></div><div class="item" id="224b"><div class="">≋</div><span class="code">224b</span></div><div class="item" id="224c"><div class="">≌</div><span class="code">224c</span></div><div class="item" id="224d"><div class="">≍</div><span class="code">224d</span></div><div class="item" id="224e"><div class="">≎</div><span class="code">224e</span></div><div class="item" id="224f"><div class="">≏</div><span class="code">224f</span></div><div class="item" id="2250"><div class="">≐</div><span class="code">2250</span></div><div class="item" id="2251"><div class="">≑</div><span class="code">2251</span></div><div class="item" id="2252"><div class="">≒</div><span class="code">2252</span></div><div class="item" id="2253"><div class="">≓</div><span class="code">2253</span></div><div class="item" id="2254"><div class="">≔</div><span class="code">2254</span></div><div class="item" id="2255"><div class="">≕</div><span class="code">2255</span></div><div class="item" id="2256"><div class="">≖</div><span class="code">2256</span></div><div class="item" id="2257"><div class="">≗</div><span class="code">2257</span></div><div class="item" id="2258"><div class="">≘</div><span class="code">2258</span></div><div class="item" id="2259"><div class="">≙</div><span class="code">2259</span></div><div class="item" id="225a"><div class="">≚</div><span class="code">225a</span></div><div class="item" id="225b"><div class="">≛</div><span class="code">225b</span></div><div class="item" id="225c"><div class="">≜</div><span class="code">225c</span></div><div class="item" id="225d"><div class="">≝</div><span class="code">225d</span></div><div class="item" id="225e"><div class="">≞</div><span class="code">225e</span></div><div class="item" id="225f"><div class="">≟</div><span class="code">225f</span></div><div class="item" id="2260"><div class="">≠</div><span class="code">2260</span></div><div class="item" id="2261"><div class="">≡</div><span class="code">2261</span></div><div class="item" id="2262"><div class="">≢</div><span class="code">2262</span></div><div class="item" id="2263"><div class="">≣</div><span class="code">2263</span></div><div class="item" id="2264"><div class="">≤</div><span class="code">2264</span></div><div class="item" id="2265"><div class="">≥</div><span class="code">2265</span></div><div class="item" id="2266"><div class="">≦</div><span class="code">2266</span></div><div class="item" id="2267"><div class="">≧</div><span class="code">2267</span></div><div class="item" id="2268"><div class="">≨</div><span class="code">2268</span></div><div class="item" id="2269"><div class="">≩</div><span class="code">2269</span></div><div class="item" id="226a"><div class="">≪</div><span class="code">226a</span></div><div class="item" id="226b"><div class="">≫</div><span class="code">226b</span></div><div class="item" id="226c"><div class="">≬</div><span class="code">226c</span></div><div class="item" id="226d"><div class="">≭</div><span class="code">226d</span></div><div class="item" id="226e"><div class="">≮</div><span class="code">226e</span></div><div class="item" id="226f"><div class="">≯</div><span class="code">226f</span></div><div class="item" id="2270"><div class="">≰</div><span class="code">2270</span></div><div class="item" id="2271"><div class="">≱</div><span class="code">2271</span></div><div class="item" id="2272"><div class="">≲</div><span class="code">2272</span></div><div class="item" id="2273"><div class="">≳</div><span class="code">2273</span></div><div class="item" id="2274"><div class="">≴</div><span class="code">2274</span></div><div class="item" id="2275"><div class="">≵</div><span class="code">2275</span></div><div class="item" id="2276"><div class="">≶</div><span class="code">2276</span></div><div class="item" id="2277"><div class="">≷</div><span class="code">2277</span></div><div class="item" id="2278"><div class="">≸</div><span class="code">2278</span></div><div class="item" id="2279"><div class="">≹</div><span class="code">2279</span></div><div class="item" id="227a"><div class="">≺</div><span class="code">227a</span></div><div class="item" id="227b"><div class="">≻</div><span class="code">227b</span></div><div class="item" id="227c"><div class="">≼</div><span class="code">227c</span></div><div class="item" id="227d"><div class="">≽</div><span class="code">227d</span></div><div class="item" id="227e"><div class="">≾</div><span class="code">227e</span></div><div class="item" id="227f"><div class="">≿</div><span class="code">227f</span></div><div class="item" id="2280"><div class="">⊀</div><span class="code">2280</span></div><div class="item" id="2281"><div class="">⊁</div><span class="code">2281</span></div><div class="item" id="2282"><div class="">⊂</div><span class="code">2282</span></div><div class="item" id="2283"><div class="">⊃</div><span class="code">2283</span></div><div class="item" id="2284"><div class="">⊄</div><span class="code">2284</span></div><div class="item" id="2285"><div class="">⊅</div><span class="code">2285</span></div><div class="item" id="2286"><div class="">⊆</div><span class="code">2286</span></div><div class="item" id="2287"><div class="">⊇</div><span class="code">2287</span></div><div class="item" id="2288"><div class="">⊈</div><span class="code">2288</span></div><div class="item" id="2289"><div class="">⊉</div><span class="code">2289</span></div><div class="item" id="228a"><div class="">⊊</div><span class="code">228a</span></div><div class="item" id="228b"><div class="">⊋</div><span class="code">228b</span></div><div class="item" id="228c"><div class="">⊌</div><span class="code">228c</span></div><div class="item" id="228d"><div class="">⊍</div><span class="code">228d</span></div><div class="item" id="228e"><div class="">⊎</div><span class="code">228e</span></div><div class="item" id="228f"><div class="">⊏</div><span class="code">228f</span></div><div class="item" id="2290"><div class="">⊐</div><span class="code">2290</span></div><div class="item" id="2291"><div class="">⊑</div><span class="code">2291</span></div><div class="item" id="2292"><div class="">⊒</div><span class="code">2292</span></div><div class="item" id="2293"><div class="">⊓</div><span class="code">2293</span></div><div class="item" id="2294"><div class="">⊔</div><span class="code">2294</span></div><div class="item" id="2295"><div class="">⊕</div><span class="code">2295</span></div><div class="item" id="2296"><div class="">⊖</div><span class="code">2296</span></div><div class="item" id="2297"><div class="">⊗</div><span class="code">2297</span></div><div class="item" id="2298"><div class="">⊘</div><span class="code">2298</span></div><div class="item" id="2299"><div class="">⊙</div><span class="code">2299</span></div><div class="item" id="229a"><div class="">⊚</div><span class="code">229a</span></div><div class="item" id="229b"><div class="">⊛</div><span class="code">229b</span></div><div class="item" id="229c"><div class="">⊜</div><span class="code">229c</span></div><div class="item" id="229d"><div class="">⊝</div><span class="code">229d</span></div><div class="item" id="229e"><div class="">⊞</div><span class="code">229e</span></div><div class="item" id="229f"><div class="">⊟</div><span class="code">229f</span></div><div class="item" id="22a0"><div class="">⊠</div><span class="code">22a0</span></div><div class="item" id="22a1"><div class="">⊡</div><span class="code">22a1</span></div><div class="item" id="22a2"><div class="">⊢</div><span class="code">22a2</span></div><div class="item" id="22a3"><div class="">⊣</div><span class="code">22a3</span></div><div class="item" id="22a4"><div class="">⊤</div><span class="code">22a4</span></div><div class="item" id="22a5"><div class="">⊥</div><span class="code">22a5</span></div><div class="item" id="22a6"><div class="">⊦</div><span class="code">22a6</span></div><div class="item" id="22a7"><div class="">⊧</div><span class="code">22a7</span></div><div class="item" id="22a8"><div class="">⊨</div><span class="code">22a8</span></div><div class="item" id="22a9"><div class="">⊩</div><span class="code">22a9</span></div><div class="item" id="22aa"><div class="">⊪</div><span class="code">22aa</span></div><div class="item" id="22ab"><div class="">⊫</div><span class="code">22ab</span></div><div class="item" id="22ac"><div class="">⊬</div><span class="code">22ac</span></div><div class="item" id="22ad"><div class="">⊭</div><span class="code">22ad</span></div><div class="item" id="22ae"><div class="">⊮</div><span class="code">22ae</span></div><div class="item" id="22af"><div class="">⊯</div><span class="code">22af</span></div><div class="item" id="22b0"><div class="">⊰</div><span class="code">22b0</span></div><div class="item" id="22b1"><div class="">⊱</div><span class="code">22b1</span></div><div class="item" id="22b2"><div class="">⊲</div><span class="code">22b2</span></div><div class="item" id="22b3"><div class="">⊳</div><span class="code">22b3</span></div><div class="item" id="22b4"><div class="">⊴</div><span class="code">22b4</span></div><div class="item" id="22b5"><div class="">⊵</div><span class="code">22b5</span></div><div class="item" id="22b6"><div class="">⊶</div><span class="code">22b6</span></div><div class="item" id="22b7"><div class="">⊷</div><span class="code">22b7</span></div><div class="item" id="22b8"><div class="">⊸</div><span class="code">22b8</span></div><div class="item" id="22b9"><div class="">⊹</div><span class="code">22b9</span></div><div class="item" id="22ba"><div class="">⊺</div><span class="code">22ba</span></div><div class="item" id="22bb"><div class="">⊻</div><span class="code">22bb</span></div><div class="item" id="22bc"><div class="">⊼</div><span class="code">22bc</span></div><div class="item" id="22bd"><div class="">⊽</div><span class="code">22bd</span></div><div class="item" id="22be"><div class="">⊾</div><span class="code">22be</span></div><div class="item" id="22bf"><div class="">⊿</div><span class="code">22bf</span></div><div class="item" id="22c0"><div class="">⋀</div><span class="code">22c0</span></div><div class="item" id="22c1"><div class="">⋁</div><span class="code">22c1</span></div><div class="item" id="22c2"><div class="">⋂</div><span class="code">22c2</span></div><div class="item" id="22c3"><div class="">⋃</div><span class="code">22c3</span></div><div class="item" id="22c4"><div class="">⋄</div><span class="code">22c4</span></div><div class="item" id="22c5"><div class="">⋅</div><span class="code">22c5</span></div><div class="item" id="22c6"><div class="">⋆</div><span class="code">22c6</span></div><div class="item" id="22c7"><div class="">⋇</div><span class="code">22c7</span></div><div class="item" id="22c8"><div class="">⋈</div><span class="code">22c8</span></div><div class="item" id="22c9"><div class="">⋉</div><span class="code">22c9</span></div><div class="item" id="22ca"><div class="">⋊</div><span class="code">22ca</span></div><div class="item" id="22cb"><div class="">⋋</div><span class="code">22cb</span></div><div class="item" id="22cc"><div class="">⋌</div><span class="code">22cc</span></div><div class="item" id="22cd"><div class="">⋍</div><span class="code">22cd</span></div><div class="item" id="22ce"><div class="">⋎</div><span class="code">22ce</span></div><div class="item" id="22cf"><div class="">⋏</div><span class="code">22cf</span></div><div class="item" id="22d0"><div class="">⋐</div><span class="code">22d0</span></div><div class="item" id="22d1"><div class="">⋑</div><span class="code">22d1</span></div><div class="item" id="22d2"><div class="">⋒</div><span class="code">22d2</span></div><div class="item" id="22d3"><div class="">⋓</div><span class="code">22d3</span></div><div class="item" id="22d4"><div class="">⋔</div><span class="code">22d4</span></div><div class="item" id="22d5"><div class="">⋕</div><span class="code">22d5</span></div><div class="item" id="22d6"><div class="">⋖</div><span class="code">22d6</span></div><div class="item" id="22d7"><div class="">⋗</div><span class="code">22d7</span></div><div class="item" id="22d8"><div class="">⋘</div><span class="code">22d8</span></div><div class="item" id="22d9"><div class="">⋙</div><span class="code">22d9</span></div><div class="item" id="22da"><div class="">⋚</div><span class="code">22da</span></div><div class="item" id="22db"><div class="">⋛</div><span class="code">22db</span></div><div class="item" id="22dc"><div class="">⋜</div><span class="code">22dc</span></div><div class="item" id="22dd"><div class="">⋝</div><span class="code">22dd</span></div><div class="item" id="22de"><div class="">⋞</div><span class="code">22de</span></div><div class="item" id="22df"><div class="">⋟</div><span class="code">22df</span></div><div class="item" id="22e0"><div class="">⋠</div><span class="code">22e0</span></div><div class="item" id="22e1"><div class="">⋡</div><span class="code">22e1</span></div><div class="item" id="22e2"><div class="">⋢</div><span class="code">22e2</span></div><div class="item" id="22e3"><div class="">⋣</div><span class="code">22e3</span></div><div class="item" id="22e4"><div class="">⋤</div><span class="code">22e4</span></div><div class="item" id="22e5"><div class="">⋥</div><span class="code">22e5</span></div><div class="item" id="22e6"><div class="">⋦</div><span class="code">22e6</span></div><div class="item" id="22e7"><div class="">⋧</div><span class="code">22e7</span></div><div class="item" id="22e8"><div class="">⋨</div><span class="code">22e8</span></div><div class="item" id="22e9"><div class="">⋩</div><span class="code">22e9</span></div><div class="item" id="22ea"><div class="">⋪</div><span class="code">22ea</span></div><div class="item" id="22eb"><div class="">⋫</div><span class="code">22eb</span></div><div class="item" id="22ec"><div class="">⋬</div><span class="code">22ec</span></div><div class="item" id="22ed"><div class="">⋭</div><span class="code">22ed</span></div><div class="item" id="22ee"><div class="">⋮</div><span class="code">22ee</span></div><div class="item" id="22ef"><div class="">⋯</div><span class="code">22ef</span></div><div class="item" id="22f0"><div class="">⋰</div><span class="code">22f0</span></div><div class="item" id="22f1"><div class="">⋱</div><span class="code">22f1</span></div><div class="item" id="22f2"><div class="">⋲</div><span class="code">22f2</span></div><div class="item" id="22f3"><div class="">⋳</div><span class="code">22f3</span></div><div class="item" id="22f4"><div class="">⋴</div><span class="code">22f4</span></div><div class="item" id="22f5"><div class="">⋵</div><span class="code">22f5</span></div><div class="item" id="22f6"><div class="">⋶</div><span class="code">22f6</span></div><div class="item" id="22f7"><div class="">⋷</div><span class="code">22f7</span></div><div class="item" id="22f8"><div class="">⋸</div><span class="code">22f8</span></div><div class="item" id="22f9"><div class="">⋹</div><span class="code">22f9</span></div><div class="item" id="22fa"><div class="">⋺</div><span class="code">22fa</span></div><div class="item" id="22fb"><div class="">⋻</div><span class="code">22fb</span></div><div class="item" id="22fc"><div class="">⋼</div><span class="code">22fc</span></div><div class="item" id="22fd"><div class="">⋽</div><span class="code">22fd</span></div><div class="item" id="22fe"><div class="">⋾</div><span class="code">22fe</span></div><div class="item" id="22ff"><div class="">⋿</div><span class="code">22ff</span></div><div class="item" id="2300"><div class="">⌀</div><span class="code">2300</span></div><div class="item" id="2301"><div class="">⌁</div><span class="code">2301</span></div><div class="item" id="2302"><div class="">⌂</div><span class="code">2302</span></div><div class="item" id="2303"><div class="">⌃</div><span class="code">2303</span></div><div class="item" id="2304"><div class="">⌄</div><span class="code">2304</span></div><div class="item" id="2305"><div class="">⌅</div><span class="code">2305</span></div><div class="item" id="2306"><div class="">⌆</div><span class="code">2306</span></div><div class="item" id="2307"><div class="">⌇</div><span class="code">2307</span></div><div class="item" id="2308"><div class="">⌈</div><span class="code">2308</span></div><div class="item" id="2309"><div class="">⌉</div><span class="code">2309</span></div><div class="item" id="230a"><div class="">⌊</div><span class="code">230a</span></div><div class="item" id="230b"><div class="">⌋</div><span class="code">230b</span></div><div class="item" id="230c"><div class="">⌌</div><span class="code">230c</span></div><div class="item" id="230d"><div class="">⌍</div><span class="code">230d</span></div><div class="item" id="230e"><div class="">⌎</div><span class="code">230e</span></div><div class="item" id="230f"><div class="">⌏</div><span class="code">230f</span></div><div class="item" id="2310"><div class="">⌐</div><span class="code">2310</span></div><div class="item" id="2311"><div class="">⌑</div><span class="code">2311</span></div><div class="item" id="2312"><div class="">⌒</div><span class="code">2312</span></div><div class="item" id="2313"><div class="">⌓</div><span class="code">2313</span></div><div class="item" id="2314"><div class="">⌔</div><span class="code">2314</span></div>
+        <div class="item" id="2316"><div class="">⌖</div><span class="code">2316</span></div><div class="item" id="2317"><div class="">⌗</div><span class="code">2317</span></div><div class="item" id="2318"><div class="">⌘</div><span class="code">2318</span></div><div class="item" id="2319"><div class="">⌙</div><span class="code">2319</span></div>
+      
+        <div class="item" id="231c"><div class="">⌜</div><span class="code">231c</span></div><div class="item" id="231d"><div class="">⌝</div><span class="code">231d</span></div><div class="item" id="231e"><div class="">⌞</div><span class="code">231e</span></div><div class="item" id="231f"><div class="">⌟</div><span class="code">231f</span></div><div class="item" id="2320"><div class="">⌠</div><span class="code">2320</span></div><div class="item" id="2321"><div class="">⌡</div><span class="code">2321</span></div><div class="item" id="2322"><div class="">⌢</div><span class="code">2322</span></div><div class="item" id="2323"><div class="">⌣</div><span class="code">2323</span></div><div class="item" id="2324"><div class="">⌤</div><span class="code">2324</span></div><div class="item" id="2325"><div class="">⌥</div><span class="code">2325</span></div><div class="item" id="2326"><div class="">⌦</div><span class="code">2326</span></div><div class="item" id="2327"><div class="">⌧</div><span class="code">2327</span></div><div class="item" id="2328"><div class="">⌨</div><span class="code">2328</span></div><div class="item" id="2329"><div class="">〈</div><span class="code">2329</span></div><div class="item" id="232a"><div class="">〉</div><span class="code">232a</span></div><div class="item" id="232b"><div class="">⌫</div><span class="code">232b</span></div><div class="item" id="232c"><div class="">⌬</div><span class="code">232c</span></div><div class="item" id="232d"><div class="">⌭</div><span class="code">232d</span></div><div class="item" id="232e"><div class="">⌮</div><span class="code">232e</span></div><div class="item" id="232f"><div class="">⌯</div><span class="code">232f</span></div><div class="item" id="2330"><div class="">⌰</div><span class="code">2330</span></div><div class="item" id="2331"><div class="">⌱</div><span class="code">2331</span></div><div class="item" id="2332"><div class="">⌲</div><span class="code">2332</span></div><div class="item" id="2333"><div class="">⌳</div><span class="code">2333</span></div><div class="item" id="2334"><div class="">⌴</div><span class="code">2334</span></div><div class="item" id="2335"><div class="">⌵</div><span class="code">2335</span></div><div class="item" id="2336"><div class="">⌶</div><span class="code">2336</span></div><div class="item" id="2337"><div class="">⌷</div><span class="code">2337</span></div><div class="item" id="2338"><div class="">⌸</div><span class="code">2338</span></div><div class="item" id="2339"><div class="">⌹</div><span class="code">2339</span></div><div class="item" id="233a"><div class="">⌺</div><span class="code">233a</span></div><div class="item" id="233b"><div class="">⌻</div><span class="code">233b</span></div><div class="item" id="233c"><div class="">⌼</div><span class="code">233c</span></div><div class="item" id="233d"><div class="">⌽</div><span class="code">233d</span></div><div class="item" id="233e"><div class="">⌾</div><span class="code">233e</span></div><div class="item" id="233f"><div class="">⌿</div><span class="code">233f</span></div><div class="item" id="2340"><div class="">⍀</div><span class="code">2340</span></div><div class="item" id="2341"><div class="">⍁</div><span class="code">2341</span></div><div class="item" id="2342"><div class="">⍂</div><span class="code">2342</span></div><div class="item" id="2343"><div class="">⍃</div><span class="code">2343</span></div><div class="item" id="2344"><div class="">⍄</div><span class="code">2344</span></div><div class="item" id="2345"><div class="">⍅</div><span class="code">2345</span></div><div class="item" id="2346"><div class="">⍆</div><span class="code">2346</span></div><div class="item" id="2347"><div class="">⍇</div><span class="code">2347</span></div><div class="item" id="2348"><div class="">⍈</div><span class="code">2348</span></div><div class="item" id="2349"><div class="">⍉</div><span class="code">2349</span></div><div class="item" id="234a"><div class="">⍊</div><span class="code">234a</span></div><div class="item" id="234b"><div class="">⍋</div><span class="code">234b</span></div><div class="item" id="234c"><div class="">⍌</div><span class="code">234c</span></div><div class="item" id="234d"><div class="">⍍</div><span class="code">234d</span></div><div class="item" id="234e"><div class="">⍎</div><span class="code">234e</span></div><div class="item" id="234f"><div class="">⍏</div><span class="code">234f</span></div><div class="item" id="2350"><div class="">⍐</div><span class="code">2350</span></div><div class="item" id="2351"><div class="">⍑</div><span class="code">2351</span></div><div class="item" id="2352"><div class="">⍒</div><span class="code">2352</span></div><div class="item" id="2353"><div class="">⍓</div><span class="code">2353</span></div><div class="item" id="2354"><div class="">⍔</div><span class="code">2354</span></div><div class="item" id="2355"><div class="">⍕</div><span class="code">2355</span></div><div class="item" id="2356"><div class="">⍖</div><span class="code">2356</span></div><div class="item" id="2357"><div class="">⍗</div><span class="code">2357</span></div><div class="item" id="2358"><div class="">⍘</div><span class="code">2358</span></div><div class="item" id="2359"><div class="">⍙</div><span class="code">2359</span></div><div class="item" id="235a"><div class="">⍚</div><span class="code">235a</span></div><div class="item" id="235b"><div class="">⍛</div><span class="code">235b</span></div><div class="item" id="235c"><div class="">⍜</div><span class="code">235c</span></div><div class="item" id="235d"><div class="">⍝</div><span class="code">235d</span></div><div class="item" id="235e"><div class="">⍞</div><span class="code">235e</span></div><div class="item" id="235f"><div class="">⍟</div><span class="code">235f</span></div><div class="item" id="2360"><div class="">⍠</div><span class="code">2360</span></div><div class="item" id="2361"><div class="">⍡</div><span class="code">2361</span></div><div class="item" id="2362"><div class="">⍢</div><span class="code">2362</span></div><div class="item" id="2363"><div class="">⍣</div><span class="code">2363</span></div><div class="item" id="2364"><div class="">⍤</div><span class="code">2364</span></div><div class="item" id="2365"><div class="">⍥</div><span class="code">2365</span></div><div class="item" id="2366"><div class="">⍦</div><span class="code">2366</span></div><div class="item" id="2367"><div class="">⍧</div><span class="code">2367</span></div><div class="item" id="2368"><div class="">⍨</div><span class="code">2368</span></div><div class="item" id="2369"><div class="">⍩</div><span class="code">2369</span></div><div class="item" id="236a"><div class="">⍪</div><span class="code">236a</span></div><div class="item" id="236b"><div class="">⍫</div><span class="code">236b</span></div><div class="item" id="236c"><div class="">⍬</div><span class="code">236c</span></div><div class="item" id="236d"><div class="">⍭</div><span class="code">236d</span></div><div class="item" id="236e"><div class="">⍮</div><span class="code">236e</span></div><div class="item" id="236f"><div class="">⍯</div><span class="code">236f</span></div><div class="item" id="2370"><div class="">⍰</div><span class="code">2370</span></div><div class="item" id="2371"><div class="">⍱</div><span class="code">2371</span></div><div class="item" id="2372"><div class="">⍲</div><span class="code">2372</span></div><div class="item" id="2373"><div class="">⍳</div><span class="code">2373</span></div><div class="item" id="2374"><div class="">⍴</div><span class="code">2374</span></div><div class="item" id="2375"><div class="">⍵</div><span class="code">2375</span></div><div class="item" id="2376"><div class="">⍶</div><span class="code">2376</span></div><div class="item" id="2377"><div class="">⍷</div><span class="code">2377</span></div><div class="item" id="2378"><div class="">⍸</div><span class="code">2378</span></div><div class="item" id="2379"><div class="">⍹</div><span class="code">2379</span></div><div class="item" id="237a"><div class="">⍺</div><span class="code">237a</span></div><div class="item" id="237b"><div class="">⍻</div><span class="code">237b</span></div><div class="item" id="237c"><div class="">⍼</div><span class="code">237c</span></div><div class="item" id="237d"><div class="">⍽</div><span class="code">237d</span></div><div class="item" id="237e"><div class="">⍾</div><span class="code">237e</span></div><div class="item" id="237f"><div class="">⍿</div><span class="code">237f</span></div><div class="item" id="2380"><div class="">⎀</div><span class="code">2380</span></div><div class="item" id="2381"><div class="">⎁</div><span class="code">2381</span></div><div class="item" id="2382"><div class="">⎂</div><span class="code">2382</span></div><div class="item" id="2383"><div class="">⎃</div><span class="code">2383</span></div><div class="item" id="2384"><div class="">⎄</div><span class="code">2384</span></div><div class="item" id="2385"><div class="">⎅</div><span class="code">2385</span></div><div class="item" id="2386"><div class="">⎆</div><span class="code">2386</span></div><div class="item" id="2387"><div class="">⎇</div><span class="code">2387</span></div><div class="item" id="2388"><div class="">⎈</div><span class="code">2388</span></div><div class="item" id="2389"><div class="">⎉</div><span class="code">2389</span></div><div class="item" id="238a"><div class="">⎊</div><span class="code">238a</span></div><div class="item" id="238b"><div class="">⎋</div><span class="code">238b</span></div><div class="item" id="238c"><div class="">⎌</div><span class="code">238c</span></div><div class="item" id="238d"><div class="">⎍</div><span class="code">238d</span></div><div class="item" id="238e"><div class="">⎎</div><span class="code">238e</span></div><div class="item" id="238f"><div class="">⎏</div><span class="code">238f</span></div><div class="item" id="2390"><div class="">⎐</div><span class="code">2390</span></div><div class="item" id="2391"><div class="">⎑</div><span class="code">2391</span></div><div class="item" id="2392"><div class="">⎒</div><span class="code">2392</span></div><div class="item" id="2393"><div class="">⎓</div><span class="code">2393</span></div><div class="item" id="2394"><div class="">⎔</div><span class="code">2394</span></div><div class="item" id="2395"><div class="">⎕</div><span class="code">2395</span></div><div class="item" id="2396"><div class="">⎖</div><span class="code">2396</span></div><div class="item" id="2397"><div class="">⎗</div><span class="code">2397</span></div><div class="item" id="2398"><div class="">⎘</div><span class="code">2398</span></div><div class="item" id="2399"><div class="">⎙</div><span class="code">2399</span></div><div class="item" id="239a"><div class="">⎚</div><span class="code">239a</span></div>
+
+
+
+
+
+</div>
+
+<div class="region" style="display: none;">
+    <h3 class="item-title">连接线</h3>
+
+
+    <div class="items"><div class="item" id="2500"><div class="">─</div><span class="code">2500</span></div><div class="item" id="2501"><div class="">━</div><span class="code">2501</span></div><div class="item" id="2502"><div class="">│</div><span class="code">2502</span></div><div class="item" id="2503"><div class="">┃</div><span class="code">2503</span></div><div class="item" id="2504"><div class="">┄</div><span class="code">2504</span></div><div class="item" id="2505"><div class="">┅</div><span class="code">2505</span></div><div class="item" id="2506"><div class="">┆</div><span class="code">2506</span></div><div class="item" id="2507"><div class="">┇</div><span class="code">2507</span></div><div class="item" id="2508"><div class="">┈</div><span class="code">2508</span></div><div class="item" id="2509"><div class="">┉</div><span class="code">2509</span></div><div class="item" id="250a"><div class="">┊</div><span class="code">250a</span></div><div class="item" id="250b"><div class="">┋</div><span class="code">250b</span></div><div class="item" id="250c"><div class="">┌</div><span class="code">250c</span></div><div class="item" id="250d"><div class="">┍</div><span class="code">250d</span></div><div class="item" id="250e"><div class="">┎</div><span class="code">250e</span></div><div class="item" id="250f"><div class="">┏</div><span class="code">250f</span></div><div class="item" id="2510"><div class="">┐</div><span class="code">2510</span></div><div class="item" id="2511"><div class="">┑</div><span class="code">2511</span></div><div class="item" id="2512"><div class="">┒</div><span class="code">2512</span></div><div class="item" id="2513"><div class="">┓</div><span class="code">2513</span></div><div class="item" id="2514"><div class="">└</div><span class="code">2514</span></div><div class="item" id="2515"><div class="">┕</div><span class="code">2515</span></div><div class="item" id="2516"><div class="">┖</div><span class="code">2516</span></div><div class="item" id="2517"><div class="">┗</div><span class="code">2517</span></div><div class="item" id="2518"><div class="">┘</div><span class="code">2518</span></div><div class="item" id="2519"><div class="">┙</div><span class="code">2519</span></div><div class="item" id="251a"><div class="">┚</div><span class="code">251a</span></div><div class="item" id="251b"><div class="">┛</div><span class="code">251b</span></div><div class="item" id="251c"><div class="">├</div><span class="code">251c</span></div><div class="item" id="251d"><div class="">┝</div><span class="code">251d</span></div><div class="item" id="251e"><div class="">┞</div><span class="code">251e</span></div><div class="item" id="251f"><div class="">┟</div><span class="code">251f</span></div><div class="item" id="2520"><div class="">┠</div><span class="code">2520</span></div><div class="item" id="2521"><div class="">┡</div><span class="code">2521</span></div><div class="item" id="2522"><div class="">┢</div><span class="code">2522</span></div><div class="item" id="2523"><div class="">┣</div><span class="code">2523</span></div><div class="item" id="2524"><div class="">┤</div><span class="code">2524</span></div><div class="item" id="2525"><div class="">┥</div><span class="code">2525</span></div><div class="item" id="2526"><div class="">┦</div><span class="code">2526</span></div><div class="item" id="2527"><div class="">┧</div><span class="code">2527</span></div><div class="item" id="2528"><div class="">┨</div><span class="code">2528</span></div><div class="item" id="2529"><div class="">┩</div><span class="code">2529</span></div><div class="item" id="252a"><div class="">┪</div><span class="code">252a</span></div><div class="item" id="252b"><div class="">┫</div><span class="code">252b</span></div><div class="item" id="252c"><div class="">┬</div><span class="code">252c</span></div><div class="item" id="252d"><div class="">┭</div><span class="code">252d</span></div><div class="item" id="252e"><div class="">┮</div><span class="code">252e</span></div><div class="item" id="252f"><div class="">┯</div><span class="code">252f</span></div><div class="item" id="2530"><div class="">┰</div><span class="code">2530</span></div><div class="item" id="2531"><div class="">┱</div><span class="code">2531</span></div><div class="item" id="2532"><div class="">┲</div><span class="code">2532</span></div><div class="item" id="2533"><div class="">┳</div><span class="code">2533</span></div><div class="item" id="2534"><div class="">┴</div><span class="code">2534</span></div><div class="item" id="2535"><div class="">┵</div><span class="code">2535</span></div><div class="item" id="2536"><div class="">┶</div><span class="code">2536</span></div><div class="item" id="2537"><div class="">┷</div><span class="code">2537</span></div><div class="item" id="2538"><div class="">┸</div><span class="code">2538</span></div><div class="item" id="2539"><div class="">┹</div><span class="code">2539</span></div><div class="item" id="253a"><div class="">┺</div><span class="code">253a</span></div><div class="item" id="253b"><div class="">┻</div><span class="code">253b</span></div><div class="item" id="253c"><div class="">┼</div><span class="code">253c</span></div><div class="item" id="253d"><div class="">┽</div><span class="code">253d</span></div><div class="item" id="253e"><div class="">┾</div><span class="code">253e</span></div><div class="item" id="253f"><div class="">┿</div><span class="code">253f</span></div><div class="item" id="2540"><div class="">╀</div><span class="code">2540</span></div><div class="item" id="2541"><div class="">╁</div><span class="code">2541</span></div><div class="item" id="2542"><div class="">╂</div><span class="code">2542</span></div><div class="item" id="2543"><div class="">╃</div><span class="code">2543</span></div><div class="item" id="2544"><div class="">╄</div><span class="code">2544</span></div><div class="item" id="2545"><div class="">╅</div><span class="code">2545</span></div><div class="item" id="2546"><div class="">╆</div><span class="code">2546</span></div><div class="item" id="2547"><div class="">╇</div><span class="code">2547</span></div><div class="item" id="2548"><div class="">╈</div><span class="code">2548</span></div><div class="item" id="2549"><div class="">╉</div><span class="code">2549</span></div><div class="item" id="254a"><div class="">╊</div><span class="code">254a</span></div><div class="item" id="254b"><div class="">╋</div><span class="code">254b</span></div><div class="item" id="254c"><div class="">╌</div><span class="code">254c</span></div><div class="item" id="254d"><div class="">╍</div><span class="code">254d</span></div><div class="item" id="254e"><div class="">╎</div><span class="code">254e</span></div><div class="item" id="254f"><div class="">╏</div><span class="code">254f</span></div><div class="item" id="2550"><div class="">═</div><span class="code">2550</span></div><div class="item" id="2551"><div class="">║</div><span class="code">2551</span></div><div class="item" id="2552"><div class="">╒</div><span class="code">2552</span></div><div class="item" id="2553"><div class="">╓</div><span class="code">2553</span></div><div class="item" id="2554"><div class="">╔</div><span class="code">2554</span></div><div class="item" id="2555"><div class="">╕</div><span class="code">2555</span></div><div class="item" id="2556"><div class="">╖</div><span class="code">2556</span></div><div class="item" id="2557"><div class="">╗</div><span class="code">2557</span></div><div class="item" id="2558"><div class="">╘</div><span class="code">2558</span></div><div class="item" id="2559"><div class="">╙</div><span class="code">2559</span></div><div class="item" id="255a"><div class="">╚</div><span class="code">255a</span></div><div class="item" id="255b"><div class="">╛</div><span class="code">255b</span></div><div class="item" id="255c"><div class="">╜</div><span class="code">255c</span></div><div class="item" id="255d"><div class="">╝</div><span class="code">255d</span></div><div class="item" id="255e"><div class="">╞</div><span class="code">255e</span></div><div class="item" id="255f"><div class="">╟</div><span class="code">255f</span></div><div class="item" id="2560"><div class="">╠</div><span class="code">2560</span></div><div class="item" id="2561"><div class="">╡</div><span class="code">2561</span></div><div class="item" id="2562"><div class="">╢</div><span class="code">2562</span></div><div class="item" id="2563"><div class="">╣</div><span class="code">2563</span></div><div class="item" id="2564"><div class="">╤</div><span class="code">2564</span></div><div class="item" id="2565"><div class="">╥</div><span class="code">2565</span></div><div class="item" id="2566"><div class="">╦</div><span class="code">2566</span></div><div class="item" id="2567"><div class="">╧</div><span class="code">2567</span></div><div class="item" id="2568"><div class="">╨</div><span class="code">2568</span></div><div class="item" id="2569"><div class="">╩</div><span class="code">2569</span></div><div class="item" id="256a"><div class="">╪</div><span class="code">256a</span></div><div class="item" id="256b"><div class="">╫</div><span class="code">256b</span></div><div class="item" id="256c"><div class="">╬</div><span class="code">256c</span></div><div class="item" id="256d"><div class="">╭</div><span class="code">256d</span></div><div class="item" id="256e"><div class="">╮</div><span class="code">256e</span></div><div class="item" id="256f"><div class="">╯</div><span class="code">256f</span></div><div class="item" id="2570"><div class="">╰</div><span class="code">2570</span></div><div class="item" id="2571"><div class="">╱</div><span class="code">2571</span></div><div class="item" id="2572"><div class="">╲</div><span class="code">2572</span></div><div class="item" id="2573"><div class="">╳</div><span class="code">2573</span></div><div class="item" id="2574"><div class="">╴</div><span class="code">2574</span></div><div class="item" id="2575"><div class="">╵</div><span class="code">2575</span></div><div class="item" id="2576"><div class="">╶</div><span class="code">2576</span></div><div class="item" id="2577"><div class="">╷</div><span class="code">2577</span></div><div class="item" id="2578"><div class="">╸</div><span class="code">2578</span></div><div class="item" id="2579"><div class="">╹</div><span class="code">2579</span></div><div class="item" id="257a"><div class="">╺</div><span class="code">257a</span></div><div class="item" id="257b"><div class="">╻</div><span class="code">257b</span></div><div class="item" id="257c"><div class="">╼</div><span class="code">257c</span></div><div class="item" id="257d"><div class="">╽</div><span class="code">257d</span></div><div class="item" id="257e"><div class="">╾</div><span class="code">257e</span></div><div class="item" id="257f"><div class="">╿</div><span class="code">257f</span></div>
+
+</div>
+
+</div>
+
+
+<div class="region">
+    <h3 class="item-title">矩形, 平行四边形, 三角形</h3>
+
+        <div class="item" id="2580"><div class="">▀</div><span class="code">2580</span></div><div class="item" id="2581"><div class="">▁</div><span class="code">2581</span></div><div class="item" id="2582"><div class="">▂</div><span class="code">2582</span></div><div class="item" id="2583"><div class="">▃</div><span class="code">2583</span></div><div class="item" id="2584"><div class="">▄</div><span class="code">2584</span></div><div class="item" id="2585"><div class="">▅</div><span class="code">2585</span></div><div class="item" id="2586"><div class="">▆</div><span class="code">2586</span></div><div class="item" id="2587"><div class="">▇</div><span class="code">2587</span></div><div class="item" id="2588"><div class="">█</div><span class="code">2588</span></div><div class="item" id="2589"><div class="">▉</div><span class="code">2589</span></div><div class="item" id="258a"><div class="">▊</div><span class="code">258a</span></div><div class="item" id="258b"><div class="">▋</div><span class="code">258b</span></div><div class="item" id="258c"><div class="">▌</div><span class="code">258c</span></div><div class="item" id="258d"><div class="">▍</div><span class="code">258d</span></div><div class="item" id="258e"><div class="">▎</div><span class="code">258e</span></div><div class="item" id="258f"><div class="">▏</div><span class="code">258f</span></div><div class="item" id="2590"><div class="">▐</div><span class="code">2590</span></div><div class="item" id="2591"><div class="">░</div><span class="code">2591</span></div><div class="item" id="2592"><div class="">▒</div><span class="code">2592</span></div><div class="item" id="2593"><div class="">▓</div><span class="code">2593</span></div><div class="item" id="2594"><div class="">▔</div><span class="code">2594</span></div><div class="item" id="2595"><div class="">▕</div><span class="code">2595</span></div>
+        
+        
+        <br />
+        
+        <div class="item" id="25a0"><div class="">■</div><span class="code">25a0</span></div><div class="item" id="25a1"><div class="">□</div><span class="code">25a1</span></div><div class="item" id="25a2"><div class="">▢</div><span class="code">25a2</span></div><div class="item" id="25a3"><div class="">▣</div><span class="code">25a3</span></div>
+        
+              <div class="item" id="25ac"><div class="">▬</div><span class="code">25ac</span></div><div class="item" id="25ad"><div class="">▭</div><span class="code">25ad</span></div>
+        
+        <br />
+        <br />
+        
+         <div class="item" id="25eb"><div class="">◫</div><span class="code">25eb</span></div>
+        
+        <div class="item" id="25a4"><div class="">▤</div><span class="code">25a4</span></div><div class="item" id="25a5"><div class="">▥</div><span class="code">25a5</span></div><div class="item" id="25a6"><div class="">▦</div><span class="code">25a6</span></div><div class="item" id="25a7"><div class="">▧</div><span class="code">25a7</span></div><div class="item" id="25a8"><div class="">▨</div><span class="code">25a8</span></div><div class="item" id="25a9"><div class="">▩</div><span class="code">25a9</span></div>
+        
+        <br />
+        
+        <div class="item" id="25aa"><div class="">▪</div><span class="code">25aa</span></div><div class="item" id="25ab"><div class="">▫</div><span class="code">25ab</span></div>
+        
+  
+        
+        <div class="item" id="25ae"><div class="">▮</div><span class="code">25ae</span></div><div class="item" id="25af"><div class="">▯</div><span class="code">25af</span></div>
+        <div class="item" id="25fd"><div class="">◽</div><span class="code">25fd</span></div>
+<div class="item" id="25fe"><div class="">◾</div><span class="code">25fe</span></div>
+        
+        <br />
+        
+        <div class="item" id="25b0"><div class="">▰</div><span class="code">25b0</span></div><div class="item" id="25b1"><div class="">▱</div><span class="code">25b1</span></div>
+        
+        <br />
+        
+        <div class="item" id="25b2"><div class="">▲</div><span class="code">25b2</span></div><div class="item" id="25b3"><div class="">△</div><span class="code">25b3</span></div><div class="item" id="25b4"><div class="">▴</div><span class="code">25b4</span></div><div class="item" id="25b5"><div class="">▵</div><span class="code">25b5</span></div>
+        
+        <br />
+        
+        <div class="item" id="25b6"><div class="">▶</div><span class="code">25b6</span></div><div class="item" id="25b7"><div class="">▷</div><span class="code">25b7</span></div><div class="item" id="25b8"><div class="">▸</div><span class="code">25b8</span></div><div class="item" id="25b9"><div class="">▹</div><span class="code">25b9</span></div><div class="item" id="25ba"><div class="">►</div><span class="code">25ba</span></div><div class="item" id="25bb"><div class="">▻</div><span class="code">25bb</span></div>
+        
+        <br />
+        
+        <div class="item" id="25bc"><div class="">▼</div><span class="code">25bc</span></div><div class="item" id="25bd"><div class="">▽</div><span class="code">25bd</span></div><div class="item" id="25be"><div class="">▾</div><span class="code">25be</span></div><div class="item" id="25bf"><div class="">▿</div><span class="code">25bf</span></div>
+        
+        <br />
+        
+        <div class="item" id="25c0"><div class="">◀</div><span class="code">25c0</span></div><div class="item" id="25c1"><div class="">◁</div><span class="code">25c1</span></div><div class="item" id="25c2"><div class="">◂</div><span class="code">25c2</span></div><div class="item" id="25c3"><div class="">◃</div><span class="code">25c3</span></div><div class="item" id="25c4"><div class="">◄</div><span class="code">25c4</span></div><div class="item" id="25c5"><div class="">◅</div><span class="code">25c5</span></div>
+        
+        <br />
+        <br />
+        
+        <div class="item" id="25c6"><div class="">◆</div><span class="code">25c6</span></div><div class="item" id="25c7"><div class="">◇</div><span class="code">25c7</span></div><div class="item" id="25c8"><div class="">◈</div><span class="code">25c8</span></div>
+       
+        <div class="item" id="25ca"><div class="">◊</div><span class="code">25ca</span></div>
+        
+        <br />
+        <br />
+          <div class="item" id="25e6"><div class="">◦</div><span class="code">25e6</span></div>
+           <div class="item" id="25ef"><div class="">◯</div><span class="code">25ef</span></div>
+        <div class="item" id="25cb"><div class="">○</div><span class="code">25cb</span></div><div class="item" id="25cc"><div class="">◌</div><span class="code">25cc</span></div><div class="item" id="25cd"><div class="">◍</div><span class="code">25cd</span></div><div class="item" id="25ce"><div class="">◎</div><span class="code">25ce</span></div>
+        
+         <div class="item" id="25c9"><div class="">◉</div><span class="code">25c9</span></div>
+         
+         <div class="item">
+        <span class="close">&#x25cb;</span>
+            <a href="#25cb" class="code">25cb</a>
+    </div>
+    <div class="item">
+        <span class="close">&#x25cf;</span>
+            <a href="#25cf" class="code">25cf</a>
+    </div>
+    <div class="item">
+        <span class="close">&#x25ef;</span>
+            <a href="#25ef" class="code">25ef</a>
+    </div>
+
+        <div class="item" id="26aa"><div class="">⚪</div><span class="code">26aa</span></div><div class="item" id="26ab"><div class="">⚫</div><span class="code">26ab</span></div><div class="item" id="26ac"><div class="">⚬</div><span class="code">26ac</span></div><div class="item" id="26ad"><div class="">⚭</div><span class="code">26ad</span></div><div class="item" id="26ae"><div class="">⚮</div><span class="code">26ae</span></div><div class="item" id="26af"><div class="">⚯</div><span class="code">26af</span></div>
+        
+        <br />
+        
+        <div class="item" id="25cf"><div class="">●</div><span class="code">25cf</span></div><div class="item" id="25d0"><div class="">◐</div><span class="code">25d0</span></div><div class="item" id="25d1"><div class="">◑</div><span class="code">25d1</span></div><div class="item" id="25d2"><div class="">◒</div><span class="code">25d2</span></div><div class="item" id="25d3"><div class="">◓</div><span class="code">25d3</span></div><div class="item" id="25d4"><div class="">◔</div><span class="code">25d4</span></div><div class="item" id="25d5"><div class="">◕</div><span class="code">25d5</span></div>
+        
+        <br />
+        
+        <div class="item" id="25d6"><div class="">◖</div><span class="code">25d6</span></div><div class="item" id="25d7"><div class="">◗</div><span class="code">25d7</span></div><div class="item" id="25d8"><div class="">◘</div><span class="code">25d8</span></div><div class="item" id="25d9"><div class="">◙</div><span class="code">25d9</span></div><div class="item" id="25da"><div class="">◚</div><span class="code">25da</span></div><div class="item" id="25db"><div class="">◛</div><span class="code">25db</span></div>
+        <br />
+        
+       
+        
+        <div class="item" id="25e2"><div class="">◢</div><span class="code">25e2</span></div><div class="item" id="25e3"><div class="">◣</div><span class="code">25e3</span></div><div class="item" id="25e4"><div class="">◤</div><span class="code">25e4</span></div><div class="item" id="25e5"><div class="">◥</div><span class="code">25e5</span></div>
+        
+        <br />
+        
+      
+        
+        <div class="item" id="25e7"><div class="">◧</div><span class="code">25e7</span></div><div class="item" id="25e8"><div class="">◨</div><span class="code">25e8</span></div><div class="item" id="25e9"><div class="">◩</div><span class="code">25e9</span></div><div class="item" id="25ea"><div class="">◪</div><span class="code">25ea</span></div>
+        
+       
+        <div class="item" id="25ed"><div class="">◭</div><span class="code">25ed</span></div><div class="item" id="25ee"><div class="">◮</div><span class="code">25ee</span></div>
+        
+        <br />
+        
+        <div class="item" id="25dc"><div class="">◜</div><span class="code">25dc</span></div><div class="item" id="25dd"><div class="">◝</div><span class="code">25dd</span></div><div class="item" id="25de"><div class="">◞</div><span class="code">25de</span></div><div class="item" id="25df"><div class="">◟</div><span class="code">25df</span></div><div class="item" id="25e0"><div class="">◠</div><span class="code">25e0</span></div><div class="item" id="25e1"><div class="">◡</div><span class="code">25e1</span></div>
+        
+
+
+
+</div>
+
+
+<div class="region">
+    <h3 class="item-title">国际象棋 和 扑克</h3>
+
+        <div class="item" id="2654"><div class="">♔</div><span class="code">2654</span></div><div class="item" id="2655"><div class="">♕</div><span class="code">2655</span></div><div class="item" id="2656"><div class="">♖</div><span class="code">2656</span></div><div class="item" id="2657"><div class="">♗</div><span class="code">2657</span></div><div class="item" id="2658"><div class="">♘</div><span class="code">2658</span></div><div class="item" id="2659"><div class="">♙</div><span class="code">2659</span></div>
+        
+        <br />
+        
+        <div class="item" id="265a"><div class="">♚</div><span class="code">265a</span></div><div class="item" id="265b"><div class="">♛</div><span class="code">265b</span></div><div class="item" id="265c"><div class="">♜</div><span class="code">265c</span></div><div class="item" id="265d"><div class="">♝</div><span class="code">265d</span></div><div class="item" id="265e"><div class="">♞</div><span class="code">265e</span></div><div class="item" id="265f"><div class="">♟</div><span class="code">265f</span></div>
+        
+        <br />
+        
+        <div class="item" id="2660"><div class="">♠</div><span class="code">2660</span></div><div class="item" id="2661"><div class="">♡</div><span class="code">2661</span></div><div class="item" id="2662"><div class="">♢</div><span class="code">2662</span></div><div class="item" id="2663"><div class="">♣</div><span class="code">2663</span></div>
+        <br />
+        
+        <div class="item" id="2664"><div class="">♤</div><span class="code">2664</span></div>
+        <div class="item" id="2665"><div class="">♥</div><span class="code">2665</span></div><div class="item" id="2666"><div class="">♦</div><span class="code">2666</span></div><div class="item" id="2667"><div class="">♧</div><span class="code">2667</span></div>
+
+
+</div>
+
+<div class="region">
+    <h3 class="item-title">十字 - 星星</h3>
+
+        <div class="item" id="2719"><div class="">✙</div><span class="code">2719</span></div><div class="item" id="271a"><div class="">✚</div><span class="code">271a</span></div><div class="item" id="271b"><div class="">✛</div><span class="code">271b</span></div><div class="item" id="271c"><div class="">✜</div><span class="code">271c</span></div><div class="item" id="271d"><div class="">✝</div><span class="code">271d</span></div><div class="item" id="271e"><div class="">✞</div><span class="code">271e</span></div><div class="item" id="271f"><div class="">✟</div><span class="code">271f</span></div><div class="item" id="2720"><div class="">✠</div><span class="code">2720</span></div><div class="item" id="2721"><div class="">✡</div><span class="code">2721</span></div><div class="item" id="2722"><div class="">✢</div><span class="code">2722</span></div><div class="item" id="2723"><div class="">✣</div><span class="code">2723</span></div><div class="item" id="2724"><div class="">✤</div><span class="code">2724</span></div><div class="item" id="2725"><div class="">✥</div><span class="code">2725</span></div><div class="item" id="2726"><div class="">✦</div><span class="code">2726</span></div><div class="item" id="2727"><div class="">✧</div><span class="code">2727</span></div><div class="item" id="2728"><div class="">✨</div><span class="code">2728</span></div><div class="item" id="2729"><div class="">✩</div><span class="code">2729</span></div><div class="item" id="272a"><div class="">✪</div><span class="code">272a</span></div><div class="item" id="272b"><div class="">✫</div><span class="code">272b</span></div><div class="item" id="272c"><div class="">✬</div><span class="code">272c</span></div><div class="item" id="272d"><div class="">✭</div><span class="code">272d</span></div><div class="item" id="272e"><div class="">✮</div><span class="code">272e</span></div><div class="item" id="272f"><div class="">✯</div><span class="code">272f</span></div><div class="item" id="2730"><div class="">✰</div><span class="code">2730</span></div><div class="item" id="2731"><div class="">✱</div><span class="code">2731</span></div><div class="item" id="2732"><div class="">✲</div><span class="code">2732</span></div><div class="item" id="2733"><div class="">✳</div><span class="code">2733</span></div><div class="item" id="2734"><div class="">✴</div><span class="code">2734</span></div><div class="item" id="2735"><div class="">✵</div><span class="code">2735</span></div><div class="item" id="2736"><div class="">✶</div><span class="code">2736</span></div><div class="item" id="2737"><div class="">✷</div><span class="code">2737</span></div><div class="item" id="2738"><div class="">✸</div><span class="code">2738</span></div><div class="item" id="2739"><div class="">✹</div><span class="code">2739</span></div><div class="item" id="273a"><div class="">✺</div><span class="code">273a</span></div><div class="item" id="273b"><div class="">✻</div><span class="code">273b</span></div><div class="item" id="273c"><div class="">✼</div><span class="code">273c</span></div><div class="item" id="273d"><div class="">✽</div><span class="code">273d</span></div><div class="item" id="273e"><div class="">✾</div><span class="code">273e</span></div><div class="item" id="273f"><div class="">✿</div><span class="code">273f</span></div><div class="item" id="2740"><div class="">❀</div><span class="code">2740</span></div><div class="item" id="2741"><div class="">❁</div><span class="code">2741</span></div><div class="item" id="2742"><div class="">❂</div><span class="code">2742</span></div><div class="item" id="2743"><div class="">❃</div><span class="code">2743</span></div><div class="item" id="2744"><div class="">❄</div><span class="code">2744</span></div><div class="item" id="2745"><div class="">❅</div><span class="code">2745</span></div><div class="item" id="2746"><div class="">❆</div><span class="code">2746</span></div><div class="item" id="2747"><div class="">❇</div><span class="code">2747</span></div><div class="item" id="2748"><div class="">❈</div><span class="code">2748</span></div><div class="item" id="2749"><div class="">❉</div><span class="code">2749</span></div><div class="item" id="274a"><div class="">❊</div><span class="code">274a</span></div><div class="item" id="274b"><div class="">❋</div><span class="code">274b</span></div>
+
+
+</div>
+
+
+<div class="region">
+    <h3 class="item-title">括号</h3>
+
+        <div class="item" id="2768"><div class="">❨</div><span class="code">2768</span></div><div class="item" id="2769"><div class="">❩</div><span class="code">2769</span></div><div class="item" id="276a"><div class="">❪</div><span class="code">276a</span></div><div class="item" id="276b"><div class="">❫</div><span class="code">276b</span></div><div class="item" id="276c"><div class="">❬</div><span class="code">276c</span></div><div class="item" id="276d"><div class="">❭</div><span class="code">276d</span></div><div class="item" id="276e"><div class="">❮</div><span class="code">276e</span></div><div class="item" id="276f"><div class="">❯</div><span class="code">276f</span></div><div class="item" id="2770"><div class="">❰</div><span class="code">2770</span></div><div class="item" id="2771"><div class="">❱</div><span class="code">2771</span></div><div class="item" id="2772"><div class="">❲</div><span class="code">2772</span></div><div class="item" id="2773"><div class="">❳</div><span class="code">2773</span></div><div class="item" id="2774"><div class="">❴</div><span class="code">2774</span></div><div class="item" id="2775"><div class="">❵</div><span class="code">2775</span></div>
+
+
+</div>
+
+<div class="region">
+    <h3 class="item-title"> 点状形状 </h3>
+
+
+        <div class="item" id="2801"><div class="">⠁</div><span class="code">2801</span></div><div class="item" id="2802"><div class="">⠂</div><span class="code">2802</span></div><div class="item" id="2803"><div class="">⠃</div><span class="code">2803</span></div><div class="item" id="2804"><div class="">⠄</div><span class="code">2804</span></div><div class="item" id="2805"><div class="">⠅</div><span class="code">2805</span></div><div class="item" id="2806"><div class="">⠆</div><span class="code">2806</span></div><div class="item" id="2807"><div class="">⠇</div><span class="code">2807</span></div><div class="item" id="2808"><div class="">⠈</div><span class="code">2808</span></div><div class="item" id="2809"><div class="">⠉</div><span class="code">2809</span></div><div class="item" id="280a"><div class="">⠊</div><span class="code">280a</span></div><div class="item" id="280b"><div class="">⠋</div><span class="code">280b</span></div><div class="item" id="280c"><div class="">⠌</div><span class="code">280c</span></div><div class="item" id="280d"><div class="">⠍</div><span class="code">280d</span></div><div class="item" id="280e"><div class="">⠎</div><span class="code">280e</span></div><div class="item" id="280f"><div class="">⠏</div><span class="code">280f</span></div><div class="item" id="2810"><div class="">⠐</div><span class="code">2810</span></div><div class="item" id="2811"><div class="">⠑</div><span class="code">2811</span></div><div class="item" id="2812"><div class="">⠒</div><span class="code">2812</span></div><div class="item" id="2813"><div class="">⠓</div><span class="code">2813</span></div><div class="item" id="2814"><div class="">⠔</div><span class="code">2814</span></div><div class="item" id="2815"><div class="">⠕</div><span class="code">2815</span></div><div class="item" id="2816"><div class="">⠖</div><span class="code">2816</span></div><div class="item" id="2817"><div class="">⠗</div><span class="code">2817</span></div><div class="item" id="2818"><div class="">⠘</div><span class="code">2818</span></div><div class="item" id="2819"><div class="">⠙</div><span class="code">2819</span></div><div class="item" id="281a"><div class="">⠚</div><span class="code">281a</span></div><div class="item" id="281b"><div class="">⠛</div><span class="code">281b</span></div><div class="item" id="281c"><div class="">⠜</div><span class="code">281c</span></div><div class="item" id="281d"><div class="">⠝</div><span class="code">281d</span></div><div class="item" id="281e"><div class="">⠞</div><span class="code">281e</span></div><div class="item" id="281f"><div class="">⠟</div><span class="code">281f</span></div><div class="item" id="2820"><div class="">⠠</div><span class="code">2820</span></div><div class="item" id="2821"><div class="">⠡</div><span class="code">2821</span></div><div class="item" id="2822"><div class="">⠢</div><span class="code">2822</span></div><div class="item" id="2823"><div class="">⠣</div><span class="code">2823</span></div><div class="item" id="2824"><div class="">⠤</div><span class="code">2824</span></div><div class="item" id="2825"><div class="">⠥</div><span class="code">2825</span></div><div class="item" id="2826"><div class="">⠦</div><span class="code">2826</span></div><div class="item" id="2827"><div class="">⠧</div><span class="code">2827</span></div><div class="item" id="2828"><div class="">⠨</div><span class="code">2828</span></div><div class="item" id="2829"><div class="">⠩</div><span class="code">2829</span></div><div class="item" id="282a"><div class="">⠪</div><span class="code">282a</span></div><div class="item" id="282b"><div class="">⠫</div><span class="code">282b</span></div><div class="item" id="282c"><div class="">⠬</div><span class="code">282c</span></div><div class="item" id="282d"><div class="">⠭</div><span class="code">282d</span></div><div class="item" id="282e"><div class="">⠮</div><span class="code">282e</span></div><div class="item" id="282f"><div class="">⠯</div><span class="code">282f</span></div><div class="item" id="2830"><div class="">⠰</div><span class="code">2830</span></div><div class="item" id="2831"><div class="">⠱</div><span class="code">2831</span></div><div class="item" id="2832"><div class="">⠲</div><span class="code">2832</span></div><div class="item" id="2833"><div class="">⠳</div><span class="code">2833</span></div><div class="item" id="2834"><div class="">⠴</div><span class="code">2834</span></div><div class="item" id="2835"><div class="">⠵</div><span class="code">2835</span></div><div class="item" id="2836"><div class="">⠶</div><span class="code">2836</span></div><div class="item" id="2837"><div class="">⠷</div><span class="code">2837</span></div><div class="item" id="2838"><div class="">⠸</div><span class="code">2838</span></div><div class="item" id="2839"><div class="">⠹</div><span class="code">2839</span></div><div class="item" id="283a"><div class="">⠺</div><span class="code">283a</span></div><div class="item" id="283b"><div class="">⠻</div><span class="code">283b</span></div><div class="item" id="283c"><div class="">⠼</div><span class="code">283c</span></div><div class="item" id="283d"><div class="">⠽</div><span class="code">283d</span></div><div class="item" id="283e"><div class="">⠾</div><span class="code">283e</span></div><div class="item" id="283f"><div class="">⠿</div><span class="code">283f</span></div><div class="item" id="2840"><div class="">⡀</div><span class="code">2840</span></div><div class="item" id="2841"><div class="">⡁</div><span class="code">2841</span></div><div class="item" id="2842"><div class="">⡂</div><span class="code">2842</span></div><div class="item" id="2843"><div class="">⡃</div><span class="code">2843</span></div><div class="item" id="2844"><div class="">⡄</div><span class="code">2844</span></div><div class="item" id="2845"><div class="">⡅</div><span class="code">2845</span></div><div class="item" id="2846"><div class="">⡆</div><span class="code">2846</span></div><div class="item" id="2847"><div class="">⡇</div><span class="code">2847</span></div><div class="item" id="2848"><div class="">⡈</div><span class="code">2848</span></div><div class="item" id="2849"><div class="">⡉</div><span class="code">2849</span></div><div class="item" id="284a"><div class="">⡊</div><span class="code">284a</span></div><div class="item" id="284b"><div class="">⡋</div><span class="code">284b</span></div><div class="item" id="284c"><div class="">⡌</div><span class="code">284c</span></div><div class="item" id="284d"><div class="">⡍</div><span class="code">284d</span></div><div class="item" id="284e"><div class="">⡎</div><span class="code">284e</span></div><div class="item" id="284f"><div class="">⡏</div><span class="code">284f</span></div><div class="item" id="2850"><div class="">⡐</div><span class="code">2850</span></div><div class="item" id="2851"><div class="">⡑</div><span class="code">2851</span></div><div class="item" id="2852"><div class="">⡒</div><span class="code">2852</span></div><div class="item" id="2853"><div class="">⡓</div><span class="code">2853</span></div><div class="item" id="2854"><div class="">⡔</div><span class="code">2854</span></div><div class="item" id="2855"><div class="">⡕</div><span class="code">2855</span></div><div class="item" id="2856"><div class="">⡖</div><span class="code">2856</span></div><div class="item" id="2857"><div class="">⡗</div><span class="code">2857</span></div><div class="item" id="2858"><div class="">⡘</div><span class="code">2858</span></div><div class="item" id="2859"><div class="">⡙</div><span class="code">2859</span></div><div class="item" id="285a"><div class="">⡚</div><span class="code">285a</span></div><div class="item" id="285b"><div class="">⡛</div><span class="code">285b</span></div><div class="item" id="285c"><div class="">⡜</div><span class="code">285c</span></div><div class="item" id="285d"><div class="">⡝</div><span class="code">285d</span></div><div class="item" id="285e"><div class="">⡞</div><span class="code">285e</span></div><div class="item" id="285f"><div class="">⡟</div><span class="code">285f</span></div><div class="item" id="2860"><div class="">⡠</div><span class="code">2860</span></div><div class="item" id="2861"><div class="">⡡</div><span class="code">2861</span></div><div class="item" id="2862"><div class="">⡢</div><span class="code">2862</span></div><div class="item" id="2863"><div class="">⡣</div><span class="code">2863</span></div><div class="item" id="2864"><div class="">⡤</div><span class="code">2864</span></div><div class="item" id="2865"><div class="">⡥</div><span class="code">2865</span></div><div class="item" id="2866"><div class="">⡦</div><span class="code">2866</span></div><div class="item" id="2867"><div class="">⡧</div><span class="code">2867</span></div><div class="item" id="2868"><div class="">⡨</div><span class="code">2868</span></div><div class="item" id="2869"><div class="">⡩</div><span class="code">2869</span></div><div class="item" id="286a"><div class="">⡪</div><span class="code">286a</span></div><div class="item" id="286b"><div class="">⡫</div><span class="code">286b</span></div><div class="item" id="286c"><div class="">⡬</div><span class="code">286c</span></div><div class="item" id="286d"><div class="">⡭</div><span class="code">286d</span></div><div class="item" id="286e"><div class="">⡮</div><span class="code">286e</span></div><div class="item" id="286f"><div class="">⡯</div><span class="code">286f</span></div><div class="item" id="2870"><div class="">⡰</div><span class="code">2870</span></div><div class="item" id="2871"><div class="">⡱</div><span class="code">2871</span></div><div class="item" id="2872"><div class="">⡲</div><span class="code">2872</span></div><div class="item" id="2873"><div class="">⡳</div><span class="code">2873</span></div><div class="item" id="2874"><div class="">⡴</div><span class="code">2874</span></div><div class="item" id="2875"><div class="">⡵</div><span class="code">2875</span></div><div class="item" id="2876"><div class="">⡶</div><span class="code">2876</span></div><div class="item" id="2877"><div class="">⡷</div><span class="code">2877</span></div><div class="item" id="2878"><div class="">⡸</div><span class="code">2878</span></div><div class="item" id="2879"><div class="">⡹</div><span class="code">2879</span></div><div class="item" id="287a"><div class="">⡺</div><span class="code">287a</span></div><div class="item" id="287b"><div class="">⡻</div><span class="code">287b</span></div><div class="item" id="287c"><div class="">⡼</div><span class="code">287c</span></div><div class="item" id="287d"><div class="">⡽</div><span class="code">287d</span></div><div class="item" id="287e"><div class="">⡾</div><span class="code">287e</span></div><div class="item" id="287f"><div class="">⡿</div><span class="code">287f</span></div><div class="item" id="2880"><div class="">⢀</div><span class="code">2880</span></div><div class="item" id="2881"><div class="">⢁</div><span class="code">2881</span></div><div class="item" id="2882"><div class="">⢂</div><span class="code">2882</span></div><div class="item" id="2883"><div class="">⢃</div><span class="code">2883</span></div><div class="item" id="2884"><div class="">⢄</div><span class="code">2884</span></div><div class="item" id="2885"><div class="">⢅</div><span class="code">2885</span></div><div class="item" id="2886"><div class="">⢆</div><span class="code">2886</span></div><div class="item" id="2887"><div class="">⢇</div><span class="code">2887</span></div><div class="item" id="2888"><div class="">⢈</div><span class="code">2888</span></div><div class="item" id="2889"><div class="">⢉</div><span class="code">2889</span></div><div class="item" id="288a"><div class="">⢊</div><span class="code">288a</span></div><div class="item" id="288b"><div class="">⢋</div><span class="code">288b</span></div><div class="item" id="288c"><div class="">⢌</div><span class="code">288c</span></div><div class="item" id="288d"><div class="">⢍</div><span class="code">288d</span></div><div class="item" id="288e"><div class="">⢎</div><span class="code">288e</span></div><div class="item" id="288f"><div class="">⢏</div><span class="code">288f</span></div><div class="item" id="2890"><div class="">⢐</div><span class="code">2890</span></div><div class="item" id="2891"><div class="">⢑</div><span class="code">2891</span></div><div class="item" id="2892"><div class="">⢒</div><span class="code">2892</span></div><div class="item" id="2893"><div class="">⢓</div><span class="code">2893</span></div><div class="item" id="2894"><div class="">⢔</div><span class="code">2894</span></div><div class="item" id="2895"><div class="">⢕</div><span class="code">2895</span></div><div class="item" id="2896"><div class="">⢖</div><span class="code">2896</span></div><div class="item" id="2897"><div class="">⢗</div><span class="code">2897</span></div><div class="item" id="2898"><div class="">⢘</div><span class="code">2898</span></div><div class="item" id="2899"><div class="">⢙</div><span class="code">2899</span></div><div class="item" id="289a"><div class="">⢚</div><span class="code">289a</span></div><div class="item" id="289b"><div class="">⢛</div><span class="code">289b</span></div><div class="item" id="289c"><div class="">⢜</div><span class="code">289c</span></div><div class="item" id="289d"><div class="">⢝</div><span class="code">289d</span></div><div class="item" id="289e"><div class="">⢞</div><span class="code">289e</span></div><div class="item" id="289f"><div class="">⢟</div><span class="code">289f</span></div><div class="item" id="28a0"><div class="">⢠</div><span class="code">28a0</span></div><div class="item" id="28a1"><div class="">⢡</div><span class="code">28a1</span></div><div class="item" id="28a2"><div class="">⢢</div><span class="code">28a2</span></div><div class="item" id="28a3"><div class="">⢣</div><span class="code">28a3</span></div><div class="item" id="28a4"><div class="">⢤</div><span class="code">28a4</span></div><div class="item" id="28a5"><div class="">⢥</div><span class="code">28a5</span></div><div class="item" id="28a6"><div class="">⢦</div><span class="code">28a6</span></div><div class="item" id="28a7"><div class="">⢧</div><span class="code">28a7</span></div><div class="item" id="28a8"><div class="">⢨</div><span class="code">28a8</span></div><div class="item" id="28a9"><div class="">⢩</div><span class="code">28a9</span></div><div class="item" id="28aa"><div class="">⢪</div><span class="code">28aa</span></div><div class="item" id="28ab"><div class="">⢫</div><span class="code">28ab</span></div><div class="item" id="28ac"><div class="">⢬</div><span class="code">28ac</span></div><div class="item" id="28ad"><div class="">⢭</div><span class="code">28ad</span></div><div class="item" id="28ae"><div class="">⢮</div><span class="code">28ae</span></div><div class="item" id="28af"><div class="">⢯</div><span class="code">28af</span></div><div class="item" id="28b0"><div class="">⢰</div><span class="code">28b0</span></div><div class="item" id="28b1"><div class="">⢱</div><span class="code">28b1</span></div><div class="item" id="28b2"><div class="">⢲</div><span class="code">28b2</span></div><div class="item" id="28b3"><div class="">⢳</div><span class="code">28b3</span></div><div class="item" id="28b4"><div class="">⢴</div><span class="code">28b4</span></div><div class="item" id="28b5"><div class="">⢵</div><span class="code">28b5</span></div><div class="item" id="28b6"><div class="">⢶</div><span class="code">28b6</span></div><div class="item" id="28b7"><div class="">⢷</div><span class="code">28b7</span></div><div class="item" id="28b8"><div class="">⢸</div><span class="code">28b8</span></div><div class="item" id="28b9"><div class="">⢹</div><span class="code">28b9</span></div><div class="item" id="28ba"><div class="">⢺</div><span class="code">28ba</span></div><div class="item" id="28bb"><div class="">⢻</div><span class="code">28bb</span></div><div class="item" id="28bc"><div class="">⢼</div><span class="code">28bc</span></div><div class="item" id="28bd"><div class="">⢽</div><span class="code">28bd</span></div><div class="item" id="28be"><div class="">⢾</div><span class="code">28be</span></div><div class="item" id="28bf"><div class="">⢿</div><span class="code">28bf</span></div><div class="item" id="28c0"><div class="">⣀</div><span class="code">28c0</span></div><div class="item" id="28c1"><div class="">⣁</div><span class="code">28c1</span></div><div class="item" id="28c2"><div class="">⣂</div><span class="code">28c2</span></div><div class="item" id="28c3"><div class="">⣃</div><span class="code">28c3</span></div><div class="item" id="28c4"><div class="">⣄</div><span class="code">28c4</span></div><div class="item" id="28c5"><div class="">⣅</div><span class="code">28c5</span></div><div class="item" id="28c6"><div class="">⣆</div><span class="code">28c6</span></div><div class="item" id="28c7"><div class="">⣇</div><span class="code">28c7</span></div><div class="item" id="28c8"><div class="">⣈</div><span class="code">28c8</span></div><div class="item" id="28c9"><div class="">⣉</div><span class="code">28c9</span></div><div class="item" id="28ca"><div class="">⣊</div><span class="code">28ca</span></div><div class="item" id="28cb"><div class="">⣋</div><span class="code">28cb</span></div><div class="item" id="28cc"><div class="">⣌</div><span class="code">28cc</span></div><div class="item" id="28cd"><div class="">⣍</div><span class="code">28cd</span></div><div class="item" id="28ce"><div class="">⣎</div><span class="code">28ce</span></div><div class="item" id="28cf"><div class="">⣏</div><span class="code">28cf</span></div><div class="item" id="28d0"><div class="">⣐</div><span class="code">28d0</span></div><div class="item" id="28d1"><div class="">⣑</div><span class="code">28d1</span></div><div class="item" id="28d2"><div class="">⣒</div><span class="code">28d2</span></div><div class="item" id="28d3"><div class="">⣓</div><span class="code">28d3</span></div><div class="item" id="28d4"><div class="">⣔</div><span class="code">28d4</span></div><div class="item" id="28d5"><div class="">⣕</div><span class="code">28d5</span></div><div class="item" id="28d6"><div class="">⣖</div><span class="code">28d6</span></div><div class="item" id="28d7"><div class="">⣗</div><span class="code">28d7</span></div><div class="item" id="28d8"><div class="">⣘</div><span class="code">28d8</span></div><div class="item" id="28d9"><div class="">⣙</div><span class="code">28d9</span></div><div class="item" id="28da"><div class="">⣚</div><span class="code">28da</span></div><div class="item" id="28db"><div class="">⣛</div><span class="code">28db</span></div><div class="item" id="28dc"><div class="">⣜</div><span class="code">28dc</span></div><div class="item" id="28dd"><div class="">⣝</div><span class="code">28dd</span></div><div class="item" id="28de"><div class="">⣞</div><span class="code">28de</span></div><div class="item" id="28df"><div class="">⣟</div><span class="code">28df</span></div><div class="item" id="28e0"><div class="">⣠</div><span class="code">28e0</span></div><div class="item" id="28e1"><div class="">⣡</div><span class="code">28e1</span></div><div class="item" id="28e2"><div class="">⣢</div><span class="code">28e2</span></div><div class="item" id="28e3"><div class="">⣣</div><span class="code">28e3</span></div><div class="item" id="28e4"><div class="">⣤</div><span class="code">28e4</span></div><div class="item" id="28e5"><div class="">⣥</div><span class="code">28e5</span></div><div class="item" id="28e6"><div class="">⣦</div><span class="code">28e6</span></div><div class="item" id="28e7"><div class="">⣧</div><span class="code">28e7</span></div><div class="item" id="28e8"><div class="">⣨</div><span class="code">28e8</span></div><div class="item" id="28e9"><div class="">⣩</div><span class="code">28e9</span></div><div class="item" id="28ea"><div class="">⣪</div><span class="code">28ea</span></div><div class="item" id="28eb"><div class="">⣫</div><span class="code">28eb</span></div><div class="item" id="28ec"><div class="">⣬</div><span class="code">28ec</span></div><div class="item" id="28ed"><div class="">⣭</div><span class="code">28ed</span></div><div class="item" id="28ee"><div class="">⣮</div><span class="code">28ee</span></div><div class="item" id="28ef"><div class="">⣯</div><span class="code">28ef</span></div><div class="item" id="28f0"><div class="">⣰</div><span class="code">28f0</span></div><div class="item" id="28f1"><div class="">⣱</div><span class="code">28f1</span></div><div class="item" id="28f2"><div class="">⣲</div><span class="code">28f2</span></div><div class="item" id="28f3"><div class="">⣳</div><span class="code">28f3</span></div><div class="item" id="28f4"><div class="">⣴</div><span class="code">28f4</span></div><div class="item" id="28f5"><div class="">⣵</div><span class="code">28f5</span></div><div class="item" id="28f6"><div class="">⣶</div><span class="code">28f6</span></div><div class="item" id="28f7"><div class="">⣷</div><span class="code">28f7</span></div><div class="item" id="28f8"><div class="">⣸</div><span class="code">28f8</span></div><div class="item" id="28f9"><div class="">⣹</div><span class="code">28f9</span></div><div class="item" id="28fa"><div class="">⣺</div><span class="code">28fa</span></div><div class="item" id="28fb"><div class="">⣻</div><span class="code">28fb</span></div><div class="item" id="28fc"><div class="">⣼</div><span class="code">28fc</span></div><div class="item" id="28fd"><div class="">⣽</div><span class="code">28fd</span></div><div class="item" id="28fe"><div class="">⣾</div><span class="code">28fe</span></div><div class="item" id="28ff"><div class="">⣿</div><span class="code">28ff</span></div>
+
+</div>
+
+<div class="region">
+    <h3 class="item-title"></h3>
+</div>
+
+<div class="region">
+    <h3 class="item-title"></h3>
+</div>
+
+<div class="region lading">
+    <h3 class="item-title">拉丁字母</h3>
+    <p>0x1d60</p>
+    <div class="items"></div>
+</div>
+
+<div class="region luoma">
+    <h3 class="item-title">罗马字母/各种符号</h3>
+    <p>0x2010 ~  0x23e0</p>
+    <div class="items"></div>
+</div>
+
+<div class="region xuhao">
+    <h3 class="item-title">序号</h3>
+    <p>0x2460 ~  0x24ff</p>
+    <div class="items"></div>
+</div>
+
+<div class="region icons">
+    <h3 class="item-title">图标</h3>
+    <p>0x2500 ~  0x2b4c</p>
+    <div class="items"></div>
+</div>
+    
+
+    <script>
+//createMsg("luoma", 0x2010, 0x23e0);
+//createMsg("xuhao", 0x2460, 0x24ff);
+//createMsg("icons", 0x2500, 0x2b4c);
+
+
+function createMsg(cName, code1, code2){
+    // 接受起止16进制字符编码, 在元素中生成内容
+    var html = "";
+
+    for(var i=0; i<=(code2-code1); i++ ){
+        var temp = "",
+            curCode = (code1 + i).toString(16);
+        temp += "<div class='item' id='"+ curCode +"'>"
+             +   "<div class=''>" +   "&#x" + curCode + ";" +   "</div>"
+             +   "<span class='code'>" + curCode + "</span>"
+             +   "</div>";
+        html += temp;
+    }
+
+    document.getElementsByClassName(cName)[0].getElementsByClassName("items")[0].innerHTML = html;
+}
+
+    /* 2017-3-13 增加 select 组件  start */
+    
+    document.body.addEventListener("click", function(e){
+        var eTar = e.target;
+        if(eTar.classList.contains("select-input")){
+            // select-input
+            eTar.classList.add("select-input-active");
+            eTar.nextElementSibling.style.display = "block";
+        }else if(eTar.classList.contains("select-li")){
+            // select-li
+            var select_list = eTar.parentNode,
+                select_input = select_list.previousElementSibling;
+            select_list.style.display = "none";
+
+            select_input.innerHTML = eTar.innerHTML;
+            select_input.classList.remove("select-input-active");
+        }else{
+            // others
+            select_lists = document.getElementsByClassName("select-list");
+            for(var i = 0; i < select_lists.length; ++i){
+                select_lists[i].style.display = "none";
+            }
+            select_inputs = document.getElementsByClassName("select-input");
+            for(var i = 0; i < select_inputs.length; ++i){
+                select_inputs[i].classList.remove("select-input-active");
+            }
+        }
+    });
+
+    /* jquery  版本 */
+/*
+    $(".select").on("click", function(e){
+        var _eTar = $(e.target);
+        if(_eTar.hasClass("select-input")){
+            _eTar.addClass("select-input-active").next(".select-list").show();
+        }
+        
+        if(_eTar.hasClass("select-li")){
+            _eTar.parent().prev(".select-input").html(_eTar.html()).removeClass("select-input-active");
+            _eTar.parent().hide();
+        }
+    });
+    $(document).on("click", function(e){
+        if($(e.target).parents(".select").length <= 0){
+            $(".select-list").hide();
+            $(".select-input").removeClass("select-input-active");
+        }
+    });
+*/
+
+    /* 2017-3-13 增加 select 组件  end */
+    </script>
+
+</body>
+</html>
