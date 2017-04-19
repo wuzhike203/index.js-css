@@ -1,0 +1,227 @@
+/* common start */
+html {
+  font-family: "microsoft yahei", arial;
+  font-size: 18px;
+}
+a {
+  color: inherit;
+}
+/* common end */
+
+.arrow {
+  position: relative;
+  display: inline-block;
+  width: 0;
+  height: 0;
+  border: 0.5em solid transparent;
+  font-size: 10px;
+  vertical-align: text-bottom;
+  line-height: 0em;
+}
+.arrow-down {
+  border-top-color: black;
+}
+.arrow-down .arrow-down {
+  left: -0.5em;
+  top: -0.6em;
+  border-top-color: white;
+}
+.down-up {
+  position: relative;
+  display: inline-block;
+  width: 0;
+  height: 0;
+  border: 0.5em solid transparent;
+  font-size: 10px;
+  vertical-align: text-bottom;
+  line-height: 0em;
+  border-top-color: #000;
+  border-bottom-color: #000;
+}
+.close {
+  vertical-align: middle;
+}
+.justify {
+  display: block;
+  text-align: justify;
+  text-align-last: justify;
+}
+.btn {
+  position: relative;
+  display: inline-block;
+  line-height: 2em;
+  padding-left: 0.8em;
+  padding-right: 0.8em;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  cursor: pointer;
+  text-align: center;
+}
+.btn-default {
+  border-radius: 1em;
+}
+.like-check::before {
+  content: "";
+  display: inline-block;
+  width: 12px;
+  height: 12px;
+  background: url(../image/check_ico.png) no-repeat left bottom;
+  vertical-align: text-bottom;
+}
+.like-check-active::before {
+  background-position: left top;
+}
+.bs-p {
+  display: block;
+}
+.bs-prompt {
+  position: relative;
+  display: inline-block;
+}
+.btn-caret::after {
+  content: "\25be";
+  display: inline-block;
+  float: right;
+  width: 23px;
+  border-left: 1px solid #ccc;
+  text-align: center;
+  font-size: 20px;
+}
+/* 进度条 */
+.progress-bar {
+  display: inline-block;
+  width: 80%;
+  height: 8px;
+  line-height: 0;
+  text-align: left;
+  background-color: red;
+  border-radius: 5px;
+}
+.progress-bar .inner {
+  display: inline-block;
+  width: 80%;
+  height: 100%;
+  background-color: green;
+  border-radius: 5px;
+}
+/* 下拉框  */
+.select{
+	position: relative;
+	
+	display: inline-block;
+    width: 200px;
+	
+	line-height: 32px;
+	text-align: center;
+}
+.select-input{
+	display: inline-block;
+	width: 100%;
+    box-sizing: border-box;
+	height: 32px;
+	
+	border: 1px solid #999;
+	border-radius: 16px;
+}
+.select-input::after{
+	content: "\25be";
+	float: right;
+	display: inline-block;
+	width: 32px;
+	height: 100%;
+	
+	font-size: 26px;
+	color: #999;
+	border-left: 1px solid #999;
+}
+.select-input-active{
+	border-bottom-left-radius: 0px;
+	border-bottom-right-radius: 0px;
+}
+.select-list{
+	position: absolute;
+	
+	display: none;
+    width: 100%;
+    box-sizing: border-box;
+	margin-top: -2px;
+	
+	border: 1px solid #999;
+	background-color: #fff;
+	border-bottom-left-radius: 16px;
+	border-bottom-right-radius: 16px;
+
+    list-style: none;
+    padding-left: 0;
+}
+.select-li{
+	cursor: pointer;
+}
+.select-li:hover{
+	background-color: #ccc;
+}
+
+@media screen and (min-device-width: 1100px) {
+  /* 兼容pc */
+  /* 
+    html{
+        font-size: round(10px/@s, 1);
+    }
+    */
+}
+@media screen and (max-device-width: 1100px) and (min-width: 660px) {
+  /* 兼容安卓660以上 */
+  /* 
+    html{
+        font-size: round(10px/@s, 1);
+    }
+    */
+}
+@media screen and (max-device-width: 1100px) and (max-width: 660px) and (min-width: 480px) {
+  /* 兼容安卓480~660 */
+  /* 
+    html{
+        font-size: round(10px/@s, 1);
+    }
+    */
+}
+@media screen and (max-device-width: 1100px) and (max-width: 480px) {
+  /* 兼容安卓480 以下*/
+  /* 
+    html{
+        font-size: round(10px/@s, 1);
+    }
+    */
+}
+@media (device-height: 480px) and (-webkit-min-device-pixel-ratio: 2) {
+  /* 兼容iphone4 */
+  /* 
+    html{
+        font-size: round(10px/@s, 1);
+    }
+    */
+}
+@media (device-height: 568px) and (-webkit-min-device-pixel-ratio: 2) {
+  /* 兼容iphone5 */
+  /* 
+    html{
+        font-size: round(10px/@s, 1);
+    }
+    */
+}
+@media (device-height: 667px) and (-webkit-min-device-pixel-ratio: 2) {
+  /* 兼容iphone6 */
+  /* 
+    html{
+        font-size: round(10px/@s, 1);
+    }
+    */
+}
+@media (device-height: 736px) and (-webkit-min-device-pixel-ratio: 2) {
+  /* 兼容iphone6plus */
+  /* 
+    html{
+        font-size: round(10px/@s, 1);
+    }
+    */
+}
