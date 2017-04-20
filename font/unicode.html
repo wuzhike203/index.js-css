@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta content="webkit" name="renderer">
+    <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <title>Unicode 编码表</title>
+    <style>
+body{
+    font-family: "微软雅黑", arial;
+}
+.contain{
+    max-width: 1000px;
+    margin: auto;
+}
+.title-main{
+    text-align: center;
+    border-bottom: 1px solid #ccc;
+    padding-bottom: 10px;
+    margin-bottom: 10px;
+}
+.subheading{
+    display: block;
+    margin-left: 400px;
+    color: #aaa;
+}
+.subheading::before{
+    content: "----";
+    margin-right: 3px;
+}
+.item-title{
+    margin-bottom: 10px;
+}
+.table-default{
+    border-collapse: collapse;
+    table-layout: fixed;
+    text-align: center;
+    margin-bottom: 10px;
+}
+.table-default th{
+    line-height: 40px;
+    width: 100px;
+}
+.table-default th:first-child{
+    width: 40px;
+}
+.table-default th,
+.table-default td{
+    border: 1px solid #ccc;
+    vertical-align: middle;
+    transition: all ease 0.5s;
+}
+.table-default th,
+.table-default td:first-child{
+    background-color: #eee;
+}
+.table-default td:hover{
+    transform: scale(1.5);
+}
+.table-default .char{
+    display: block;
+    font-weight: 600;
+    font-size: 30px;
+    line-height: 1.33em;
+    height: 1.33em;
+}
+.table-default .charCode{
+    font-size: 14px;
+    color: #aaa;
+}
+.query-type{
+    list-style: decimal;
+    line-height: 2em;
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+.query-type .illustration{
+    display: inline-block;
+    width: 350px;
+}
+.query-type input{
+    font-size: 14px;
+    line-height: 1.5em;
+}
+.single-query-result{
+    display: inline-block;
+    width: 120px;
+    height: 2em;
+    padding-left: 10px;
+    font-size: 14px;
+    background-color: #eee;
+    vertical-align: middle;
+}
+.single-input,
+.start-code-input,
+.end-code-input{
+    width: 126px;
+}
+.single-query-result,
+.startCode,
+.endCode{
+    color: red;
+}
+.page-up{
+    position: fixed;
+    right: 20px;
+    top: 300px;
+    display: block;
+    padding: 10px 5px;
+    background-color: #ccc;
+    cursor: pointer;
+    border-radius: 5px;
+    text-decoration: none;
+    color: #888;
+}
+.page-up:hover{
+    background-color: #ff9900;
+    color: white;
+}
+    </style>
+</head>
+<body>
+   <h1 class="title-main contain">
+       Unicode 编码表 
+       <small class="subheading">@wuji</small>
+   </h1>
+   <div class="contain">
+        本页面可提供2种查询：
+        <ul class="query-type">
+            <li>
+                <span class="illustration"> 根据一个16进制编码, 查询字符</span>
+                <input type="button" value="单个查询" class="btn-single">
+                <input type="text" class="single-input" placeholder="如: 0100" value="100">
+                <span class="single-query-result"></span>
+                <span class="single-query-result"></span>
+            </li>
+            <li>
+                <span class="illustration"> 根据一个16进制编码区间, 查询对应的编码表</span>
+                <input type="button" value="区间查询" class="btn-region">
+                <input type="text" class="start-code-input" placeholder="如: 0100" value="50">
+                <input type="text" class="end-code-input" placeholder="如: 0150" value="250">
+            </li>
+        </ul>
+   </div>
+   <div class="tables">
+        <div class="contain"></div>
+   </div>
+   <a href="#top" class="page-up">TOP</a>
+
+
+   <script>
+// 装载编码表的容器元素
+var contain = document.getElementsByClassName("tables")[0].getElementsByClassName("contain")[0];
+
+// 单个编码查询
+document.getElementsByClassName("btn-single")[0].onclick = function(e){
+    var value = this.nextElementSibling.value.trim().toLowerCase();
+    
+    // 检测值是否有效: 小于4位; 都是0~9,a~f
+    if(!check16(value)){return false;};
+    value = parseInt("0x" + value + ";");
+
+    // 转换
+    var store_elem = document.getElementsByClassName("single-query-result")[0];
+    store_elem.innerHTML =  "&#" + value + ";";
+    store_elem.nextElementSibling.innerHTML = value;
+};
+
+// 当单个的Input值改变时, 自动查询
+document.getElementsByClassName("single-input")[0].onchange = function(e){
+    document.getElementsByClassName("btn-single")[0].click();
+};
+
+
+
+// 编码区间查询
+document.getElementsByClassName("btn-region")[0].onclick = function(e){
+    var value_start = this.nextElementSibling.value.trim().toLowerCase(),
+        value_end   = this.nextElementSibling.nextElementSibling.value.trim().toLowerCase();
+
+    // 检测值是否有效: 小于4位; 都是0~9,a~f
+    if(!check16(value_start) || !check16(value_end)){return false;};
+    // 位数不足4位, 补足4位
+    value_start = to4(value_start);
+    value_end = to4(value_end);
+
+    // 查询
+    createCodeRegin(value_start, value_end);
+};
+
+// 初始化显示
+document.getElementsByClassName("btn-region")[0].click(); 
+
+// 当input的值发生变化时, 自动查询区间
+document.getElementsByClassName("start-code-input")[0].onchange = function(e){
+    document.getElementsByClassName("btn-region")[0].click(); 
+};
+document.getElementsByClassName("end-code-input")[0].onchange = function(e){
+    document.getElementsByClassName("btn-region")[0].click(); 
+};
+
+function createCodeRegin(starCode, endCode){
+    /*
+     * 由于一行设定的最大列数为8列, 
+     * 故: 按最大8列来分配section的起止编码
+     */
+    // 绘制之前, 先清空容器内容
+    contain.innerHTML = "";
+
+    var max_cols = 9;
+    var starFirstNum = getFirstCode(starCode),
+        endFirstNum = getFirstCode(endCode),
+        starNum = parseInt("0x"+starCode+";"),
+        endNum = parseInt("0x"+endCode+";"),
+        cols = Math.ceil((endFirstNum - starFirstNum + 1)/16),   // 列数
+        tables = Math.ceil(cols/max_cols);                              // table数
+
+    // 分配各个session区间并绘制
+    for(var i=0; i<tables; i++){
+        var section_start_num,
+            section_end_num;
+
+        section_start_num = starFirstNum + 16*max_cols*i;
+        section_end_num = section_start_num + 16*max_cols - 1;
+        if( i==0 ){
+            // 如果是第一个表
+            section_start_num = starNum; 
+        }
+        if( i==(tables-1) ){
+            // 如果是最后一个表
+            section_end_num = endNum;
+        }
+
+        // 绘制section
+        createSection(to4(section_start_num.toString(16)),
+                      to4(section_end_num.toString(16)));
+    }
+}
+
+function createSection(starCode, endCode){
+    // 接受起止16进制编码, 绘制section
+
+    // 绘制项目标题
+    var section = document.createElement("h3");
+    section.className = "item-title";
+    section.innerHTML = "<span class='startCode'>"+starCode+"</span>" 
+                      + "~"
+                      + "<span class='endCode'>"+ endCode +"</span>";
+    contain.appendChild(section);
+
+    // 绘制unicode表格
+    createCodeTable(starCode, endCode);
+}
+
+function createCodeTable(starCode, endCode){
+    // 接受起止16进制编码, 绘制unicode表格
+    var starFirstNum = getFirstCode(starCode),
+        endFirstNum = getFirstCode(endCode),
+        starNum = parseInt("0x"+starCode+";"),
+        endNum = parseInt("0x"+endCode+";"),
+        cols = Math.ceil((endFirstNum - starFirstNum + 1)/16);   // 列数
+
+    // 确定thead
+    var thead_html = "<thead><tr><th></th>";
+    for(var i=0; i<cols; i++){
+        thead_html += "<th>" + to4((starFirstNum+i*16).toString(16)).slice(0, -1) +"</th>";
+    }
+    thead_html += "</tr></thead>";
+
+    // 确定tbody: 共16行
+    tbody_html = "<tbody>"
+    for(var j=0; j<16; j++){
+        var tr_html = "<tr><td>"+ j.toString(16) +"</td>";
+        for(var k=0; k<cols; k++){
+            var curInt = starFirstNum + k*16 +j;
+            tr_html += "<td>" 
+                    +"<span class='char'>" + ((curInt >= starNum && curInt <= endNum)?("&#"+curInt+";"):"") +"</span>"
+                    +"<span class='charCode'>" + curInt + "</span>"
+                    +"</td>";
+        }
+        tr_html += "</tr>";
+
+        tbody_html += tr_html;
+    }
+    tbody_html += "</tbody>";
+
+    // table
+    var tableElem = document.createElement("table");
+    tableElem.className = "table-default";
+    tableElem.innerHTML = thead_html + tbody_html;
+    contain.appendChild(tableElem);
+}
+
+function getFirstCode(code){
+    // 接受一个16进制编码, 返回编码列中第一个的10进制
+    return parseInt("0x"+code.slice(0, -1)+0);
+}
+
+function check16(str){
+    // 检测字符串str是否是有效的16进制编码
+    // 如果不是, 则弹出警告窗
+    if(str.length > 4 || str.length ==0 || str.search(/[^0-9a-f]/)>-1 ){
+        alert("请输入4位有效的16进制编码");
+        return false;
+    }
+    return true;
+}
+
+function to4(str){
+    // 如果str不足4位, 前面补0
+    var len = str.length,
+        dLen = 4 - len;
+
+    return ((dLen > 2)?"0":"") 
+         + ((dLen > 1)?"0":"")
+         + ((dLen > 0)?"0":"")
+         + str;
+}
+   </script>
+</body>
+</html>
