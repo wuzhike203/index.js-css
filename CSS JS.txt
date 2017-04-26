@@ -1281,3 +1281,7 @@ flash           application/x-shockwave-flash	swf
     2   Omit overly specific selectors
     3   Use semantic class names
     4   Don't tie CSS too closely to markup structure
+
+// chrome fixfoxe 360 的差异
+    当字体size, family, letter-spacing, weight相同时：
+        字体所占的宽度在chrome与其他的浏览器中不一样
