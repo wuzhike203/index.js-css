@@ -354,7 +354,7 @@ function drawImg(){
         // 标识位置
         var cName = imgs[i].className;
         imgList.querySelector("." + cName).parentNode.parentNode.querySelector(".filepos")
-            .innerHTML = "background-position: "+ imgLeft +"px "+ imgTop +"px;";
+            .innerHTML = "background-position: "+ -imgLeft +"px "+ -imgTop +"px;";
         // 画图
         ctx.drawImage(imgs[i], imgLeft, imgTop, imgWidth, imgHeight);
     }
