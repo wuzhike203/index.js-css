@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8" />
+    <meta name="renderer" content="webkit">
+	<meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <meta name="keywords" content="css,csssprite,雪碧图">
+    <title>CSS-Sprite</title>
+<style>
+body{
+    margin: 0;
+    margin-bottom: 100%;
+    font-size: 14px;
+    line-height: 2em;
+    font-family: "微软雅黑";
+}
+.container{
+    width: 1000px;
+    margin: auto;
+    padding-left: 15px;
+    padding-right: 15px;
+}
+.page-title{
+    margin-top: 0;
+    background-color: #000;
+    font-size: 48px;
+    color: #fff;
+    line-height: 1.5em;
+}
+
+/* 接受图片输入的表单 */
+form{
+    width: 500px;
+    margin: 20px auto;
+}
+.select-img {
+    display: inline-block;
+    width: 100%;
+    height: 100px;
+
+    border: 1px solid #ccc;
+    background-color: transparent;
+    border-radius: 5px;
+
+    font-size: 20px;
+    font-weight: bold;
+    text-align: center;
+    line-height: 100px;
+    color: #555;
+}
+.select-img:hover{
+    background-color: #32ba59;
+    border-color: #32ba59;
+    color: #fff;
+}
+.select-img input[type='file']{ display: none; }
+
+/* 图片列表 */
+.img-list{
+    background-color: #fafafa;
+}
+.file-list{
+    min-height: 35px;
+    padding-left: 50px;
+    list-style-type: none; 
+    line-height: 35px;
+}
+.file-li { position: relative; }
+.file-li:nth-child(2n){
+    background-color: #f5f5f5;
+}
+.file-li>span{
+    display: inline-block;
+    overflow: hidden;
+    vertical-align: top;
+}
+.file-li .btn-close{
+    position: absolute;
+    font-size: 20px;
+    left: -45px;
+    cursor: pointer;
+}
+.file-li .btn-close:hover{
+    color: #f90;
+}
+.fileimg{
+    width: 80px;
+    vertical-align: middle;
+    text-align: center;
+}
+.thumbnail{
+    max-width: 35px;
+    max-height: 35px;
+    vertical-align: middle;
+}
+.filename{
+    width: 400px;
+}
+.filesize{
+    width: 100px;
+}
+
+/* 图片容器 */
+.img-wrap{
+    position: relative;
+    width: 10px;
+    height: 10px;
+    line-height: 0;
+}
+
+/* 图片容器 和 合成的图片 */
+.img-wrap,
+[name="combine-img"]{
+    margin: 20px 0;
+    border-radius: 5px;
+    border: 1px dashed #aaa;
+    resize: both;
+    overflow: hidden;
+}
+
+/* 图片容器中的图片 */
+.img-wrap img{
+    display: inline-block;
+    margin: 5px;
+    float: left;
+}
+
+/* 生成合成图片按钮 */
+.create-img{
+    box-shadow: 0 0 10px #ccc;
+}
+#create-img{
+    width: 100px;
+    margin-right: 200px;
+    line-height: 40px;
+    border-radius: 5px;
+    box-shadow: inset 0 0 10px #ccc;
+    background-color: transparent;
+    border-width: 0;
+}
+#create-img:hover{
+    box-shadow: inset 0 0 20px #ccc;
+}
+/* 画布隐藏 */
+#canvas-img{
+    display: none;
+}
+</style>
+</head>
+<body>
+<h1 class="page-title">
+    <div class="container">
+        CSS SPRITE GENERATE
+    </div>
+</h1>
+
+<!-- 接受图片的表单 -->
+<div class="container">
+    <form action="">
+        <label class="select-img">
+            <input type="file" multiple id="input-img">
+            <span class="label-desc">选择图片</span>
+        </label>
+    </form>
+</div>
+
+<!-- 文件列表 -->
+<div class="img-list">
+    <div class="container">
+        <ul class="file-list js-file-list">
+            <li class="file-li">
+                <span class="fileimg">缩略图</span>
+                <span class="filename">图片名称</span>
+                <span class="filesize">图片尺寸</span>
+                <span class="filepos">图片位置</span>
+            </li>
+        </ul>
+    </div>
+</div>
+
+<!-- img 容器 -->
+<div class="container">
+    <div class="img-wrap"></div>
+</div>
+
+<!-- 生成图片按钮 -->
+<div class="create-img">
+    <div class="container">
+        <button id="create-img">生成图片</button>
+        <span>下面生成的图片 -- 右键保存</span>
+    </div>
+</div>
+
+<!-- 最终的img  -->
+<div class="container">
+    <img src="" name="combine-img">
+</div>
+
+<!-- img canvas -->
+<canvas width="100" height="100" id="canvas-img"></canvas>
+
+
+
+
+
+
+
+<script>
+
+var imgWrap = document.body.querySelector(".img-wrap"),     // 图片容器
+    imgList = document.body.querySelector(".file-list"),    // 图片列表
+    imgSelt = document.body.querySelector(".select-img");   // 选择图片的表单
+
+
+// 可以通过表单添加，或者拖动图片添加
+// 1、通过表单添加图片
+document.getElementById("input-img").onchange = function(e){
+    var pre_imgs_number = imgList.querySelectorAll(".file-li").length;
+    readImg(this.files, 0, pre_imgs_number);
+};
+
+// 2、拖动图片添加
+imgSelt.ondragenter = dragImg;
+imgSelt.ondragover = dragImg;
+imgSelt.ondrop = dragImg;
+
+function dragImg(e){
+    e.preventDefault();
+
+    if(e.type == "drop"){
+        var pre_imgs_number = imgList.querySelectorAll(".file-li").length;
+        readImg(e.dataTransfer.files, 0, pre_imgs_number);
+    }
+}
+
+
+function readImg(files, i, pre_number){
+    if(i == files.length) return;
+
+    if(files[i].type.search(/image[\/]\w+/) >= 0){
+        var reader = new FileReader();
+        reader.onload = function(e){
+            // 图片通过className = 图片名称 来识别
+            var cName = "img" + Date.now();
+
+            // 添加图片到图片容器
+            var img = new Image();
+            img.src = reader.result;
+            img.className = cName;
+            imgWrap.appendChild(img);
+
+            // 添加图片到文件列表
+            var html = "";
+            html += '<li class="file-li">';
+            html += '<span class="btn-close js-del">&#x2573;</span>';
+            html += '<span class="fileimg"><img src="'+ reader.result +'" class="thumbnail '+ cName +'"/></span> ';
+            html += '<span class="filename">'+ files[i].name +'</span> ';
+            html += '<span class="filesize">'+ img.width + "*"+ img.height +'</span> ';
+            html += '<span class="filepos"></span>';
+            html += '</li>';
+            imgList.innerHTML += html;
+
+            // next
+            readImg(files, i+1, pre_number);
+        };
+
+        reader.readAsDataURL(files[i]);
+    }
+}
+
+// 图片列表
+document.body.querySelector(".js-file-list").onclick = function(e){
+    var eTar = e.target;
+    if(eTar.classList.contains("js-del")){
+        var li = eTar.parentNode;
+        // 从图片容器中删除图片: 图片的className = 图片的名称
+        var cName = li.querySelector("img").className.split(" ")[1];
+        imgWrap.removeChild(imgWrap.querySelector("." + cName));
+
+        // 从图片列表中删除图片
+        li.parentNode.removeChild(li);
+    }
+};
+
+
+// 图片容器中的图片可以被拖动 
+
+// 用于交换拖动数据的全局变量:o: 被拖动的图片, s: 将源图片放置到目标图片之前
+var wujiDrag = {o: null, s: null};      
+
+imgWrap.ondragenter = drag;
+imgWrap.ondragover = drag;
+imgWrap.ondrop = drag;
+
+function drag(e){
+    e.preventDefault();
+
+    if(e.type == "dragenter"){
+        if(e.target.nodeName == "IMG"){
+            // cross anthor img
+            wujiDrag.s = e.target;
+        }
+    }
+
+    if(e.type == "drop"){
+        if(wujiDrag.o){
+            var target = (wujiDrag.s && wujiDrag.s != wujiDrag.o) ? wujiDrag.s : null;
+            imgWrap.insertBefore(wujiDrag.o, target);
+        }
+        
+    }
+}
+
+// 图片被拖动时，填充拖动数据
+imgWrap.ondragstart = function(e){
+    if(e.target.nodeName == "IMG"){
+        wujiDrag.o = e.target;
+        wujiDrag.s = null;
+    }
+};
+
+// 生成图片
+document.getElementById("create-img").onclick = function(){
+    drawImg();
+};
+
+
+// 从图片容器生成合成图片
+var canvas = document.getElementById("canvas-img");         // 画布
+function drawImg(){
+    // img-wrap的宽度和高度
+    // 即：画布的尺寸
+    var width = parseInt(imgWrap.style.width),
+        height = parseInt(imgWrap.style.height);
+    canvas.width = width;
+    canvas.height = height;
+    var ctx = canvas.getContext("2d");
+
+    // 清空画布
+    ctx.clearRect(0, 0, width, height);
+
+    // 载入图片
+    // 图片位置: 图片距离wrap容器左上角的位置: offsetTop, offsetLeft
+    // 图片的尺寸: 1、优先style.width 2、其次img.width, img.height
+    var imgs = imgWrap.querySelectorAll("img"),
+        imgLeft, imgTop, imgWidth, imgHeight;
+    for(var i = 0; i < imgs.length; i++){
+        imgLeft = imgs[i].offsetLeft;
+        imgTop = imgs[i].offsetTop;
+        imgWidth = imgs[i].style.width ? parseInt(imgs[i].style.width) : imgs[i].width;
+        imgHeight = imgs[i].style.height ? parseInt(imgs[i].style.height) : imgs[i].height;
+
+        // 标识位置
+        var cName = imgs[i].className;
+        imgList.querySelector("." + cName).parentNode.parentNode.querySelector(".filepos")
+            .innerHTML = "background-position: "+ imgLeft +"px "+ imgTop +"px;";
+        // 画图
+        ctx.drawImage(imgs[i], imgLeft, imgTop, imgWidth, imgHeight);
+    }
+
+    // 生成合成图片
+    document.images["combine-img"].src = canvas.toDataURL();
+} 
+</script>
+
+</body>
+</html>
+
