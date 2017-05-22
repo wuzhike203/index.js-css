@@ -1135,10 +1135,13 @@
 
             #提高性能的技巧
                 1、不要一条条地改变样式，
-                    而要通过改变class，或者csstext属性，
+                    而要通过改变class，或者cssText属性，
                     一次性地改变样式
-                2、尽量操作离线DOM, 克隆DOM, 隐藏DOM等，
-                    然后再用这些DOM替换原始节点 或 显示等。
+                2、尽量操作离线DOM(临时从文档中移除去),
+                3、克隆DOM,
+                4、隐藏DOM(临时display: none)，
+                
+                然后再用这些DOM替换原始节点 或 显示等。
         二、降低成本
             1、 重排和重绘的DOM元素层级越高，成本就越高。
                 table元素的重排和重绘成本，要高于div元素
@@ -1339,3 +1342,40 @@ flash           application/x-shockwave-flash	swf
     // js中的类数组对象
     1 arguments
     2 NodeList
+
+// 17-05-20 21:40:39 焦点相关
+    1 document.activeElement        // 获得焦点元素
+    2 document.hasFocus()           // 用于确定文档是否获得焦点
+
+    3 scrollIntoView()              // 让元素处于窗口中
+    4 focus()                       // 让某元素获得焦点, 并让元素处于窗口中
+
+// 17-05-20 21:45:20  元素位置和大小
+    // 位置
+    1 相对父元素
+        offsetLeft, offsetTop
+    2 相对根元素
+        offset 一层一层叠加
+
+    // 大小
+    1 offsetWidth
+    2 clinetWidth
+    3 scrollWidth
+
+    // 返回一个矩形对象, 包括top, left, right, bottom 四个属性
+    // 它们是相对于视口的位置
+    // offsetWidth = right - left
+    // left 相当于 offset 一层层叠加
+    getBoundingClientRect()
+
+// 17-05-20 22:21:06 滚动
+    1 每个元素的scrollLeft, scrollTop 既是可读，也是可写
+    2 最外层是 window.scrollTo(x, y)
+
+// 17-05-21 18:09:31 隐藏一个元素的方法
+    1 display: none
+    2 visibility: hidden;
+    3 opacity: 0;
+    4 width: 0; height: 0; overflow: hidden;
+
+    // 注，以上4中情况均可点击
