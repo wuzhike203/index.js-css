@@ -199,6 +199,8 @@ iPhone5s 504*320
     // 横屏：and (orientation:landscape)
     @media screen and (min-device-width: 1100px){
         // pc端
+        // 1000px
+        // 尺寸: 1000
         // @s: 1.8
     }
 
@@ -285,8 +287,9 @@ iPhone5s 504*320
         and (max-width: 900px)
     {
         // 661px ~ 900px
-        // 很少部分安卓手机
+        // 很少部分安卓手机: Nexus: 10(800*1280)
         // 以800px为主
+        // @s: 1.2
 
     }
 
@@ -302,3 +305,49 @@ iPhone5s 504*320
         // @s: (640/1080)*(6~7)/4 = 0.89~1.03
 
     }
+
+// 17-05-10 媒体查询 实际参数(less)
+@pc: 1.8;
+@andrw: 2.1;
+@iphone4: 1.9; 
+@iphone5: 2.0;
+@iphone6: 1.92;
+@iphone6p: 2.0;
+@s: @andrw;
+
+
+@media screen and (min-device-width: 1100px) {
+    /* 兼容常规 */
+    .less(@pc);
+}
+
+@media screen 
+and (max-device-width: 1100px)
+and (max-width: 480px){
+    /* 兼容安卓480 以下*/
+    .less(2.1);
+}
+
+@media screen 
+and (max-device-width: 1100px)
+and (max-width: 660px)
+and (min-width: 480px){
+    /* 兼容安卓480~660 */
+    .less(1.5);
+}
+
+@media (device-height:480px) and (-webkit-min-device-pixel-ratio:2){/* 兼容iphone4 */
+    .less(@iphone4);
+}
+
+@media (device-height:568px) and (-webkit-min-device-pixel-ratio:2){/* 兼容iphone5 */
+    .less(@iphone5);
+}
+
+@media (device-height:667px) and (-webkit-min-device-pixel-ratio:2){/* 兼容iphone6 */
+    .less(@iphone6);
+}
+
+@media (device-height:736px) and (-webkit-min-device-pixel-ratio:2){/* 兼容iphone6 plus */
+    .less(@iphone6p);
+}
