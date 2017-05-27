@@ -16,7 +16,8 @@ body{
     font-family: "微软雅黑";
 }
 .container{
-    width: 1000px;
+    position: relative;
+    width: 900px;
     margin: auto;
     padding-left: 15px;
     padding-right: 15px;
@@ -30,7 +31,7 @@ body{
 }
 
 /* 接受图片输入的表单 */
-form{
+.img-input-form{
     width: 500px;
     margin: 20px auto;
 }
@@ -63,6 +64,8 @@ form{
 .file-list{
     min-height: 35px;
     padding-left: 50px;
+    margin-top: 0;
+    margin-bottom: 0;
     list-style-type: none; 
     line-height: 35px;
 }
@@ -108,11 +111,17 @@ form{
     height: 10px;
     line-height: 0;
 }
+.btns-wrap-form{
+}
+.btns-wrap-form input[type="number"]{
+    width: 100px;
+    margin-right: 10px;
+}
 
 /* 图片容器 和 合成的图片 */
 .img-wrap,
 [name="combine-img"]{
-    margin: 20px 0;
+    margin: 10px 0;
     border-radius: 5px;
     border: 1px dashed #aaa;
     resize: both;
@@ -122,7 +131,10 @@ form{
 /* 图片容器中的图片 */
 .img-wrap img{
     display: inline-block;
-    margin: 5px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    margin-left: 5px;
+    margin-right: 5px;
     float: left;
 }
 
@@ -157,7 +169,7 @@ form{
 
 <!-- 接受图片的表单 -->
 <div class="container">
-    <form action="">
+    <form action="" class="img-input-form">
         <label class="select-img">
             <input type="file" multiple id="input-img">
             <span class="label-desc">选择图片</span>
@@ -181,7 +193,13 @@ form{
 
 <!-- img 容器 -->
 <div class="container">
-    <div class="img-wrap"></div>
+    <!--  改变img容器的宽, 高, 背景 -->
+    <form name="btns-wrap" class="btns-wrap-form">
+        容器宽: <input type="number" name="ctn-width" value="18" min="10">
+        容器高: <input type="number" name="ctn-height" value="18" min="10">
+        容器背景: <input type="color" name="ctn-bg">
+    </form>
+    <div class="img-wrap js-img-wrap"></div>
 </div>
 
 <!-- 生成图片按钮 -->
@@ -249,17 +267,21 @@ function readImg(files, i, pre_number){
             img.src = reader.result;
             img.className = cName;
             imgWrap.appendChild(img);
+			
+			// 当为拖动时, 图片加载是异步事件, 故需要延迟显示图片尺寸
+			setTimeout(function(e){
+				// 添加图片到文件列表
+				var html = "";
+				html += '<li class="file-li">';
+				html += '<span class="btn-close js-del">&#x2573;</span>';
+				html += '<span class="fileimg"><img src="'+ reader.result +'" class="thumbnail '+ cName +'"/></span> ';
+				html += '<span class="filename">'+ files[i].name +'</span> ';
+				html += '<span class="filesize">'+ img.width + "*"+ img.height +'</span> ';
+				html += '<span class="filepos"></span>';
+				html += '</li>';
+				imgList.innerHTML += html;
+			}, 1);
 
-            // 添加图片到文件列表
-            var html = "";
-            html += '<li class="file-li">';
-            html += '<span class="btn-close js-del">&#x2573;</span>';
-            html += '<span class="fileimg"><img src="'+ reader.result +'" class="thumbnail '+ cName +'"/></span> ';
-            html += '<span class="filename">'+ files[i].name +'</span> ';
-            html += '<span class="filesize">'+ img.width + "*"+ img.height +'</span> ';
-            html += '<span class="filepos"></span>';
-            html += '</li>';
-            imgList.innerHTML += html;
 
             // next
             readImg(files, i+1, pre_number);
@@ -362,6 +384,70 @@ function drawImg(){
     // 生成合成图片
     document.images["combine-img"].src = canvas.toDataURL();
 } 
+
+// 刷新, 离开时提现
+window.onbeforeunload = function(e){
+    return 1;
+};
+
+// 改变图片容器的宽高背景
+var btns_form = document.forms["btns-wrap"];
+var img_ctn = document.querySelector(".js-img-wrap");
+
+btns_form.onchange = function(e){
+    var name = e.target.name,
+        value = e.target.value;
+    var attr_name = "",
+        attr_value = "";
+    switch(name){
+        case "ctn-width":
+            attr_value = value + "px";
+            attr_name = "width";
+            break;
+        case "ctn-height":
+            attr_value = value + "px";
+            attr_name = "height";
+            break;
+        case "ctn-bg":
+            attr_value = value;
+            attr_name = "background";
+            break;
+    }
+
+    // 改变
+    img_ctn.style[attr_name] = attr_value;
+};
+
+// 页面加载时， 图片容器的高度和宽度与表单中的值相同
+btns_form.onchange({target: btns_form.elements["ctn-width"]});
+btns_form.onchange({target: btns_form.elements["ctn-height"]});
+
+// 当图片容器改变大小时，回填数据到表单中
+(function(){
+    // 通过拖动事件来模拟 与css resize 同时的事件
+    var if_drag = false;        // 是否正在拖动
+
+    // 按下鼠标
+    img_ctn.addEventListener("mousedown", function(e){
+        if_drag = true;    
+    }, false);
+    // 松开鼠标
+    img_ctn.addEventListener("mouseup", function(e){
+        if_drag = false;    
+    }, false);
+
+    // mousemove
+    img_ctn.addEventListener("mousemove", function(e){
+        if(if_drag){
+            var ctn_width = this.clientWidth,
+                ctn_height = this.clientHeight;
+
+            btns_form.elements["ctn-width"].value = ctn_width;
+            btns_form.elements["ctn-height"].value = ctn_height;
+        }
+    }, false);
+ })();
+
 </script>
 
 </body>
