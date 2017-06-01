@@ -12,3 +12,5 @@
 4       data-slide-to       : 0 - 
 5       data-slide          : prev
                             : next
+6       data-dismiss        : alert
+                            : modal

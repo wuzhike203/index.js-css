@@ -639,7 +639,7 @@ Array.reduceRight
 4、legend           legend居中方式
                     IE8- ： margin: auto;
                     其他：text-align: center;
-            //IE8-中，fieldset 和 legend 的位置与其他浏览器有差异
+                    //IE8-中，fieldset 和 legend 的位置与其他浏览器有差异
 ---------------------------------------------------------------
 5、paint            IE8- 不支持canvas:
                     1、IE8- 使用VML 矢量标记语言 代替canvas画图
@@ -666,4 +666,6 @@ Array.reduceRight
 10、select          IE8-的 select 有许多怪异行为：
                     1、其box-sizing: border-box; (尽管IE8-不支持box-sizing)
                     2、其padding-bottom 会影响同一行的文本的位置。
+---------------------------------------------------------------
+11、伪类            IE8- 不支持大部分伪类
 ---------------------------------------------------------------
