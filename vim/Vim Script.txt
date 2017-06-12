@@ -1,0 +1,411 @@
+// https://www.ibm.com/developerworks/library/l-vim-script-1/index.html
+// IBM  -- Vim Script
+
+=======================================================================
+CONTENTS                                            *emmet-contents*
+
+Key -- En
+Get Help Message 
+Running Vim Scripts
+A syntactic example
+Comments
+Values and variables
+Expressions
+Logical caveats
+Comparator caveats
+Another toggling example
+Scripting in Insert mode
+A more complex Insert-mode script
+Learning Vim's built-in functions
+Looking ahead
+
+
+=======================================================================
+Key -- En
+    :       colon   
+    ;       semicolon
+    &       amget
+    \       backslash
+    |       vertical bar
+    ""      double-quotes
+
+=======================================================================
+Get Help Message 
+    :help vim-script-intro
+
+
+=======================================================================
+Running Vim Scripts
+    1   Put them in a file(.vim) and the execute the file by 
+        :source file.vim
+    Example:
+        :source /full/path/to/the/scriptfile.vim
+
+    2   Type scripting commands on the Vim command line, after the ":"
+    Example:
+        :call MyBackupFunc(expand('%'), {"all": 1, "save": "recent"})
+
+    // But the most common way to invoke Vim scripts is by creating 
+    // keyboard mapping.
+    Example:
+        :nmap ;s :source /full/path/to/the/scriptfile.vim<cr>
+        :nmap \b :call MyBackupFunc(expand('%'), {"all": 1})<cr>
+
+    3   Run scripts as colon(:) commands from Vim's command line
+    4   Use editor events to trigger scripts automatically
+
+=======================================================================
+A syntactic example
+    Listing 1. Toggling syntax highlighting
+    function! ToggleSyntax()
+        if exits("g:syntax_on")
+            syntax off
+        else
+            syntax enable
+        endif
+    endfunction
+
+    nmap <silent> ;s :call ToggleSyntax()<cr>
+
+    // 1 函数声明
+        function! funName(arguments)
+            { statement }
+        endfunction
+
+    // if
+        if expresion
+            { statement }
+        else
+            { statement }
+        endif
+
+    // 3 exists(built-in function)
+        determines whether a variable has been defined.
+    
+    // 4 <silent>
+        cause the mapping not to echo any command it's executing,
+        ensureing the new ;s command will do its work unobrusively
+
+    // Which is how you call a function in Vimscript
+    #When you intend to ignore the return value
+
+    // 6 keycodes List
+        <CR>
+        <Space> 
+        <PageDown>
+        :help keycodes
+
+    To make it easier to create centered titles for documents written in Vim    , you could create a function that capitalizes each word on the current
+    word on the current line, centers the entire line, and the jumps to the 
+    next line, like so:
+
+    Listing 2. Creating centered titles            
+    function! CapitalizeCenterAndMoveDown()
+        s/\<./\u&/g     "Built-in substitution capitalize each word">     
+        center          "Built-in center command centers entire line"
+        +1              "Built-in relative motion (+1 line down)"
+    endfunction
+
+    nmap <silent> \C :call CapitalizeCenterAndMoveDown()<CR>
+
+    Listing 3. Continuing lines using backslash
+    call SetName(
+    \       first_name,
+    \       middle_inital,
+    \       family_name
+    \   )
+
+    You can also put two or more statments on a single line by separating
+    them with a vertical bar:
+    echo "Starting..." | call Phase(1) | call Phase(2) | echo "Done"
+
+=======================================================================
+Comments
+    
+    #Vimscript strings can also start with a double-quote and take pre-
+    cedence over comments.
+        This means you can't put a comment anywhere that a string might
+    be expected, because it will always be interpreted as a string:
+
+    echo "> " "Print generic prompt                             
+
+    The echo command expects one or more strings.
+
+    // So, Comments can, however, always appear at the start of a statment,
+    // so you can fix the above problem by using a vertical bar to explic-
+    // itly a new statement before starting the comment, like so:
+
+    echo "> " | "Print generic prompt
+
+
+=======================================================================
+Values and variables
+    Listing 5. Using the let keyword
+    let name    = "Damian"
+    let height  = 165
+    let interests = ['Cinema', 'Literature', 'World Domination', 101]
+    let phone   = {'cell': 5555, 'home': 8888, 'work': '?'}
+
+    #Note:
+        strings can be specified with either double-quotes or single-quotes
+        Double-quoted strings honor special "escape sequences" such as "\n"
+        , "\t", "\u263A", "\<ESC>"
+
+    #list
+        ['Cinema', 'Literature', 'World Domination', 101]
+    #dictionary
+        {'cell': 5555, 'home': 8888, 'work': '?'}
+    #Type don't be changed again
+        Variable types, once assigned, are permanent and strictly enforced
+        at runtime:
+
+        let interests = 'unknown'   "Error: variable type mismatch
+
+    #Variable Scope
+        By default, a variable is scoped to the function in which it is fi-
+    rst assigned to, or is global if its first assignment occurs outside a-
+    ny function.
+        However, variable may also be explicitly declared as belonging to -
+    other scopes. Using a variety of prefixes:
+
+    Prefix          Meaning
+    ----------------------------------------------------
+    g:varname       The variable is global
+    s:varname       The variable is local to the current script file
+    w:varname       The variable is local to the current editor window
+    t:varname       The variable is local to the current editor tab
+    b:varname       The variable is local to the current editor buffer
+    l:varname       The variable is local to the current function
+    a:varname       The variable is a parameter of the current function
+    v:varname       The variable is one that Vim predefines
+
+    #pesudovariables
+        There are also pseudovariables that scripts can use to access the
+    other types of value containers that Vim provides. These are summarized
+    in Table 2.
+    &varname	A Vim option (local option if defined, otherwise global)
+    &l:varname	A local Vim option
+    &g:varname	A global Vim option
+    @varname	A Vim register
+    $varname	An environment variable
+
+=======================================================================
+Expressions
+
+    Table 3. Vimscript operator precedence table
+    Operation	Operator syntax
+    ------------------------------------------------------
+    Assignment                      let var=expr
+    Numeric-add-and-assign          let var+=expr
+    Numeric-subtract-and-assign     let var-=expr
+    String-concatenate-and-assign	let var.=expr
+
+    Ternary operator	            bool?expr-if-true:expr-if-false
+
+    Logical OR	                    bool||bool
+    Logical AND	                    bool&&bool
+
+    Numeric or string equality      expr==expr
+    Numeric or string inequality    expr!=expr
+    Numeric or string greater-then  expr>expr
+    Numeric or string greater-or-equal expr>=expr
+    Numeric or string less than     expr<expr                       >
+    Numeric or string less-or-equal	expr<=expr                      >
+
+    Numeric addition                num+num
+    Numeric subtraction             num-num
+    String concatenation	        str.str
+    Numeric multiplication          num*num
+    Numeric division                num/num
+    Numeric modulus	                num%num
+
+    Convert to number               +num
+    Numeric negation                -num
+    Logical NOT	                    !bool
+
+    Parenthetical precedence	    (expr)
+
+=======================================================================
+Logical caveats
+    #In Vimscript, as in C, only numeric value zero is false in a boolean
+context.
+    #All the logical and comparison operators consistenly return the value
+1 for true.
+
+    #When a string is used as a boolean. it is first converted to an inte-
+ger, and the evaluated for truth(non-zero) or false(zero).
+    
+    Listing 6. Flawed test for empty string
+    if !"aabb"
+        echo "No result"
+    endif
+
+    // echo alwarys
+
+    Listing 7. Correct test for empty string
+    if empty(result_string)
+        echo "NO result"
+    endif
+
+=======================================================================
+Comparator caveats
+    In Vimscript, comparators always perform numeric comparison, unless both operands are strings. 
+    String comparisons normally honor the local setting of Vim's ignorecase option, 
+    but any string comparator can also be explicitly marked as case-sensitive (by appending a #) 
+    or case-insensitive (by appending a ?):
+
+    if name ==? 'Batman'
+        echo "I'm Batman"
+    elseif name <# 'ee cummings'                        >
+        echo "the sky was can dy lu minous"
+    endif
+
+
+=======================================================================
+Another toggling example
+    Listing 10. Highlighting frequently misused words
+    "Create a text highlighting style that always stands out..."
+    heighlight STANDOUT term=bold cterm=bold gui=bold
+
+    "List of troublesome words..."
+    let s:words = [
+    \   "it's", "its",
+    \   "your", "your're"   
+    \   "were", "we're", "where",   
+    \   "their", "they're", "there",  
+    \   "to", "too", "two"   
+    \]
+
+    "Build a Vim command to match troublesome words..."
+    let s:words_matcher
+    \ = 'match STANDOUT /\c\<\(' . join(s:words, '\|') . '\)\>/'
+
+    "Toggle word checking on or off...
+    function! WordCheck()
+        "Toggle the flag(or set it if it doesn't yet exist)"
+        let w:check_words = exists('w:check_words') ? !w:check_words : 1
+
+        "Turn match mechanism on/off, according to new state of flag"
+        if w:check_words
+            exec s:words_matcher
+        else
+            match none
+        endif
+    endfunction
+
+    "Use ;p to toggle checking..."
+    nmap <silent> ;p :call WordCheck()<cr>
+
+    #highlight STANDOUT term=bold cterm=bold gui=bold
+        highlight + text-highlighting specification + style
+
+    #match
+        match + text-highlighting specification + regular expressio
+
+    #"/\c<(...)>/"
+        ensure that only entire words are matched, regardless of capitalization.
+
+
+
+=======================================================================
+Scripting in Insert mode
+    :imap  :iabbrev 
+    // Insert mode
+    imap <silent> <C-D><C-D> <C-R>=strftime("%Y %m %d")<CR>
+    #imap
+        inert mode key-mapping
+    #<C-R>
+        which tells Vim to insert the result of evaluating what follows
+    #strftime
+
+    // You can use the same general pattern to cause an insertion map 
+    // or an abbreviation to perform any scriptable action.
+
+    iabbrev <silent> CWD <C-R>=getcwd()<CR>
+    #iabbrev
+    #getcwd()
+        get current working directory
+
+    imap <silent> <C-C> <C-R>=string(eval(input("Calculate: ")))<CR>
+    #input()
+        request the user to type in their calculation, which input() 
+        then returns as a string.
+    #eval()
+        evaluates it as a Vimscript expression and returns the result.
+    #string()
+        converts the numeric result back to a string, 
+
+
+=======================================================================
+A more complex Insert-mode script
+    // Normally a CTRL-Y in Insert mode does a "vertical copy."
+    Glib jocks quiz nymph to vex dwarf
+    Glib jocks quiz ny_
+
+    // However,
+        You might prefer your vertical copies to ignore any intervening 
+    empty lines and instead copy the character from the same column of
+    the first non-blank line anywhere above the insertion point.
+
+    Listing 11. Improving vertical copies to ignore blank lines
+    "Locate and return character "above" current cursor position...
+    function! LookUpwards()
+        "Local current column and preceding line from which to copy...
+        let column_num      = virtcol('.')
+        let target_pattern  = '\%' . column_num . 'v.'
+        let target_line_num = search(target_pattern . '*\S', 'bnW')
+
+        "If target line found, return vertically copied character..."
+        if !target_line_num
+            return ""
+        else
+            return matchstr(getline(target_line_num), target_pattern)
+        endif
+    endfunction
+
+    "Reimplement <C-Y> within insert mode..."
+    imap <silent> <C-Y> <C-R><C-R>=LookUpwards()<CR>
+
+    #virtcol()
+        "." argument specifies that you want the column number of the
+    current position.
+    #search(arg1,arg2)
+        look backwards through the file from the cursor position:
+        "bnW": which tells the function to search backwards but not to move the cursor nor to wrap the search
+    #\%column_numv.*\S
+        \S: has a non-whitespace character 
+        \%column_numv: after (.*) the cursor column
+    // search is successful, search() returns the line number of the appropriate preceding line;
+    // if the search fails, it returns zero.
+    #matchstr(getline(target_line_num), target_pattern)
+    #getline(target_line_num)
+        gets a copy of that preceding line from the current editor buffer
+    #matchstr(str, reg)
+        reg match
+    #<C-R><C-R>
+        single-CTRL-R form: inserts the result of the subsequent expression
+    as if it had been directly typed, which means that any special 
+    characters within the result retain their special meanings and behavior.
+        double-CTRL-R form: inserts the result as verbatim text without 
+    any further processing.
+
+
+
+=======================================================================
+Learning Vim's built-in functions
+    :help functions
+    :help function-list
+
+    // For many people, the easiest way to learn any new language is 
+    // by example. 
+
+
+=======================================================================
+Looking ahead
+    we'll look at more advanced Vimscript tools and techniques: 
+    - data structures,
+    - flow control,
+    - user-defined commands,
+    - event-driven scripting, 
+    - building Vim modules, 
+    - extending Vim using other scripting languages
