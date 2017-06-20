@@ -1,0 +1,50 @@
+// 本页面统计页面公共的事件
+序号    事件名称    容器            触发按钮    相关对象
+=======================================================
+1       关闭        js-close-ctn    js-close
+2       删除        js-del-ctn      js-del      
+3       hover                       js-hover    js-hover-con
+4       tab         js-tab-ctn      js-tab      js-tab-con       
+5       slide       js-slide-ctn    js-slide    js-slide-con
+
+
+// 1. close
+$(document.body).on("click", ".js-close-ctn", function(e){
+	if($(e.target).hasClass("js-close")){
+		$(this).hide();
+	}
+});
+
+// 2. del
+$(document.body).on("click", ".js-del-ctn", function(e){
+	if($(e.target).hasClass("js-del")){
+		$(this).hide();
+	}
+});
+
+// 3. hover
+$(document.body).on("mouseover", ".js-hover", function(e){
+	$(this).find(".js-hover-con").show();
+});
+$(document.body).on("mouseout", ".js-hover", function(e){
+	$(this).find(".js-hover-con").hide();
+});
+
+// 4. tab
+$(document.body).on("click", ".js-tab", function(e){
+	var _eTar = $(e.currentTarget);
+	var _ctn = _eTar.parents(".js-tab-ctn");
+	
+	if(_ctn.length > 0){
+		var _next = _ctn.find(".js-tab-con").eq(_ctn.find(".js-tab").index(_eTar));
+		
+		if(_next.length > 0){
+			_ctn.find(".js-tab-con").hide();
+			_next.show();
+			
+			// class 切换
+			_ctn.find(".js-tab.active").removeClass("active");
+			_eTar.addClass("active");
+		}
+	}
+});
