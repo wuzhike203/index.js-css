@@ -4,24 +4,24 @@
 =======================================================================
 CONTENTS                                            *emmet-contents*
 
-Key -- En
-Get Help Message 
-Running Vim Scripts
-A syntactic example
-Comments
-Values and variables
-Expressions
-Logical caveats
-Comparator caveats
-Another toggling example
-Scripting in Insert mode
-A more complex Insert-mode script
-Learning Vim's built-in functions
-Looking ahead
+1.  Key -- En
+2.  Get Help Message 
+3.  Running Vim Scripts
+4.  A syntactic example
+5.  Comments
+6.  Values and variables
+7.  Expressions
+8.  Logical caveats
+9.  Comparator caveats
+10. Another toggling example
+11. Scripting in Insert mode
+12. A more complex Insert-mode script
+13. Learning Vim's built-in functions
+14. Looking ahead
 
 
 =======================================================================
-Key -- En
+1. Key -- En
     :       colon   
     ;       semicolon
     &       amget
@@ -30,12 +30,12 @@ Key -- En
     ""      double-quotes
 
 =======================================================================
-Get Help Message 
+2. Get Help Message 
     :help vim-script-intro
 
 
 =======================================================================
-Running Vim Scripts
+3. Running Vim Scripts
     1   Put them in a file(.vim) and the execute the file by 
         :source file.vim
     Example:
@@ -55,7 +55,7 @@ Running Vim Scripts
     4   Use editor events to trigger scripts automatically
 
 =======================================================================
-A syntactic example
+4. A syntactic example
     Listing 1. Toggling syntax highlighting
     function! ToggleSyntax()
         if exits("g:syntax_on")
@@ -95,8 +95,9 @@ A syntactic example
         <PageDown>
         :help keycodes
 
-    To make it easier to create centered titles for documents written in Vim    , you could create a function that capitalizes each word on the current
-    word on the current line, centers the entire line, and the jumps to the 
+    To make it easier to create centered titles for documents written in Vim, 
+    you could create a function that capitalizes each word on the current
+    Word On The Current Line, Centers The Entire Line, And The Jumps To The 
     next line, like so:
 
     Listing 2. Creating centered titles            
@@ -120,7 +121,7 @@ A syntactic example
     echo "Starting..." | call Phase(1) | call Phase(2) | echo "Done"
 
 =======================================================================
-Comments
+5.  Comments
     
     #Vimscript strings can also start with a double-quote and take pre-
     cedence over comments.
@@ -139,7 +140,7 @@ Comments
 
 
 =======================================================================
-Values and variables
+6.  Values and variables
     Listing 5. Using the let keyword
     let name    = "Damian"
     let height  = 165
@@ -190,7 +191,7 @@ Values and variables
     $varname	An environment variable
 
 =======================================================================
-Expressions
+7.  Expressions
 
     Table 3. Vimscript operator precedence table
     Operation	Operator syntax
@@ -204,6 +205,7 @@ Expressions
 
     Logical OR	                    bool||bool
     Logical AND	                    bool&&bool
+    Logical NOT	                    !bool
 
     Numeric or string equality      expr==expr
     Numeric or string inequality    expr!=expr
@@ -221,12 +223,11 @@ Expressions
 
     Convert to number               +num
     Numeric negation                -num
-    Logical NOT	                    !bool
 
     Parenthetical precedence	    (expr)
 
 =======================================================================
-Logical caveats
+8.  Logical caveats
     #In Vimscript, as in C, only numeric value zero is false in a boolean
 context.
     #All the logical and comparison operators consistenly return the value
@@ -248,7 +249,7 @@ ger, and the evaluated for truth(non-zero) or false(zero).
     endif
 
 =======================================================================
-Comparator caveats
+9.  Comparator caveats
     In Vimscript, comparators always perform numeric comparison, unless both operands are strings. 
     String comparisons normally honor the local setting of Vim's ignorecase option, 
     but any string comparator can also be explicitly marked as case-sensitive (by appending a #) 
@@ -262,7 +263,7 @@ Comparator caveats
 
 
 =======================================================================
-Another toggling example
+10. Another toggling example
     Listing 10. Highlighting frequently misused words
     "Create a text highlighting style that always stands out..."
     heighlight STANDOUT term=bold cterm=bold gui=bold
@@ -308,7 +309,7 @@ Another toggling example
 
 
 =======================================================================
-Scripting in Insert mode
+11. Scripting in Insert mode
     :imap  :iabbrev 
     // Insert mode
     imap <silent> <C-D><C-D> <C-R>=strftime("%Y %m %d")<CR>
@@ -337,7 +338,7 @@ Scripting in Insert mode
 
 
 =======================================================================
-A more complex Insert-mode script
+12. A more complex Insert-mode script
     // Normally a CTRL-Y in Insert mode does a "vertical copy."
     Glib jocks quiz nymph to vex dwarf
     Glib jocks quiz ny_
@@ -392,7 +393,7 @@ A more complex Insert-mode script
 
 
 =======================================================================
-Learning Vim's built-in functions
+13. Learning Vim's built-in functions
     :help functions
     :help function-list
 
@@ -401,7 +402,7 @@ Learning Vim's built-in functions
 
 
 =======================================================================
-Looking ahead
+14. Looking ahead
     we'll look at more advanced Vimscript tools and techniques: 
     - data structures,
     - flow control,
