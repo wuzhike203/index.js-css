@@ -22,12 +22,16 @@ CONTENTS                                            *emmet-contents*
 
 =======================================================================
 1. Key -- En
+    .       dot
+    ,       comma
     :       colon   
     ;       semicolon
     &       amget
+    /       slash
     \       backslash
     |       vertical bar
     ""      double-quotes
+    ()      brace
 
 =======================================================================
 2. Get Help Message 
