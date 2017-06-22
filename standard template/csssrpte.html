@@ -139,18 +139,10 @@ body{
 }
 
 /* 图片容器中的图片 */
-.img-wrap .img-outer{
-    float: left;
-    border-right: 1px solid #ccc;
-    border-bottom: 1px solid #ccc;
-    height: 27px;
-    width: 34px;
-    line-height: 27px;
-    padding: 5px;
-    text-align: center;
-}
 .img-wrap img{
-    vertical-align: middle;
+    float: left;
+    margin-right: 10px;
+    margin-bottom: 10px;
 }
 
 /* 生成合成图片按钮 */
@@ -216,8 +208,6 @@ body{
         容器宽: <input type="number" name="ctn-width" value="18" min="10">
         容器高: <input type="number" name="ctn-height" value="18" min="10">
         容器背景: <input type="color" name="ctn-bg">
-        图片宽: <input type="number" value="20" name="img-width" min="20" max="200">
-        图片高/行高: <input type="number" value="20" name="img-height" min="20" max="200">
     </form>
     <div class="img-wrap js-img-wrap"></div>
 </div>
@@ -294,12 +284,7 @@ function readImg(files, i, pre_number){
             var img = new Image();
             img.src = reader.result;
             img.className = cName;
-            // 图片加个外层
-            var span = document.createElement("span");
-            span.className = "img-outer";
-            span.appendChild(img);
-            // 加入到图片容器
-            imgWrap.appendChild(span);
+            imgWrap.appendChild(img);
 			
 			// 当为拖动时, 图片加载是异步事件, 故需要延迟显示图片尺寸
 			setTimeout(function(e){
@@ -313,9 +298,6 @@ function readImg(files, i, pre_number){
 				html += '<span class="filepos"></span>';
 				html += '</li>';
 				imgList.innerHTML += html;
-
-                // 改变最大的图片尺寸
-                changeImgSize(img.width, img.height);
 			}, 1);
 
             // next
@@ -334,13 +316,10 @@ document.body.querySelector(".js-file-list").onclick = function(e){
         // 从图片容器中删除图片: 图片的className = 图片的名称
         var cName = li.querySelector("img").className.split(" ")[1],
             img = imgWrap.querySelector("." + cName);
-        imgWrap.removeChild(img.parentNode);
+        imgWrap.removeChild(img);
 
         // 从图片列表中删除图片
         li.parentNode.removeChild(li);
-
-        // 改变图片大小
-        changeImgSize(img.width, img.height, true);
     }
 };
 
@@ -487,44 +466,6 @@ btns_form.onchange = function(e){
 btns_form.onchange({target: btns_form.elements["ctn-width"]});
 btns_form.onchange({target: btns_form.elements["ctn-height"]});
 
-// 当加载图片时，找到最大的图片的尺寸, 自动改变图片的宽和高,
-// 使图片呈现一致性效果
-function changeImgSize(imgWidth, imgHeight, flag){
-    // flag: false: 添加,  true : 移除
-    if(!arguments.callee.widths){
-        arguments.callee.widths = [];
-        arguments.callee.heights = [];
-    }
-
-    // check
-    if(typeof imgWidth != "number"){
-        imgWidth = parseInt(imgWidth);
-        imgHeight = parseInt(imgHeight);
-    }
-
-    // 改变widths, heights
-    if(flag){
-        arguments.callee.widths.splice(arguments.callee.widths.indexOf(imgWidth), 1);
-        arguments.callee.heights.splice(arguments.callee.heights.indexOf(imgHeight), 1);
-    }else{
-        arguments.callee.widths.push(imgWidth);
-        arguments.callee.heights.push(imgHeight);
-    }
-
-    // 取得最大值
-    var maxWidth = Math.max.apply(Math, arguments.callee.widths);
-    var maxHeight = Math.max.apply(Math, arguments.callee.heights);
-
-    // 改变 表单的值
-    var input_width = btns_form.elements["img-width"],
-        input_height = btns_form.elements["img-height"];
-    input_width.value = maxWidth;
-    input_height.value = maxHeight;
-
-    // 触发change事件
-    btns_form.onchange({target: input_width});
-    btns_form.onchange({target: input_height});
-}
 
 // 当图片容器改变大小时，回填数据到表单中
 (function(){
@@ -551,7 +492,6 @@ function changeImgSize(imgWidth, imgHeight, flag){
         }
     }, false);
  })();
-
 </script>
 
 </body>
