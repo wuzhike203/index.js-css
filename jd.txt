@@ -1,0 +1,52 @@
+// 本地userId 
+localStorage.rcToken
+localStorage.userId
+
+
+序号    页面                                    描述
+========================================================================
+0       mine                                    msg 数量；未认证的ui
+1       mine/personmsg                          // ok
+2       mine/personmsg_petname                  // ok
+3       mine/personmsg_phone                    // 被废弃，用修改手机页面代替
+4       mine/personmsg_phone_modify             // ok
+5       mine/
+6       mine/
+7       mine/
+8       mine/
+9       mine/
+
+10       mine/
+11       mine/personmsg      // ok
+12       mine/
+13       mine/
+14       mine/
+15       mine/
+16       mine/
+17       mine/
+18       mine/
+19       mine/
+
+20      mine/
+21       mine/personmsg      // ok
+22       mine/
+23       mine/
+24       mine/
+25       mine/
+26       mine/
+27       mine/
+28       mine/
+29       mine/
+
+30       mine/
+31       mine/personmsg      // ok
+32       mine/
+33       mine/
+34       mine/
+35       mine/
+36       mine/
+37       mine/
+38       mine/
+39       mine/
+
+

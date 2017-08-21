@@ -1379,3 +1379,11 @@ flash           application/x-shockwave-flash	swf
     4 width: 0; height: 0; overflow: hidden;
 
     // 注，以上4中情况均可点击
+
+
+// 17-08-20 12:12:09  CSS3 新特性
+    1   mask    遮罩
+    2   下拉框去掉右侧标
+    appearance:none;  /*下拉框去掉右侧图标*/  
+    -moz-appearance:none;  
+    -webkit-appearance:none; 
