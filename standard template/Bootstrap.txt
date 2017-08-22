@@ -1,0 +1,16 @@
+// Bootstrap
+
+序号    命令                说明
+=======================================================================
+1       data-target         作用的目标
+
+
+2       data-toggle         : dropdown      
+                            : collapse
+
+3       data-ride           : carousel
+4       data-slide-to       : 0 - 
+5       data-slide          : prev
+                            : next
+6       data-dismiss        : alert
+                            : modal
