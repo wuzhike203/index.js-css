@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+    <title>SVG DEMO</title>
+    <link rel="stylesheet" href="css/demo.css">
+</head>
+<body>
+    <div class="container">
+        <div class="carousel-wrap js-carousel">
+            <ul class="carousel-ul js-ul">
+                <li>aa</li>
+                <li class="cur">bb</li>
+                <li>cc</li>
+            </ul>
+            <a href="###" class="prev-arrow js-prev">&#x8b;</a>
+            <a href="###" class="next-arrow js-next">&#x9b;</a>
+        </div>
+    </div>
+
+    <script src="js/demo.js"></script>
+    <script>
+        function carousel(cur, next, direction) {
+            var nextClass = direction > 0 ? "left" : "right";
+            var newClass = direction > 0 ? "next" : "prev";
+
+            // Next
+            next.classList.add(nextClass);
+            next.classList.add(newClass);
+
+            // Cur
+            cur.classList.remove("cur");
+            cur.classList.add(newClass);
+
+            setTimeout(function(){
+                next.classList.remove(nextClass);
+                next.classList.remove(newClass);
+                next.classList.add("cur");
+
+                cur.classList.remove(newClass);
+            }, 1000);
+        }
+
+        var carou = document.getElementsByClassName("js-carousel")[0],
+            carlis = carou.querySelectorAll("li"),
+            next  = carou.querySelector("js-next"),
+            prev  = carou.querySelector("js-prev");
+
+        carou.addEventListener("click", function(e){
+            var eTar = e.target,
+                that = this;
+
+            var curLi = carou.querySelector("li.cur");
+            if(!curLi) {
+                curLi = carou.querySelector("li");
+            }
+            var direction = 1;
+            var prevLi;
+
+            if(eTar.classList.contains("js-next")){
+                prevLi = curLi.previousElementSibling;
+                console.log(prevLi.innerHTML);
+                if(!prevLi) {
+                    prevLi = carlis[carlis.length - 1];
+                }
+
+                carousel(curLi, prevLi, direction);
+            }
+
+        });
+
+    </script>
+    
+</body>
+</html>

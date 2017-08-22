@@ -921,11 +921,12 @@
 // 16-10-24 13:37:38 
     IE css hack:
 
-    color:white;        /* 所有的 */
-    color: green\9\0;   /* IE9+ */
-    +color: red;        /* IE7- */
+    color: white;        /* 所有的 */
+    color: blue\9;       /* 所有的IE */
+    color: green\9\0;    /* IE9+ */
+    +color: red;         /* IE7- */
     #1、\9\0的顺序：不可更换
-    #2、*color:red; 必须放在最后，否则IE7无法识别。
+    #2、+color:red; 必须放在最后，否则IE7无法识别。
 
 //16-10-24 14:58:22 
     360 极速模式 不支持 writing-mode: tb-lr 和 tb-rl :
@@ -1349,6 +1350,10 @@ flash           application/x-shockwave-flash	swf
 
     3 scrollIntoView()              // 让元素处于窗口中
     4 focus()                       // 让某元素获得焦点, 并让元素处于窗口中
+    // 目前 focus 仅适用于可见的表单元素,
+    // 对于其他元素, 可设置一个 width: 0; height: 0; border: 0; overflow的表单元素跟随
+
+    5 使用瞄点 #a
 
 // 17-05-20 21:45:20  元素位置和大小
     // 位置
@@ -1381,9 +1386,90 @@ flash           application/x-shockwave-flash	swf
     // 注，以上4中情况均可点击
 
 
+<<<<<<< HEAD
 // 17-08-20 12:12:09  CSS3 新特性
     1   mask    遮罩
     2   下拉框去掉右侧标
     appearance:none;  /*下拉框去掉右侧图标*/  
     -moz-appearance:none;  
     -webkit-appearance:none; 
+=======
+// 17-07-10 web前端浏览器常见兼容性问题
+    序号    说明
+    =================================================================================
+    1   浏览器默认的margin和padding不同，解决方案是加一个全局的*{margin:0;padding:0;}来统一。
+    2   上下margin重合问题，ie和ff都存在:
+        相邻的两个div的margin-left和margin-right不会重合，
+        但是margin-top和margin-bottom却会发生重合。
+        解决方法，养成良好的代码编写习惯，
+        同时采用margin-top或者同时采用margin-bottom。
+    3   Chrome 中文界面下默认会将小于 12px 的文本强制按照 12px 显示,
+        可通过加入 CSS 属性 -webkit-text-size-adjust: none; 解决。
+
+    4   超链接访问过后hover样式就不出现了 
+        被点击访问过的超链接样式不在具有hover和active了
+        解决方法是改变CSS属性的排列顺序:
+        L-V-H-A : a:link {} a:visited {} a:hover {} a:active {}
+    5   li与li之间有看不见的空白间隔是什么原因引起的？有什么解决办法？
+        行框的排列会受到中间空白（回车\空格）等的影响，
+        因为空格也属于字符,这些空白也会被应用样式，占据空间，所以会有间隔，
+        把字符大小设为0，就没有空格了。
+
+    // IE
+    1   png24位的图片在iE6浏览器上出现背景，解决方案是做成PNG8.也可以引用一段脚本处理.
+    2   浮动ie产生的双倍距离
+            （IE6双边距问题：在IE6下，如果对元素设置了浮动，
+        同时又设置了margin-left或margin-right，margin值会加倍。）
+        #box{ float:left; width:10px; margin:0 0 0 10px;}
+
+        这种情况之下IE会产生20px的距离，解决方案是
+        在float的标签样式控制中加入_display:inline;将其转化为行内属性。
+        (_这个符号只有ie6会识别)
+    3   渐进识别的方式，从总体中逐渐排除局部。
+        首先，巧妙的使用“\9”这一标记，将IE游览器从所有情况中分离出来。 
+        接着，再次使用“+”将IE8和IE7、IE6分离开来，这样IE8已经独立识别。 
+        css .bb{ 
+            background-color:#f1ee18;/*所有识别*/ 
+            background-color:#00deff\9; /*IE6、7、8识别*/ 
+            +background-color:#a200ff;/*IE6、7识别*/ 
+            _background-color:#1e0bd1;/*IE6识别*/ }
+    4   Ie z-index问题， 给父级添加position:relative
+    5   Min-height 最小高度！Important 解决’
+    6   select 在ie6下遮盖 使用iframe嵌套
+    7   为什么没有办法定义1px左右的宽度容器（IE6默认的行高造成的，使用over:hidden,zoom:0.08 line-height:1px）
+    8   IE下,可以使用获取常规属性的方法来获取自定义属性,
+        也可以使用getAttribute()获取自定义属性;
+        Firefox下,只能使用getAttribute()获取自定义属性。
+        解决方法:统一通过getAttribute()获取自定义属性。
+    9   IE下,even对象有x,y属性,但是没有pageX,pageY属性;
+        Firefox下,event对象有pageX,pageY属性,但是没有x,y属性。
+        * 解决方法：（条件注释）缺点是在IE浏览器下可能会增加额外的HTTP请求数。
+
+
+// 17-08-07 13:39:41 
+    // 网页中一些特殊的对象
+    // http://www.zhangxinxu.com/wordpress/2013/06/%E4%BC%AA%E5%85%83%E7%B4%A0-%E8%A1%A8%E5%8D%95%E6%A0%B7%E5%BC%8F-pseudo-elements-style-form-controls/
+    1   placehodler
+        input::          -moz-placehodler { }
+        input::     -ms-input-placehodler { }
+        input:: -webkit-input-placehodler { }
+
+    2   scrollbar
+        // 滚动条
+
+    3   -ms-expand
+        // select 标签 箭头
+
+    4   -webkit-appearance
+        // appearance 属性允许您使元素看上去像标准的用户界面元素
+
+
+// 图形技术
+    序号    名称    类型    浏览器支持情况
+    1       vml     矢量    ie6/7/8/9
+    2       svg     矢量    ie9+
+
+    3       canvas  位图    ie9+
+            webGL 是嵌入到canvas中工作的
+
+>>>>>>> eaa72b31f0c98ac8b00b0f5b629f3c808ee2353d
