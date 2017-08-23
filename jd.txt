@@ -63,3 +63,18 @@ localStorage.userId
 39       mine/
 
 
+
+// Vue 创建组件的方式
+// ========================================================
+1 Vue.extend()
+
+2 <script type="text/x-template"></script>
+
+3   Vue.component({
+        template: ""
+    })
+
+4 局部组件
+    components: {
+        my-component: { template: ""}
+    }
