@@ -1386,14 +1386,6 @@ flash           application/x-shockwave-flash	swf
     // 注，以上4中情况均可点击
 
 
-<<<<<<< HEAD
-// 17-08-20 12:12:09  CSS3 新特性
-    1   mask    遮罩
-    2   下拉框去掉右侧标
-    appearance:none;  /*下拉框去掉右侧图标*/  
-    -moz-appearance:none;  
-    -webkit-appearance:none; 
-=======
 // 17-07-10 web前端浏览器常见兼容性问题
     序号    说明
     =================================================================================
@@ -1472,4 +1464,10 @@ flash           application/x-shockwave-flash	swf
     3       canvas  位图    ie9+
             webGL 是嵌入到canvas中工作的
 
->>>>>>> eaa72b31f0c98ac8b00b0f5b629f3c808ee2353d
+// 17-08-20 12:12:09  CSS3 新特性
+    1   mask    遮罩
+    2   下拉框去掉右侧标
+    appearance:none;  /*下拉框去掉右侧图标*/  
+    -moz-appearance:none;  
+    -webkit-appearance:none; 
+
