@@ -1377,6 +1377,9 @@ flash           application/x-shockwave-flash	swf
     1 每个元素的scrollLeft, scrollTop 既是可读，也是可写
     2 最外层是 window.scrollTo(x, y)
 
+    3 最外层的scroll事件是在window上触发的, 但通过document.body.scrollTop
+        来获取值(而不是通过事件对象e)
+
 // 17-05-21 18:09:31 隐藏一个元素的方法
     1 display: none
     2 visibility: hidden;
@@ -1386,14 +1389,6 @@ flash           application/x-shockwave-flash	swf
     // 注，以上4中情况均可点击
 
 
-<<<<<<< HEAD
-// 17-08-20 12:12:09  CSS3 新特性
-    1   mask    遮罩
-    2   下拉框去掉右侧标
-    appearance:none;  /*下拉框去掉右侧图标*/  
-    -moz-appearance:none;  
-    -webkit-appearance:none; 
-=======
 // 17-07-10 web前端浏览器常见兼容性问题
     序号    说明
     =================================================================================
@@ -1472,4 +1467,13 @@ flash           application/x-shockwave-flash	swf
     3       canvas  位图    ie9+
             webGL 是嵌入到canvas中工作的
 
->>>>>>> eaa72b31f0c98ac8b00b0f5b629f3c808ee2353d
+// 17-08-20 12:12:09  CSS3 新特性
+    1   mask    遮罩
+    2   下拉框去掉右侧标
+                appearance:none;  /*下拉框去掉右侧图标*/  
+           -moz-appearance:none;  
+        -webkit-appearance:none; 
+
+    3   column-width;column-gap;column-fill: 
+        // 设置列的宽度
+
