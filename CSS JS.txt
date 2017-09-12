@@ -949,33 +949,6 @@
     只有普通文档流中垂直相邻的块元素才会发生marign垂直方向的合并。
     #inline-block, float, absolute均会失效。
 
-// 16-10-28 16:17:20 
-    //chrome滚动条样式：
-    // chrome滚动条是以伪对象的方式使用
-    .test::-webkit-scrollbar{
-        // 基础
-        background-color: transparent;
-        width: 5px;
-    }
-    .test::-webkit-scrollbar-track{
-        // 轨道
-        background-color:#eee;
-        border-radius: 5px;
-    }
-    .test::-webkit-scrollbar-thumb{
-        // 滑块
-        background-color:#00aff0;
-        border-radius: 5px;
-    }
-    .test::-webkit-scrollbar-thumb:hover {
-        // 鼠标移动到滑块时
-        background-color:#9c3;
-    }
-    .test::-webkit-scrollbar-thumb:active {
-        // 鼠标拖动滑块时
-        background-color:red;
-    }
-
 // 16-11-01 11:10:33 
     // px em rem
         任意浏览器的默认字体高都是16px。
@@ -1441,22 +1414,6 @@ flash           application/x-shockwave-flash	swf
         * 解决方法：（条件注释）缺点是在IE浏览器下可能会增加额外的HTTP请求数。
 
 
-// 17-08-07 13:39:41 
-    // 网页中一些特殊的对象
-    // http://www.zhangxinxu.com/wordpress/2013/06/%E4%BC%AA%E5%85%83%E7%B4%A0-%E8%A1%A8%E5%8D%95%E6%A0%B7%E5%BC%8F-pseudo-elements-style-form-controls/
-    1   placehodler
-        input::          -moz-placehodler { }
-        input::     -ms-input-placehodler { }
-        input:: -webkit-input-placehodler { }
-
-    2   scrollbar
-        // 滚动条
-
-    3   -ms-expand
-        // select 标签 箭头
-
-    4   -webkit-appearance
-        // appearance 属性允许您使元素看上去像标准的用户界面元素
 
 
 // 图形技术
@@ -1468,12 +1425,80 @@ flash           application/x-shockwave-flash	swf
             webGL 是嵌入到canvas中工作的
 
 // 17-08-20 12:12:09  CSS3 新特性
-    1   mask    遮罩
-    2   下拉框去掉右侧标
-                appearance:none;  /*下拉框去掉右侧图标*/  
-           -moz-appearance:none;  
-        -webkit-appearance:none; 
+    // 网页中一些特殊的对象
+    // http://www.zhangxinxu.com/wordpress/2013/06/%E4%BC%AA%E5%85%83%E7%B4%A0-%E8%A1%A8%E5%8D%95%E6%A0%B7%E5%BC%8F-pseudo-elements-style-form-controls/
+    1   // placehodler
+        input::          -moz-placehodler { }
+        input::     -ms-input-placehodler { }
+        input:: -webkit-input-placehodler { }
 
-    3   column-width;column-gap;column-fill: 
-        // 设置列的宽度
+    2   scrollbar
+        // 滚动条
+        // chrome滚动条是以伪对象的方式使用
+        .test::-webkit-scrollbar{
+            // 基础
+            background-color: transparent;
+            width: 5px;
+        }
+        .test::-webkit-scrollbar-track{
+            // 轨道
+            background-color:#eee;
+            border-radius: 5px;
+        }
+        .test::-webkit-scrollbar-thumb{
+            // 滑块
+            background-color:#00aff0;
+            border-radius: 5px;
+        }
+        .test::-webkit-scrollbar-thumb:hover {
+            // 鼠标移动到滑块时
+            background-color:#9c3;
+        }
+        .test::-webkit-scrollbar-thumb:active {
+            // 鼠标拖动滑块时
+            background-color:red;
+        }
 
+    3   // 表单，下拉箭头
+        3.1 select
+            // 在非IE中，通过appearance: none; 解决.
+            // 在IE10及以上，::-ms-expand{ display: none; }
+        3.2 check/radio
+
+    3   -ms-expand
+        // select 标签 箭头
+
+    // css3 新特效
+    1   // 遮罩
+        mask    
+
+    2   // appearance (可在chrome中测试, 目前没什么用处)
+        属性允许您使元素看上去像标准的用户界面元素
+        // 所有主流浏览器都不支持 appearance 属性。
+        // Firefox 支持替代的 -moz-appearance 属性。
+        // Safari 和 Chrome 支持替代的 -webkit-appearance 属性。
+        value       desc
+        ==========================================
+        normal      常规元素
+
+        // 清除浏览器默认样式(如: select)
+                appearance: none;
+           -moz-appearance: none;  
+        -webkit-appearance: none; 
+        // IE10及以上
+        ::-ms-expand { display: none; }
+
+    3   // colum 排版
+        column-width;       // 列宽
+        column-gap;         // 列间隙
+        column-fill:        // 
+
+    
+    4   // box 模型
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 3;
+        overflow: hidden;
+        text-overflow: ellipsis;
+
+    5   // flex 模型
