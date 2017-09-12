@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Index</title>
+<style>
+    .ctn {
+        position: relative;
+        width: 1000px;
+        min-height: 200px;
+        margin: 20px auto;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+    }
+    ul {
+        list-style: none;
+        width: 100px;
+        text-align: center;
+    }
+    li {
+        height: 20px;
+        margin-top: 30px;
+        line-height: 20px;
+        border: 1px solid #ccc;
+    }
+
+    .ctn .inner {
+        position: absolute;
+        top: 10px;
+        margin: auto;
+        width: 200px;
+        height: 10px;
+        background-color: red;
+    }
+    .dragging {
+       transition: transform 0.3s ease 0s; 
+    }
+
+    .dragEle{
+        opacity: 0;
+    }
+    .dragCloneEle {
+        border: 1px solid #000;
+        color: #000;
+        opacity: 1;
+    }
+</style>
+</head>
+<body>
+   <ul>
+       <li draggable="true">01</li>
+       <li draggable="true">02</li>
+       <li draggable="true">03</li>
+       <li draggable="true">04</li>
+       <li draggable="true">05</li>
+   </ul>
+   <div class="ctn">
+        <div class="inner"></div>
+   </div>
+
+<script>
+var dragEle = null;
+
+
+// li
+var ul = document.getElementsByTagName("ul")[0];
+ul.ondragstart = function(e){
+
+   dragEle = e.target; 
+    var index =  indexOfNode(ul, dragEle);
+
+   // 被拖到的元素隐藏
+   setTimeout(function(){
+        ul.querySelectorAll("li")[index].classList.add("dragEle");
+   }, 10);
+
+};
+
+ul.ondragend = function(e){
+    var tar = ul.querySelector(".dragEle");
+    if(tar){
+        tar.classList.remove("dragEle");
+    }
+
+   dragEle = null;
+};
+
+// ctn
+ var ctn = document.getElementsByClassName("ctn")[0];
+ ctn = ul;
+
+var flag = 1;
+ ctn.addEventListener("dragenter", function(e){
+    e.preventDefault();
+    //
+    if(flag == 1){
+        flag = 0;
+
+        //
+        dropEle = e.target;
+        // 如果dragEle不是li 或者 与dropEle相等
+        if(dropEle == dragEle || dropEle.tagName != "LI"){
+            flag = 1;
+            return false;
+        }
+
+        // 交换过程
+        exchange(dragEle, dropEle);
+    }
+ });
+
+ ctn.addEventListener("dragover", function(e){
+    e.preventDefault();
+ });
+
+
+ function exchange(drag, drop){
+    var guter = 30;
+    var height = ifNextSibling(drag, drop) 
+                ? (-drag.offsetHeight - guter) 
+                : (drop.offsetHeight  + guter); 
+
+    drop.classList.add("dragging");
+    drop.style.transform = "translateY("+height+"px)";
+
+    var sampTime = 200;
+    setTimeout(function(){
+        drop.classList.remove("dragging");
+        drop.style.cssText = "";
+
+        if(height > 0){
+            ul.insertBefore(drag, drop);
+        }else if(height < 0){
+            ul.insertBefore(drop, drag);
+        }
+
+        flag = 1;
+    }, sampTime);
+ }
+
+ function ifNextSibling(ele1, ele2){
+    while(true){
+        if(ele1.nextElementSibling == ele2){
+            return true;
+        }else{
+            ele1 = ele1.nextElementSibling;
+        }
+
+        if(!ele1){
+            return false;    
+        }
+    }
+ }
+
+
+ function indexOfNode(par, chd){
+    var i = 0, item = par.firstElementChild;
+    while(item){
+        if(chd == item){
+            return i;
+        }else{
+            item = item.nextElementSibling;
+            i++;
+        }
+    }
+
+    return -1;
+ }
+
+</script>
+</body>
+</html>
