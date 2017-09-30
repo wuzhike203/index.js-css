@@ -1353,8 +1353,9 @@ flash           application/x-shockwave-flash	swf
 // 17-05-20 22:21:06 滚动
     1 每个元素的scrollLeft, scrollTop 既是可读，也是可写
     2 最外层是 window.scrollTo(x, y)
+        以及: document.documentElement.scrollTop / scrollLeft
 
-    3 最外层的scroll事件是在window上触发的, 但通过document.body.scrollTop
+    3 最外层的scroll事件是在window上触发的, 但通过document.documentElement.scrollTop
         来获取值(而不是通过事件对象e)
 
 // 17-05-21 18:09:31 隐藏一个元素的方法
@@ -1492,10 +1493,16 @@ flash           application/x-shockwave-flash	swf
         // IE10及以上
         ::-ms-expand { display: none; }
 
-    3   // colum 排版
-        column-width;       // 列宽
-        column-gap;         // 列间隙
-        column-fill:        // 
+    3   // colum 排版(IE10+, 所有浏览器都只支持部分属性)
+        column-width;               // 列宽
+        column-gap;                 // 列间隙
+        column-fill:                // 
+        column-count:               // 列数
+        column-span:                //
+        columns:                    //
+        column-rule-color:
+        column-rule-style:
+        column-rule-width:
 
     
     4   // box 模型
@@ -1509,3 +1516,41 @@ flash           application/x-shockwave-flash	swf
 
     6   // grid 布局(网格线布局)
         display: grid;
+
+
+// 17-09-21 20:33:10 
+    // IE6 适配
+    1 select 高度无法变动
+    2 不支持属性选择符
+    3 不支持关系选择符(除包含选择符)
+    4 不支持复合属性
+    5 不支持box-sizing
+
+    // 颜色
+    6 不支持opacity
+    7 不支持 rgba
+
+    // 表单
+    8 lael 不能唤起 type="file"
+
+    // 高度
+    9 元素高度无法减小到小于字体高度的值，(可以设置font-size: 或 Line-height)
+
+    // 列表
+    10 列表前面的标识的位置与li的行高有关
+
+    // 宽度
+    11 即使是正常的块元素，也显示地指明width: 100%; 这样position: absolute的元素的位置才正确.
+
+    // 好像下面的信息对 float; inline-block 有影响
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+
+    5 text-align: center;
+
+    // IE6崩溃的原因(css)
+    ==========================================================================================
+    1  含有step3,               step4, step1都可以
+    2  class = "dCDLAppoint",   dCDLAppoin 都可以
+    3   dDList
