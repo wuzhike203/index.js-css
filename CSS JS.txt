@@ -555,6 +555,112 @@
     2       动画插件：
             // 使用说明
             1、animate.min.css
+            // 1 Attention Seekers  (吸引搜索者)
+                bounce              // 弹跳
+                flash               // 闪烁
+                pulse               // 脉搏, 震动
+                rubberBand          // 橡皮筋
+                shake               // 颤抖
+                swing               // 摇摆, 秋千
+                tada                // 先小, 变大过程中, 摇摆
+                wobble              // 颤抖
+                jello               // 凝聚
+
+
+            // In: 进入; Out: 离开
+            // Down: 向下; Up: 向上; Left: 从左边来; Right: 从右边来
+            // 2 Bouncing Entrances (弹跳进入)
+                bounceIn
+                bounceInDown
+                bounceInLeft
+                bounceInRight
+                bounceInUp
+
+            // 3 Bouncing Exits (弹跳离开)
+                bounceOut
+                bounceOutDown
+                bounceOutLeft
+                bounceOutRight
+                bounceOutUp
+
+            // 4 Fading Entrances (渐隐进入)
+                fadeIn
+                fadeInDown
+                fadeInDownBig
+                fadeInLeft
+                fadeInLeftBig
+                fadeInRight
+                fadeInRightBig
+                fadeInUp
+                fadeInUpBig
+
+            // 5 Fading Exits (渐隐离开)
+                fadeOut
+                fadeOutDown
+                fadeOutDownBig
+                fadeOutLeft
+                fadeOutLeftBig
+                fadeOutRight
+                fadeOutRightBig
+                fadeOutUp
+                fadeOutUpBig
+
+            // 6 Flippers   (翻滚)
+                flip
+                flipInX
+                flipInY
+                flipOutX
+                flipOutY
+
+            // 7 Lightspeed (光速)
+                lightSpeedIn
+                lightSpeedOut
+
+            // 8 Rotating Entrances (旋转进入)
+                rotateIn
+                rotateInDownLeft
+                rotateInDownRight
+                rotateInUpLeft
+                rotateInUpRight
+
+            // 10 Rotating Exits    (旋转离开)
+                rotateOut
+                rotateOutDownLeft
+                rotateOutDownRight
+                rotateOutUpLeft
+                rotateOutUpRight
+
+            // 11 Sliding Entrances (滑动进入)
+                slideInUp
+                slideInDown
+                slideInLeft
+                slideInRight
+
+            // 12 Sliding Exits     (滑动离开)
+                slideOutUp
+                slideOutDown
+                slideOutLeft
+                slideOutRight
+                                
+            // 13 Zoom Entrances    (缩放进入)
+                zoomIn
+                zoomInDown
+                zoomInLeft
+                zoomInRight
+                zoomInUp
+                                
+            // 14 Zoom Exits        (缩放离开)
+                zoomOut
+                zoomOutDown
+                zoomOutLeft
+                zoomOutRight
+                zoomOutUp
+
+            // 15 Specials          (特殊)
+                hinge               // 铰链, 挂着
+                jackInTheBox
+                rollIn              // 滚进来
+                rollOut             // 滚出去
     ------------------------------------------------------
     3       日期插件：My97DatePicker
             // 使用说明
@@ -640,6 +746,7 @@
     ------------------------------------------------------
     5       图表插件：
             // highchart 
+            // echarts
     ------------------------------------------------------
     6       表盘插件：
             // panel 
@@ -1531,7 +1638,7 @@ flash           application/x-shockwave-flash	swf
     7 不支持 rgba
 
     // 表单
-    8 lael 不能唤起 type="file"
+    8 label 不能唤起 type="file"
 
     // 高度
     9 元素高度无法减小到小于字体高度的值，(可以设置font-size: 或 Line-height)
@@ -1548,9 +1655,38 @@ flash           application/x-shockwave-flash	swf
     overflow: hidden;
 
     5 text-align: center;
+    // 定位
+    不支持 position: fixed
+
+    // 尺寸
+    元素如果不设置overflow: hidden, 则：尽管设置了具体的width,
+    实际宽度任然受到内容子元素的影响
+
+    // 浮动
+    如果浮动元素不是第一个子元素，浮动不起作用
+
+    // 边框
+    border: none; 与 border: 0; 效果不一样
+
+    // select遮挡div的bug，
+    这个bug表现为页面有浮动元素（某个div元素）在select上面时，
+    在IE6里面select总是显示在这个浮动元素上方，该元素z-index的值多大都没有作用。
+
+    解决的思路是：
+        IE6中iframe可以覆盖select，而div可以覆盖iframe，
+        所以解决办法就是使用iframe元素包裹或者覆盖select元素或浮动元素，
+        或者在select元素或浮动元素添加一个Iframe作为子元素。
+
+    // iframe(ie6, 7, 8)
+    默认背景为白色，而且ie6下无法设置背景色
+
+    // label
+    必须为label设置for属性
+
+    // 双倍浮动
 
     // IE6崩溃的原因(css)
     ==========================================================================================
     1  含有step3,               step4, step1都可以
-    2  class = "dCDLAppoint",   dCDLAppoin 都可以
-    3   dDList
+    2  float 嵌套
+    3   双倍浮动
