@@ -128,35 +128,37 @@ hi WarningMsg	guifg=salmon
 
 "----syntax highlighting groups-----
 "Comment             注释  
-hi Comment	guifg=Green
-hi Comment2	guifg=Red
-"hi Comment	guifg=SkyBlue
+hi Comment	    guifg=Green
+hi Comment2	    guifg=Red
+"hi Comment	    guifg=SkyBlue
 "PreProc             预处理  
-hi PreProc	guifg=LightRed
-"hi PreProc	guifg=indianred
+hi PreProc	    guifg=LightRed
+"hi PreProc	    guifg=indianred
 "Type                数据类型  
-hi Type		guifg=red
+hi Type		    guifg=red
 "hi Type		guifg=darkkhaki
 "Constant            常量  
-hi Constant	guifg=#00f0f0
+hi Constant	    guifg=#00f0f0
 "hi Constant	guifg=DarkRed
 "hi Constant	guifg=#ffa0a0
 "Statement           控制语句  
-hi Statement	guifg=yellow
+hi Statement    guifg=yellow
+""hi Statement	guifg=#ffeb9b
 "hi Statement	guifg=khaki
 "Special             字符串中的中的特殊字符 (var)
-hi Special	guifg=navajowhite
+hi Special      guifg=navajowhite
 "String              字符串  
-hi String guifg=lightRed
+hi String       guifg=lightRed
+""hi String       guifg=#f0e7d5
 "cCppString          Cpp字符串  
 "Number              数字  
-hi Number      guifg=LightBlue
+hi Number       guifg=LightBlue
 "Todo                TODO、HACK、FIXME等标签
-hi Todo		guifg=yellow guibg=yellow2
+hi Todo		    guifg=yellow guibg=yellow2
 "hi Todo		guifg=orangered guibg=yellow2
 hi Identifier	guifg=palegreen
 "hi Underlined
-hi Ignore	guifg=grey40
+hi Ignore	    guifg=grey40
 
 
 
