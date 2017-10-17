@@ -70,12 +70,13 @@ set showmatch
 execute pathogen#infect()
 "语法高亮
 syntax on
+"文件类型插件开启
+filetype plugin indent on
+"文件类型缩进,在vim74/indent文件夹"
+"
+"
 "文件类型检测
 filetype on
-"文件类型插件开启
-filetype plugin on
-"文件类型缩进,在vim74/indent文件夹"
-filetype indent on
 
 "自动补全
 "     按下(   相当于按下(键+)键+<ESC>键+i键
