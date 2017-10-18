@@ -446,3 +446,18 @@
 
 #
 ==============================================================================
+#变量
+    $name:      环境变量
+    &name:      option
+    @name:      寄存器register
+
+#text-object
+
+#register
+    <C-r>: 插入寄存器内容, 
+            // 在任何模式下均可使用
+            1 insert mode 
+            2 normal mode
+
+            3 commond mode
+            4 / (search)
