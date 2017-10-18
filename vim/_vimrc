@@ -138,7 +138,29 @@ set incsearch
 "pathogen 插件管理器: 已用vundle替代
 "execute pathogen#infect()
 
+" 高亮显示匹配的括号
+set showmatch
+
+"pathogen 插件管理器
+execute pathogen#infect()
+"语法高亮
+syntax on
+"文件类型插件开启
+filetype plugin indent on
+"文件类型缩进,在vim74/indent文件夹"
+"
+"
+"文件类型检测
+filetype on
+
 " --------------- 以下是一些键盘映射 ----------------"
+function! ClosePair(char)
+    if getline('.')[col('.') - 1] == a:char
+        return "\<Right>"
+    else
+        return a:char
+    endif
+endfunction
 "自动补全
 "     按下(   相当于按下(键+)键+<ESC>键+i键
 "            <CR>就是Ctrl键
@@ -184,17 +206,7 @@ noremap <F5> <Esc>:!python %<cr>
 nmap <F7> :!start "C:\Program Files (x86)\Google\Chrome\Application\chrome.exe" %<cr>
 nmap <F8> :!start "C:\Program Files (x86)\Mozilla Firefox\firefox.exe" %<cr>
 
-function! ClosePair(char)
-    if getline('.')[col('.') - 1] == a:char
-        return "\<Right>"
-    else
-        return a:char
-    endif
-endfunction
-
 " 当打开文件时，默认打开文件所在的目录"
-
-
 function! OpenMenu()
     :30vnew .
 endfunction
