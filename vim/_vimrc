@@ -1,3 +1,5 @@
+
+"----------------- 编码 ------------------------
 set shortmess=atI               "启动的时候不显示那个援助乌干达儿童的提示  
 set fencs=utf-8,ucs-bom,shift-jis,gb18030,gbk,gb2312,cp936          "编码"
 set termencoding=utf-8 
@@ -6,22 +8,29 @@ set helplang=cn                 " 显示中文帮助
 set fileencoding=utf-8
 ""set fileencodings=ucs-bom,utf-8,cp936
 
+"----------------- 插件管理器 ------------------------
+" 1 pathogen ---------------
+execute pathogen#infect()
+
+
+" 2 vundle -----------------
 set nocompatible                "去掉讨厌的有关vi一致性模式，避免以前版本的一些bug和局限  
-filetype off                    "文件类型插件开启
+""filetype off                    "文件类型插件开启
 
 "vundle  包管理工具"
-set rtp+=$VIM/vimfiles/bundle/Vundle.vim/
-call vundle#begin("$VIM/vimfiles/bundle/")
+""set rtp+=$VIM/vimfiles/bundle/Vundle.vim/
+""call vundle#begin("$VIM/vimfiles/bundle/")
 
 "让 vundle管理插件版本"
-Plugin 'VundleVim/Vundle.vim'
+""Plugin 'VundleVim/Vundle.vim'
 
 " 我们安装的插件都在这里 start
 " 有几种不同的插件安装格式
 " 1 plugin on GitHub repo
 " 格式为 Plugin '用户名/插件仓库名' 如: Plugin 'tpope/vim-fugitive'
 ""Plugin 'Valloric/YouCompleteMe'
-Plugin 'mattn/emmet-vim'
+""Plugin 'mattn/emmet-vim'
+""Plugin 'scrooloose/nerdtree'
 
 " 2 plugin from http://vim-scripts.org/vim/scripts.html
 " 格式为 Plugin 'L9'
@@ -36,12 +45,11 @@ Plugin 'mattn/emmet-vim'
 "Plugin 'file:///C:/Program Files (x86)/Vim/briofita_vim'
 
 
-" 我们安装的插件都在这里 end
-call vundle#end()            " required
-filetype plugin indent off    " required
+""call vundle#end()            " required
+filetype plugin indent on    " required
 
+"----------------- Emmet ------------------------
 " Emmet leader key"
-""let g:user_emmet_expandabbr_key = '<Tab>'
 let g:user_emmet_expandabbr_key = '<C-y>y'
 
 " Emmet custom snippet"
@@ -66,6 +74,7 @@ let g:user_emmet_settings = {
 
 
 
+"----------------- Option ------------------------
 "处理菜单及右键乱码"
 source $VIMRUNTIME/delmenu.vim
 source $VIMRUNTIME/menu.vim
@@ -80,6 +89,7 @@ set completeopt=preview,menu            " 代码补全
 set clipboard+=unnamed                  " 共享剪贴板  
 set ignorecase                          " 搜索忽略大小写
 set confirm                             " 删除时，显示删除对话框
+
 set backspace=2                         " 使backspace可以删除indent,"",eol,start等"
 set expandtab                           " 用空格代替制表符
 set autoindent                          " 自动缩进
@@ -90,8 +100,6 @@ set cursorline                          " 突出显示当前行
 set ruler                               " 显示标尺  
 set showmatch                           " 高亮显示匹配的括号
 syntax on                               " 语法高亮
-filetype plugin on                      " 文件类型检测
-""filetype indent on                    " 文件类型缩进,在vim74/indent文件夹"
 set showcmd                             " 输入的命令显示出来，看的清楚些  
 "状态行显示的内容  
 set statusline=%F%m%r%h%w\ [POS=%l,%v][%p%%]
@@ -114,18 +122,13 @@ autocmd InsertLeave * se nocul          " 用浅色高亮当前行
 set laststatus=1                        " 启动显示状态行(1),总是显示状态行(2)  
 set foldenable                          " 允许折叠  
 set foldmethod=manual                   " 手动折叠  
-set mps+=                          
-" quickfix模式
-autocmd FileType c,cpp map <buffer> <leader><space> :w<cr>:make<cr>
-
-
-"从不备份  
-set nobackup
+set nobackup                            " 从不备份  
 set noswapfile
-
-"搜索逐字符高亮
-set hlsearch
+set hlsearch                            " 搜索逐字符高亮
 set incsearch
+set showmatch                           " 高亮显示匹配的括号
+
+
 
 
 "这四个选项控制 C 程序缩进:
@@ -135,25 +138,11 @@ set incsearch
 "cinwords'      定义在下一行中开始一个额外缩进的关键字。
 
 
-"pathogen 插件管理器: 已用vundle替代
-"execute pathogen#infect()
 
-" 高亮显示匹配的括号
-set showmatch
 
-"pathogen 插件管理器
-execute pathogen#infect()
-"语法高亮
-syntax on
-"文件类型插件开启
-filetype plugin indent on
-"文件类型缩进,在vim74/indent文件夹"
-"
-"
-"文件类型检测
-filetype on
 
 " --------------- 以下是一些键盘映射 ----------------"
+"  ------- 1 括号匹配
 function! ClosePair(char)
     if getline('.')[col('.') - 1] == a:char
         return "\<Right>"
@@ -161,6 +150,7 @@ function! ClosePair(char)
         return a:char
     endif
 endfunction
+
 "自动补全
 "     按下(   相当于按下(键+)键+<ESC>键+i键
 "            <CR>就是Ctrl键
@@ -172,33 +162,28 @@ endfunction
 :inoremap " ""<ESC>i
 :inoremap ' ''<ESC>i
 
-"自动插入时间和日期"
-"<c-d>  : 日期
+"  ------- 2 自动插入时间和日期
+" 日期
 :imap <silent> <c-d> <c-r>=strftime("%y-%m-%d")<cr> 
-"<c-t>  : 时间
+" 时间
 :imap <silent> <c-t> <c-r>=strftime("%H:%M:%S")<cr> 
+" 计算输入
 imap <silent> <C-C> <C-R>=string(eval(input("Calculate: ")))<CR>
 
-nmap <leader>w :w!<cr>
-nmap <leader>f :find<cr>
 
+"  ------- 3 
 " 映射全选+复制 ctrl+a
 map <C-A> ggVGY
 map! <C-A> <Esc>ggVGY
-map <F12> gg=G
 " 选中状态下 Ctrl+c 复制
 vmap <C-c> "+y
-
+" 对齐
+map <F12> gg=G
 "去空行  
-nnoremap <F2> :g/^\s*$/d<CR> 
+""nnoremap <F2> :g/^\s*$/d<CR> 
 
-"新建标签  
-map <M-F2> :tabnew<CR>  
-"列出当前目录文件  
-map <F3> :tabnew .<CR>  
-"打开树状文件目录  
-map <C-F3> \be  
 
+"  ------- 4 运行程序 
 "运行 python"
 noremap <F5> <Esc>:!python %<cr>
 
@@ -206,9 +191,13 @@ noremap <F5> <Esc>:!python %<cr>
 nmap <F7> :!start "C:\Program Files (x86)\Google\Chrome\Application\chrome.exe" %<cr>
 nmap <F8> :!start "C:\Program Files (x86)\Mozilla Firefox\firefox.exe" %<cr>
 
-" 当打开文件时，默认打开文件所在的目录"
+
+"  ------- 5 打开目录
+" 5.1 在VIM中打开文件所在的目录"
 function! OpenMenu()
     :30vnew .
 endfunction
-
 nmap <silent> <F10> :call OpenMenu()<CR>
+
+" 5.2 打开文件所在的目录 cmd"
+nmap <silent> <C-F10> :!start "" "%:h"<CR>

@@ -1,3 +1,14 @@
+
+// 网址
+http://doctype.oschina.io/zhongmingzhi/
+
+
+// svn
+svn://git.oschina.net/doctype/zhongmingzhi
+36994099@qq.com a36994099
+
+
+
 // Mock
 http://120.25.99.202:8090/workspace/myWorkspace.do?projectId=11#335
 chenchangfu 123456
