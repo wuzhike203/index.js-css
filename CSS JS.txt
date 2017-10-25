@@ -750,6 +750,7 @@
     ------------------------------------------------------
     6       表盘插件：
             // panel 
+            // justage      
     ------------------------------------------------------
     7       cookie插件
             // 使用说明
@@ -1429,7 +1430,7 @@ flash           application/x-shockwave-flash	swf
     2 NodeList
 
 // 17-05-20 21:40:39 焦点相关
-    1 document.activeElement        // 获得焦点元素
+    1 document.activeElement        // 获得焦点元素(只读)
     2 document.hasFocus()           // 用于确定文档是否获得焦点
 
     3 scrollIntoView()              // 让元素处于窗口中
