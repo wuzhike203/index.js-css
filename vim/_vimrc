@@ -15,6 +15,7 @@ set fileencoding=utf-8
 " 2.1 vundle
 set nocompatible                "去掉讨厌的有关vi一致性模式，避免以前版本的一些bug和局限  
 ""filetype off                    "文件类型插件开启
+
 ""set rtp+=$VIM/vimfiles/bundle/Vundle.vim/
 ""call vundle#begin("$VIM/vimfiles/bundle/")
 
@@ -46,8 +47,9 @@ set nocompatible                "去掉讨厌的有关vi一致性模式，避免以前版本的一些b
 ""filetype plugin indent on    " required
 filetype plugin on    " required
 
-" 2.2 pathogen 插件管理器
+" ------ 2.2 pathogen 插件管理器
 execute pathogen#infect()
+
 
 
 " ------------------ 3 Emmet leader key ----------------------
@@ -76,6 +78,7 @@ let g:user_emmet_settings = {
 
 
 
+"----------------- Option ------------------------
 "处理菜单及右键乱码"
 source $VIMRUNTIME/delmenu.vim
 source $VIMRUNTIME/menu.vim
@@ -106,7 +109,6 @@ set cursorline                          " 突出显示当前行
 set ruler                               " 显示标尺  
 set showmatch                           " 高亮显示匹配的括号
 syntax on                               " 语法高亮
-
 set showcmd                             " 输入的命令显示出来，看的清楚些  
 "状态行显示的内容  
 set statusline=%F%m%r%h%w\ [POS=%l,%v][%p%%]
@@ -135,6 +137,9 @@ set nobackup                            "从不备份
 set noswapfile
 set hlsearch                            "搜索逐字符高亮
 set incsearch
+set showmatch                           " 高亮显示匹配的括号
+
+
 
 "这四个选项控制 C 程序缩进:
 "cindent'       使 Vim 对 C 程序自动缩进。
@@ -147,6 +152,7 @@ set incsearch
 
 
 " --------------- 4 以下是一些键盘映射 ----------------"
+"  ------- 1 括号匹配
 function! ClosePair(char)
     if getline('.')[col('.') - 1] == a:char
         return "\<Right>"
@@ -154,6 +160,7 @@ function! ClosePair(char)
         return a:char
     endif
 endfunction
+
 "自动补全
 "     按下(   相当于按下(键+)键+<ESC>键+i键
 "            <CR>就是Ctrl键
@@ -165,15 +172,15 @@ endfunction
 :inoremap " ""<ESC>i
 :inoremap ' ''<ESC>i
 
-"自动插入时间和日期"
-"<c-d>  : 日期
+"  ------- 2 自动插入时间和日期
+" 日期
 :imap <silent> <c-d> <c-r>=strftime("%y-%m-%d")<cr> 
-"<c-t>  : 时间
+" 时间
 :imap <silent> <c-t> <c-r>=strftime("%H:%M:%S")<cr> 
+" 计算输入
 imap <silent> <C-C> <C-R>=string(eval(input("Calculate: ")))<CR>
 
-
-
+"  ------- 4 运行程序 
 "运行 python"
 noremap <F5> <Esc>:!python %<cr>
 
@@ -181,9 +188,13 @@ noremap <F5> <Esc>:!python %<cr>
 nmap <F7> :!start "C:\Program Files (x86)\Google\Chrome\Application\chrome.exe" %<cr>
 nmap <F8> :!start "C:\Program Files (x86)\Mozilla Firefox\firefox.exe" %<cr>
 
-" 当打开文件时，默认打开文件所在的目录"
+
+"  ------- 5 打开目录
+" 5.1 在VIM中打开文件所在的目录"
 function! OpenMenu()
     :30vnew .
 endfunction
-
 nmap <silent> <F10> :call OpenMenu()<CR>
+
+" 5.2 打开文件所在的目录 cmd"
+nmap <silent> <C-F10> :!start "" "%:h"<CR>
