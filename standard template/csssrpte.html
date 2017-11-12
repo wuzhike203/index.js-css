@@ -144,10 +144,17 @@ body{
 }
 
 /* 图片容器中的图片 */
-.img-wrap img{
+.img-wrap .img-ctn {
     float: left;
-    margin-right: 10px;
-    margin-bottom: 10px;
+    min-width: 20px;
+    min-height: 20px;
+    box-sizing: border-box;
+    line-height: 20px;
+    text-align: center;
+    border: 1px solid #ccc;
+}
+.img-wrap img{
+    vertical-align: middle;
 }
 
 /* 生成合成图片按钮 */
@@ -176,62 +183,62 @@ body{
 </style>
 </head>
 <body>
-<h1 class="page-title">
+    <h1 class="page-title">
+        <div class="container">
+            CSS SPRITE GENERATE
+        </div>
+    </h1>
+
+    <!-- 接受图片的表单 -->
     <div class="container">
-        CSS SPRITE GENERATE
+        <form action="" class="img-input-form">
+            <label class="select-img">
+                <input type="file" multiple id="input-img">
+                <span class="label-desc">选择图片 或 拖动图片到此</span>
+            </label>
+        </form>
     </div>
-</h1>
 
-<!-- 接受图片的表单 -->
-<div class="container">
-    <form action="" class="img-input-form">
-        <label class="select-img">
-            <input type="file" multiple id="input-img">
-            <span class="label-desc">选择图片 或 拖动图片到此</span>
-        </label>
-    </form>
-</div>
+    <!-- 文件列表 -->
+    <div class="img-list">
+        <div class="container">
+            <ul class="file-list js-file-list">
+                <li class="file-li">
+                    <span class="fileimg">缩略图</span>
+                    <span class="filename">图片名称</span>
+                    <span class="filesize">图片尺寸</span>
+                    <span class="filepos">图片位置</span>
+                </li>
+            </ul>
+        </div>
+    </div>
 
-<!-- 文件列表 -->
-<div class="img-list">
+    <!-- img 容器 -->
     <div class="container">
-        <ul class="file-list js-file-list">
-            <li class="file-li">
-                <span class="fileimg">缩略图</span>
-                <span class="filename">图片名称</span>
-                <span class="filesize">图片尺寸</span>
-                <span class="filepos">图片位置</span>
-            </li>
-        </ul>
+        <!--  改变img容器的宽, 高, 背景 -->
+        <form name="btns-wrap" class="btns-wrap-form">
+            容器宽: <input type="number" name="ctn-width" value="18" min="10">
+            容器高: <input type="number" name="ctn-height" value="18" min="10">
+            容器背景: <input type="color" name="ctn-bg">
+        </form>
+        <div class="img-wrap js-img-wrap"></div>
     </div>
-</div>
 
-<!-- img 容器 -->
-<div class="container">
-    <!--  改变img容器的宽, 高, 背景 -->
-    <form name="btns-wrap" class="btns-wrap-form">
-        容器宽: <input type="number" name="ctn-width" value="18" min="10">
-        容器高: <input type="number" name="ctn-height" value="18" min="10">
-        容器背景: <input type="color" name="ctn-bg">
-    </form>
-    <div class="img-wrap js-img-wrap"></div>
-</div>
+    <!-- 生成图片按钮 -->
+    <div class="create-img">
+        <div class="container">
+            <button id="create-img">生成图片</button>
+            <span>右键保存 -- 下面生成的图片 </span>
+        </div>
+    </div>
 
-<!-- 生成图片按钮 -->
-<div class="create-img">
+    <!-- 最终的img  -->
     <div class="container">
-        <button id="create-img">生成图片</button>
-        <span>右键保存 -- 下面生成的图片 </span>
+        <img src="" name="combine-img">
     </div>
-</div>
 
-<!-- 最终的img  -->
-<div class="container">
-    <img src="" name="combine-img">
-</div>
-
-<!-- img canvas -->
-<canvas width="100" height="100" id="canvas-img"></canvas>
+    <!-- img canvas -->
+    <canvas width="100" height="100" id="canvas-img"></canvas>
 
 
 
@@ -289,7 +296,10 @@ function readImg(files, i, pre_number){
             var img = new Image();
             img.src = reader.result;
             img.className = cName;
-            imgWrap.appendChild(img);
+            var span = document.createElement("span");
+            span.className = "img-ctn";
+            span.appendChild(img);
+            imgWrap.appendChild(span);
 			
 			// 当为拖动时, 图片加载是异步事件, 故需要延迟显示图片尺寸
 			setTimeout(function(e){
@@ -321,7 +331,7 @@ document.body.querySelector(".js-file-list").onclick = function(e){
         // 从图片容器中删除图片: 图片的className = 图片的名称
         var cName = li.querySelector("img").className.split(" ")[1],
             img = imgWrap.querySelector("." + cName);
-        imgWrap.removeChild(img);
+        imgWrap.removeChild(img.parentNode);
 
         // 从图片列表中删除图片
         li.parentNode.removeChild(li);
