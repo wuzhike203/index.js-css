@@ -110,8 +110,9 @@ body{
     vertical-align: middle;
 }
 .filename{
-    width: 400px;
+    width: 300px;
 }
+.ctnsize,
 .filesize{
     width: 100px;
 }
@@ -149,12 +150,11 @@ body{
     min-width: 20px;
     min-height: 20px;
     box-sizing: border-box;
-    line-height: 20px;
-    text-align: center;
+    margin: 0 10px 10px 0;
     border: 1px solid #ccc;
 }
 .img-wrap img{
-    vertical-align: middle;
+    vertical-align: top;
 }
 
 /* 生成合成图片按钮 */
@@ -207,6 +207,7 @@ body{
                     <span class="fileimg">缩略图</span>
                     <span class="filename">图片名称</span>
                     <span class="filesize">图片尺寸</span>
+                    <span class="ctnsize">容器尺寸</span>
                     <span class="filepos">图片位置</span>
                 </li>
             </ul>
@@ -303,6 +304,9 @@ function readImg(files, i, pre_number){
 			
 			// 当为拖动时, 图片加载是异步事件, 故需要延迟显示图片尺寸
 			setTimeout(function(e){
+                // 读取图片大小后, 重新设置span的宽高
+                var newRule = setImgCtn(span, img);
+
 				// 添加图片到文件列表
 				var html = "";
 				html += '<li class="file-li">';
@@ -310,17 +314,36 @@ function readImg(files, i, pre_number){
 				html += '<span class="fileimg"><img src="'+ reader.result +'" class="thumbnail '+ cName +'"/></span> ';
 				html += '<span class="filename">'+ files[i].name +'</span> ';
 				html += '<span class="filesize">'+ img.width + "*"+ img.height +'</span> ';
+                html += '<span class="ctnsize">'+ newRule[0] + "*"+ newRule[1] +'</span>';
 				html += '<span class="filepos"></span>';
 				html += '</li>';
 				imgList.innerHTML += html;
+
 			}, 1);
 
             // next
             readImg(files, i+1, pre_number);
+        // img.parentNode 的位置
         };
 
         reader.readAsDataURL(files[i]);
     }
+}
+
+function setImgCtn(span, img){
+    var newWidth = getNewSize(img.width),
+        newHeight = getNewSize(img.height);
+
+    span.style.width    = newWidth + "px";
+    span.style.height   = newHeight + "px";
+
+    img.style.marginTop = (newHeight - 2 - img.height)/2 + "px";
+    
+    return [newWidth, newHeight];
+}
+
+function getNewSize(oldValue){
+    return oldValue <= 20 ? 20 : Math.ceil(oldValue/10)*10;
 }
 
 // --------  图片列表区  -----------
@@ -398,19 +421,26 @@ function drawImg(){
     // 图片位置: 图片距离wrap容器左上角的位置: offsetTop, offsetLeft
     // 图片的尺寸: 1、优先style.width 2、其次img.width, img.height
     var imgs = imgWrap.querySelectorAll("img"),
+        i, item, len = imgs.length,
         imgLeft, imgTop, imgWidth, imgHeight;
-    for(var i = 0; i < imgs.length; i++){
+    for(i = 0; i < imgs.length; i++){
+        item = imgs[i];
+
         imgLeft = imgs[i].offsetLeft;
         imgTop = imgs[i].offsetTop;
-        imgWidth = imgs[i].style.width ? parseInt(imgs[i].style.width) : imgs[i].width;
-        imgHeight = imgs[i].style.height ? parseInt(imgs[i].style.height) : imgs[i].height;
+
+        imgWidth = item.style.width ? parseInt(item.style.width) : item.width;
+        imgHeight = item.style.height ? parseInt(item.style.height) : item.height;
 
         // 标识位置
-        var cName = imgs[i].className;
+        var cName = item.className,
+            imgParent   = item.parentNode
+            imgLeft     = imgParent.offsetLeft
+            imgTop      = imgParent.offsetTop;
         imgList.querySelector("." + cName).parentNode.parentNode.querySelector(".filepos")
             .innerHTML = "background-position: "+ -imgLeft +"px "+ -imgTop +"px;";
         // 画图
-        ctx.drawImage(imgs[i], imgLeft, imgTop, imgWidth, imgHeight);
+        ctx.drawImage(item, imgLeft, imgTop, imgWidth, imgHeight);
     }
 
     // 生成合成图片
@@ -492,6 +522,7 @@ btns_form.onchange({target: btns_form.elements["ctn-height"]});
         if_drag = true;    
     }, false);
     // 松开鼠标
+        // img.parentNode 的位置
     img_ctn.addEventListener("mouseup", function(e){
         if_drag = false;    
     }, false);
