@@ -30,13 +30,14 @@ Frequently we know some pattern (regular expression) that marks one end or the o
 // register
 In addition to "verbs" and "subjects" vi also has "objects" (in the grammatical sense of the term). So far I've only described the use of the anonymous register. However, I can use any of the 26 "named" registers by prefixing the "object" reference with " (the double quote modifier). Thus if I use "add I'm cutting the current line into the 'a' register and if I use "by/foo then I'm yanking a copy of the text from here to the next line containing "foo" into the 'b' register. To paste from a register I simply prefix the paste with the same modifier sequence: "ap pastes a copy of the 'a' register's contents into the text after the cursor and "bP pastes a copy from 'b' to before the current line.
 
-// numeric prefixes
+// ----- 2 numeric prefixes
 This notion of "prefixes" also adds the analogs of grammatical "adjectives" and "adverbs' to our text manipulation "language." Most commands (verbs) and movement (verbs or objects, depending on context) can also take numeric prefixes. Thus 3J means "join the next three lines" and d5} means "delete from the current line through the end of the fifth paragraph down from here."
 
 This is all intermediate level vi. None of it is Vim specific and there are far more advanced tricks in vi if you're ready to learn them. If you were to master just these intermediate concepts then you'd probably find that you rarely need to write any macros because the text manipulation language is sufficiently concise and expressive to do most things easily enough using the editor's "native" language.
 
 
 // Advanced tricks:
+// ----- 3 Address
 A sampling of more advanced tricks:
 
 There are a number of : commands, most notably the :% s/foo/bar/g global substitution technique. (That's not advanced but other : commands can be). The whole : set of commands was historically inherited by vi's previous incarnations as the ed (line editor) and later the ex (extended line editor) utilities. In fact vi is so named because it's the visual interface to ex.
@@ -56,6 +57,7 @@ It's interesting that the common Unix command grep was actually inspired by this
 
 Note that :% g/.../d or (its reVerse/conVerse counterpart: :% v/.../d are the most common usage patterns. However there are couple of other ex commands which are worth remembering:
 
+// m
 We can use m to move lines around, and j to join lines. For example if you have a list and you want to separate all the stuff matching (or conversely NOT matching some pattern) without deleting them, then you can use something like: :% g/foo/m$ ... and all the "foo" lines will have been moved to the end of the file. (Note the other tip about using the end of your file as a scratch space). This will have preserved the relative order of all the "foo" lines while having extracted them from the rest of the list. (This would be equivalent to doing something like: 1G!GGmap!Ggrep foo<ENTER>1G:1,'a g/foo'/d (copy the file to its own tail, filter the tail through grep, and delete all the stuff from the head).
 
 To join lines usually I can find a pattern for all the lines which need to be joined to their predecessor (all the lines which start with "^ " rather than "^ * " in some bullet list, for example). For that case I'd use: :% g/^   /-1j (for every matching line, go up one line and join them). (BTW: for bullet lists trying to search for the bullet lines and join to the next doesn't work for a couple reasons ... it can join one bullet line to another, and it won't join any bullet line to all of its continuations; it'll only work pairwise on the matches).
@@ -83,11 +85,12 @@ Another useful ex command is :so (short for :source). This reads the contents of
 
 For example I have a seven line file (36 characters) which runs a file through wc, and inserts a C-style comment at the top of the file containing that word count data. I can apply that "macro" to a file by using a command like: vim +'so mymacro.ex' ./mytarget
 
+// +
 (The + command line option to vi and Vim is normally used to start the editing session at a given line number. However it's a little known fact that one can follow the + by any valid ex command/expression, such as a "source" command as I've done here; for a simple example I have scripts which invoke: vi +'/foo/d|wq!' ~/.ssh/known_hosts to remove an entry from my SSH known hosts file non-interactively while I'm re-imaging a set of servers).
 
 Usually it's far easier to write such "macros" using Perl, AWK, sed (which is, in fact, like grep a utility inspired by the ed command).
 
-// @
+// @ 执行寄存器命令
 The @ command is probably the most obscure vi command. In occasionally teaching advanced systems administration courses for close to a decade I've met very few people who've ever used it. @ executes the contents of a register as if it were a vi or ex command.
 Example: I often use: :r!locate ... to find some file on my system and read its name into my document. From there I delete any extraneous hits, leaving only the full path to the file I'm interested in. Rather than laboriously Tab-ing through each component of the path (or worse, if I happen to be stuck on a machine without Tab completion support in its copy of vi) I just use:
 

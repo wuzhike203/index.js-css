@@ -491,14 +491,10 @@
     ctrl+w+K  （大写K）HJKL四个组合命令（移动并回流窗口命令，窗口和光标一起移动）
 
 // 4 调整窗口尺寸
-    4.1 ctrl+w = 
-        均分窗口。      // 适合宽度和高度
-    4.2 在原基础上调整
-        ctrl+w + -      // 高度
-        ctrl+w < >      // 宽度   
-        :resize +-num   
-        :vertical resize +-num
-    4.3 直接设定
-        :resize num     // 高度
-        :vertical resize num    // 宽度
-        
+    4.1 调整水平尺寸
+        ctrl+w < > 
+    4.2 调整垂直尺寸
+        ctrl+w +-
+    4.3 resize
+        :resize -/+4
+        :vertical resize -/+4
