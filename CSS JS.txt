@@ -556,15 +556,19 @@
             // 使用说明
             1、animate.min.css
             // 1 Attention Seekers  (吸引搜索者)
-                bounce              // 弹跳
                 flash               // 闪烁
-                pulse               // 脉搏, 震动
-                rubberBand          // 橡皮筋
-                shake               // 颤抖
-                swing               // 摇摆, 秋千
+
+                rubberBand          // 橡皮筋(元素被拉伸)
+
+                bounce              // 弹跳(垂直摆动)
+                jello               // 凝聚(与bounce相近, 带点角度)
+                shake               // 摇头(水平摆动)
+                wobble              // 颤抖(与 shake很类似, 幅度更大)
+                swing               // 秋千摆(抛物线)
+
                 tada                // 先小, 变大过程中, 摇摆
-                wobble              // 颤抖
-                jello               // 凝聚
+                pulse               // 先小, 变大; 类型脉搏
+
 
 
             // In: 进入; Out: 离开
@@ -1346,7 +1350,7 @@ flash           application/x-shockwave-flash	swf
                 image/x-icon	                ico
 ----------------------------------------------------------------------
 
-            // text
+// text
 ----------------------------------------------------------------------
                 text/css	                    css
                 text/html	                    htm/html/stm
@@ -1691,3 +1695,7 @@ flash           application/x-shockwave-flash	swf
     1  含有step3,               step4, step1都可以
     2  float 嵌套
     3   双倍浮动
+
+
+// 17-11-02 15:40:47 
+    当设置 writing-mode: tb-rl: 时, line-height; text-align: 方向将旋转
