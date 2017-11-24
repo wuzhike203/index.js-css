@@ -431,6 +431,8 @@ function drawImg(){
 
         imgWidth = item.style.width ? parseInt(item.style.width) : item.width;
         imgHeight = item.style.height ? parseInt(item.style.height) : item.height;
+        // 画图
+        ctx.drawImage(item, imgLeft, imgTop, imgWidth, imgHeight);
 
         // 标识位置
         var cName = item.className,
@@ -439,8 +441,6 @@ function drawImg(){
             imgTop      = imgParent.offsetTop;
         imgList.querySelector("." + cName).parentNode.parentNode.querySelector(".filepos")
             .innerHTML = "background-position: "+ -imgLeft +"px "+ -imgTop +"px;";
-        // 画图
-        ctx.drawImage(item, imgLeft, imgTop, imgWidth, imgHeight);
     }
 
     // 生成合成图片

@@ -1,3 +1,13 @@
+// jquery problem
+==========================================================
+1   不支持 change事件
+2   不支持 移动端事件
+3   事件对象e与原生不一致
+==========================================================
+
+
+
+
 // 重要知识点
 ==========================================================
 1   html基础
@@ -1698,4 +1708,15 @@ flash           application/x-shockwave-flash	swf
 
 
 // 17-11-02 15:40:47 
-    当设置 writing-mode: tb-rl: 时, line-height; text-align: 方向将旋转
+    当设置 writing-mode: tb-rl: 时,
+        line-height: 
+        text-align: 
+        text-indent:
+        方向将旋转
+
+// 17-11-21 12:25:23 
+    当子元素width: 100%时, 所获得宽度因自身的属性不同而不同
+    1 position: relative; static(包括float),
+        = 父元素的实际宽度(不包括内补白)
+    2 position: absolute; fixed
+        = 父元素实际宽度 + 内补白
