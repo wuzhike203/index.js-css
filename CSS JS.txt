@@ -1466,11 +1466,11 @@ flash           application/x-shockwave-flash	swf
     2 clinetWidth
     3 scrollWidth
 
+    getBoundingClientRect()
     // 返回一个矩形对象, 包括top, left, right, bottom 四个属性
     // 它们是相对于视口的位置
     // offsetWidth = right - left
     // left 相当于 offset 一层层叠加
-    getBoundingClientRect()
 
 // 17-05-20 22:21:06 滚动
     1 每个元素的scrollLeft, scrollTop 既是可读，也是可写
@@ -1552,14 +1552,16 @@ flash           application/x-shockwave-flash	swf
             webGL 是嵌入到canvas中工作的
 
 // 17-08-20 12:12:09  CSS3 新特性
-    // 网页中一些特殊的对象
-    // http://www.zhangxinxu.com/wordpress/2013/06/%E4%BC%AA%E5%85%83%E7%B4%A0-%E8%A1%A8%E5%8D%95%E6%A0%B7%E5%BC%8F-pseudo-elements-style-form-controls/
+     网页中一些特殊的对象
+     http://www.zhangxinxu.com/wordpress/2013/06/%E4%BC%AA%E5%85%83%E7%B4%A0-%E8%A1%A8%E5%8D%95%E6%A0%B7%E5%BC%8F-pseudo-elements-style-form-controls/
     1   // placehodler
+    ------------------------------------------------
         input::          -moz-placehodler { }
         input::     -ms-input-placehodler { }
         input:: -webkit-input-placehodler { }
 
     2   scrollbar
+    ------------------------------------------------
         // 滚动条
         // chrome滚动条是以伪对象的方式使用
         .test::-webkit-scrollbar{
@@ -1587,56 +1589,52 @@ flash           application/x-shockwave-flash	swf
         }
 
     3   // 表单，下拉箭头
+    ------------------------------------------------
         3.1 select
             // 在非IE中，通过appearance: none; 解决.
             // 在IE10及以上，::-ms-expand{ display: none; }
-        3.2 check/radio
-
-    3   -ms-expand
-        // select 标签 箭头
 
     // css3 新特效
-    1   // 遮罩
-        mask    
+    ================================================
+    1   // 遮罩(IE, Edge都不支持;)
+    ------------------------------------------------
+        mask: 与background相似,
+        但在元素上面, bg在元素下面
+        // Rule
+        只有mask不透明度不为0的地方, 才可以显示内容
 
-    2   // appearance (可在chrome中测试, 目前没什么用处)
-        属性允许您使元素看上去像标准的用户界面元素
-        // 所有主流浏览器都不支持 appearance 属性。
-        // Firefox 支持替代的 -moz-appearance 属性。
-        // Safari 和 Chrome 支持替代的 -webkit-appearance 属性。
-        value       desc
-        ==========================================
-        normal      常规元素
-
+    2   // appearance(IE都不支持, Edge开始支持)
+    ------------------------------------------------
         // 清除浏览器默认样式(如: select)
                 appearance: none;
            -moz-appearance: none;  
         -webkit-appearance: none; 
-        // IE10及以上
-        ::-ms-expand { display: none; }
 
-    3   // colum 排版(IE10+, 所有浏览器都只支持部分属性)
+    // Layout: 布局
+    3   // column 排版(IE10+, 所有浏览器都只支持部分属性)
+    ------------------------------------------------
         column-width;               // 列宽
         column-gap;                 // 列间隙
-        column-fill:                // 
         column-count:               // 列数
-        column-span:                //
-        columns:                    //
-        column-rule-color:
-        column-rule-style:
-        column-rule-width:
+        column-rule:                // 列之间的边
+        column-span:                // 在子元素上使用, "all", none, 跨列
+        column-fill:                // 统一列高: auto, balance
+
+        columns:                    // 复合属性
 
     
-    4   // box 模型
-        display: -webkit-box;
-        -webkit-box-orient: vertical;
-        -webkit-line-clamp: 3;
-        overflow: hidden;
-        text-overflow: ellipsis;
+    4   // box 模型(是flex的实验版, IE10+)
+    ------------------------------------------------
+    5   // flex 模型(IE10+, -ms-)
+    ------------------------------------------------
+        .box {
+            display: flex;
+        }
+        // 子元素的float, clear, vertical-align将失效
 
-    5   // flex 模型
-
-    6   // grid 布局(网格线布局)
+    6   // grid 布局(网格线布局, IE11+(部分支持), UC不支持, 
+    ------------------------------------------------
+        // experimental Web Platform features" flag in chrome://flags)
         display: grid;
 
 
@@ -1720,3 +1718,6 @@ flash           application/x-shockwave-flash	swf
         = 父元素的实际宽度(不包括内补白)
     2 position: absolute; fixed
         = 父元素实际宽度 + 内补白
+
+// 17-11-27 14:51:31 
+    通过伪类设置 unicode字符 与 用html标签展现不一致
