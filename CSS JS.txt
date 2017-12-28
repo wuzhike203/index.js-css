@@ -1733,3 +1733,15 @@ flash           application/x-shockwave-flash	swf
     // 函数
     5 arrow function
     6 default, rest
+
+// 17-12-22 10:52:07 
+    ul 和 滚动条的位置
+    1 ul:
+        outside: padding-left 往外;
+    2 滚动条(width = 16px):
+        padding-right 往内;
+
+    // 继承父元素的宽度和高度
+    absolute:100%; 包含 padding
+    // absolute: 
+    right: 0, 指padding-right的边界
