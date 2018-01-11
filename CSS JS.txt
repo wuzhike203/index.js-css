@@ -679,6 +679,7 @@
             // 使用说明
             WdatePicker({
                 /* 显示
+                 * 0、当前获取焦点的元素
                  * 1、通过元素onclick触发       el: 'element_id'
                  * 2、直接显示在页面上          eCont: 'element_id'
                  */ 
