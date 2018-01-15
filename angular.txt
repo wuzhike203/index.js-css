@@ -1,0 +1,51 @@
+// 学习angular 笔记
+
+// 每个应用由一下组件 组成
+1 ng-app:       应用名称
+    // app: ng-app="app"
+    // 依赖项
+    var module1 = angular.module("app", ["依赖项"])
+2 scope:        相当于MVC中的M, scope和rootscope
+    // 在 controller中直接使用
+3 controller:   控制器(一个类的实例)
+    // 注册控制器
+    module1.controller("控制器名称", function(...各种依赖 services(包括上级module上注册的)){
+    
+    });
+4 filter:       过滤器
+    // 注册 过滤器
+    module1.filter("过滤器名称", function(val){
+        return ; 
+    });
+    // 可以管道使用
+5 factory:      service
+    // 注册服务
+    module1.factory("服务名称", function(){
+        return {};  // 返回一个对象，挂载各种方法
+    })
+6 directive:    指令
+    // 注册指令
+
+7 value:        
+    // 设置全局变量
+    module1.value(变量, 值)
+  
+8 constack:
+    // 设置全局变量
+    module1.constant(变量, 值)
+    // 可以管道使用
+
+
+// 应用之间可以 平级和上下级 连接
+// 下级应用可以使用上级应用中注册的 服务(service), 过滤器(filter), 指令(directive)等
+// 可以访问 上级应用中的 scope
+
+            module1           +         module2
+               |
+               |
+        ----------------
+        |               |
+      module11      module12
+
+
+

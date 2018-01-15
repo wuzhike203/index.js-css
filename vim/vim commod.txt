@@ -1,3 +1,7 @@
+// https://tuxproject.de/projects/vim/x64/
+// https://github.com/LER0ever/EverVim/wiki/Installation-on-Windows
+
+
 #{position}位置
 ==============================================================================
 1       一行        0   ^   B/b     W/w   e  h   j   k   l    $   
@@ -498,3 +502,11 @@
     4.3 resize
         :resize -/+4
         :vertical resize -/+4
+
+
+#宏录制
+==============================================================================
+开始：q{寄存器}
+结束: q
+
+使用: @{寄存器}
