@@ -26,10 +26,6 @@
 3   字体多样式; 大字体突出显示
 4   极简主义
 
-// 布局
-==========================================================
-1   当一个内联元素包含一个内联块元素时，内联元素的高度并不会被撑高。
-
 // 排版
 ==========================================================
     //公共样式表：
@@ -439,31 +435,6 @@
             fixed： 背景图像相对于窗体固定。 
             scroll： 背景图像相对于元素固定
 
-    // 六、字体装饰
-    ------------------------------------------------------
-    1、text-decoration:
-        // 只有firefox支持css3的复合属性
-        // 其他浏览器只支持text-decoration: underline/overline/line-through
-            text-decoration-line: underline / overline / line-through
-            text-decoration-style: solid / dotted / dashed / wavy / double
-            text-decoration-color:
-    2、text-shadow:
-        <x> <y> <blur-length> <color>
-        <x>:    在x方向上的偏移量
-        <y>:    在y方向上的偏移量
-        <blur-length>:  模糊度
-        <color>:        颜色
-
-    // 七、书写模式
-    ------------------------------------------------------
-    1、writing-mode:
-        horizontal-tb       // 正常
-        vertical-lr         // 垂直, 从左向右
-        vertical-rl         // 垂直, 从右向左
-    2、direction:
-       // 当unicode-bidi: bidi-override时, 才起作用
-        ltr
-        rtl
 
     // 八、html/css/js中使用unicode字符
     ------------------------------------------------------
@@ -480,57 +451,6 @@
         如：\u4e00;
 ----------------------------------------------------------
 
-
-// 排版心得
-==========================================================
-    序号    说明
-    ------------------------------------------------------
-    1       元素的位置最好与形状分离
-    2       元素relative与absolute各有好处:
-            relative: 宽度自动充满整个空间, 而不用考虑父元
-                      素的padding, margin
-            absolute: 宽度不能自动从满整个空间，当width=100%
-                      时，其宽度可能超过父元素的宽度(=padding
-                      + 实际宽度)
-----------------------------------------------------------
-
-
-// 百分比相对量
-==========================================================
-序号    属性                                依据对象
-----------------------------------------------------------
-1       定位属性                            父对象
-            left/top
-        -------------------
-        尺寸属性
-            width/height
-        -------------------
-        内/外边距属性                       // 父对象的宽度
-            margin
-        -------------------
-
-
-2       弹性盒模型
-            flex-basis
-----------------------------------------------------------
-
-3       背景
-            background-size:                背景定位区域
-            background-position:            背景定位区域 - 背景图片
-----------------------------------------------------------
-
-4       字体
-            font-size                       父元素
-            line-height                     元素本身的font-size
-----------------------------------------------------------
-
-5       文本
-            text-index                      父元素宽度
-            word-spacing                    受影响文字的宽度
-            vertical-align                  元素本身的line-height
-----------------------------------------------------------
-
-
 // 工具类
 ==========================================================
     序号    名称            说明 
@@ -545,7 +465,7 @@
 ==========================================================
     序号    名称            说明 
     ------------------------------------------------------
-    //0     zepto.js        与jquery类似，但以移动端为主的js库
+    0     zepto.js        与jquery类似，但以移动端为主的js库
     ------------------------------------------------------
     1       滚动条插件   
             // 使用说明
@@ -778,14 +698,12 @@
             // Waypoints is the easiest way to trigger 
             // a function when you scroll to an element. 
             1、jquery.waypoints.min.js
-            <!-- 
               var waypoint = new Waypoint({
                   element: document.getElementById('waypoint'),
                   handler: function(direction) {
                       console.log('Scrolled to waypoint!')
                   }
               })
-            -->
     ------------------------------------------------------
     10      jQuery UI插件
             // jquery.ui.widget.js
@@ -859,80 +777,6 @@
 ----------------------------------------------------------
 
 
-// drag事件
-==========================================================
-1 让元素可以被拖动
-----------------------------------------------------------
-    1.1 图片, 文字, 链接自动可以被拖动
-    1.2 其他元素, 设置draggable="true", 才可以被拖动
-
-2 让元素可以接受被拖动的元素
-----------------------------------------------------------
-    1.1 .ondragenter, ondragover 事件处理中, e.preventDefault()
-
-3 让元素放置被拖动的元素时, 不打开url等的默认行为
-----------------------------------------------------------
-    3.1 ondrop 事件处理中, e.preventDefault()
-
-4 传递数据
-----------------------------------------------------------
-    4.1 e.dataTransfer.setData("mimeType", value);
-        // 在 ondragstart中设置
-    4.2 e.dataTransfer.getData("mimeType", value);
-        // 在 ondrop中设置
-----------------------------------------------------------
-
-
-// 16-09-26 
-    // 前端规范
-    // html
-        1、body ： 一般只设最小宽度：1050px;
-        2、背景 ： 一般为rgba(0, 0, 0, 0.3), 即：黑色的30%;
-        3、弹窗高度：一般最大为580px; 再大就下拉条
-    // css
-        杜绝使用<meta http-equiv="X-UA-Compatible" content="IE=7" /> 兼容 ie8;
-    // js
-        jQuery变量要求首字符为'_',
-        另, 要求变量集中声明, 避免全局变量.
-    // 按钮审美
-        一个标准的按钮:
-            line-height: 1.6em;
-            padding-left: 0.85em;
-            padding-right: 0.85em;
-
-            border-radius: 0.8em;
-
-    // img 图片规范
-    　　1. 所有页面元素类图片均放入img文件夹, 测试用图片放于img/demoimg文件夹;
-    　　2. 图片格式仅限于gif || png || jpg;
-    　　3. 命名全部用小写英文字母 || 数字 || _ 的组合，其中不得包含汉字 || 空格 || 特殊字符；
-           尽量用易懂的词汇, 便于团队其他成员理解;
-           另: 命名分头尾两部分, 用下划线隔开, 比如ad_left01.gif || btn_submit.gif;
-    　　4. 在保证视觉效果的情况下选择最小的图片格式与图片质量, 以减少加载时间;
-    　　5. 可以使用半透明的png图片(若使用, 请参考css规范相关说明);
-    　　6. 运用css sprite技术集中小的背景图或图标, 减小页面http请求,
-           但注意, 请务必在对应的sprite psd源图中划参考线, 并保存至img目录 下.
-
-    // 开发及测试工具约定
-    　　1、测试顺序: FireFox-->IE8-->IE7 -->Opera-->Chrome-->Safari, 
-        2、IE6访问页面时判断提供升级链接
-            <!--[if lte IE 6]>
-            <div id="ie6-warning">您正在使用 Internet Explorer 6，在本页面的显示效果可能有差异。建议您升级到 <a href="http://www.microsoft.com/china/windows/internet-explorer/" target="_blank">Internet Explorer 8</a> 或以下浏览器： <a href="http://www.mozillaonline.com/">Firefox</a> / <a href="http://www.google.com/chrome/?hl=zh-CN">Chrome</a> / <a href="http://www.apple.com.cn/safari/">Safari</a> / <a href="http://www.operachina.com/">Opera</a>
-            </div>
-            <script type="text/javascript">
-            function position_fixed(el, eltop, elleft){
-            // check if this is IE6
-            if(!window.XMLHttpRequest)
-            window.onscroll = function(){
-            el.style.top = (document.documentElement.scrollTop + eltop)+"px";
-            el.style.left = (document.documentElement.scrollLeft + elleft)+"px";
-            }
-            else el.style.position = "fixed";
-            }
-            position_fixed(document.getElementById("ie6-warning"),0, 0);
-            </script>
-            <![endif]-->
-
 // 16-10-09 08:37:34 
     1 水平居中有2中方式
         a、块 ：position: static/relative:  margin: auto
@@ -944,16 +788,10 @@
         2.2 line-height = height 
         2.3 padding: 上下一致
 
-// 16-10-10 17:06:31 
-    css 模块化：
-    思想：网页是布局 + UI组件构成
 
 // 16-10-16 09:40:19 
     text-align:     作用于外，外框中 文本 的对齐方式
     vertical-align: 作用于内，内联元素 在 外框中的垂直对齐方式。
-
-// 16-09-29 15:57:53 
-    IE8 absolute问题
 
 // 16-09-28 00:03:08 
     button 与 a作为按钮的区别
@@ -1090,11 +928,6 @@
         y1 = 2y,
         相当于scale(2)
 
-// 16-11-25 11:42:28 什么情况下用table:
-    当需要自适应的时候
-    1、 不管有1,2 或 3项等时，要求均分整个空间。
-    2、 当有左右项时，一边的高度增加时，另一边也要增加时。
-
 // 16-12-05 11:19:17 拖动事件
     按一般的理解：鼠标移动才叫拖动，
     但有时，即使人没有移动鼠标，由于震动等原因，浏览器会自动判断鼠标在移动了。
@@ -1205,10 +1038,6 @@
                 如果只有少量的dom发生操作，
                 #操作单个dom的成本要远低于内容替换(innerHTML)
 
-// 16-12-22 14:25:33 
-    让元素的高度与浏览器高度一致
-    html, body{height: 100%;}
-    div{min-height: 100%; height:auto;}
 
 // 16-12-28 14:51:23 
     1、如果border: 5px solid; 未设置颜色，则：
@@ -1234,14 +1063,6 @@
     -----------------------------------------------
     宽度确定    改变位置            不起作用
     宽度未定    改变长度            改变长度
-
-// 17-01-25 10:30:03 
-    1、如何从psd中确定行高: 
-        a   两列相同部位的间距
-    2、假设font-size: 14px; line-hegiht: 1.33;
-        则：
-        a   小写字母a 距行最上端：(行高/2) = (14*1.33*0.5) = 9
-        b   汉字      距行最上端: (行高 - 字体高)/2 = (14*0.33*0.5) = 2
 
 // 17-03-09 10:54:30 
     pseudo-element 分类
@@ -1565,7 +1386,7 @@ flash           application/x-shockwave-flash	swf
         -webkit-appearance: none; 
 
     // Layout: 布局
-    3   // column 排版(IE10+, 所有浏览器都只支持部分属性)
+    3   // column 多栏 排版(IE10+, 所有浏览器都只支持部分属性)
     ------------------------------------------------
         column-width;               // 列宽
         column-gap;                 // 列间隙
@@ -1591,6 +1412,30 @@ flash           application/x-shockwave-flash	swf
         // experimental Web Platform features" flag in chrome://flags)
         display: grid;
 
+    7   // ps中的混合模式(ie, Edge都不支持; firefox, chrome支持)
+    ------------------------------------------------
+        mix-blend-mode:     // 目前支持度不好
+        background-blend-mode:  //背景图片以及背景色的混合
+        // 取值
+            normal;         // 正常
+            multiply;       // 正片叠底
+            screen;         // 滤色
+            overlay;        // 叠加
+            darken;         // 变暗
+            lighten;        // 变亮
+            color-dodge;    // 颜色减淡
+            color-burn;     // 颜色加深
+            hard-light;     // 强光
+            soft-light;     // 柔光
+            difference;     // 差值
+            exclusion;      // 排除
+            hue;            // 色相
+            saturation;     // 饱和度
+            color;          // 颜色
+            luminosity;     // 亮度
+            initial;        // 默认
+            inherit;        // 继承
+            unset;          // 还原
 
 // 17-09-21 20:33:10 
     // IE6 适配
@@ -1693,9 +1538,9 @@ flash           application/x-shockwave-flash	swf
 // 17-12-22 10:52:07 
     ul 和 滚动条的位置
     1 ul:
-        outside: padding-left 往外;
+        outside: 在padding-left中
     2 滚动条(width = 16px):
-        padding-right 往内;
+        在padding-right中
 
     // 继承父元素的宽度和高度
     absolute:100%; 包含 padding
