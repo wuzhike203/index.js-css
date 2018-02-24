@@ -1388,7 +1388,7 @@ flash           application/x-shockwave-flash	swf
     // Layout: 布局
     3   // column 多栏 排版(IE10+, 所有浏览器都只支持部分属性)
     ------------------------------------------------
-        column-width;               // 列宽
+        column-width;               // 列宽(无用)
         column-gap;                 // 列间隙
         column-count:               // 列数
         column-rule:                // 列之间的边
@@ -1612,3 +1612,16 @@ flash           application/x-shockwave-flash	swf
         // e = { data: "", origin: 发送消息的文档所在的域, source: 发送消息的域的window代理 }
     };
 
+
+// 18-02-13 14:59:10 搜狗浏览器(版本号: 7.5.8.27113)
+    // 自动回填表单 存在下面2个 bug
+    1 只要页面上有 <input type="password" /> 和 一个 <input type="text" />,
+        搜狗就认定是登录页面, 要执行表单自动回填
+
+    2 当增加的页面内容上含有 button 按钮时(input,type="submit" 和 img 还没验证), 如:
+        var div = document.createElement("div"),
+            div.innerHTML = "<button>aa</button>";
+            document.body.appendChild(div);
+
+        会引起表单自动回填
+        (即使是 <button type="button">aa</button> )

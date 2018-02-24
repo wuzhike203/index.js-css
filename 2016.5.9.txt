@@ -1538,3 +1538,13 @@ Math
     // 思维导图
     1 Graphviz
     2 Xmind
+
+// 18-02-24 14:41:38 获取python帮助的几种方式
+    1 在线帮助
+        help()
+    2 help(模块名/对象/函数名...)
+    3 dir(模块名/对象)
+    4 func_name.__doc__
+    5 查看内建模块
+        import sys
+        sys.builtin_modules_names
