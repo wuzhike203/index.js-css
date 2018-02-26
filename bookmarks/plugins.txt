@@ -1,9 +1,0 @@
-序号    插件名称
-================================
-1       谷歌访问助手
-2       Page Ruler
-3       Tampermonkey
-4       FireShot
-5       FVD Download
-6       YSlow
-7       有道词典chrome取词插件

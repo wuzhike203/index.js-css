@@ -1,4 +1,0 @@
-LangUtilTests
-EqualsBuilderTest
-ToStringBuilderTest
-SimpleDateFormatTest

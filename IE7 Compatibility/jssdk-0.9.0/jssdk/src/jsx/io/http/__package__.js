@@ -1,4 +1,0 @@
-DefaultRequest
-DefaultResponse
-HttpRequest
-HttpResponse

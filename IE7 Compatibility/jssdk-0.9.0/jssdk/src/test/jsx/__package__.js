@@ -1,2 +1,0 @@
-TestBase
-AllTests

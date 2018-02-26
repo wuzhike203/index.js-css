@@ -1,4 +1,0 @@
-TableCellCurrencyComparator
-TableCellDateComparator
-TableCellNumericComparator
-TableCellStringComparator

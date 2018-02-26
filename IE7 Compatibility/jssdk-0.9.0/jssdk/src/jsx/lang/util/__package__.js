@@ -1,3 +1,0 @@
-EqualsBuilder
-ToStringBuilder
-SimpleDateFormat

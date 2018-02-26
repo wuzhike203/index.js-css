@@ -1,2 +1,0 @@
-ResultPrinter
-TestRunner
