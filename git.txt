@@ -187,3 +187,41 @@
 　　 a
 　　 a
 　　 a
+
+
+// 1 远程仓库
+    git remote add <origin远程仓库名> <远程仓库地址git@gitee.com:wuzhike403/html-cli.git>
+    git remote [-v | --verbose]
+    git remote add <name> <url>
+    git remote rename <old> <new>
+    git remote remove <name>
+
+// 2 在远程仓库上添加分支
+    git push [-u] <origin> <master1>[:]<master2>
+    2.1 -u: 关联本地分支master1 到 远程仓库origin的master2分支
+    2.2 如果省略 master2, 则推送到 远程仓库的master1分支上;
+    2.3 如果相应的分支不存在, 则创建
+    2.4 如果省略 master1, 则删除远程仓库上的master2分支
+
+    git pull <origin> <master2>[:]<master1>
+    // 从 远程仓库origin的master2分支 拉取代码到本地master1分支
+    2.5 如果省略master1, 则拉取到当前分支
+
+// 3 本地分支
+    git branch dev      // 创建
+    git branch -d       // 删除
+    git checkout dev    // 切换分支
+    git branch -m <oldname> <newname>   // 重命名
+
+// 4 版本库
+    版本号(commit_id) 或者
+    HEAD: 表示当前版本
+    HEAD^: 上一个版本
+
+    git log
+    git reflog
+    // 版本回退和跳转
+    git reset [--hard] 版本标识
+
+
+    git checkout
