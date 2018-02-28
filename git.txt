@@ -221,7 +221,10 @@
     git log
     git reflog
     // 版本回退和跳转
-    git reset [--hard] 版本标识
+    git reset --hard 版本标识
+        // 删除 the index 和 working tree的修改部分
+    git reset -- <path>
+        // 用版本库中的内容替换 the index
 
-
-    git checkout
+// 5 restore working tree files
+    git checkout -- <path>
