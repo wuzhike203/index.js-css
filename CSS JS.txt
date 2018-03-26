@@ -841,7 +841,7 @@
 
     color: white;        /* 所有的 */
     color: blue\9;       /* 所有的IE */
-    color: green\9\0;    /* IE9+ */
+    color: green\9\0;    /* IE8+ */
     +color: red;         /* IE7- */
     #1、\9\0的顺序：不可更换
     #2、+color:red; 必须放在最后，否则IE7无法识别。
@@ -1226,8 +1226,9 @@ flash           application/x-shockwave-flash	swf
     4 focus()                       // 让某元素获得焦点, 并让元素处于窗口中
     // 目前 focus 仅适用于可见的表单元素,
     // 对于其他元素, 可设置一个 width: 0; height: 0; border: 0; overflow的表单元素跟随
-
+    // 在移动端会弹出软键盘
     5 使用瞄点 #a
+        // vue-router使用hash来控制路由(与这个冲突)
 
 // 17-05-20 21:45:20  元素位置和大小
     // 位置
@@ -1625,3 +1626,61 @@ flash           application/x-shockwave-flash	swf
 
         会引起表单自动回填
         (即使是 <button type="button">aa</button> )
+
+
+// 18-03-08 09:25:40 剪贴板对象
+    1 拖动时, e.dataTransfer
+        // 从IE5开始支持
+        getData("text"),
+        setData("text")
+        files
+
+    2 copy,paste: 复制和粘贴 事件时, e.clipboardData
+      (IE: window.clipboardData)
+
+
+// 18-03-08 09:35:16 浏览器选择了文本
+    IE9以下支持：document.selection 
+        document.selection.createRange().text;
+
+    IE9、Firefox、Safari、Chrome和Opera支持：window.getSelection()
+        document.getSelection().toString() 
+
+
+// IE8 
+    1 不支持 伪类和大部分伪对象
+    2 不支持 calc
+    3 不支持 图像渐变
+    4 不支持 背景复合属性
+    5 img: border
+
+// 如何确定一个元素的text-baseline: 文字基准线
+    0 一个 overflow: hidden/auto: 的块级或块级内联元素, 其baseline是其底部
+
+    1 取元素最后一行
+    2 此行中所有
+        非float, 非absolute, 非fixed, 
+        vertical-align: baseline的直接子元素(包括所有text类型, 所有内联和块级元素)
+        baseline线水平排列成一条线, 就是此元素的baseline
+
+        // 奇怪吗？块级元素和内联块级 可以再同一水平线上？
+        // 哈哈~~, 有这种可能性: 只包含一个块级元素。
+
+
+// Document.visibilityState: 文档的可见性: 只读属性
+    页面是在背后, 或是不可见的隐藏的标签页
+    1 'visible' : 
+        此时页面内容至少是部分可见. 即此页面在前景标签页中，
+        并且窗口没有最小化.
+    2 'hidden' : 
+        此时页面对用户不可见. 即文档处于背景标签页或者窗口处于最小化状态，
+        或者操作系统正处于 '锁屏状态' 
+
+    // 此属性的值改变时, 会递交 visibilitychange 事件给Document.
+    
+
+// 18-03-24 15:08:46 
+    H5的项目，发现页面元素为一串数字时，评估手机会默认显示成蓝色字体
+
+    解决此问题的方法很简单，在head标签中添加下面的meta标记即可解决。
+    <meta name="format-detection" content="telephone=no">
