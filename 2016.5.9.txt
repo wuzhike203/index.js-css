@@ -1589,3 +1589,103 @@ Math
         把每个接口先跑一遍, 检测其提供的值是否与文档一致。
 
 
+// 18-03-29 15:02:42 
+    今天使用gulp遇到 watch只执行一次的问题。
+    // 解决
+    用gulp3.3版本替换4.0版本就好了
+
+
+// 18-04-09 09:48:03  flv与swf的区别
+    共同点: 都是flash来创建
+    // 1 FLV是流媒体, 
+        所谓流媒体，简而言是就是可以在网络上边缓冲边播放的媒体文件。
+        只属于一般的VIDEO，通常只是让观众进行观看的。
+
+        FLV的：与AVI、MPG、RM等等，是类似或一样的，都是视频文件，只是压缩算法不同，
+        它们应用在不同场合会有不同的优势或缺点
+
+
+    // 2 SWF不是流媒体
+        可以置入AS程序代码，可以与用户进行互动，比如Flash小游戏，就是SWF格式的，
+        用户可以控制游戏里事先设定的可控制按钮。
+        这一点FLV是办不到的。FLV多用于网络视频，SWF多用于网页装饰，
+        SWF也可以用于互动程序和动画的展示。
+
+
+            SWF文件，可以说是一种图形指令，它不必象视频文件那般每秒24帧这样播放，
+        它可以先确定一个背景画面，然后在背景的不同位置叠加同一个人物，由于是不同位置，
+        所以看起来这个人物就会运动了。而这种运动，只是通过指令就可完成，同一个人物图可以多次使用，
+        例如这个人物从左边走去右边，只需编个程序让它迈完左脚迈右脚，不断循环就可以了，
+        
+            但视频文件对付这种画面，都只能是每走一步都要记录在案，容量再压缩也会很大，
+        相反，SWF文件只记录指令，在某指令下可以重复应用同一图片，文件容量小得多。
+
+        // ---------------------------------
+        简单的说：
+        flv是flash生成的视频，不可以交互。
+        swf是flash直接生成的动画，可以交互。
+
+
+
+// 18-04-09 10:17:46 
+    // 微信小程序 与网页, APP的关系
+    小程序其实就是之前一直神神秘秘的应用号。只是换了一个更接地气的名字.
+
+        简单说，它就是一个可以实现之前只能是原生态APP可以实现的效果和功能。
+    比如说，一些酷炫的页面与转场，一些可以直接和手机硬件交互的功能，录音啊，
+    拍视频啊，调用手机的重力感应啊，GPS啊等等
+
+        小程序是一种不需要下载安装即可使用的应用，它实现了应用“触手可及”的梦想，用户扫一扫或者搜一下即可打开应用。也体现了“用完即走”的理念，用户不用关心是否安装太多应用的问题。应用将无处不在，随时可用，但又无需安装卸载。对于开发者而言，小程序开发门槛相对较低，难度不及APP，能够满足简单的基础应用，适合生活服务类线下商铺以及非刚需低频应用的转换。
+
+        介于网页与APP效果之间
+
+
+// 18-04-09 11:39:17 
+    JS模块化方案: CommonJS(服务器端) 和 AMD(浏览器端, 如require.js), ES6(ES2015)
+    // 目前: nodejs 使用 CommonJS方案, 对es6模块支持度处于试验阶段
+
+    // 1 AMD
+        // 定义content.js
+        define('content.js', function(){
+            return 'A cat';
+        })
+        // 使用
+        //index.js
+        require(['./content.js'], function(animal){
+            console.log(animal);   //A cat
+        })
+
+    // 2 CommonJS
+        // 定义 content.js
+        module.exports = 'A cat'
+
+        // 使用 index.js
+        var animal = require('./content.js')
+
+    // 3 ES6
+        // 定义 content.js
+        export default 'A cat'    
+        export function say(){
+            return 'Hello!'
+        }    
+        export const type = 'dog' 
+
+
+        // 使用 index.js
+        import animal from './content'                                  // 只引入默认的代码片段
+        import animal, { say, type as animalType } from './content'     // 引入默认代码片段 和 部分其他
+        import animal, * as content from './content'                    // 引入所有的
+        import { type } from './content'                                // 只引入部分 代码片段
+
+        let says = say()
+        console.log(`The ${type} says ${says}`)  //The dog says Hello
+
+    // -------------------------- 
+    Node.js
+    // 全局变量 global 
+    // 模块变量 this
+    // 局部变量 var 
+
+    var name = "var name";          // 局部变量
+    this.name = "module name";      // 模块变量
+    global.name = "wuji";           // 全局变量

@@ -1117,7 +1117,6 @@ adobe           application/postscript	        ai/ps/eps
 
 js              application/x-javascript	    js
 dll             application/x-msdownload	    dll
-flash           application/x-shockwave-flash	swf
 ----------------------------------------------------------------------
 
 // audio
@@ -1150,6 +1149,11 @@ flash           application/x-shockwave-flash	swf
                 video/quicktime	                mov/qt
                 video/x-msvideo	                avi
                 video/x-sgi-movie	            movie
+----------------------------------------------------------------------
+
+// video
+----------------------------------------------------------------------
+flash           application/x-shockwave-flash	swf
 ----------------------------------------------------------------------
 
 // 17-03-21 22:37:12 
@@ -1684,3 +1688,14 @@ flash           application/x-shockwave-flash	swf
 
     解决此问题的方法很简单，在head标签中添加下面的meta标记即可解决。
     <meta name="format-detection" content="telephone=no">
+
+// 18-04-03 14:28:44 
+    js表达式
+    a = b + 1,   这个表达式返回a的值
+    b + 1,       这个表达式返回b+1的值
+
+    // 用逗号分隔的表达式序列, 返回最后一个表达式的值
+    (表达式1, 表达式2, 表达式3),   返回表达式3的值
+
+    // 表达式中不允许出现 var
+    
