@@ -273,26 +273,6 @@ Array.reduceRight
                 |       #解决方案：
                 |           ieBetter.js
 
-13、CSS         |   // 伪对象 和 大部分伪类
-                |   IE7, IE8不支持伪对象 和 大部分伪类
-                |   伪类            IE7                 IE8
-                |--------------------------------------
-                |   E:link          yes                 yes
-                |   E:visited       yes                 yes
-                |   E:hover         yes                 yes
-                |   E:active        yes(只支持a)        yes
-                |   E:first-child   yes                 yes
-
-                |   伪对象          IE7                 IE8
-                |--------------------------------------
-                |   E:first-letter  yes                 yes
-                |   E:first-line    yes                 yes
-                |   E:before        no                  no
-                |   E:after         no                  no
-
-                |   使用伪对象清除浮动时，往往失效：直接设定高度
-                |       #解决方案：
-                |           在元素块最后加入一个清除浮动的div.clearfloat
 
 14、XHR         |   // XHR 对象
                 |   IE7- 不支持 XHR对象的timeout(超时设定),ontimeout事件
@@ -332,8 +312,9 @@ Array.reduceRight
                 |  阻止进一步传播       e.stopPropagation()  e.cancelBubble()
                 |  事件类型             e.type                  e.type
                 |
-                |   作用域：IE，DOM0级，this = 所属元素
+                |   作用域：IE，DOM0级，this = 所属元素;  事件对象作为window的一个属性存在
                 |           IE，DOM2级，this = window
+                |   
                 |
                 |  #解决方案：
                 |    EventUtil 对象
@@ -638,10 +619,30 @@ Array.reduceRight
 ---------------------------------------------------------------
 1 综合
     rgba:           ie8- 不支持
+    图像渐变
     calc:           ie8- 不支持
     媒体查询        IE8- 不支持
     伪类            IE8- 不支持大部分伪类和伪对象
-    图像渐变
+13、CSS         |   // 伪对象 和 大部分伪类
+                |   IE7, IE8不支持伪对象 和 大部分伪类
+                |   伪类            IE7                 IE8
+                |--------------------------------------
+                |   E:link          yes                 yes
+                |   E:visited       yes                 yes
+                |   E:hover         yes                 yes
+                |   E:active        yes(只支持a)        yes
+                |   E:first-child   yes                 yes
+
+                |   伪对象          IE7                 IE8
+                |--------------------------------------
+                |   E:first-letter  yes                 yes
+                |   E:first-line    yes                 yes
+                |   E:before        no                  no
+                |   E:after         no                  no
+
+                |   使用伪对象清除浮动时，往往失效：直接设定高度
+                |       #解决方案：
+                |           在元素块最后加入一个清除浮动的div.clearfloat
 
 ---------------------------------------------------------------
 2、float            在IE8- 中, float: right, 并不能使元素display: block;
@@ -682,14 +683,67 @@ Array.reduceRight
 
 
 // CSS Hack
-    IE css hack:
+    // 什么是CSS hack
+        由于不同厂商的流览器或某浏览器的不同版本（如IE6-IE11,Firefox/Safari/Opera/Chrome等），
+    对CSS的支持、解析不一样，导致在不同浏览器的环境中呈现出不一致的页面展现效果。
+    这时，我们为了获得统一的页面效果，就需要针对不同的浏览器或不同版本写特定的CSS样式，
+    我们把这个针对不同的浏览器/不同版本写相应的CSS code的过程，叫做CSS hack!
 
-    color: white;        /* 所有的 */
-    color: blue\9;       /* 所有的IE */
-    color: green\9\0;    /* IE8+ */
-    +color: red;         /* IE7- */
-    #1、\9\0的顺序：不可更换
-    #2、+color:red; 必须放在最后，否则IE7无法识别。
+    // CSS hack的原理
+        由于不同的浏览器和浏览器各版本对CSS的支持及解析结果不一样，
+    以及CSS优先级对浏览器展现效果的影响，我们可以据此针对不同的浏览器情景来应用不同的CSS。
+
+    // CSS hack分类
+        CSS Hack大致有3种表现形式:
+    1 CSS属性前缀法、
+        // 属性前缀
+        _:      ie6及以下
+        *:      ie7及以下
+
+        // 值后缀
+        \9:     ie6+
+        \0:     ie8+
+        \9\0    ie9+
+
+
+        // 实例
+        color: white;        /* 所有的 */
+        color: blue\9;       /* 所有的IE */
+        color: green\9\0;    /* IE8+ */
+        *color: red;         /* IE7- */
+        #1、\9\0的顺序：不可更换
+        #2、+color:red; 必须放在最后，否则IE7无法识别。
+
+    2 选择器前缀法
+
+    3 IE条件注释法（即HTML头部引用if IE）Hack
+        只在IE下生效
+        <!--[if IE]>
+        这段文字只在IE浏览器显示
+        <![endif]-->
+        
+        只在IE6下生效
+        <!--[if IE 6]>
+        这段文字只在IE6浏览器显示
+        <![endif]-->
+        
+        只在IE6以上版本生效
+        <!--[if gte IE 6]>
+        这段文字只在IE6以上(包括)版本IE浏览器显示
+        <![endif]-->
+        
+        只在IE8上不生效
+        <!--[if ! IE 8]>
+        这段文字在非IE8浏览器显示
+        <![endif]-->
+        
+        非IE浏览器生效
+        <!--[if !IE]>
+        这段文字只在非IE浏览器显示
+        <![endif]-->
+
+
+    // 
 
 
 
