@@ -836,16 +836,6 @@
     checkbox已设置为checked--true-但不勾选问题解决方法（只第一次勾选有效）
     // 使用jquery prop() 代替 attr()
 
-// 16-10-24 13:37:38 
-    IE css hack:
-
-    color: white;        /* 所有的 */
-    color: blue\9;       /* 所有的IE */
-    color: green\9\0;    /* IE8+ */
-    +color: red;         /* IE7- */
-    #1、\9\0的顺序：不可更换
-    #2、+color:red; 必须放在最后，否则IE7无法识别。
-
 //16-10-24 14:58:22 
     360 极速模式 不支持 writing-mode: tb-lr 和 tb-rl :
 
@@ -1268,61 +1258,6 @@ flash           application/x-shockwave-flash	swf
 
     // 注，以上4中情况均可点击
 
-
-// 17-07-10 web前端浏览器常见兼容性问题
-    序号    说明
-    =================================================================================
-    1   浏览器默认的margin和padding不同，解决方案是加一个全局的*{margin:0;padding:0;}来统一。
-    2   上下margin重合问题，ie和ff都存在:
-        相邻的两个div的margin-left和margin-right不会重合，
-        但是margin-top和margin-bottom却会发生重合。
-        解决方法，养成良好的代码编写习惯，
-        同时采用margin-top或者同时采用margin-bottom。
-    3   Chrome 中文界面下默认会将小于 12px 的文本强制按照 12px 显示,
-        可通过加入 CSS 属性 -webkit-text-size-adjust: none; 解决。
-
-    4   超链接访问过后hover样式就不出现了 
-        被点击访问过的超链接样式不在具有hover和active了
-        解决方法是改变CSS属性的排列顺序:
-        L-V-H-A : a:link {} a:visited {} a:hover {} a:active {}
-    5   li与li之间有看不见的空白间隔是什么原因引起的？有什么解决办法？
-        行框的排列会受到中间空白（回车\空格）等的影响，
-        因为空格也属于字符,这些空白也会被应用样式，占据空间，所以会有间隔，
-        把字符大小设为0，就没有空格了。
-
-    // IE
-    1   png24位的图片在iE6浏览器上出现背景，解决方案是做成PNG8.也可以引用一段脚本处理.
-    2   浮动ie产生的双倍距离
-            （IE6双边距问题：在IE6下，如果对元素设置了浮动，
-        同时又设置了margin-left或margin-right，margin值会加倍。）
-        #box{ float:left; width:10px; margin:0 0 0 10px;}
-
-        这种情况之下IE会产生20px的距离，解决方案是
-        在float的标签样式控制中加入_display:inline;将其转化为行内属性。
-        (_这个符号只有ie6会识别)
-    3   渐进识别的方式，从总体中逐渐排除局部。
-        首先，巧妙的使用“\9”这一标记，将IE游览器从所有情况中分离出来。 
-        接着，再次使用“+”将IE8和IE7、IE6分离开来，这样IE8已经独立识别。 
-        css .bb{ 
-            background-color:#f1ee18;/*所有识别*/ 
-            background-color:#00deff\9; /*IE6、7、8识别*/ 
-            +background-color:#a200ff;/*IE6、7识别*/ 
-            _background-color:#1e0bd1;/*IE6识别*/ }
-    4   Ie z-index问题， 给父级添加position:relative
-    5   Min-height 最小高度！Important 解决’
-    6   select 在ie6下遮盖 使用iframe嵌套
-    7   为什么没有办法定义1px左右的宽度容器（IE6默认的行高造成的，使用over:hidden,zoom:0.08 line-height:1px）
-    8   IE下,可以使用获取常规属性的方法来获取自定义属性,
-        也可以使用getAttribute()获取自定义属性;
-        Firefox下,只能使用getAttribute()获取自定义属性。
-        解决方法:统一通过getAttribute()获取自定义属性。
-    9   IE下,even对象有x,y属性,但是没有pageX,pageY属性;
-        Firefox下,event对象有pageX,pageY属性,但是没有x,y属性。
-        * 解决方法：（条件注释）缺点是在IE浏览器下可能会增加额外的HTTP请求数。
-
-
-
-
 // 图形技术
     序号    名称    类型    浏览器支持情况
     1       vml     矢量    ie6/7/8/9
@@ -1650,13 +1585,6 @@ flash           application/x-shockwave-flash	swf
     IE9、Firefox、Safari、Chrome和Opera支持：window.getSelection()
         document.getSelection().toString() 
 
-
-// IE8 
-    1 不支持 伪类和大部分伪对象
-    2 不支持 calc
-    3 不支持 图像渐变
-    4 不支持 背景复合属性
-    5 img: border
 
 // 如何确定一个元素的text-baseline: 文字基准线
     0 一个 overflow: hidden/auto: 的块级或块级内联元素, 其baseline是其底部

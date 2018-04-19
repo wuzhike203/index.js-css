@@ -342,6 +342,15 @@ Array.reduceRight
                 | // IE9+        使用dispatchEvent(event)
                 |  #解决方案：
                 |    无
+                |
+                |
+5、paint            IE8- 不支持canvas:
+                    1、IE8- 使用VML 矢量标记语言 代替canvas画图
+                    2、使用 excanvas.js 使IE8- 支持 canvas
+
+                    在IE9+
+                    1 使用canvas 绘制位图
+                    2 使用svg 绘制 矢量图
 
 #
 #------------------------CSS差异--------------------------------
@@ -627,47 +636,95 @@ Array.reduceRight
 -----------------------------------------------------------------
 序号                        说明
 ---------------------------------------------------------------
-1、margin           在IE8中，margin: auto; 与 margin: 0 auto;效果不一样
----------------------------------------------------------------
-2、background       IE8- 不支持多组背景图像，
----------------------------------------------------------------
-3、ie9-background   IE9  不支持 
-                    background-size, 
-                    background-clip,
-                    background-origin 合并到background中
----------------------------------------------------------------
-4、legend           legend居中方式
-                    IE8- ： margin: auto;
-                    其他：text-align: center;
-                    //IE8-中，fieldset 和 legend 的位置与其他浏览器有差异
----------------------------------------------------------------
-5、paint            IE8- 不支持canvas:
-                    1、IE8- 使用VML 矢量标记语言 代替canvas画图
-                    2、使用 excanvas.js 使IE8- 支持 canvas
+1 综合
+    rgba:           ie8- 不支持
+    calc:           ie8- 不支持
+    媒体查询        IE8- 不支持
+    伪类            IE8- 不支持大部分伪类和伪对象
+    图像渐变
 
-                    在IE9+
-                    1 使用canvas 绘制位图
-                    2 使用svg 绘制 矢量图
 ---------------------------------------------------------------
-6、border-radius    IE8- 不支持 border-radius：
-                    故，使用border-radius制作圆形，不可用。
+2、float            在IE8- 中, float: right, 并不能使元素display: block;
+
 ---------------------------------------------------------------
-7、rgba             IE8- 不支持 rgba()
+3  box-sizing:      border-box;
+    margin          在IE8中，margin: auto; 与 margin: 0 auto;效果不一样
+
 ---------------------------------------------------------------
-8、justify          IE 中两端对齐
+4  justify          IE 中两端对齐
                     text-align: justify;
                     text-last-align: justify;
                     #只能作用于：块元素和table元素
                     #不包括内联块元素
                     #文字之间必须要有空格，即：按照空格来分组。
+
 ---------------------------------------------------------------
-9、float           在IE8- 中, float: right, 并不能使元素display: block;
+5、border-radius    IE8- 不支持 border-radius：
+   background       IE8- 不支持多组背景图像，
+                    IE9- 不支持背景复合属性
+                    background-size, 
+                    background-clip,
+                    background-origin 合并到background中
+
+
+
 ---------------------------------------------------------------
+6、legend           legend居中方式
+                    IE8- ： margin: auto;
+                    其他：text-align: center;
+                    //IE8-中，fieldset 和 legend 的位置与其他浏览器有差异
+
 10、select          IE8-的 select 有许多怪异行为：
                     1、其box-sizing: border-box; (尽管IE8-不支持box-sizing)
                     2、其padding-bottom 会影响同一行的文本的位置。
----------------------------------------------------------------
-11  媒体查询        IE8- 不支持
----------------------------------------------------------------
-12、伪类            IE8- 不支持大部分伪类
----------------------------------------------------------------
+
+
+
+
+// CSS Hack
+    IE css hack:
+
+    color: white;        /* 所有的 */
+    color: blue\9;       /* 所有的IE */
+    color: green\9\0;    /* IE8+ */
+    +color: red;         /* IE7- */
+    #1、\9\0的顺序：不可更换
+    #2、+color:red; 必须放在最后，否则IE7无法识别。
+
+
+
+// 17-07-10 web前端浏览器常见兼容性问题
+    序号    说明
+    =================================================================================
+    // IE
+    1   png24位的图片在iE6浏览器上出现背景，解决方案是做成PNG8.也可以引用一段脚本处理.
+    2   浮动ie产生的双倍距离
+            （IE6双边距问题：在IE6下，如果对元素设置了浮动，
+        同时又设置了margin-left或margin-right，margin值会加倍。）
+        #box{ float:left; width:10px; margin:0 0 0 10px;}
+
+        这种情况之下IE会产生20px的距离，解决方案是
+        在float的标签样式控制中加入_display:inline;将其转化为行内属性。
+        (_这个符号只有ie6会识别)
+    3   渐进识别的方式，从总体中逐渐排除局部。
+        首先，巧妙的使用“\9”这一标记，将IE游览器从所有情况中分离出来。 
+        接着，再次使用“+”将IE8和IE7、IE6分离开来，这样IE8已经独立识别。 
+        css .bb{ 
+            background-color:#f1ee18;/*所有识别*/ 
+            background-color:#00deff\9; /*IE6、7、8识别*/ 
+            +background-color:#a200ff;/*IE6、7识别*/ 
+            _background-color:#1e0bd1;/*IE6识别*/ }
+    4   Ie z-index问题， 给父级添加position:relative
+    5   Min-height 最小高度！Important 解决’
+    6   select 在ie6下遮盖 使用iframe嵌套
+    7   为什么没有办法定义1px左右的宽度容器（IE6默认的行高造成的，使用over:hidden,zoom:0.08 line-height:1px）
+
+
+    8   IE下,可以使用获取常规属性的方法来获取自定义属性,
+        也可以使用getAttribute()获取自定义属性;
+        Firefox下,只能使用getAttribute()获取自定义属性。
+        解决方法:统一通过getAttribute()获取自定义属性。
+    9   IE下,even对象有x,y属性,但是没有pageX,pageY属性;
+        Firefox下,event对象有pageX,pageY属性,但是没有x,y属性。
+        * 解决方法：（条件注释）缺点是在IE浏览器下可能会增加额外的HTTP请求数。
+
