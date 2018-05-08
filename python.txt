@@ -1,0 +1,8 @@
+// 查看帮助文档
+1 help(module)
+
+2 print(module.__doc__)
+
+3 dir(module):      简略信息
+
+4 help: 进入帮助控制台
