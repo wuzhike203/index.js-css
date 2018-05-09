@@ -1,0 +1,33 @@
+// 18-04-10 12:35:03 web.py 
+    web.data()          -->     读取post的原始data
+    web.ctx             -->     获取客户端信息
+
+    // 以下为解析的
+    web.input()         -->     获取表单数据
+
+
+
+
+// 18-04-10 12:26:55  content-disposition
+    // 1 
+    disposition: 战略; 配置
+
+    // 2 
+    用在2个地方: 消息头(通常是服务器返回); 用在表单(multipart/form-data)
+
+    // 2.1 消息头:
+        指示回复的内容该以何种形式展示: 
+        a 内联(即网页或者页面的一部分)
+        b 附件(下载并保存到本地)
+
+        // 例:
+        content-disposition: inline
+        content-disposition: attachment
+        content-disposition: attachment; filename="filename.jpg"
+
+    // 2.2 用在multipart body中的消息头
+        // 例:
+        content-disposition: form-data; name="fieldName"; filename="filename.jpg"
+        第一个参数总是: form-data
+        第二个参数: name, 表单字段的name
+        第三个参数: filename: 上传的文件的名称(如果有)
