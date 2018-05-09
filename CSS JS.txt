@@ -1630,3 +1630,12 @@ flash           application/x-shockwave-flash	swf
 
 // 18-04-24 11:36:48 
     inline-block内部的float元素可以把父元素内容撑开!!!
+
+
+// 18-05-09 16:27:03  webpack
+    0 style-load: 负责把文件输出到html中的header标签中
+    1 css-loader(或者raw-loader)负责把css文件转为js模块
+    2 ExtractTextPlugin: 负责把文件抽取到一个单独的文件中
+
+    // devtool: source map
+    devtool: 'inline-source-map'
