@@ -1,0 +1,54 @@
+
+// 18-04-21 commonjs(nodejs); amd; es6模块加载方式的差异
+    1 commonjs(nodejs)
+        定义:
+        module.exports: 输出此对象
+        export: 只是上面对象的代理
+
+        使用:
+        const m = require("module")
+
+    2 amd
+        定义:
+        define("moduleName.js", function(){
+            return ...;
+        });
+
+        使用:
+        require(["m1.js", "m2.js"], function(m1, m2){
+        
+        })
+
+    3 es6
+        定义
+        export default ...
+        export "a"
+        export function fun(){
+        
+        }
+
+        // 使用
+        import a, * from m
+        import {b, c} form m
+
+
+    Node.js
+    // 全局变量 global 
+    // 模块变量 this
+    // 局部变量 var 
+
+    var name = "var name";          // 局部变量
+    this.name = "module name";      // 模块变量
+    global.name = "wuji";           // 全局变量
+
+
+// 18-04-21 package.json
+    dependencies: { }               // 生产环境依赖
+    devDependencies: {}             // 开发环境依赖(可以放一些单元测试等之类的包)
+
+    当 npm install 安装时
+    1 npm install :                 // 安装2中包
+    2 npm install --production      // 只安装 dependencies包
+    3 npm instal --dev              // 只安装 devDependencies 包
+
+    // 安装某一版本: @版本号

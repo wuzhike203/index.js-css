@@ -1461,33 +1461,54 @@ Math
 // 17-03-15 08:55:54 
     Chrome 使用技巧
     =====================================================================
-    1   在Chrome中浏览本地文件
-        file:///  即可访问本地文件。
-        如： file:///d:/
+    1 窗口
+        打开新窗口:     ctrl + n
+        关闭当前窗口:   alt + f4
     ---------------------------------------------------------------------
-    2   临时文本编辑器
-        data:text/html, <html contenteditable>
+
+    2 标签页
+        打开新标签:     ctrl + t
+        关闭标签:       ctrl + w
+        在标签间切换:   ctrl + tab; ctrl + shift + tab
+        跳转到某个:     ctrl + 1~9
     ---------------------------------------------------------------------
-    3   Ctrl + l                快速选择地址栏
 
-    4   Ctrl + e                打开默认搜索
-    5   Ctrl + z                快速定位到百度输入框
-
-    6   alt + home              打开主页
-
-    6   Ctrl + w                关闭当前标签页
-    7   Ctrl + t                打开新的标签页
-
-    8   Ctrl + j                打开下载页面
-    9   Ctrl + h                打开历史页面
-    10  Ctrl + u                打开页面源码
-
-    11  Ctrl + o                打开电脑上的文件
-
-    11  Ctrl + f                在网页上查找
-    12  Ctrl + d                添加到收藏夹
-    13  Ctrl + s                保存网页
+    3 从链接打开窗口 或 标签
+        打开新窗口：    按住ctrl 键, 点击链接
+        打开新标签:     按住shift键, 点击链接
+        下载链接:       按住alt 键,  下载链接
     ---------------------------------------------------------------------
+
+    4 定位到地址栏
+        Ctrl + l; F6
+
+        打开默认搜索    Ctrl + e                
+
+      定位到浏览器工具栏
+        shift + alt + t
+    ---------------------------------------------------------------------
+
+    5 查看浏览器其他模块
+        ctrl + j:       查看下载页
+        ctrl + h:       查看历史
+        ctrl + b:       查看书签栏
+        Ctrl + u:       打开页面源码
+        alt + home:     打开主页
+        Ctrl + o:       打开电脑上的文件
+        Ctrl + d:       添加到收藏夹
+        Ctrl + s:       保存网页
+    ---------------------------------------------------------------------
+
+    6 在网页上查找
+        打开 "在网页上查找" 框: ctrl + f:
+        查找下一个: f3; ctrl + g;
+        查找上一个: shift + f3; ctrl + shift + g;
+    ---------------------------------------------------------------------
+
+    7 缩放
+        ctrl++; ctrl--; ctrl + 0: 还原到正常文字大小
+    ---------------------------------------------------------------------
+
 
 // 17-03-15 09:29:47 
     windows 快捷键大全
@@ -1640,52 +1661,34 @@ Math
         介于网页与APP效果之间
 
 
-// 18-04-09 11:39:17 
-    JS模块化方案: CommonJS(服务器端) 和 AMD(浏览器端, 如require.js), ES6(ES2015)
-    // 目前: nodejs 使用 CommonJS方案, 对es6模块支持度处于试验阶段
-
-    // 1 AMD
-        // 定义content.js
-        define('content.js', function(){
-            return 'A cat';
-        })
-        // 使用
-        //index.js
-        require(['./content.js'], function(animal){
-            console.log(animal);   //A cat
-        })
-
-    // 2 CommonJS
-        // 定义 content.js
-        module.exports = 'A cat'
-
-        // 使用 index.js
-        var animal = require('./content.js')
-
-    // 3 ES6
-        // 定义 content.js
-        export default 'A cat'    
-        export function say(){
-            return 'Hello!'
-        }    
-        export const type = 'dog' 
+// 18-04-21 23:21:30 标签嵌套规则
+    // 以下标签是放文字的, 不能放块元素
+    h1 ~ h6: 是放标题文字的, 
+    p:       是放文字段的,  
+    hr:
+    dl:
 
 
-        // 使用 index.js
-        import animal from './content'                                  // 只引入默认的代码片段
-        import animal, { say, type as animalType } from './content'     // 引入默认代码片段 和 部分其他
-        import animal, * as content from './content'                    // 引入所有的
-        import { type } from './content'                                // 只引入部分 代码片段
+// 18-05-06 00:29:29 
+    chmod函数在指定的文件上进行操作，而fchmod函数则对已打开的文件进行操作。
+    lchmod: 不追踪
 
-        let says = say()
-        console.log(`The ${type} says ${says}`)  //The dog says Hello
+    // 打开一个文件
+    open()
 
-    // -------------------------- 
-    Node.js
-    // 全局变量 global 
-    // 模块变量 this
-    // 局部变量 var 
+        read(rd);
+        write(fd)
 
-    var name = "var name";          // 局部变量
-    this.name = "module name";      // 模块变量
-    global.name = "wuji";           // 全局变量
+    close()
+
+    // 流
+    createReadStream
+    createWriteStream
+
+
+    // Watch
+    fs.watch(path, {
+        persistent: <boolean>,
+        recursive: <boolean>,
+        encoding: <string>
+    })
